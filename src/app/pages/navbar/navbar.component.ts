@@ -20,5 +20,8 @@ export class NavbarComponent implements OnInit {
   goToSearch() {
     this.router.navigate(['/search']);
   }
+  goToAboutUs() {
+    this.router.navigate(['/aboutus']);
+  }
 
 }
