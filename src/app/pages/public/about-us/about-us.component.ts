@@ -13,8 +13,4 @@ export class AboutUsComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  goToHome() {
-    this.router.navigate(['/home']);
-  }
-
 }
