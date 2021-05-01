@@ -8,7 +8,7 @@ $cardsBGColor: white;
 $titleSize: 150px;
 $subtitleSize: 43px;
 $cardsFontSize: 30px;
-$categoryCardFontSize: 23px;
+$categoryCardFontSize: 23.7px;
 $navbarFontSize: 15px;
 $footerFontSize: 12px;
 
@@ -36,7 +36,7 @@ $footerFontSize: 12px;
 
 .appContainer {
     width: 100vw;
-    height: 100vh;
+    height: 200vh;
     display: flex;
     flex-flow: column;
     align-items: center;
@@ -44,17 +44,18 @@ $footerFontSize: 12px;
     font-family: $mediumFont;
     .navBarContainer {
         width: 100%;
-        height: 13.3%;
+        height: 6.7%;
     }
     .carouselContainer {
         width: 100%;
-        //height: 50%;
         display: flex;
         justify-content: center;
     }
     .categoriesContainer {
         width: 76.1%;
         height: 50%;
+        position: absolute;
+        top: 73.5%;
         .categoriesTitle {
             font-size: $subtitleSize;
             font-family: $blackFont;
@@ -67,30 +68,34 @@ $footerFontSize: 12px;
             justify-content: space-between;
             .categoryCardContainer {
                 width: 24%;
-                height: 50%;
+                height: 90%;
                 display: grid;
                 grid-template-columns: 100%;
-                grid-template-rows: 10% 90%;
+                grid-template-rows: 20% 80%;
                 justify-items: center;
-                // flex-flow: column;
-                // align-items: center;
-                background: pink;
+                cursor: pointer;
                 .categoryCardPicture {
-                    width: 15%;
-                   // position: absolute;
+                    width: 80%;
                     border-radius: 32px;
                     grid-column: 1;
                     grid-row: 1 / 2;
+                    z-index: 1;
                 }
                 .categoryCardBG {
                     width: 100%;
-                    height: 90%;
+                    height: 100%;
+                    display: flex;
+                    align-items: flex-end;
+                    justify-content: center;
                     border-radius: 32px;
                     grid-column: 1;
                     grid-row: 2 / 2;
-                    align-self: flex-end;
-                    // background: $cardsBGColor;
-                    background: radial-gradient(#b4e9fc, #ffffff);
+                    background: radial-gradient(circle at 50%, #b4e9fc, #ffffff 75%);
+                    .categoryName {
+                        font-family: $blackFont;
+                        font-size: $categoryCardFontSize;
+                        margin-bottom: 9%;
+                    }
                 }
             }
         }

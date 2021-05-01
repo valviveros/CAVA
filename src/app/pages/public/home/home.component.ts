@@ -8,6 +8,7 @@ import '@angular/localize/init';
 })
 export class HomeComponent implements OnInit {
   active: number = 1;
+  images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/1279/452`);
 
   constructor() { }
 

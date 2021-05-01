@@ -15,7 +15,7 @@ $navbarFontSize: 15px;
     background: $backgroundColor;
     font-size: $navbarFontSize;
     font-family: $blackFont;
-    z-index: 1;
+    z-index: 999;
     .navTabs {
         width: 88.7%;
         align-items: center;
