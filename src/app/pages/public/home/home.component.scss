@@ -1,0 +1,97 @@
+$lightFont: avenirLight;
+$mediumFont: avenirMedium;
+$blackFont: avenirBlack;
+$fontColor: #000000;
+$activeFontColor: #6ca7b6;
+$backgroundColor: #f0f5fa;
+$cardsBGColor: white;
+$titleSize: 150px;
+$subtitleSize: 43px;
+$cardsFontSize: 30px;
+$categoryCardFontSize: 23px;
+$navbarFontSize: 15px;
+$footerFontSize: 12px;
+
+@font-face {
+    font-family: avenirLight;
+    src: url(/assets/fonts/avenir-lt-35-light.ttf);
+}
+
+@font-face {
+    font-family: avenirMedium;
+    src: url(/assets/fonts/avenir-lt-65-medium.ttf);
+}
+
+@font-face {
+    font-family: avenirBlack;
+    src: url(/assets/fonts/avenir-lt-std-95-black.otf);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    overflow-y: hidden;
+}
+
+.appContainer {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    background: $backgroundColor;
+    font-family: $mediumFont;
+    .navBarContainer {
+        width: 100%;
+        height: 13.3%;
+    }
+    .carouselContainer {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .categoriesContainer {
+        width: 76.1%;
+        height: 98%;
+        .categoriesTitle {
+            font-size: $subtitleSize;
+            font-family: $blackFont;
+        }
+        .categoriesCards {
+            width: 100%;
+            height: 90%;
+            display: flex;
+            flex-flow: row;
+            justify-content: space-between;
+            .categoryCardContainer {
+                width: 24%;
+                height: 50%;
+                display: grid;
+                grid-template-columns: 100%;
+                grid-template-rows: 10% 90%;
+                justify-items: center;
+                // flex-flow: column;
+                // align-items: center;
+                background: pink;
+                .categoryCardPicture {
+                    width: 15%;
+                    position: absolute;
+                    border-radius: 32px;
+                    grid-column: 1;
+                    grid-row: 1 / 2;
+                }
+                .categoryCardBG {
+                    width: 100%;
+                    height: 90%;
+                    border-radius: 32px;
+                    grid-column: 1;
+                    grid-row: 2 / 2;
+                    align-self: flex-end;
+                    // background: $cardsBGColor;
+                    background: radial-gradient(#b4e9fc, #ffffff);
+                }
+            }
+        }
+    }
+}

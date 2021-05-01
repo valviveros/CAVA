@@ -1,0 +1,51 @@
+$lightFont: avenirLight;
+$mediumFont: avenirMedium;
+$blackFont: avenirBlack;
+$fontColor: #000000;
+$activeFontColor: #6CA7B6;
+$backgroundColor: #F0F5FA;
+$navbarFontSize: 15px;
+
+.navBar {
+    width: 100%;
+    height: 13.3%;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    background: $backgroundColor;
+    font-size: $navbarFontSize;
+    font-family: $blackFont;
+    z-index: 1;
+    .navTabs {
+        width: 88.7%;
+        align-items: center;
+        justify-content: space-between;
+        li a {
+            color: $fontColor;
+            text-decoration: none;
+        }
+        .active {
+            color: $activeFontColor !important;
+        }
+        .navBarLogo {
+            width: 68.352px;
+            height: 41.0914px;
+            cursor: pointer;
+        }
+        .navBarHome {
+            margin-left: 5px;
+        }
+        .navBarSearch {
+            margin-left: 5px;
+        }
+        .navBarAdvertise {
+            margin-left: 5px;
+        }
+        .navBarAboutUs {
+            margin-left: 5px;
+        }
+        .navBarLogin {
+            margin-left: 5px;
+        }
+    }
+}

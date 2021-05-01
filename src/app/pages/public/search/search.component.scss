@@ -1,0 +1,45 @@
+$lightFont: avenirLight;
+$mediumFont: avenirMedium;
+$blackFont: avenirBlack;
+$fontColor: #000000;
+$activeFontColor: #6CA7B6;
+$backgroundColor: #F0F5FA;
+
+@font-face {
+    font-family: avenirLight;
+    src: url(/assets/fonts/avenir-lt-35-light.ttf);
+}
+
+@font-face {
+    font-family: avenirMedium;
+    src: url(/assets/fonts/avenir-lt-65-medium.ttf);
+}
+
+@font-face {
+    font-family: avenirBlack;
+    src: url(/assets/fonts/avenir-lt-std-95-black.otf);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    overflow-y: hidden;
+}
+
+.searchContainer {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-flow: column;
+    background: $backgroundColor;
+    font-family: $mediumFont;
+    .navBarContainer {
+        width: 100%;
+        height: 13.3%;
+    }
+    .contentWrapper {
+        width: 100%;
+        height: 86.7%;
+    }
+}

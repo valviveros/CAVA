@@ -1,17 +1,23 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './pages/private/home/home.component';
+import { NavbarComponent } from './pages/navbar/navbar.component';
+import { HomeComponent } from './pages/public/home/home.component';
+import { SearchComponent } from './pages/public/search/search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    NavbarComponent,
+    HomeComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
