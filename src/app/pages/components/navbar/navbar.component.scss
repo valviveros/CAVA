@@ -2,9 +2,15 @@ $lightFont: avenirLight;
 $mediumFont: avenirMedium;
 $blackFont: avenirBlack;
 $fontColor: #000000;
-$activeFontColor: #6CA7B6;
-$backgroundColor: #F0F5FA;
+$activeFontColor: #6ca7b6;
+$backgroundColor: #f0f5fa;
+$cardsBGColor: white;
+$titleSize: 150px;
+$subtitleSize: 43px;
+$cardsFontSize: 30px;
+$categoryCardFontSize: 23.7px;
 $navbarFontSize: 15px;
+$footerFontSize: 12px;
 
 .navBar {
     width: 100%;
@@ -15,7 +21,7 @@ $navbarFontSize: 15px;
     background: $backgroundColor;
     font-size: $navbarFontSize;
     font-family: $blackFont;
-    z-index: 1;
+    z-index: 999;
     .navTabs {
         width: 88.7%;
         align-items: center;

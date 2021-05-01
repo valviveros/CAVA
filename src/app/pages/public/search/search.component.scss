@@ -2,8 +2,15 @@ $lightFont: avenirLight;
 $mediumFont: avenirMedium;
 $blackFont: avenirBlack;
 $fontColor: #000000;
-$activeFontColor: #6CA7B6;
-$backgroundColor: #F0F5FA;
+$activeFontColor: #6ca7b6;
+$backgroundColor: #f0f5fa;
+$cardsBGColor: white;
+$titleSize: 150px;
+$subtitleSize: 43px;
+$cardsFontSize: 30px;
+$categoryCardFontSize: 23.7px;
+$navbarFontSize: 15px;
+$footerFontSize: 12px;
 
 @font-face {
     font-family: avenirLight;
@@ -24,7 +31,6 @@ $backgroundColor: #F0F5FA;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    overflow-y: hidden;
 }
 
 .searchContainer {

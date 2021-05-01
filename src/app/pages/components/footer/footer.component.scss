@@ -1,0 +1,41 @@
+$lightFont: avenirLight;
+$mediumFont: avenirMedium;
+$blackFont: avenirBlack;
+$fontColor: #000000;
+$activeFontColor: #6ca7b6;
+$backgroundColor: #f0f5fa;
+$cardsBGColor: white;
+$titleSize: 150px;
+$subtitleSize: 43px;
+$cardsFontSize: 30px;
+$categoryCardFontSize: 23.7px;
+$navbarFontSize: 15px;
+$footerFontSize: 12px;
+
+.footer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    background: $backgroundColor;
+    font-family: $lightFont;
+    font-size: $footerFontSize;
+    .line {
+        width: 27%;
+        height: 4%;
+        border-radius: 60px;
+        background-color: $activeFontColor;
+    }
+    .footerLogo {
+        margin: 1% 0;
+        width: 40.576px;
+        height: 24.393px;
+    }
+    .rightsText {
+        width: 25%;
+        height: 7%;
+        text-align: center;
+    }
+}
