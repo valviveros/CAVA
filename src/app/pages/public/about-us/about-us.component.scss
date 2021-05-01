@@ -4,6 +4,7 @@ $blackFont: avenirBlack;
 $fontColor: #000000;
 $activeFontColor: #6CA7B6;
 $backgroundColor: #F0F5FA;
+$footerFontSize: 12px;
 
 @font-face {
     font-family: avenirLight;
@@ -24,7 +25,7 @@ $backgroundColor: #F0F5FA;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    overflow-y: hidden;
+    //overflow-y: hidden;
 }
 
 .aboutUsContainer {
@@ -41,5 +42,37 @@ $backgroundColor: #F0F5FA;
     .contentWrapper {
         width: 100%;
         height: 86.7%;
+    }
+    .footerContainer{
+        width: 100%;
+        height: 10%;
+        .footerInfo{
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-flow: column;
+            justify-content: center;
+            align-items: center;
+            .line{
+                background-color: $activeFontColor;
+                width: 27%;
+                height: 3%;
+                border-radius: 60px;
+            }
+            .logoContainer{
+                margin-top: 6px;
+                margin-bottom: 6px;
+                width: 40.576px;
+                height: 24.393px;
+                cursor: pointer;
+            }
+            .rightsContainer{
+                width: 25%;
+                height: 7%;
+                font-family: $lightFont;
+                font-size: $footerFontSize;
+                text-align: center;
+            }
+        }
     }
 }
