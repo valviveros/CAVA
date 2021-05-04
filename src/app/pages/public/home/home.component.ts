@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import '@angular/localize/init';
-import { CompanyCardI } from 'src/app/shared/interfaces/companyCardI';
+import { CompanyCardI } from 'src/app/shared/interfaces/CompanyCardI';
 
 @Component({
   selector: 'app-home',
