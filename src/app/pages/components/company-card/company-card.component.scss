@@ -9,17 +9,18 @@ $titleSize: 150px;
 $subtitleSize: 43px;
 $cardsFontSize: 30px;
 $categoryCardFontSize: 23.7px;
+$infoCardFontSize:19px;
 $navbarFontSize: 15px;
 $footerFontSize: 12px;
 $borderRadiusCards: 32px;
 
 .companyCard {
-    width: 100%;
     height: 100%;
     display: flex;
     flex-flow: row;
     font-family: $mediumFont;
     font-size: $cardsFontSize;
+    cursor: pointer;
     .companyInfo {
         width: 50%;
         height: 100%;
@@ -30,12 +31,9 @@ $borderRadiusCards: 32px;
         background: $cardsBGColor;
         border-radius: $borderRadiusCards 0 0 $borderRadiusCards;
         .companyLogo {
+            width: 50%;
             margin-bottom: 2%;
             border-radius: $borderRadiusCards;
-            img {
-                width: 127px;
-                height: 127px;
-            }
         }
         .companyName {
             text-align: center;

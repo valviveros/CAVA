@@ -64,6 +64,7 @@ $borderRadiusCards: 32px;
             display: flex;
             flex-flow: row;
             justify-content: space-between;
+            margin-top: 20px;
             .categoryCardContainer {
                 width: 24%;
                 display: grid;
@@ -107,10 +108,11 @@ $borderRadiusCards: 32px;
         }
         .companiesContainer {
             width: 100%;
-            height: 35.7%;
+            height: 40.7%;
             display: flex;
             flex-flow: row;
             justify-content: space-between;
+            margin-top: 20px;
             app-company-card {
                 width: 100%;
                 height: 100%;
