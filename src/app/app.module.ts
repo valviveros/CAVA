@@ -5,6 +5,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './pages/components/navbar/navbar.component';
 import { HomeComponent } from './pages/public/home/home.component';
+import { CompanyCardComponent } from './pages/components/company-card/company-card.component';
 import { SearchComponent } from './pages/public/search/search.component';
 import { AboutUsComponent } from './pages/public/about-us/about-us.component'
 import { FooterComponent } from './pages/components/footer/footer.component';
@@ -15,9 +16,10 @@ import {IvyCarouselModule} from 'angular-responsive-carousel';
     AppComponent,
     NavbarComponent,
     HomeComponent,
+    CompanyCardComponent,
     SearchComponent,
     AboutUsComponent,
-    FooterComponent
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
