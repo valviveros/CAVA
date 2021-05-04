@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import '@angular/localize/init';
+import { CompanyCardI } from 'src/app/shared/interfaces/companyCardI';
 
 @Component({
   selector: 'app-home',
@@ -9,6 +10,18 @@ import '@angular/localize/init';
 export class HomeComponent implements OnInit {
   active: number = 1;
   images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/1279/452`);
+  companies: Array<CompanyCardI> = [
+    {
+      companyLogo: "/assets/img/companyLogo1.svg",
+      companyName: "Agro Dinero",
+      companyPhoto: "/assets/img/companyPhoto1.svg"
+    },
+    {
+      companyLogo: "/assets/img/companyLogo2.svg",
+      companyName: "Deluna's Dream",
+      companyPhoto: "/assets/img/companyPhoto2.svg"
+    }
+  ]
 
   constructor() { }
 
