@@ -11,6 +11,7 @@ $cardsFontSize: 30px;
 $categoryCardFontSize: 23.7px;
 $navbarFontSize: 15px;
 $footerFontSize: 12px;
+$borderRadiusCards: 32px;
 
 @font-face {
     font-family: avenirLight;
@@ -53,21 +54,18 @@ $footerFontSize: 12px;
     .categoriesContainer {
         width: 76.1%;
         height: 50%;
-        position: absolute;
-        top: 73.5%;
+        margin-top: 3%;
         .categoriesTitle {
             font-size: $subtitleSize;
             font-family: $blackFont;
         }
         .categoriesCards {
             width: 100%;
-            height: 90%;
             display: flex;
             flex-flow: row;
             justify-content: space-between;
             .categoryCardContainer {
                 width: 24%;
-                height: 90%;
                 display: grid;
                 grid-template-columns: 100%;
                 grid-template-rows: 20% 80%;
@@ -86,7 +84,7 @@ $footerFontSize: 12px;
                     display: flex;
                     align-items: flex-end;
                     justify-content: center;
-                    border-radius: 32px;
+                    border-radius: $borderRadiusCards;
                     grid-column: 1;
                     grid-row: 2 / 2;
                     background: radial-gradient(circle at 50%, #b4e9fc, #ffffff 75%);
@@ -99,55 +97,24 @@ $footerFontSize: 12px;
             }
         }
     }
-    .companiesContainer{
+    .contentWrapper {
         width: 76.1%;
-        height: 50%;
+        height: 100%;
+        margin-top: 3%;
         .companiesTitle {
             font-size: $subtitleSize;
             font-family: $blackFont;
         }
-        .companiesCardContainer{
+        .companiesContainer {
             width: 100%;
-            height: 90%;
+            height: 35.7%;
             display: flex;
             flex-flow: row;
             justify-content: space-between;
-            .companyCard{
-                display: flex;
-                width: 48%;
+            app-company-card {
+                width: 100%;
                 height: 100%;
-                background-color: $cardsBGColor;
-                border-radius: 30px;
-                .companyPhoto{
-                    width: 50%;
-                    height: 100%;
-                    background-color: yellowgreen;
-                }
-                .companyInfo{
-                    width: 50%;
-                    height: 100%;
-                    display: flex;
-                    flex-flow: column;
-                    justify-content: center;
-                    align-items: center;
-                    background-color: $cardsBGColor;
-                    font: $mediumFont;
-                    font-size: $categoryCardFontSize;
-                    
-                    .companyLogo{
-                        width: 45%;
-                        height: 45%;
-                        background-color: royalblue;
-                        border-radius: 30px;
-                        box-shadow: 0px 10px 13px -7px #000000, 3px 1px 20px 0px rgba(0,0,0,0); 
-                        margin-bottom: 2%;
-                    }
-                }
             }
         }
-    }
-    .footerContainer {
-        width: 100%;
-        height: 13.3%;
     }
 }

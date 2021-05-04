@@ -60,27 +60,15 @@
             </div>
         </div>
     </div>
-    <!-- <div class="companiesContainer">
+    <div class="contentWrapper">
         <div class="companiesTitle">
             Emprendimientos
         </div>
-        <div class="companiesCardContainer">
-            <div class="companyCard">
-                <div class="companyInfo">
-                    <div class="companyLogo"></div>
-                    Empresa
-                </div>
-                <div class="companyPhoto"></div> 
-            </div>
-            <div class="companyCard">
-                <div class="companyInfo">
-                    <div class="companyLogo"></div>
-                    Empresa 2
-                </div>
-                <div class="companyPhoto"></div> 
-            </div>
-        </div> 
-    </div> -->
+        <div class="companiesContainer">
+            <app-company-card *ngFor="let company of companies; let i = index" [companyLogo]="company.companyLogo"
+                [companyName]="company.companyName" [companyPhoto]="company.companyPhoto"></app-company-card>
+        </div>
+    </div>
     <!-- <div class="footerContainer">
         <app-footer></app-footer>
     </div> -->

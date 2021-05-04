@@ -1,0 +1,52 @@
+$lightFont: avenirLight;
+$mediumFont: avenirMedium;
+$blackFont: avenirBlack;
+$fontColor: #000000;
+$activeFontColor: #6ca7b6;
+$backgroundColor: #f0f5fa;
+$cardsBGColor: white;
+$titleSize: 150px;
+$subtitleSize: 43px;
+$cardsFontSize: 30px;
+$categoryCardFontSize: 23.7px;
+$navbarFontSize: 15px;
+$footerFontSize: 12px;
+$borderRadiusCards: 32px;
+
+.companyCard {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: row;
+    font-family: $mediumFont;
+    font-size: $cardsFontSize;
+    .companyInfo {
+        width: 50%;
+        height: 100%;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        justify-content: center;
+        background: $cardsBGColor;
+        border-radius: $borderRadiusCards 0 0 $borderRadiusCards;
+        .companyLogo {
+            margin-bottom: 2%;
+            border-radius: $borderRadiusCards;
+            img {
+                width: 127px;
+                height: 127px;
+            }
+        }
+        .companyName {
+            text-align: center;
+        }
+    }
+    .companyPhoto {
+        width: 50%;
+        height: 100%;
+        border-radius: 0 $borderRadiusCards $borderRadiusCards 0;
+        img {
+            height: 100%;
+        }
+    }
+}
