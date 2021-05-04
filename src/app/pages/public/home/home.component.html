@@ -1,25 +1,32 @@
 <div class="appContainer">
+
     <div class="navBarContainer">
         <app-navbar [active]="active"></app-navbar>
     </div>
     <div class="carouselContainer">
-        <ngb-carousel *ngIf="images">
-            <ng-template ngbSlide>
-                <div class="picsum-img-wrapper">
-                    <img [src]="images[0]" alt="Random first slide">
-                </div>
-            </ng-template>
-            <ng-template ngbSlide>
-                <div class="picsum-img-wrapper">
-                    <img [src]="images[1]" alt="Random second slide">
-                </div>
-            </ng-template>
-            <ng-template ngbSlide>
-                <div class="picsum-img-wrapper">
-                    <img [src]="images[2]" alt="Random third slide">
-                </div>
-            </ng-template>
-        </ngb-carousel>
+        <carousel [cellWidth]="'100%'" [dots]="true" [loop]="true" [height]="452" [arrowsOutside]="false">
+            <div class="carousel-cell" >
+                <img [src]="imagenesCarousel[0]" alt="Random first slide">
+            </div>
+            <div class="carousel-cell">
+                <img [src]="imagenesCarousel[1]" alt="Random first slide">
+            </div>
+            <div class="carousel-cell">
+                <img [src]="imagenesCarousel[2]" alt="Random first slide">
+            </div>
+            <div class="carousel-cell">
+                <img [src]="imagenesCarousel[3]" alt="Random first slide">
+            </div>
+            <div class="carousel-cell">
+                <img [src]="imagenesCarousel[4]" alt="Random first slide">
+            </div>
+            <div class="carousel-cell">
+                <img [src]="imagenesCarousel[5]" alt="Random first slide">
+            </div>
+            <div class="carousel-cell">
+                <img [src]="imagenesCarousel[6]" alt="Random first slide">
+            </div>        
+        </carousel>
     </div>
     <div class="categoriesContainer">
         <div class="categoriesTitle">
@@ -60,11 +67,56 @@
             </div>
         </div>
     </div>
-    <!-- <div class="companiesContainer">
+    <div class="companiesContainer">
         <div class="companiesTitle">
             Emprendimientos
         </div>
-        <div class="companiesCardContainer">
+        <carousel [arrowsOutside]="true" [overflowCellsLimit]='2'>
+            <div class="carousel-cell" >
+                <img [src]="imagenes[0]" alt="Random first slide">
+            </div>
+            <div class="carousel-cell">
+                <img [src]="imagenes[1]" alt="Random first slide">
+            </div>
+            <div class="carousel-cell">
+                <img [src]="imagenes[2]" alt="Random first slide">
+            </div>
+            <div class="carousel-cell">
+                <img [src]="imagenes[3]" alt="Random first slide">
+            </div>
+            <div class="carousel-cell">
+                <img [src]="imagenes[4]" alt="Random first slide">
+            </div>
+            <div class="carousel-cell">
+                <img [src]="imagenes[5]" alt="Random first slide">
+            </div>
+            <div class="carousel-cell">
+                <img [src]="imagenes[6]" alt="Random first slide">
+            </div>
+            <div class="carousel-cell">
+                <img [src]="imagenes[7]" alt="Random first slide">
+            </div>
+            <div class="carousel-cell">
+                <img [src]="imagenes[8]" alt="Random first slide">
+            </div>
+            <div class="carousel-cell">
+                <img [src]="imagenes[9]" alt="Random first slide">
+            </div>
+            <div class="carousel-cell">
+                <img [src]="imagenes[10]" alt="Random first slide">
+            </div>
+            <div class="carousel-cell">
+                <img [src]="imagenes[11]" alt="Random first slide">
+            </div>
+            <div class="carousel-cell">
+                <img [src]="imagenes[12]" alt="Random first slide">
+            </div>
+            <div class="carousel-cell">
+                <img [src]="imagenes[13]" alt="Random first slide">
+            </div>
+            
+        </carousel>
+        <!--<div class="companiesCardContainer">
             <div class="companyCard">
                 <div class="companyInfo">
                     <div class="companyLogo"></div>
@@ -79,9 +131,149 @@
                 </div>
                 <div class="companyPhoto"></div> 
             </div>
-        </div> 
-    </div> -->
-    <!-- <div class="footerContainer">
+        </div>-->
+    </div> 
+    <div class="companiesContainer">
+        <div class="companiesTitle">
+            Empresas
+        </div>
+        <carousel [arrowsOutside]="true" [cellsToShow]="2">
+            <!--<div class="carousel-cell" >
+                <img [src]="imagenes[0]" alt="Random first slide">
+            </div>
+            <div class="carousel-cell">
+                <img [src]="imagenes[1]" alt="Random first slide">
+            </div>
+            <div class="carousel-cell">
+                <img [src]="imagenes[2]" alt="Random first slide">
+            </div>
+            <div class="carousel-cell">
+                <img [src]="imagenes[3]" alt="Random first slide">
+            </div>
+            <div class="carousel-cell">
+                <img [src]="imagenes[4]" alt="Random first slide">
+            </div>
+            <div class="carousel-cell">
+                <img [src]="imagenes[5]" alt="Random first slide">
+            </div>
+            <div class="carousel-cell">
+                <img [src]="imagenes[6]" alt="Random first slide">
+            </div>
+            <div class="carousel-cell">
+                <img [src]="imagenes[7]" alt="Random first slide">
+            </div>
+            <div class="carousel-cell">
+                <img [src]="imagenes[8]" alt="Random first slide">
+            </div>
+            <div class="carousel-cell">
+                <img [src]="imagenes[9]" alt="Random first slide">
+            </div>
+            <div class="carousel-cell">
+                <img [src]="imagenes[10]" alt="Random first slide">
+            </div>
+            <div class="carousel-cell">
+                <img [src]="imagenes[11]" alt="Random first slide">
+            </div>
+            <div class="carousel-cell">
+                <img [src]="imagenes[12]" alt="Random first slide">
+            </div>
+            <div class="carousel-cell">
+                <img [src]="imagenes[13]" alt="Random first slide">
+            </div>-->
+            <div class="carousel-cell">
+                <div class="companyCard">
+                    <div class="companyInfo">
+                        <div class="companyLogo"></div>
+                        Empresa
+                    </div>
+                    <div class="companyPhoto"></div> 
+                </div>
+            </div>
+            <div class="carousel-cell">
+                <div class="companyCard">
+                    <div class="companyInfo">
+                        <div class="companyLogo"></div>
+                        Empresa2
+                    </div>
+                    <div class="companyPhoto"></div> 
+                </div>
+            </div>
+            <div class="carousel-cell">
+                <div class="companyCard">
+                    <div class="companyInfo">
+                        <div class="companyLogo"></div>
+                        Empresa3
+                    </div>
+                    <div class="companyPhoto"></div> 
+                </div>
+            </div>
+            <div class="carousel-cell">
+                <div class="companyCard">
+                    <div class="companyInfo">
+                        <div class="companyLogo"></div>
+                        Empresa4
+                    </div>
+                    <div class="companyPhoto"></div> 
+                </div>
+            </div>
+            <div class="carousel-cell">
+                <div class="companyCard">
+                    <div class="companyInfo">
+                        <div class="companyLogo"></div>
+                        Empresa4
+                    </div>
+                    <div class="companyPhoto"></div> 
+                </div>
+            </div>
+            <div class="carousel-cell">
+                <div class="companyCard">
+                    <div class="companyInfo">
+                        <div class="companyLogo"></div>
+                        Empresa4
+                    </div>
+                    <div class="companyPhoto"></div> 
+                </div>
+            </div>
+            <div class="carousel-cell">
+                <div class="companyCard">
+                    <div class="companyInfo">
+                        <div class="companyLogo"></div>
+                        Empresa4
+                    </div>
+                    <div class="companyPhoto"></div> 
+                </div>
+            </div>
+            <div class="carousel-cell">
+                <div class="companyCard">
+                    <div class="companyInfo">
+                        <div class="companyLogo"></div>
+                        Empresa4
+                    </div>
+                    <div class="companyPhoto"></div> 
+                </div>
+            </div>
+            
+            
+        </carousel>
+        <!--<div class="companiesCardContainer">
+            <div class="companyCard">
+                <div class="companyInfo">
+                    <div class="companyLogo"></div>
+                    Empresa
+                </div>
+                <div class="companyPhoto"></div> 
+            </div>
+            <div class="companyCard">
+                <div class="companyInfo">
+                    <div class="companyLogo"></div>
+                    Empresa 2
+                </div>
+                <div class="companyPhoto"></div> 
+            </div>
+        </div>-->
+    </div>
+
+    <div class="footerContainer">
         <app-footer></app-footer>
-    </div> -->
+    </div> 
 </div>

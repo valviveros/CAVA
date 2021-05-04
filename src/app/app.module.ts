@@ -8,6 +8,7 @@ import { HomeComponent } from './pages/public/home/home.component';
 import { SearchComponent } from './pages/public/search/search.component';
 import { AboutUsComponent } from './pages/public/about-us/about-us.component'
 import { FooterComponent } from './pages/components/footer/footer.component';
+import {IvyCarouselModule} from 'angular-responsive-carousel';
 
 @NgModule({
   declarations: [
@@ -21,9 +22,11 @@ import { FooterComponent } from './pages/components/footer/footer.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    IvyCarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
