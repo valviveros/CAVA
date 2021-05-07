@@ -1,25 +1,32 @@
 <div class="appContainer">
+
     <div class="navBarContainer">
         <app-navbar [active]="active"></app-navbar>
     </div>
     <div class="carouselContainer">
-        <ngb-carousel *ngIf="images">
-            <ng-template ngbSlide>
-                <div class="picsum-img-wrapper">
-                    <img [src]="images[0]" alt="Random first slide">
-                </div>
-            </ng-template>
-            <ng-template ngbSlide>
-                <div class="picsum-img-wrapper">
-                    <img [src]="images[1]" alt="Random second slide">
-                </div>
-            </ng-template>
-            <ng-template ngbSlide>
-                <div class="picsum-img-wrapper">
-                    <img [src]="images[2]" alt="Random third slide">
-                </div>
-            </ng-template>
-        </ngb-carousel>
+        <carousel [cellWidth]="'100%'" [dots]="true" [loop]="true" [height]="452" [arrowsOutside]="false">
+            <div class="carousel-cell" >
+                <img [src]="imagenesCarousel[0]" alt="Random first slide">
+            </div>
+            <div class="carousel-cell">
+                <img [src]="imagenesCarousel[1]" alt="Random first slide">
+            </div>
+            <div class="carousel-cell">
+                <img [src]="imagenesCarousel[2]" alt="Random first slide">
+            </div>
+            <div class="carousel-cell">
+                <img [src]="imagenesCarousel[3]" alt="Random first slide">
+            </div>
+            <div class="carousel-cell">
+                <img [src]="imagenesCarousel[4]" alt="Random first slide">
+            </div>
+            <div class="carousel-cell">
+                <img [src]="imagenesCarousel[5]" alt="Random first slide">
+            </div>
+            <div class="carousel-cell">
+                <img [src]="imagenesCarousel[6]" alt="Random first slide">
+            </div>        
+        </carousel>
     </div>
     <div class="categoriesContainer">
         <div class="categoriesTitle">
@@ -65,11 +72,28 @@
             Emprendimientos
         </div>
         <div class="companiesContainer">
-            <app-company-card *ngFor="let company of companies; let i = index" [companyLogo]="company.companyLogo"
-                [companyName]="company.companyName" [companyPhoto]="company.companyPhoto"></app-company-card>
+            <carousel [arrowsOutside]="true" [cellsToShow]="2">
+                <div class="carousel-cell" *ngFor="let company of companies; let i = index">
+                    <app-company-card [companyLogo]="company.companyLogo"
+                    [companyName]="company.companyName" [companyPhoto]="company.companyPhoto"></app-company-card>
+                </div>  
+            </carousel>
+        </div>
+    </div> 
+    <div class="contentWrapper">
+        <div class="companiesTitle">
+            Empresas
+        </div>
+        <div class="companiesContainer">
+            <carousel [arrowsOutside]="true" [cellsToShow]="2" [overflowCellsLimit]="2">
+                <div class="carousel-cell" *ngFor="let company of companies; let i = index">
+                    <app-company-card [companyLogo]="company.companyLogo"
+                    [companyName]="company.companyName" [companyPhoto]="company.companyPhoto"></app-company-card>
+                </div>  
+            </carousel>
         </div>
     </div>
-    <!-- <div class="footerContainer">
+    <div class="footerContainer">
         <app-footer></app-footer>
-    </div> -->
+    </div>
 </div>

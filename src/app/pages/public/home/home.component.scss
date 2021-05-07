@@ -13,6 +13,10 @@ $navbarFontSize: 15px;
 $footerFontSize: 12px;
 $borderRadiusCards: 32px;
 
+//------------------
+$itemGrow: 1.2;
+$duration: 250ms;
+
 @font-face {
     font-family: avenirLight;
     src: url(/assets/fonts/avenir-lt-35-light.ttf);
@@ -36,25 +40,40 @@ $borderRadiusCards: 32px;
 
 .appContainer {
     width: 100vw;
-    height: 200vh;
+    height: 215vh;
     display: flex;
     flex-flow: column;
     align-items: center;
+    justify-content: center;
     background: $backgroundColor;
     font-family: $mediumFont;
     .navBarContainer {
         width: 100%;
-        height: 6.7%;
+        height: 13.3%;
     }
     .carouselContainer {
         width: 100%;
+        height: 50%;
+        margin-top: 6.8%;
         display: flex;
         justify-content: center;
+        align-items: center;
+        carousel {
+            z-index: 1;
+            .carousel-cell {
+                img {
+                    width: auto;
+                    display: block;
+                    margin: 0 auto;
+                    border-radius: $borderRadiusCards;
+                }
+            }
+        }
     }
     .categoriesContainer {
         width: 76.1%;
         height: 50%;
-        margin-top: 3%;
+        margin-top: 2%;
         .categoriesTitle {
             font-size: $subtitleSize;
             font-family: $blackFont;
@@ -101,7 +120,7 @@ $borderRadiusCards: 32px;
     .contentWrapper {
         width: 76.1%;
         height: 100%;
-        margin-top: 3%;
+        margin-top: 2%;
         .companiesTitle {
             font-size: $subtitleSize;
             font-family: $blackFont;
@@ -113,10 +132,24 @@ $borderRadiusCards: 32px;
             flex-flow: row;
             justify-content: space-between;
             margin-top: 20px;
-            app-company-card {
+            carousel {
                 width: 100%;
                 height: 100%;
+                z-index: 1;
+                .carousel-cell {
+                    width: 100%;
+                    height: 100%;
+                    app-company-card {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
             }
         }
+    }
+    .footerContainer {
+        width: 100%;
+        height: 100%;
+        margin-top: 1%;
     }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CompanyCardI } from 'src/app/shared/interfaces/companyCardI';
+import { CompanyCardI } from 'src/app/shared/interfaces/CompanyCardI';
 
 @Component({
   selector: 'app-search',
