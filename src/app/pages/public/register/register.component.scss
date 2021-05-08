@@ -1,0 +1,54 @@
+$lightFont: avenirLight;
+$mediumFont: avenirMedium;
+$blackFont: avenirBlack;
+$fontColor: #000000;
+$activeFontColor: #6ca7b6;
+$backgroundColor: #f0f5fa;
+$cardsBGColor: white;
+$titleSize: 150px;
+$subtitleSize: 43px;
+$cardsFontSize: 30px;
+$categoryCardFontSize: 23.7px;
+$navbarFontSize: 15px;
+$footerFontSize: 12px;
+$borderRadiusCards: 32px;
+
+@font-face {
+    font-family: avenirLight;
+    src: url(/assets/fonts/avenir-lt-35-light.ttf);
+}
+
+@font-face {
+    font-family: avenirMedium;
+    src: url(/assets/fonts/avenir-lt-65-medium.ttf);
+}
+
+@font-face {
+    font-family: avenirBlack;
+    src: url(/assets/fonts/avenir-lt-std-95-black.otf);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.registerContainer {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    background: $backgroundColor;
+    font-family: $mediumFont;
+    .navBarContainer {
+        width: 100%;
+        height: 13.3%;
+    }
+    .registerFormContainer {
+        width: 100%;
+        height: calc(100% - 109px);
+        background: greenyellow;
+    }
+}
