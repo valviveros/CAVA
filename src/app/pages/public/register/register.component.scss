@@ -58,11 +58,13 @@ $borderRadiusCards: 32px;
             font-family: $blackFont;
         }
         .registerForm {
-            width: 80%;
-            height: 100%;
+            width: 60%;
+            height: 70%;
             display: flex;
             justify-content: center;
-            background: hotpink;
+            padding: 2%;
+            border-radius: $borderRadiusCards;
+            background: $cardsBGColor;
         }
     }
 }

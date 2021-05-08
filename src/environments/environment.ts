@@ -7,11 +7,12 @@ export const environment = {
   firebase: {
     apiKey: "AIzaSyAwfJcOY20bFNmLkAKIiltCncWloZ5MZSo",
     authDomain: "cava-ruvi.firebaseapp.com",
+    databaseURL: "https://cava-ruvi-default-rtdb.firebaseio.com",
     projectId: "cava-ruvi",
     storageBucket: "cava-ruvi.appspot.com",
     messagingSenderId: "206172725030",
-    appId: "1:206172725030:web:0b6321cbb17081f51e6be7",
-    measurementId: "G-W3ZLY6W0G1"
+    appId: "1:206172725030:web:ce061331f98037711e6be7",
+    measurementId: "G-G8414ZJRQZ"
   }
 };
 

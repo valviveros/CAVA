@@ -15,6 +15,7 @@ import { UserI } from 'src/app/shared/interfaces/UserI';
 })
 export class RegisterComponent implements OnInit {
   active: number = 0;
+  registerList: UserI[] = [];
   ngForm = new FormGroup({
     name: new FormControl(),
     lname: new FormControl(),
@@ -31,9 +32,65 @@ export class RegisterComponent implements OnInit {
     phone: new FormControl(undefined, [Validators.required])
   });
 
-  constructor(private router: Router, private registerService: RegisterService, private formBuilder: FormBuilder, private firebaseDB: AngularFireDatabase, private firebaseAuth: AngularFireAuth) { }
+  constructor(private router: Router, private registerService: RegisterService, private formBuilder: FormBuilder, private firebaseDB: AngularFireDatabase, private firebaseAuth: AngularFireAuth) {
+    this.ngForm = this.createSignupForm();
+  }
 
   ngOnInit(): void {
+    this.registerService.getRegister()
+      .snapshotChanges().subscribe(item => {
+        this.registerList = [];
+        item.forEach(element => {
+          let x = element.payload.toJSON();
+          console.log(x);
+          // x["$key"] = element.key;
+          // this.registerList.push(x as UserI);
+        });
+      });
+    this.resetForm();
+  }
+
+  createSignupForm(): FormGroup {
+    return this.formBuilder.group(
+      {
+        email: [
+          null,
+          Validators.compose([Validators.email, Validators.required])
+        ],
+        phoneNumber: [
+          null,
+          Validators.compose([Validators.required])
+        ],
+        name: [
+          null,
+          Validators.compose([Validators.required])
+        ],
+        lname: [
+          null,
+          Validators.compose([Validators.required])
+        ],
+        password: [
+          null,
+          Validators.compose([
+            Validators.required,
+            Validators.minLength(6)
+          ])
+        ],
+        confirmPassword: [
+          null,
+          Validators.compose([Validators.required])
+        ]
+      },
+      {
+        validator: CustomValidators.passwordMatchValidator
+      }
+    );
+  }
+
+  resetForm(registerForm?: NgForm) {
+    if (registerForm != null) {
+      registerForm.reset();
+    }
   }
 
 }

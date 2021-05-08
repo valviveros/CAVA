@@ -5,7 +5,14 @@
     <div class="registerFormContainer">
         <div class="registerTitle">REGISTRO</div>
         <div class="registerForm">
-            
+            <form [formGroup]="ngForm">
+                <label for="name" [ngClass]="ngForm.controls['name'].invalid ? 'text-danger' : ''">Nombre</label>
+                <div class="field">
+                    <p class="control">
+                        <input class="input" type="text" placeholder="Nombre">
+                    </p>
+                </div>
+            </form>
         </div>
     </div>
 </div>
