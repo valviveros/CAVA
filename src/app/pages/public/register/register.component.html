@@ -5,14 +5,60 @@
     <div class="registerFormContainer">
         <div class="registerTitle">REGISTRO</div>
         <div class="registerForm">
-            <form [formGroup]="ngForm">
-                <label for="name" [ngClass]="ngForm.controls['name'].invalid ? 'text-danger' : ''">Nombre</label>
-                <div class="field">
-                    <p class="control">
-                        <input class="input" type="text" placeholder="Nombre">
-                    </p>
+            <div class="registerMessage">
+                <div id="successRegister" class="successRegister">Registro exitoso</div>
+                <div id="emailTaken" class="emailTaken">Este correo electrónico ya está registrado</div>
+                <div id="phoneTaken" class="emailTaken">Este celular ya está registrado</div>
+                <div id="phoneEmailTaken" class="emailTaken">Este correo electrónico y celular ya están registrados
                 </div>
-            </form>
+            </div>
+            <div class="registerFields">
+                <form [formGroup]="ngForm">
+                    <div class="field">
+                        <p class="control">
+                            <input class="input" type="text" placeholder="Nombre" formControlName="name"
+                                [ngClass]="ngForm.controls['name'].invalid ? 'is-invalid' : ''" required>
+                        </p>
+                    </div>
+                    <div class="field">
+                        <p class="control">
+                            <input class="input" type="text" placeholder="Apellido" formControlName="lname"
+                                [ngClass]="ngForm.controls['lname'].invalid ? 'is-invalid' : ''" required>
+                        </p>
+                    </div>
+                    <div class="field">
+                        <p class="control">
+                            <!-- <ngx-intl-tel-input [preferredCountries]="preferredCountries" [enableAutoCountrySelect]="true" [enablePlaceholder]="true"  [searchCountryFlag]="true" [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]" [selectFirstCountry]="false" [selectedCountryISO]="CountryISO.India" [maxLength]="15" [phoneValidation]="true" [separateDialCode]="true" name="phoneNumber" formControlName="phoneNumber" required>
+                            </ngx-intl-tel-input> -->
+                        </p>
+                    </div>
+                    <div class="field">
+                        <p class="control">
+                            <input class="input" type="email" placeholder="Correo electrónico" formControlName="lname"
+                                [ngClass]="ngForm.controls['email'].invalid ? 'is-invalid' : ''" required>
+                        </p>
+                    </div>
+                    <div class="field">
+                        <p class="control">
+                            <input class="input" type="password" placeholder="Contraseña" formControlName="lname"
+                                [ngClass]="ngForm.controls['password'].invalid ? 'is-invalid' : ''" required>
+                        </p>
+                    </div>
+                    <div class="field">
+                        <p class="control">
+                            <input class="input" type="password" placeholder="Confirma tu contraseña"
+                                formControlName="lname"
+                                [ngClass]="ngForm.controls['confirmPassword'].invalid ? 'is-invalid' : ''" required>
+                        </p>
+                    </div>
+                    <div class="field">
+                        <div class="buttons">
+                            <button type="submit" class="button is-info">Registrarse</button>
+                            <button class="button is-success">Ir a login</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>

@@ -5,6 +5,8 @@ $fontColor: #000000;
 $activeFontColor: #6ca7b6;
 $backgroundColor: #f0f5fa;
 $cardsBGColor: white;
+$successMessage: #03d755;
+$failureMessage: #dd3444;
 $titleSize: 150px;
 $subtitleSize: 43px;
 $cardsFontSize: 30px;
@@ -42,6 +44,7 @@ $borderRadiusCards: 32px;
     align-items: center;
     background: $backgroundColor;
     font-family: $mediumFont;
+    color: $fontColor;
     .navBarContainer {
         width: 100%;
         height: 13.3%;
@@ -53,18 +56,80 @@ $borderRadiusCards: 32px;
         flex-flow: column;
         align-items: center;
         .registerTitle {
-            margin-top: 32px;
+            margin: 25px 0;
             font-size: $subtitleSize;
             font-family: $blackFont;
         }
         .registerForm {
-            width: 60%;
+            width: 50%;
             height: 70%;
             display: flex;
-            justify-content: center;
+            flex-flow: column;
+            align-items: center;
             padding: 2%;
             border-radius: $borderRadiusCards;
             background: $cardsBGColor;
+            .registerMessage {
+                width: 80%;
+                height: 10%;
+                margin-bottom: 3%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                .successRegister {
+                    width: auto;
+                    height: 70%;
+                    padding: 1%;
+                    display: none;
+                    align-items: center;
+                    color: $successMessage;
+                    background: rgba($successMessage, 0.3);
+                    border-radius: 5px;
+                    border: 1px solid $successMessage;
+                }
+                .emailTaken {
+                    width: auto;
+                    height: 70%;
+                    padding: 1%;
+                    display: none;
+                    align-items: center;
+                    color: $failureMessage;
+                    background: rgba($failureMessage, 0.3);
+                    border-radius: 5px;
+                    border: 1px solid $failureMessage;
+                }
+            }
+            .registerFields {
+                width: 80%;
+                form {
+                    width: 100%;
+                    .field {
+                        .control {
+                            input {
+                                width: 100%;
+                                padding-left: 0.5em;
+                            }
+                        }
+                        .buttons {
+                            .is-info {
+                                width: 100px;
+                                background: $fontColor;
+                            }
+                            .is-success {
+                                width: 100px;
+                                background: $activeFontColor;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
 }
