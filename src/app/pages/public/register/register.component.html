@@ -34,31 +34,34 @@
                     </div>
                     <div class="field">
                         <p class="control">
-                            <input class="input" type="email" placeholder="Correo electrónico" formControlName="lname"
+                            <input class="input" type="email" placeholder="Correo electrónico" formControlName="email"
                                 [ngClass]="ngForm.controls['email'].invalid ? 'is-invalid' : ''" required>
                         </p>
                     </div>
                     <div class="field">
                         <p class="control">
-                            <input class="input" type="password" placeholder="Contraseña" formControlName="lname"
+                            <input class="input" type="password" placeholder="Contraseña" formControlName="password"
                                 [ngClass]="ngForm.controls['password'].invalid ? 'is-invalid' : ''" required>
                         </p>
                     </div>
                     <div class="field">
                         <p class="control">
                             <input class="input" type="password" placeholder="Confirma tu contraseña"
-                                formControlName="lname"
+                                formControlName="confirmPassword"
                                 [ngClass]="ngForm.controls['confirmPassword'].invalid ? 'is-invalid' : ''" required>
                         </p>
                     </div>
                     <div class="field">
                         <div class="buttons">
-                            <button type="submit" class="button is-info">Registrarse</button>
+                            <button type="submit" class="button is-info" (click)="onSubmit()">Registrarse</button>
                             <button class="button is-success" (click)="goToLogin()">Ir a login</button>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
+    </div>
+    <div class="footerContainer">
+        <app-footer></app-footer>
     </div>
 </div>

@@ -56,7 +56,7 @@ $borderRadiusCards: 32px;
         flex-flow: column;
         align-items: center;
         .loginTitle {
-            margin: 25px 0;
+            margin: 25px 0 40px 0;
             font-size: $subtitleSize;
             font-family: $blackFont;
         }
@@ -107,5 +107,8 @@ $borderRadiusCards: 32px;
                 }
             }
         }
+    }
+    .footerContainer {
+        width: 100%;
     }
 }

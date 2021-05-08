@@ -8,6 +8,7 @@ import { CustomValidators } from 'src/app/custom-validators';
 import { SearchCountryField, CountryISO } from 'ngx-intl-tel-input';
 import { UserI } from 'src/app/shared/interfaces/UserI';
 
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -42,9 +43,7 @@ export class RegisterComponent implements OnInit {
         this.registerList = [];
         item.forEach(element => {
           let x = element.payload.toJSON();
-          console.log(x);
-          // x["$key"] = element.key;
-          // this.registerList.push(x as UserI);
+          this.registerList.push(x as UserI);
         });
       });
     this.resetForm();
@@ -87,6 +86,72 @@ export class RegisterComponent implements OnInit {
     );
   }
 
+  onSubmit() {
+    const Email = this.ngForm.controls.email.value;
+    const PhoneNumber = this.ngForm.controls.phoneNumber.value;
+    const Password = this.ngForm.controls.password.value;
+    const ConfirmPassword = this.ngForm.controls.confirmPassword.value;
+    let EmailExist = this.registerList.find(user => user.email == Email);
+    let PhoneExist = this.registerList.find(user => user.phoneNumber!.e164Number == PhoneNumber.e164Number);
+
+    if (EmailExist) {
+      console.log("Ya existe este email");
+      const query: string = '.registerContainer #emailTaken';
+      const emailTaken: any = document.querySelector(query);
+      emailTaken.style.display = "flex";
+      setTimeout(() => {
+        emailTaken.style.display = "none";
+      }, 3000);
+    } else if (PhoneExist) {
+      console.log("Ya existe este número");
+      const query: string = '.registerContainer #phoneTaken';
+      const phoneTaken: any = document.querySelector(query);
+      phoneTaken.style.display = "flex";
+      setTimeout(() => {
+        phoneTaken.style.display = "none";
+      }, 3000);
+    } else if (EmailExist && PhoneExist) {
+      console.log("Ya existen email y número");
+      const query: string = '.registerContainer #phoneEmailTaken';
+      const phoneEmailTaken: any = document.querySelector(query);
+      phoneEmailTaken.style.display = "flex";
+      setTimeout(() => {
+        phoneEmailTaken.style.display = "none";
+      }, 3000);
+    } else {
+      console.log("Registré");
+      this.registerService.insertRegister(this.ngForm.value);
+      if (ConfirmPassword == Password) {
+        this.firebaseAuth.createUserWithEmailAndPassword(Email, Password).catch(function (error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+        });
+
+        const query: string = '.registerContainer #successRegister';
+        const message: any = document.querySelector(query);
+        message.style.display = "flex";
+
+        this.ngForm.reset({
+          email: '',
+          phoneNumber: '',
+          name: '',
+          lname: '',
+          password: '',
+          confirmPassword: '',
+        });
+
+        setTimeout(() => {
+          message.style.display = "none";
+          this.router.navigate(["/login"]);
+        }, 3000);
+
+      } else {
+        console.log("Passwords do no match");
+      }
+    }
+  }
+
   resetForm(registerForm?: NgForm) {
     if (registerForm != null) {
       registerForm.reset();
@@ -96,5 +161,4 @@ export class RegisterComponent implements OnInit {
   goToLogin() {
     this.router.navigate(["/login"]);
   }
-
 }

@@ -48,12 +48,11 @@ $duration: 250ms;
     color: $fontColor;
     .navBarContainer {
         width: 100%;
-        height: 13.3%;
+        height: 51.5%;
     }
     .carouselContainer {
         width: 100%;
         height: 50%;
-        margin-top: 6.8%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -148,7 +147,6 @@ $duration: 250ms;
     }
     .footerContainer {
         width: 100%;
-        height: 100%;
-        margin-top: 1%;
+        margin-top: 3%;
     }
 }
