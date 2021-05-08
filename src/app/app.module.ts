@@ -6,9 +6,11 @@ import { IvyCarouselModule } from 'angular-responsive-carousel';
 import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
-import { AngularFireStorageModule, AngularFireStorage } from 'angularfire2/storage';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireStorageModule, AngularFireStorage } from '@angular/fire/storage';
 import { AngularFireAuthGuard, redirectLoggedInTo, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
+import { RegisterService } from './shared/services/register.service';
+import { AuthService } from './shared/services/auth.service';
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './pages/components/navbar/navbar.component';
@@ -43,6 +45,8 @@ import { FooterComponent } from './pages/components/footer/footer.component';
     AngularFireStorageModule,
   ],
   providers: [
+    RegisterService,
+    AuthService,
     AngularFireAuthGuard,
   ],
   bootstrap: [AppComponent]

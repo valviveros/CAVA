@@ -49,6 +49,20 @@ $borderRadiusCards: 32px;
     .registerFormContainer {
         width: 100%;
         height: calc(100% - 109px);
-        background: greenyellow;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        .registerTitle {
+            margin-top: 32px;
+            font-size: $subtitleSize;
+            font-family: $blackFont;
+        }
+        .registerForm {
+            width: 80%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            background: hotpink;
+        }
     }
 }
