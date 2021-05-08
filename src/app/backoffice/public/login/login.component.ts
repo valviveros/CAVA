@@ -43,11 +43,6 @@ export class LoginComponent implements OnInit {
       // Es correo
       console.log("Es correo");
       userExist = this.registerList.find(user => user.email == email);
-    } else {
-      console.log("Es teléfono");
-      // Es teléfono
-      userExist = this.registerList.find(user => user.phoneNumber!.e164Number == email && user);
-      email = userExist && userExist.email || undefined;
     }
 
     if (userExist) {

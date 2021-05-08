@@ -5,7 +5,6 @@ import { RegisterService } from "src/app/shared/services/register.service";
 import { AngularFireDatabase } from '@angular/fire/database';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { CustomValidators } from 'src/app/custom-validators';
-import { SearchCountryField, CountryISO } from 'ngx-intl-tel-input';
 import { UserI } from 'src/app/shared/interfaces/UserI';
 
 
@@ -24,13 +23,6 @@ export class RegisterComponent implements OnInit {
     email: new FormControl(),
     password: new FormControl(),
     confirmPassword: new FormControl()
-  });
-  separateDialCode = false;
-  SearchCountryField = SearchCountryField;
-  CountryISO = CountryISO;
-  preferredCountries: CountryISO[] = [CountryISO.UnitedStates, CountryISO.UnitedKingdom];
-  phoneForm = new FormGroup({
-    phone: new FormControl(undefined, [Validators.required])
   });
 
   constructor(private router: Router, private registerService: RegisterService, private formBuilder: FormBuilder, private firebaseDB: AngularFireDatabase, private firebaseAuth: AngularFireAuth) {
@@ -55,10 +47,6 @@ export class RegisterComponent implements OnInit {
         email: [
           null,
           Validators.compose([Validators.email, Validators.required])
-        ],
-        phoneNumber: [
-          null,
-          Validators.compose([Validators.required])
         ],
         name: [
           null,
@@ -88,11 +76,9 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     const Email = this.ngForm.controls.email.value;
-    const PhoneNumber = this.ngForm.controls.phoneNumber.value;
     const Password = this.ngForm.controls.password.value;
     const ConfirmPassword = this.ngForm.controls.confirmPassword.value;
     let EmailExist = this.registerList.find(user => user.email == Email);
-    let PhoneExist = this.registerList.find(user => user.phoneNumber!.e164Number == PhoneNumber.e164Number);
 
     if (EmailExist) {
       console.log("Ya existe este email");
@@ -101,22 +87,6 @@ export class RegisterComponent implements OnInit {
       emailTaken.style.display = "flex";
       setTimeout(() => {
         emailTaken.style.display = "none";
-      }, 3000);
-    } else if (PhoneExist) {
-      console.log("Ya existe este número");
-      const query: string = '.registerContainer #phoneTaken';
-      const phoneTaken: any = document.querySelector(query);
-      phoneTaken.style.display = "flex";
-      setTimeout(() => {
-        phoneTaken.style.display = "none";
-      }, 3000);
-    } else if (EmailExist && PhoneExist) {
-      console.log("Ya existen email y número");
-      const query: string = '.registerContainer #phoneEmailTaken';
-      const phoneEmailTaken: any = document.querySelector(query);
-      phoneEmailTaken.style.display = "flex";
-      setTimeout(() => {
-        phoneEmailTaken.style.display = "none";
       }, 3000);
     } else {
       console.log("Registré");

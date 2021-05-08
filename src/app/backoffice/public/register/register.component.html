@@ -8,9 +8,6 @@
             <div class="registerMessage">
                 <div id="successRegister" class="successRegister">Registro exitoso</div>
                 <div id="emailTaken" class="emailTaken">Este correo electrónico ya está registrado</div>
-                <div id="phoneTaken" class="emailTaken">Este celular ya está registrado</div>
-                <div id="phoneEmailTaken" class="emailTaken">Este correo electrónico y celular ya están registrados
-                </div>
             </div>
             <div class="registerFields">
                 <form [formGroup]="ngForm">
@@ -24,12 +21,6 @@
                         <p class="control">
                             <input class="input" type="text" placeholder="Apellido" formControlName="lname"
                                 [ngClass]="ngForm.controls['lname'].invalid ? 'is-invalid' : ''" required>
-                        </p>
-                    </div>
-                    <div class="field">
-                        <p class="control">
-                            <!-- <ngx-intl-tel-input [preferredCountries]="preferredCountries" [enableAutoCountrySelect]="true" [enablePlaceholder]="true"  [searchCountryFlag]="true" [searchCountryField]="[SearchCountryField.Iso2, SearchCountryField.Name]" [selectFirstCountry]="false" [selectedCountryISO]="CountryISO.India" [maxLength]="15" [phoneValidation]="true" [separateDialCode]="true" name="phoneNumber" formControlName="phoneNumber" required>
-                            </ngx-intl-tel-input> -->
                         </p>
                     </div>
                     <div class="field">
