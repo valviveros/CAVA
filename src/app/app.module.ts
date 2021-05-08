@@ -18,6 +18,7 @@ import { HomeComponent } from './pages/public/home/home.component';
 import { CompanyCardComponent } from './pages/components/company-card/company-card.component';
 import { SearchComponent } from './pages/public/search/search.component';
 import { AboutUsComponent } from './pages/public/about-us/about-us.component'
+import { LoginComponent } from './pages/public/login/login.component';
 import { RegisterComponent } from './pages/public/register/register.component';
 import { FooterComponent } from './pages/components/footer/footer.component';
 
@@ -29,6 +30,7 @@ import { FooterComponent } from './pages/components/footer/footer.component';
     CompanyCardComponent,
     SearchComponent,
     AboutUsComponent,
+    LoginComponent,
     RegisterComponent,
     FooterComponent,
   ],
