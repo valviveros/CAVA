@@ -19,7 +19,6 @@ export class RegisterComponent implements OnInit {
   ngForm = new FormGroup({
     name: new FormControl(),
     lname: new FormControl(),
-    phoneNumber: new FormControl(),
     email: new FormControl(),
     password: new FormControl(),
     confirmPassword: new FormControl()
@@ -81,7 +80,6 @@ export class RegisterComponent implements OnInit {
     let EmailExist = this.registerList.find(user => user.email == Email);
 
     if (EmailExist) {
-      console.log("Ya existe este email");
       const query: string = '.registerContainer #emailTaken';
       const emailTaken: any = document.querySelector(query);
       emailTaken.style.display = "flex";
@@ -89,22 +87,22 @@ export class RegisterComponent implements OnInit {
         emailTaken.style.display = "none";
       }, 3000);
     } else {
-      console.log("Registré");
-      this.registerService.insertRegister(this.ngForm.value);
       if (ConfirmPassword == Password) {
+        this.registerService.insertRegister(this.ngForm.value);
         this.firebaseAuth.createUserWithEmailAndPassword(Email, Password).catch(function (error) {
           // Handle Errors here.
           var errorCode = error.code;
           var errorMessage = error.message;
+          // ...
+          // console.log(`Error [${errorCode}]: ${errorMessage}`);
         });
 
         const query: string = '.registerContainer #successRegister';
-        const message: any = document.querySelector(query);
-        message.style.display = "flex";
+        const successRegister: any = document.querySelector(query);
+        successRegister.style.display = "flex";
 
         this.ngForm.reset({
           email: '',
-          phoneNumber: '',
           name: '',
           lname: '',
           password: '',
@@ -112,12 +110,17 @@ export class RegisterComponent implements OnInit {
         });
 
         setTimeout(() => {
-          message.style.display = "none";
+          successRegister.style.display = "none";
           this.router.navigate(["/login"]);
         }, 3000);
 
       } else {
-        console.log("Passwords do no match");
+        const query: string = '.registerContainer #passwordsDontMatch';
+        const passwordsDontMatch: any = document.querySelector(query);
+        passwordsDontMatch.style.display = "flex";
+        setTimeout(() => {
+          passwordsDontMatch.style.display = "none";
+        }, 3000);
       }
     }
   }

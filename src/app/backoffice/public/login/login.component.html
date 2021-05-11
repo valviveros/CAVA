@@ -8,6 +8,8 @@
             <div class="loginMessage">
                 <div id="userDoesNotExist" class="userDoesNotExist">El usuario no existe
                 </div>
+                <div id="passwordWrong" class="userDoesNotExist">La contraseña es incorrecta
+                </div>
             </div>
             <div class="loginFields">
                 <form [formGroup]="signupForm">
@@ -30,7 +32,8 @@
                     </div>
                     <div class="field">
                         <div class="buttons">
-                            <button type="submit" class="button is-info">Login</button>
+                            <button type="submit" class="button is-info" (click)="doLogin()">Login</button>
+                            <button class="button is-success" (click)="goToRegister()">Registrarse</button>
                         </div>
                     </div>
                 </form>

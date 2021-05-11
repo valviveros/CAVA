@@ -102,6 +102,10 @@ $borderRadiusCards: 32px;
                                 width: 100px;
                                 background: $fontColor;
                             }
+                            .is-success {
+                                width: 100px;
+                                background: $activeFontColor;
+                            }
                         }
                     }
                 }

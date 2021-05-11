@@ -32,6 +32,15 @@ $footerFontSize: 12px;
         width: 40.576px;
         height: 24.393px;
     }
+    .sellersText {
+        width: 25%;
+        height: 7%;
+        text-align: center;
+        cursor: pointer;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
     .rightsText {
         width: 25%;
         height: 7%;

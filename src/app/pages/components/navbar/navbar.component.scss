@@ -39,7 +39,9 @@ $footerFontSize: 12px;
             cursor: pointer;
         }
         .navBarOption {
-            margin-left: 5px;
+            &:hover {
+                text-decoration: underline;
+            }
         }
     }
 }

@@ -40,8 +40,6 @@ export class LoginComponent implements OnInit {
 
     let userExist;
     if (email.match(emailRegexp)) {
-      // Es correo
-      console.log("Es correo");
       userExist = this.registerList.find(user => user.email == email);
     }
 
@@ -53,7 +51,13 @@ export class LoginComponent implements OnInit {
         var errorCode = error.code;
         var errorMessage = error.message;
         // ...
-        console.log(`Error [${errorCode}]: ${errorMessage}`);
+        // console.log(`Error [${errorCode}]: ${errorMessage}`);
+        const query: string = '.loginContainer #passwordWrong';
+        const passwordWrong: any = document.querySelector(query);
+        passwordWrong.style.display = "flex";
+        setTimeout(() => {
+          passwordWrong.style.display = "none";
+        }, 3000);
       });
     } else {
       const query: string = '.loginContainer #userDoesNotExist';
@@ -63,5 +67,9 @@ export class LoginComponent implements OnInit {
         userDoesNotExist.style.display = "none";
       }, 3000);
     }
+  }
+
+  goToRegister() {
+    this.router.navigate(["/register"]);
   }
 }
