@@ -7,6 +7,7 @@ import { LoginComponent } from './backoffice/public/login/login.component';
 import { RegisterComponent } from './backoffice/public/register/register.component';
 import { BackOfficeHomeComponent } from './backoffice/private/back-office-home/back-office-home.component';
 import { AngularFireAuthGuard, redirectLoggedInTo, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
+import { AdvertiseComponent } from './pages/public/advertise/advertise.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 const redirectAuthorizedToSellers = () => redirectLoggedInTo(['sellers']);
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'search', component: SearchComponent },
   { path: 'aboutus', component: AboutUsComponent },
+  { path: 'advertise', component: AdvertiseComponent },
   { path: 'login', component: LoginComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectAuthorizedToSellers } },
   { path: 'register', component: RegisterComponent },
   { path: 'sellers', component: BackOfficeHomeComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } },

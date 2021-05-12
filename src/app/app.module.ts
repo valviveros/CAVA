@@ -21,6 +21,7 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { LoginComponent } from './backoffice/public/login/login.component';
 import { RegisterComponent } from './backoffice/public/register/register.component';
 import { BackOfficeHomeComponent } from './backoffice/private/back-office-home/back-office-home.component';
+import { AdvertiseComponent } from './pages/public/advertise/advertise.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { BackOfficeHomeComponent } from './backoffice/private/back-office-home/b
     LoginComponent,
     RegisterComponent,
     BackOfficeHomeComponent,
+    AdvertiseComponent,
   ],
   imports: [
     BrowserModule,

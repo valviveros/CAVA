@@ -1,0 +1,101 @@
+$lightFont: avenirLight;
+$mediumFont: avenirMedium;
+$blackFont: avenirBlack;
+$fontColor: #000000;
+$activeFontColor: #6ca7b6;
+$backgroundColor: #f0f5fa;
+$cardsBGColor: white;
+$titleSize: 150px;
+$subtitleSize: 43px;
+$cardsFontSize: 30px;
+$categoryCardFontSize: 23.7px;
+$infoCardFontSize:19px;
+$navbarFontSize: 15px;
+$footerFontSize: 12px;
+$borderRadiusCards: 32px;
+
+@font-face {
+    font-family: avenirLight;
+    src: url(/assets/fonts/avenir-lt-35-light.ttf);
+}
+
+@font-face {
+    font-family: avenirMedium;
+    src: url(/assets/fonts/avenir-lt-65-medium.ttf);
+}
+
+@font-face {
+    font-family: avenirBlack;
+    src: url(/assets/fonts/avenir-lt-std-95-black.otf);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.advertiseContainer{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-flow: column;
+    background: $backgroundColor;
+    font-family: $mediumFont;
+    color: $fontColor;
+    .navBarContainer {
+        width: 100%;
+        height: 13.3%;
+    }
+    .advertiseMainContainer{
+        width: 76.1%;
+        height: 80%;
+        margin-top: 2%;
+        display: flex;
+        flex-flow: row;
+        align-self: center;
+        .photoAdvertiseContainer{
+            height: 100%;
+            width: 50%;
+            background-image: url(/assets/img/advertisePhoto.svg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 150%;
+        }
+        .InfoAdvertiseContainer{
+            height: 100%;
+            width: 50%;
+            .titleContainer{
+                height: 25%;
+                width: 90%;
+                font-size: $subtitleSize;
+                font-family: $blackFont;
+                color: $fontColor;
+                text-align: center;
+                margin-top: 9%;
+            }
+            .InfoContainer{
+                height: 40%;
+                width: 90%;
+                text-align: left;
+                font-family: $lightFont;
+                font-size: $categoryCardFontSize;
+                color: $fontColor;
+            }
+            .advertiseLink{
+                height: 25%;
+                width: 90%;
+                font-family: $blackFont;
+                font-size: $cardsFontSize;
+                color: $activeFontColor;
+                text-align: center;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+    .footerContainer {
+        width: 100%;
+        margin-top: 3%;
+    }
+}
