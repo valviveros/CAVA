@@ -3,8 +3,6 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth.service';
-import { UserI } from 'src/app/shared/interfaces/UserI';
-import { RegisterService } from "src/app/shared/services/register.service";
 
 @Component({
   selector: 'app-back-office-home',
@@ -12,27 +10,18 @@ import { RegisterService } from "src/app/shared/services/register.service";
   styleUrls: ['./back-office-home.component.scss']
 })
 export class BackOfficeHomeComponent implements OnInit {
-  @Input() sellersName: string = "";
-  registerList: UserI[] = [];
+  @Input() sellersName: string = "Usuario";
   countMore: number = 0;
   user: any;
 
-  constructor(private authService: AuthService, private router: Router, private firebaseAuth: AngularFireAuth, private firebase: AngularFireDatabase, private registerService: RegisterService) { }
+  constructor(private authService: AuthService, private router: Router, private firebaseAuth: AngularFireAuth, private firebase: AngularFireDatabase) { }
 
   ngOnInit(): void {
-    this.registerService.getRegister()
-      .snapshotChanges().subscribe(item => {
-        this.registerList = [];
-        item.forEach(element => {
-          let x = element.payload.toJSON();
-          this.registerList.push(x as UserI);
-        });
-      });
     this.loadSellersName();
   }
 
   async loadSellersName() {
-    let Key;
+    let Key: any;
     let Email: any;
     this.firebaseAuth.user.subscribe((data => {
       this.user = data;
