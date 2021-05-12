@@ -12,12 +12,12 @@ import { RegisterService } from './shared/services/register.service';
 import { AuthService } from './shared/services/auth.service';
 import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './pages/components/navbar/navbar.component';
+import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { HomeComponent } from './pages/public/home/home.component';
-import { CompanyCardComponent } from './pages/components/company-card/company-card.component';
+import { CompanyCardComponent } from './shared/components/company-card/company-card.component';
 import { SearchComponent } from './pages/public/search/search.component';
 import { AboutUsComponent } from './pages/public/about-us/about-us.component'
-import { FooterComponent } from './pages/components/footer/footer.component';
+import { FooterComponent } from './shared/components/footer/footer.component';
 import { LoginComponent } from './backoffice/public/login/login.component';
 import { RegisterComponent } from './backoffice/public/register/register.component';
 import { BackOfficeHomeComponent } from './backoffice/private/back-office-home/back-office-home.component';
