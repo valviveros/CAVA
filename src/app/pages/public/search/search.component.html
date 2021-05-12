@@ -3,8 +3,18 @@
         <app-navbar [active]="active"></app-navbar>
     </div>
     <div class="contentWrapper">
+        <div class="searchBarWrapper">
+            <div class="searchBarContainer">
+                <img class="searchIcon" src="/assets/img/searchIcon.svg" alt="" srcset="">
+                <input class="searchBar" type="text" placeholder="Buscar">
+            </div>
+        </div>
         <div class="companiesContainer">
+            <div class="searchFilter"></div>
             <app-company-card *ngFor="let company of companies; let i = index"[companyLogo]="company.companyLogo" [companyName]="company.companyName"[companyPhoto]="company.companyPhoto"></app-company-card>
         </div>
+    </div>
+    <div class="footerContainer">
+        <app-footer></app-footer>
     </div>
 </div>
