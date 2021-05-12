@@ -111,7 +111,7 @@ export class RegisterComponent implements OnInit {
 
         setTimeout(() => {
           successRegister.style.display = "none";
-          this.router.navigate(["/login"]);
+          this.router.navigate(["/sellers"]);
         }, 3000);
 
       } else {

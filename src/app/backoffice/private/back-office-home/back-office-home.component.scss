@@ -1,0 +1,155 @@
+$lightFont: avenirLight;
+$mediumFont: avenirMedium;
+$blackFont: avenirBlack;
+$fontColor: #000000;
+$activeFontColor: #6ca7b6;
+$backgroundColor: #f0f5fa;
+$cardsBGColor: white;
+$successMessage: #03d755;
+$failureMessage: #dd3444;
+$titleSize: 150px;
+$subtitleSize: 43px;
+$cardsFontSize: 30px;
+$categoryCardFontSize: 23.7px;
+$filterFontSize: 21px;
+$navbarFontSize: 15px;
+$footerFontSize: 12px;
+$borderRadiusCards: 32px;
+
+@font-face {
+    font-family: avenirLight;
+    src: url(/assets/fonts/avenir-lt-35-light.ttf);
+}
+
+@font-face {
+    font-family: avenirMedium;
+    src: url(/assets/fonts/avenir-lt-65-medium.ttf);
+}
+
+@font-face {
+    font-family: avenirBlack;
+    src: url(/assets/fonts/avenir-lt-std-95-black.otf);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.sellersContainer {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    background: $backgroundColor;
+    font-family: $mediumFont;
+    color: $fontColor;
+    .leftContainer {
+        width: 20%;
+        height: 100%;
+        background: $activeFontColor;
+        .topBarLeftContainer {
+            width: 100%;
+            height: 13.3%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: $backgroundColor;
+            border-right: solid 1px $activeFontColor;
+            .navBarLogo {
+                width: 68.352px;
+                height: 41.0914px;
+            }
+        }
+    }
+    .rightContainer {
+        width: 80%;
+        height: 100%;
+        background: $backgroundColor;
+        .topBarRightContainer {
+            width: 100%;
+            height: 13.3%;
+            display: flex;
+            flex-flow: row;
+            align-items: center;
+            padding: 20px;
+            background: $backgroundColor;
+            border-bottom: solid 1px $activeFontColor;
+            .topBarRightInfo {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                .sellersTitle {
+                    font-family: $blackFont;
+                    font-size: $categoryCardFontSize;
+                }
+                .profileContainer {
+                    display: flex;
+                    align-items: center;
+                    margin-right: 1.2%;
+                    cursor: pointer;
+                    .profile {
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 50%;
+                        margin-right: 10%;
+                    }
+                    .sellersName {
+                        font-family: $blackFont;
+                        font-size: $navbarFontSize;
+                    }
+                    &:hover {
+                        color: $activeFontColor;
+                        fill: $activeFontColor;
+                        text-decoration: underline;
+                    }
+                }
+                .profileOptionsContainer {
+                    width: 12.5%;
+                    height: 7%;
+                    position: absolute;
+                    top: 13%;
+                    right: 1.8%;
+                    display: flex;
+                    flex-flow: column;
+                    padding: 15px 0;
+                    background: $cardsBGColor;
+                    font-family: $lightFont;
+                    font-size: $filterFontSize;
+                    border-radius: 3px;
+                    box-shadow: 0 2px 5px 0 rgba(black, 0.26), 0 2px 10px 0 rgba(black, 0.16);
+                    transform-origin: right top;
+                    transform: scale(0);
+                    opacity: 0;
+                    transition: all 0.3s ease;
+                    .profileOptions {
+                        width: 100%;
+                        display: flex;
+                        li {
+                            width: 100%;
+                            height: 90%;
+                            display: flex;
+                            align-items: center;
+                            padding: 0px 24px 0 24px;
+                            cursor: pointer;
+                            &:hover {
+                                background: $backgroundColor;
+                            }
+                            .optionLine {
+                                height: 65%;
+                                border-left: solid 2px $fontColor;
+                                .optionText {
+                                    margin-left: 20%;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
