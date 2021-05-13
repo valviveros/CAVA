@@ -9,8 +9,10 @@
                 <input class="searchBar" type="text" placeholder="Buscar">
             </div>
         </div>
+        <div class="filterContainer">
+            <app-cards-filter></app-cards-filter>
+        </div>
         <div class="companiesContainer">
-            <div class="searchFilter"></div>
             <app-company-card *ngFor="let company of companies; let i = index"[companyLogo]="company.companyLogo" [companyName]="company.companyName"[companyPhoto]="company.companyPhoto"></app-company-card>
         </div>
     </div>
