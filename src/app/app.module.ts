@@ -16,6 +16,7 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { HomeComponent } from './pages/public/home/home.component';
 import { CompanyCardComponent } from './shared/components/company-card/company-card.component';
 import { SearchComponent } from './pages/public/search/search.component';
+import { AdvertiseComponent } from './pages/public/advertise/advertise.component';
 import { AboutUsComponent } from './pages/public/about-us/about-us.component'
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { LoginComponent } from './backoffice/public/login/login.component';
@@ -30,6 +31,7 @@ import { CardsFilterComponent } from './shared/components/cards-filter/cards-fil
     HomeComponent,
     CompanyCardComponent,
     SearchComponent,
+    AdvertiseComponent,
     AboutUsComponent,
     FooterComponent,
     LoginComponent,

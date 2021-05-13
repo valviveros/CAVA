@@ -1,0 +1,25 @@
+<div class="advertiseContainer">
+    <div class="navBarContainer">
+        <app-navbar [active]="active"></app-navbar>
+    </div>
+    <div class="advertiseMainContainer">
+        <div class="InfoAdvertiseContainer">
+            <div class="titleContainer">
+                ÚNETE AL CLUB.
+                ÚNETE A <img class="cavaLogoAdvertise" src="/assets/img/cavaLogoAdvertise.svg" alt="" srcset="">
+            </div>
+            <div class="InfoContainer">
+                De donde sea que vengas y a donde sea que vayas, tu sueño es lo que te mueve y tu eres nuestra inspiración. Consigue mayor visibilidad para tu empresa o emprendimiento, hazte conocer. Únete a la comunidad.
+            </div>
+            <div class="field">
+                <div class="buttons">
+                    <button class="button is-info" (click)="goToRegister()">Registrarse</button>
+                </div>
+            </div>
+        </div>
+        <img class="photoAdvertiseContainer" src="/assets/img/advertisePhoto.svg" alt="" srcset="">
+    </div>
+    <div class="footerContainer">
+        <app-footer></app-footer>
+    </div>
+</div>

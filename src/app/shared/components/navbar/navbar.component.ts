@@ -22,4 +22,7 @@ export class NavbarComponent implements OnInit {
   goToAboutUs() {
     this.router.navigate(['/aboutus']);
   }
+  goToAdvertise() {
+    this.router.navigate(['/advertise']);
+  }
 }
