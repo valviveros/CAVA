@@ -14,37 +14,48 @@ $navbarFontSize: 15px;
 $footerFontSize: 12px;
 $borderRadiusCards: 32px;
 
-.companyCard {
-    height: 100%;
-    display: flex;
-    flex-flow: row;
-    font-family: $mediumFont;
-    font-size: $cardsFontSize;
-    cursor: pointer;
-    .companyInfo {
-        width: 50%;
-        height: 100%;
+.brandCard{
+    width: 38.8vw;
+    height: 29.5vh;
+    .companyCard {
+        height: 96%;
+        width: 96%;
         display: flex;
-        flex-flow: column;
-        align-items: center;
-        justify-content: center;
-        background: $cardsBGColor;
-        border-radius: $borderRadiusCards 0 0 $borderRadiusCards;
-        .companyLogo {
+        flex-flow: row;
+        font-family: $mediumFont;
+        font-size: $cardsFontSize;
+        cursor: pointer;
+        border-radius: $borderRadiusCards;
+        margin: 1%;
+        //background-color: blueviolet;
+        .companyInfo {
             width: 50%;
-            margin-bottom: 2%;
-            border-radius: $borderRadiusCards;
-        }
-        .companyName {
-            text-align: center;
-        }
-    }
-    .companyPhoto {
-        width: 50%;
-        height: 100%;
-        border-radius: 0 $borderRadiusCards $borderRadiusCards 0;
-        img {
             height: 100%;
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            justify-content: center;
+            background: $cardsBGColor;
+            border-radius: $borderRadiusCards 0 0 $borderRadiusCards;
+            .companyLogo {
+                width: 50%;
+                height: 50%;
+                margin-bottom: 2%;
+                border-radius: $borderRadiusCards;
+            }
+            .companyName {
+                text-align: center;
+            }
         }
-    }
+        .companyPhoto {
+            width: 50%;
+            height: 100%;
+            border-radius: 0 $borderRadiusCards $borderRadiusCards 0;
+            img {
+                height: 100%;
+                width: 100%;
+            }
+        }
+    } 
 }
+

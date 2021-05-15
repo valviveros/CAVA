@@ -41,7 +41,7 @@ $borderRadiusCards: 32px;
 
 .searchContainer {
     width: 100vw;
-    height: 100vh;
+    height: 120vh;
     display: flex;
     flex-flow: column;
     align-items: center;
@@ -54,7 +54,7 @@ $borderRadiusCards: 32px;
     }
     .contentWrapper {
         width: 100%;
-        height: 80%;
+        height: 100%;
         margin-top: 1%;
         display: flex;
         flex-flow: column;
@@ -101,16 +101,71 @@ $borderRadiusCards: 32px;
         .companiesContainer {
             width: 76.1%;
             height: 35.7%;
-            display: flex;
-            flex-flow: row;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: repeat(2, 52%);
+            grid-template-rows: repeat(8, 100%);
+            //column-gap: 1%;
+            //row-gap: 1%;
+            //justify-content: space-between;
             app-company-card {
-                width: 100%;
-                height: 100%;
+                width: 105%;
+                height: 105%;
             }
         }
     }
     .footerContainer {
         width: 100%;
     }
+    .card {
+        height: 100%;
+        width: 50%;
+        border-radius: $borderRadiusCards;
+        font-family: $mediumFont;
+        font-size: $cardsFontSize;
+        /*display: flex;
+        flex-flow: row;
+        cursor: pointer;*/
+    &.is-horizontal {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-flow: row;
+      
+      .card-image {
+        width: 50%;
+        height: 100%;
+        &.is-logo{
+            width: 10%;
+            height: 10%;
+        }
+      }
+      
+      .card-stacked {
+        width: 50%;
+        height: 100%;
+        /*flex-direction: column;
+        flex: 1 1 auto;
+        display: flex;
+        position: relative;*/
+        
+        .card-content {
+          flex-grow: 1;
+          justify-self: center;
+        }
+      }
+    }
+    
+  //   .card-footer {
+  //     .card-footer-item {
+  //       padding-left: 1.5rem;
+  //       padding-right: 1.5rem;
+  //     }
+      
+  //     div.card-footer-item {
+  //       justify-content: unset;
+  //     }
+  //   }
+  }
 }
+
+

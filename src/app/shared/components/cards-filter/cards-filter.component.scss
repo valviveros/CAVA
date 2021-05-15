@@ -40,7 +40,7 @@ $borderRadiusCards: 32px;
 }
 
 .cardsFilterContainer {
-    width: 100%;
+    width: 125%;
     height: 100%;
     display: flex;
     // flex-flow: column;
@@ -54,7 +54,7 @@ $borderRadiusCards: 32px;
         display: flex;
         // flex-flow: row;
         align-items: center;
-        justify-content: center;
+        justify-content: space-evenly;
         border-radius: 32px;
         background: $cardsBGColor;
         cursor: pointer;
