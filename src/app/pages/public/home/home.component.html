@@ -71,8 +71,8 @@
             Emprendimientos
         </div>
         <div class="companiesContainer">
-            <carousel [arrowsOutside]="true" [margin]="10" [cellsToShow]="2" [height]="300">
-                <div class="carousel-cell" *ngFor="let company of companies; let i = index" style="width: 100px;">
+            <carousel [arrowsOutside]="true" [margin]="10" [cellsToShow]="2" [height]="240">
+                <div class="carousel-cell" *ngFor="let company of companies; let i = index">
                     <app-company-card [companyLogo]="company.companyLogo"
                     [companyName]="company.companyName" [companyPhoto]="company.companyPhoto"></app-company-card>
                 </div>  
@@ -84,7 +84,7 @@
             Empresas
         </div>
         <div class="companiesContainer">
-            <carousel [arrowsOutside]="true" [margin]="10" [cellsToShow]="2" [height]="300">
+            <carousel [arrowsOutside]="true" [margin]="10" [cellsToShow]="2" [height]="240">
                 <div class="carousel-cell" *ngFor="let company of companies; let i = index">
                     <app-company-card [companyLogo]="company.companyLogo"
                     [companyName]="company.companyName" [companyPhoto]="company.companyPhoto"></app-company-card>
