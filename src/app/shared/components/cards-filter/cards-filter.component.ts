@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-cards-filter',
@@ -27,4 +28,41 @@ export class CardsFilterComponent implements OnInit {
       cardsFilter.style.opacity = 0;
     }
   }
+
+  filterOptionClicked(optionNumber: number) {
+    switch (optionNumber) {
+      case 1:
+        $(".optionTextSelected").html("Principales");
+        this.dropDownOptions();
+        break;
+      
+      case 2:
+        $(".optionTextSelected").html("Todos A-Z");
+        this.dropDownOptions();
+        break;
+
+      case 3:
+        $(".optionTextSelected").html("Empresas");
+        this.dropDownOptions();
+        break;
+
+      case 4:
+        $(".optionTextSelected").html("Emprendimientos");
+        this.dropDownOptions();
+        break;
+
+      case 5:
+        $(".optionTextSelected").html("Menor precio");
+        this.dropDownOptions();
+        break;
+
+      case 6:
+        $(".optionTextSelected").html("Mayor precio");
+        this.dropDownOptions();
+        break;
+
+      default:
+        break;
+    }
+  } 
 }

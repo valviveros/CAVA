@@ -43,35 +43,33 @@ $borderRadiusCards: 32px;
     width: 125%;
     height: 100%;
     display: flex;
-    // flex-flow: column;
     align-items: center;
     color: $fontColor;
     font-family: $lightFont;
     font-size: $filterFontSize;
     .cardsFilter {
-        width: 100%;
-        height: 50%;
+        height: 49px;
         display: flex;
-        // flex-flow: row;
         align-items: center;
         justify-content: space-evenly;
+        padding: 0 25px;
         border-radius: 32px;
         background: $cardsBGColor;
         cursor: pointer;
         .optionTextSelected {
-            display: flex;
-            align-items: center;
+            margin-top: 12px;
         }
         .chevronIcon {
             width: 15px;
             height: 15px;
+            margin-left: 15px;
         }
     }
     .cardsFilterOptionsContainer {
         width: 16%;
         height: 26.3%;
         position: absolute;
-        top: 38.5%;
+        top: 39.5%;
         display: flex;
         flex-flow: column;
         padding: 15px 0;
