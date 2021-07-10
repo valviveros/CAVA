@@ -1,0 +1,85 @@
+$lightFont: avenirLight;
+$mediumFont: avenirMedium;
+$blackFont: avenirBlack;
+$fontColor: #000000;
+$activeFontColor: #6ca7b6;
+$backgroundColor: #f0f5fa;
+$cardsBGColor: white;
+$successMessage: #03d755;
+$failureMessage: #dd3444;
+$titleSize: 150px;
+$searchBarFontSize: 48px;
+$subtitleSize: 43px;
+$cardsFontSize: 30px;
+$categoryCardFontSize: 23.7px;
+$filterFontSize: 21px;
+$infoCardFontSize: 19px;
+$navbarFontSize: 15px;
+$footerFontSize: 12px;
+$borderRadiusCards: 32px;
+
+@font-face {
+    font-family: avenirLight;
+    src: url(/assets/fonts/avenir-lt-35-light.ttf);
+}
+
+@font-face {
+    font-family: avenirMedium;
+    src: url(/assets/fonts/avenir-lt-65-medium.ttf);
+}
+
+@font-face {
+    font-family: avenirBlack;
+    src: url(/assets/fonts/avenir-lt-std-95-black.otf);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.categoriesContainer {
+    width: 100vw;
+    height: 120vh;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    background: $backgroundColor;
+    font-family: $mediumFont;
+    color: $fontColor;
+    .navBarContainer {
+        width: 100%;
+        height: 13.3%;
+    }
+    .contentWrapper {
+        width: 100%;
+        height: 100%;
+        margin-top: 1%;
+        display: flex;
+        flex-flow: column;
+        align-items: center;
+        .categoryPicture {
+            width: 100%;
+            height: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .categoryTitle {
+                position: absolute;
+                font-family: $blackFont;
+                font-size: 150px;
+            }
+        }
+        .filterContainer {
+            width: 76.1%;
+            height: 14%;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+    }
+    .footerContainer {
+        width: 100%;
+    }
+}

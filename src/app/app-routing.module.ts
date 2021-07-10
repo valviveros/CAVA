@@ -14,12 +14,18 @@ const redirectAuthorizedToSellers = () => redirectLoggedInTo(['sellers']);
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
-  { path: 'search', component: SearchComponent },
-  { path: 'aboutus', component: AboutUsComponent },
-  { path: 'advertise', component: AdvertiseComponent },
-  { path: 'login', component: LoginComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectAuthorizedToSellers } },
-  { path: 'register', component: RegisterComponent },
-  { path: 'sellers', component: BackOfficeHomeComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } },
+  { 
+    path: 'categories',
+    loadChildren: () => import('./pages/public/categories/categories.module').then(
+      (m) => m.CategoriesModule
+    )
+  },
+  // { path: 'search', component: SearchComponent },
+  // { path: 'advertise', component: AdvertiseComponent },
+  // { path: 'aboutus', component: AboutUsComponent },
+  // { path: 'login', component: LoginComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectAuthorizedToSellers } },
+  // { path: 'register', component: RegisterComponent },
+  // { path: 'sellers', component: BackOfficeHomeComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } },
   { path: '**', redirectTo: '/home' }
 ];
 
