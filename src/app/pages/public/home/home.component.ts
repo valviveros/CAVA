@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import '@angular/localize/init';
+import { Router } from '@angular/router';
 import { CompanyCardI } from 'src/app/shared/interfaces/CompanyCardI';
 
 @Component({
@@ -55,9 +56,13 @@ export class HomeComponent implements OnInit {
     }
   ]
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  loadCategoryPage(category: string) {
+    this.router.navigate([`/categories/${category}`]);
   }
 
 }

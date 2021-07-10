@@ -1,14 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DetailComponent } from './detail/detail.component';
 import { CategoriesRoutingModule } from './categories-routing.module';
 
-
-
 @NgModule({
-  declarations: [
-    DetailComponent
-  ],
+  declarations: [],
   imports: [
     CommonModule,
     CategoriesRoutingModule

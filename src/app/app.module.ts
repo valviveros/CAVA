@@ -59,5 +59,4 @@ import { CategoriesComponent } from './pages/public/categories/categories.compon
   ],
   bootstrap: [AppComponent]
 })
-
 export class AppModule { }

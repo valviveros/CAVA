@@ -41,7 +41,7 @@ $borderRadiusCards: 32px;
 
 .categoriesContainer {
     width: 100vw;
-    height: 120vh;
+    height: 200vh;
     display: flex;
     flex-flow: column;
     align-items: center;
@@ -50,18 +50,18 @@ $borderRadiusCards: 32px;
     color: $fontColor;
     .navBarContainer {
         width: 100%;
-        height: 13.3%;
+        // height: 13.3%;
     }
     .contentWrapper {
         width: 100%;
         height: 100%;
-        margin-top: 1%;
+        // margin-top: 1%;
         display: flex;
         flex-flow: column;
         align-items: center;
         .categoryPicture {
             width: 100%;
-            height: 50%;
+            // height: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -73,10 +73,22 @@ $borderRadiusCards: 32px;
         }
         .filterContainer {
             width: 76.1%;
-            height: 14%;
+            height: 6%;
+            margin-top: 1%;
             display: flex;
             align-items: center;
             justify-content: flex-start;
+        }
+        .companiesContainer {
+            width: 76.1%;
+            height: 35.7%;
+            display: grid;
+            grid-template-columns: repeat(2, 52%);
+            grid-template-rows: repeat(8, 50%);
+            app-company-card {
+                width: 105%;
+                height: 105%;
+            }
         }
     }
     .footerContainer {

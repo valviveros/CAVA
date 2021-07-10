@@ -29,7 +29,6 @@ export class SearchComponent implements OnInit {
       companyName : "Deluna's Dream",
       companyPhoto : "/assets/img/companyPhoto2.svg"
     }
-    
   ]
 
   constructor() { }

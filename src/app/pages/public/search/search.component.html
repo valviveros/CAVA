@@ -12,12 +12,9 @@
         <div class="filterContainer">
             <app-cards-filter></app-cards-filter>
         </div>
-        <!------------------->
         <div class="companiesContainer">
             <app-company-card *ngFor="let company of companies; let i = index"[companyLogo]="company.companyLogo" [companyName]="company.companyName"[companyPhoto]="company.companyPhoto"></app-company-card>
         </div>
-        <!--------------------------->
-        
         <!--<div class="card">
             <div class="card is-horizontal">
                 <div class="card-stacked">
@@ -43,9 +40,6 @@
                 </div>
             </div>
         </div>-->
-
-        <!------------------------>
-
     </div>
     <div class="footerContainer">
         <app-footer></app-footer>

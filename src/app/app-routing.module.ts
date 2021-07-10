@@ -20,7 +20,7 @@ const routes: Routes = [
       (m) => m.CategoriesModule
     )
   },
-  // { path: 'search', component: SearchComponent },
+  { path: 'search', component: SearchComponent },
   // { path: 'advertise', component: AdvertiseComponent },
   // { path: 'aboutus', component: AboutUsComponent },
   // { path: 'login', component: LoginComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectAuthorizedToSellers } },
