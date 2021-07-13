@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AboutUsRoutingModule } from './about-us-routing.module';
+import { AdvertiseRoutingModule } from './advertise-routing.module';
 
 
 
@@ -8,7 +8,7 @@ import { AboutUsRoutingModule } from './about-us-routing.module';
   declarations: [],
   imports: [
     CommonModule,
-    AboutUsRoutingModule
+    AdvertiseRoutingModule
   ]
 })
-export class AboutUsModule { }
+export class AdvertiseModule { }
