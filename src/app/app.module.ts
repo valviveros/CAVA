@@ -24,6 +24,7 @@ import { RegisterComponent } from './backoffice/public/register/register.compone
 import { BackOfficeHomeComponent } from './backoffice/private/back-office-home/back-office-home.component';
 import { CardsFilterComponent } from './shared/components/cards-filter/cards-filter.component';
 import { CategoriesComponent } from './pages/public/categories/categories.component';
+import { ShopComponent } from './pages/public/shop/shop.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { CategoriesComponent } from './pages/public/categories/categories.compon
     BackOfficeHomeComponent,
     CardsFilterComponent,
     CategoriesComponent,
+    ShopComponent,
   ],
   imports: [
     BrowserModule,
