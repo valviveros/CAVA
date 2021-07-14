@@ -60,6 +60,7 @@ $borderRadiusCards: 32px;
             justify-content: center;
             background: $backgroundColor;
             border-right: solid 1px $activeFontColor;
+            border-bottom: solid 1px $activeFontColor;
             .navBarLogo {
                 width: 68.352px;
                 height: 41.0914px;
