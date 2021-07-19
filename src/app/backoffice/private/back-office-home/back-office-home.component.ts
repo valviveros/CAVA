@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-back-office-home',
@@ -13,11 +14,35 @@ export class BackOfficeHomeComponent implements OnInit {
   @Input() sellersName: string = "Usuario";
   countMore: number = 0;
   user: any;
+  clicked: number = 0;
 
   constructor(private authService: AuthService, private router: Router, private firebaseAuth: AngularFireAuth, private firebase: AngularFireDatabase) { }
 
   ngOnInit(): void {
     this.loadSellersName();
+    $(".sideMenuBtn").on("click", function() {
+      var hasOptions = $(this).hasClass("options");
+      
+      if (hasOptions) {
+        $(".sideMenuBtn").removeClass("active");
+        $(this).addClass("active");
+      } else {
+        $(".sideMenuBtn").removeClass("active");
+        $(this).addClass("active");
+        $(".sideMenuInnerBtn").removeClass("active");
+      }
+    });
+    $(".sideMenuInnerBtn").on("click", function () {
+      var hasOptions = $(".sideMenuBtn").hasClass("options");
+
+      if (hasOptions) {
+        $(".sideMenuBtn").removeClass("active");
+        $(".sideMenuBtn.options").addClass("active");
+      }
+      
+      $(".sideMenuInnerBtn").removeClass("active");
+      $(this).addClass("active");
+    });
   }
 
   async loadSellersName() {
@@ -47,6 +72,21 @@ export class BackOfficeHomeComponent implements OnInit {
         }
       });
     });
+  }
+
+  sideMenuOptionClicked() {
+    var icon: any = $(".options").find("i.fas");
+    var btnOptionsContainer: any = $(".btnOptionsContainer");
+
+    if (this.clicked == 0) {
+      icon.css("transform", "rotate(-90deg)");
+      btnOptionsContainer.css("display", "block");
+      this.clicked = 1;
+    } else {
+      $("i.fas").css("transform", "rotate(0deg)");
+      btnOptionsContainer.css("display", "none");
+      this.clicked = 0;
+    }
   }
 
   dropDownOptions() {
