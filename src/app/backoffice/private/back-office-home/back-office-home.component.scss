@@ -13,7 +13,7 @@ $subtitleSize: 43px;
 $cardsFontSize: 30px;
 $categoryCardFontSize: 23.7px;
 $filterFontSize: 21px;
-$infoCardFontSize:19px;
+$infoCardFontSize: 19px;
 $navbarFontSize: 15px;
 $footerFontSize: 12px;
 $borderRadiusCards: 32px;
@@ -51,6 +51,8 @@ $borderRadiusCards: 32px;
     .leftContainer {
         width: 20%;
         height: 100%;
+        display: flex;
+        flex-flow: column;
         background: $activeFontColor;
         .topBarLeftContainer {
             width: 100%;
@@ -58,11 +60,64 @@ $borderRadiusCards: 32px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: $backgroundColor;
             border-right: solid 1px $activeFontColor;
+            border-bottom: solid 1px $backgroundColor;
             .navBarLogo {
                 width: 68.352px;
                 height: 41.0914px;
+            }
+        }
+        .sideMenu {
+            width: 100%;
+            height: 86.7%;
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            padding: 5%;
+            .sideMenuBtn {
+                width: 100%;
+                height: 48px;
+                position: relative;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: $backgroundColor;
+                border-radius: 5px;
+                margin-bottom: 5px;
+                cursor: pointer;
+                .icon {
+                    position: absolute;
+                    right: 0;
+                    margin-right: 5%;
+                    i.fas {
+                        transition: transform ease-in-out 0.3s, -webkit-transform ease-in-out 0.3s;
+                    }
+                }
+                &.active {
+                    color: $cardsBGColor;
+                    background: $fontColor;
+                }
+            }
+            .btnOptionsContainer {
+                width: 100%;
+                height: 60%;
+                display: none;
+                .sideMenuInnerBtn {
+                    width: 100%;
+                    height: 48px;
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: $backgroundColor;
+                    border-radius: 5px;
+                    margin-bottom: 5px;
+                    cursor: pointer;
+                    &.active {
+                        color: $cardsBGColor;
+                        background: #5F4BB6;
+                    }
+                }
             }
         }
     }

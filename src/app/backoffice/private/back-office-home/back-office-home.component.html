@@ -3,6 +3,20 @@
         <div class="topBarLeftContainer">
             <img class="navBarLogo" src="/assets/img/cavaNavBarLogo.svg" alt="" srcset="">
         </div>
+        <ul class="sideMenu">
+            <li class="sideMenuBtn active">Mi perfil</li>
+            <li class="sideMenuBtn options" (click)="sideMenuOptionClicked()">
+                Negocio
+                <span class="icon is-small">
+                    <i class="fas fa-angle-left" aria-hidden="true"></i>
+                </span>
+            </li>
+            <ul class="btnOptionsContainer">
+                <li class="sideMenuInnerBtn">Información negocio</li>
+                <li class="sideMenuInnerBtn">Productos/Servicios</li>
+                <li class="sideMenuInnerBtn">Contacto</li>
+            </ul>
+        </ul>
     </div>
     <div class="rightContainer">
         <div class="topBarRightContainer">
