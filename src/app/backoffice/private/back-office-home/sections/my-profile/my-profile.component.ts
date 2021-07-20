@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { FormControl, FormGroup, NgForm, Validators, FormBuilder } from "@angular/forms";
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { Router } from '@angular/router';
@@ -6,23 +7,27 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 import * as $ from 'jquery';
 
 @Component({
-  selector: 'app-back-office-home',
-  templateUrl: './back-office-home.component.html',
-  styleUrls: ['./back-office-home.component.scss']
+  selector: 'app-my-profile',
+  templateUrl: './my-profile.component.html',
+  styleUrls: ['./my-profile.component.scss']
 })
-export class BackOfficeHomeComponent implements OnInit {
+export class MyProfileComponent implements OnInit {
   @Input() sellersName: string = "Usuario";
   countMore: number = 0;
   user: any;
   clicked: number = 0;
+  myProfileInfoForm = new FormGroup({
+    signupEmail: new FormControl(),
+    signupPassword: new FormControl(),
+  });
 
   constructor(private authService: AuthService, private router: Router, private firebaseAuth: AngularFireAuth, private firebase: AngularFireDatabase) { }
 
   ngOnInit(): void {
     this.loadSellersName();
-    $(".sideMenuBtn").on("click", function() {
+    $(".sideMenuBtn").on("click", function () {
       var hasOptions = $(this).hasClass("options");
-      
+
       if (hasOptions) {
         $(".sideMenuBtn").removeClass("active");
         $(this).addClass("active");
@@ -39,7 +44,7 @@ export class BackOfficeHomeComponent implements OnInit {
         $(".sideMenuBtn").removeClass("active");
         $(".sideMenuBtn.options").addClass("active");
       }
-      
+
       $(".sideMenuInnerBtn").removeClass("active");
       $(this).addClass("active");
     });
@@ -96,9 +101,9 @@ export class BackOfficeHomeComponent implements OnInit {
   }
 
   dropDownOptions() {
-    const query: string = '.sellersContainer .profileOptionsContainer';
+    const query: string = '.myProfileContainer .profileOptionsContainer';
     const sellersName: any = document.querySelector(query);
-    
+
     if (this.countMore == 0) {
       this.countMore = 1;
       sellersName.style.transform = "scale(1)";
