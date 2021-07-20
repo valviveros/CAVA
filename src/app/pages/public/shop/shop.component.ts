@@ -12,5 +12,9 @@ export class ShopComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  showDiv = {
+    contact : false,
+    product : true
+  }
 
 }

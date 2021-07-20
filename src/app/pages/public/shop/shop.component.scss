@@ -135,7 +135,7 @@ $borderRadiusCards: 32px;
                 width: 100%;
                 height: 15%;
                 //background-color: greenyellow;
-                border-bottom: 2px solid #000000;
+                border-bottom: 1px solid #7e7e7e;
                 display: flex;
                 flex-flow: row;
 
@@ -146,21 +146,33 @@ $borderRadiusCards: 32px;
                     color: $fontColor;
                     font-family: $blackFont;
                     text-align: left;
+                    cursor: pointer;
+                    .underlineProduct{
+                        width: 205px;
+                        height: 2px;
+                        background-color: black;
+                        margin-top: 2%;
+                    }
+                    .underlineContact{
+                        width: 348px;
+                        height: 2px;
+                        background-color: black;
+                        margin-top: 1.2%;
+                    }
                 }
             }
             .productsContainer{
                 width: 100%;
                 height: 85%;
-
                 display: flex;
                 flex-flow: row;
-                align-items: center;
                 justify-content: space-evenly;
+                margin-top: 5%;
                 .productCards{
                     width: 18vw;
                     height: 18vw;
                     background-color: $productCard;
-                    border-radius: 60px;
+                    border-radius: 40px;
                     background-position: center;
                     background-size: cover;
                     background-repeat: no-repeat;
@@ -236,6 +248,7 @@ $borderRadiusCards: 32px;
                         font-family: $mediumFont;
                         text-align: left;
                         margin-top: 5%;
+                        margin-left: 2%;
                         a:link, a:visited {
                             color: black;
                             text-decoration: dashed;
@@ -348,7 +361,7 @@ $borderRadiusCards: 32px;
                           }
                     }
                 }
-        } 
+            } 
         }
           
         }
