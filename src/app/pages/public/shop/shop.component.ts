@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class ShopComponent implements OnInit {
   active: number = 0;
   
+  
   constructor() { }
 
   ngOnInit(): void {
@@ -16,5 +17,6 @@ export class ShopComponent implements OnInit {
     contact : false,
     product : true
   }
+  
 
 }
