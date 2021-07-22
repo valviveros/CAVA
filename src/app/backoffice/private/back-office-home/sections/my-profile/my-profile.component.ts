@@ -12,8 +12,9 @@ import * as $ from 'jquery';
   styleUrls: ['./my-profile.component.scss']
 })
 export class MyProfileComponent implements OnInit {
-  @Input() sellersName: string = "Usuario";
+  @Input() sellersName: string = "";
   @Input() Email: any;
+  sellersLName: string = "";
   countMore: number = 0;
   user: any;
   clicked: number = 0;
@@ -30,7 +31,7 @@ export class MyProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadSellersNameAndEmail();
+    this.loadSellersInfo();
 
     $(".sideMenuBtn").on("click", function () {
       var hasOptions = $(this).hasClass("options");
@@ -58,7 +59,7 @@ export class MyProfileComponent implements OnInit {
     });
   }
 
-  loadSellersNameAndEmail() {
+  loadSellersInfo() {
     let Key: any;
 
     this.firebaseAuth.user.subscribe((async (data) => {
@@ -80,12 +81,18 @@ export class MyProfileComponent implements OnInit {
                   displayName: this.sellersName
                 });
               }
+              if (nameChildKey == 'lname') {
+                this.sellersLName = nameChildData;
+              }
             }))
           }
         });
       });
 
       this.sellersName = this.user['displayName'];
+      this.myProfileInfoForm.controls.email.setValue(this.Email);
+      this.myProfileInfoForm.controls.name.setValue(this.sellersName);
+      this.myProfileInfoForm.controls.lname.setValue(this.sellersLName);
     }));
   }
 
@@ -114,7 +121,10 @@ export class MyProfileComponent implements OnInit {
     return this.formBuilder.group(
       {
         email: [
-          { value: this.Email, disabled: true },
+          { 
+            value: '',
+            disabled: true 
+          },
           Validators.compose([
             Validators.email,
             Validators.required
@@ -147,7 +157,7 @@ export class MyProfileComponent implements OnInit {
   }
 
   onSubmit() {
-
+    console.log(this.myProfileInfoForm.controls);
   }
 
   dropDownOptions() {
