@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
 
     if (userExist) {
       this.firebaseAuth.signInWithEmailAndPassword(email, password).then(() => {
-        this.router.navigate(['/sellers']);
+        this.router.navigate(['/sellers/myprofile']);
       }).catch(function (error) {
         // Handle Errors here.
         var errorCode = error.code;

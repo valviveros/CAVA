@@ -80,13 +80,19 @@ export class BackOfficeHomeComponent implements OnInit {
 
     if (this.clicked == 0) {
       icon.css("transform", "rotate(-90deg)");
-      btnOptionsContainer.css("display", "block");
+      btnOptionsContainer.css("transform", "scaleY(1)");
+      btnOptionsContainer.css("opacity", "1");
       this.clicked = 1;
     } else {
       $("i.fas").css("transform", "rotate(0deg)");
-      btnOptionsContainer.css("display", "none");
+      btnOptionsContainer.css("transform", "scaleY(0)");
+      btnOptionsContainer.css("opacity", "0");
       this.clicked = 0;
     }
+  }
+
+  goToMyProfile() {
+    this.router.navigate(['/sellers/myprofile']);
   }
 
   dropDownOptions() {
