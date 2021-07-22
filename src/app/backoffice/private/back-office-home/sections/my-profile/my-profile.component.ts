@@ -13,18 +13,25 @@ import * as $ from 'jquery';
 })
 export class MyProfileComponent implements OnInit {
   @Input() sellersName: string = "Usuario";
+  @Input() Email: any;
   countMore: number = 0;
   user: any;
   clicked: number = 0;
   myProfileInfoForm = new FormGroup({
-    signupEmail: new FormControl(),
-    signupPassword: new FormControl(),
+    email: new FormControl(),
+    name: new FormControl(),
+    lname: new FormControl(),
+    id: new FormControl(),
+    cellphoneNumber: new FormControl(),
   });
 
-  constructor(private authService: AuthService, private router: Router, private firebaseAuth: AngularFireAuth, private firebase: AngularFireDatabase) { }
+  constructor(private authService: AuthService, private router: Router, private firebaseAuth: AngularFireAuth, private firebase: AngularFireDatabase, private formBuilder: FormBuilder) {
+    this.myProfileInfoForm = this.createProfileForm();
+  }
 
   ngOnInit(): void {
-    this.loadSellersName();
+    this.loadSellersNameAndEmail();
+
     $(".sideMenuBtn").on("click", function () {
       var hasOptions = $(this).hasClass("options");
 
@@ -37,6 +44,7 @@ export class MyProfileComponent implements OnInit {
         $(".sideMenuInnerBtn").removeClass("active");
       }
     });
+
     $(".sideMenuInnerBtn").on("click", function () {
       var hasOptions = $(".sideMenuBtn").hasClass("options");
 
@@ -50,33 +58,35 @@ export class MyProfileComponent implements OnInit {
     });
   }
 
-  async loadSellersName() {
+  loadSellersNameAndEmail() {
     let Key: any;
-    let Email: any;
-    this.firebaseAuth.user.subscribe((data => {
+
+    this.firebaseAuth.user.subscribe((async (data) => {
       this.user = data;
-      Email = this.user['email'];
-    }));
-    await this.firebase.database.ref("users").once("value", (users) => {
-      users.forEach((user) => {
-        const childKey = user.key;
-        const childData = user.val();
-        if (childData.email == Email) {
-          Key = childKey;
-          // console.log("entramos", childKey);
-          // console.log("recorrido", childKey);
-          user.forEach((name => {
-            const nameChildKey = name.key;
-            const nameChildData = name.val();
-            // console.log("entramos", nameChildKey);
-            // console.log("recorrido", nameChildData);
-            if (nameChildKey == 'name') {
-              this.sellersName = nameChildData;
-            }
-          }))
-        }
+      this.Email = this.user['email'];
+
+      await this.firebase.database.ref("users").once("value", (users) => {
+        users.forEach((user) => {
+          const childKey = user.key;
+          const childData = user.val();
+          if (childData.email == this.Email) {
+            Key = childKey;
+            user.forEach((name => {
+              const nameChildKey = name.key;
+              const nameChildData = name.val();
+              if (nameChildKey == 'name') {
+                this.sellersName = nameChildData;
+                this.user.updateProfile({
+                  displayName: this.sellersName
+                });
+              }
+            }))
+          }
+        });
       });
-    });
+
+      this.sellersName = this.user['displayName'];
+    }));
   }
 
   sideMenuOptionClicked() {
@@ -98,6 +108,46 @@ export class MyProfileComponent implements OnInit {
 
   goToMyProfile() {
     this.router.navigate(['/sellers/myprofile']);
+  }
+
+  createProfileForm(): FormGroup {
+    return this.formBuilder.group(
+      {
+        email: [
+          { value: this.Email, disabled: true },
+          Validators.compose([
+            Validators.email,
+            Validators.required
+          ])
+        ],
+        name: [
+          null,
+          Validators.compose([Validators.required])
+        ],
+        lname: [
+          null,
+          Validators.compose([Validators.required])
+        ],
+        id: [
+          null,
+          Validators.compose([
+            Validators.required,
+            Validators.minLength(6)
+          ])
+        ],
+        cellphoneNumber: [
+          null,
+          Validators.compose([
+            Validators.required,
+            Validators.minLength(7)
+          ])
+        ]
+      }
+    )
+  }
+
+  onSubmit() {
+
   }
 
   dropDownOptions() {

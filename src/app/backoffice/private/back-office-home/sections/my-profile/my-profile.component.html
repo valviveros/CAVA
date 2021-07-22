@@ -53,6 +53,12 @@
                     <form [formGroup]="myProfileInfoForm">
                         <div class="field">
                             <p class="control">
+                                <input class="input" type="text" placeholder="{{ Email }}" formControlName="email"
+                                    [ngClass]="myProfileInfoForm.controls['email'].invalid ? 'is-invalid' : ''" required>
+                            </p>
+                        </div>
+                        <div class="field">
+                            <p class="control">
                                 <input class="input" type="text" placeholder="Nombre" formControlName="name"
                                     [ngClass]="myProfileInfoForm.controls['name'].invalid ? 'is-invalid' : ''" required>
                             </p>
@@ -78,7 +84,7 @@
                         </div>
                         <div class="field">
                             <div class="buttons">
-                                <button type="submit" class="button is-info">Guardar</button>
+                                <button type="submit" class="button is-info" (click)="onSubmit()">Guardar</button>
                             </div>
                         </div>
                     </form>
