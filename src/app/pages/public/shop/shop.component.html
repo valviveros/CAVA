@@ -2,9 +2,9 @@
     <div class="navBarContainer">
         <app-navbar [active]="active"></app-navbar>
     </div>
-    <div class="contentWrapper">
+    <div class="contentWrapper" *ngFor="let company of companies; let i = index">
         <div class="main">
-            <div class="backg">
+            <!--<div class="backg">
                 <img src="\assets\img\FondoAdidas.jpg" alt="" srcset="">
                 <div class="frontinfo">
                     <div class="information">
@@ -16,8 +16,20 @@
                         </div>
                     </div>   
                 </div>
+            </div>-->
+            <div class="backg" >
+                <img [src]="company.companyBackground" alt="" srcset="">
+                <div class="frontinfo">
+                    <div class="information">
+                        <div class="logo">
+                            <img [src]="company.companyLogo" alt="" srcset="">
+                        </div>
+                        <div class="companyinfo">
+                            {{company.companyInfo}}   
+                        </div>
+                    </div>   
+                </div>
             </div>
-            
 
         </div>
         <div class="downshop">
@@ -38,14 +50,14 @@
                 </div>
                 <div *ngIf="showDiv.product">
                     <div class="productsContainer">
-                        <div class="productCards">
-                            <img src="\assets\img\Cuadrada1.jpg" alt="" srcset="">
+                        <div class="productCards" *ngFor="let prod of products; let i = index">
+                            <img [src]="prod.productphoto" alt="" srcset="">
                             <div class="overlay">
-                                Hello World
-                                <div class="productInfo">Informacion de producto que iria aca ademas bno se que escribir</div>
+                                {{prod.productTitle}}
+                                <div class="productInfo">{{prod.productInfo}}</div>
                             </div>
                         </div>
-                        <div class="productCards">
+                        <!--<div class="productCards">
                             <img src="\assets\img\Zapatos2.png" alt="" srcset="">
                             <div class="overlay">
                                 Hello World
@@ -65,7 +77,7 @@
                                 Hello World
                                 <div class="productInfo">Informacion de producto que iria aca ademas bno se que escribir</div>
                             </div>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
 		        <div *ngIf="showDiv.contact">
@@ -73,31 +85,31 @@
                         <div class="web">
                             <div class="webicon"></div>
                             <div class="webLink">
-                                <a href="https://www.adidas.co/" target="_blank">www.adidas.co</a>
+                                <a [href]="company.webLink" target="_blank">{{company.webLink}}</a>
                             </div>
                         </div>
                         <div class="whatsapp">
                             <div class="whatsappicon"></div>
                             <div class="whatsappLink">
-                                <a href="https://wa.me/573162555666" target="_blank"> +57 3162555666 </a>  
+                                <a href="https://wa.me/57{{company.whatsapp}}" target="_blank"> {{company.whatsapp}} </a>  
                             </div>
                         </div>
                         <div class="instagram">
                             <div class="instagramicon"></div>
                             <div class="instagramLink">
-                                <a href="https://www.instagram.com/adidasco/" target="_blank"> adidasco </a>
+                                <a href="https://www.instagram.com/{{company.instagram}}/" target="_blank"> @{{company.instagram}} </a>
                             </div>
                         </div>
                         <div class="facebook">
                             <div class="facebookicon"></div>
                             <div class="facebookLink">
-                                <a href="https://www.instagram.com/adidasco/" target="_blank"> adidasco </a>
+                                <a href="https://es-la.facebook.com/{{company.facebook}}/" target="_blank"> {{company.facebook}} </a>
                             </div>
                         </div>
                         <div class="email">
                             <div class="emailicon"></div>
                             <div class="emailLink">
-                                <a href="mailto:adidasco@hotmail.com" target="_blank"> adidasco@hotmail.com </a>
+                                <a href="mailto:{{company.mail}}" target="_blank"> {{company.mail}}</a>
                             </div>
                         </div>
                     </div>
