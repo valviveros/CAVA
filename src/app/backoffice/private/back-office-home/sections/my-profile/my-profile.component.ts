@@ -13,8 +13,11 @@ import * as $ from 'jquery';
 })
 export class MyProfileComponent implements OnInit {
   @Input() sellersName: string = "";
-  @Input() Email: any;
+  Email: any;
   sellersLName: string = "";
+  password: string = "";
+  id: any;
+  cellphoneNumber: any;
   countMore: number = 0;
   user: any;
   clicked: number = 0;
@@ -72,19 +75,28 @@ export class MyProfileComponent implements OnInit {
           const childData = user.val();
           if (childData.email == this.Email) {
             Key = childKey;
-            user.forEach((name => {
-              const nameChildKey = name.key;
-              const nameChildData = name.val();
-              if (nameChildKey == 'name') {
-                this.sellersName = nameChildData;
+            user.forEach((info => {
+              const infoChildKey = info.key;
+              const infoChildData = info.val();
+              if (infoChildKey == 'name') {
+                this.sellersName = infoChildData;
                 this.user.updateProfile({
                   displayName: this.sellersName
                 });
               }
-              if (nameChildKey == 'lname') {
-                this.sellersLName = nameChildData;
+              if (infoChildKey == 'lname') {
+                this.sellersLName = infoChildData;
               }
-            }))
+              if (infoChildKey == 'id') {
+                this.id = infoChildData;
+              }
+              if (infoChildKey == 'cellphoneNumber') {
+                this.cellphoneNumber = infoChildData;
+              }
+              if (infoChildKey == 'password') {
+                this.password = infoChildData;
+              }
+            }));
           }
         });
       });
@@ -93,6 +105,8 @@ export class MyProfileComponent implements OnInit {
       this.myProfileInfoForm.controls.email.setValue(this.Email);
       this.myProfileInfoForm.controls.name.setValue(this.sellersName);
       this.myProfileInfoForm.controls.lname.setValue(this.sellersLName);
+      this.myProfileInfoForm.controls.id.setValue(this.id);
+      this.myProfileInfoForm.controls.cellphoneNumber.setValue(this.cellphoneNumber);
     }));
   }
 
@@ -121,9 +135,9 @@ export class MyProfileComponent implements OnInit {
     return this.formBuilder.group(
       {
         email: [
-          { 
+          {
             value: '',
-            disabled: true 
+            disabled: true
           },
           Validators.compose([
             Validators.email,
@@ -142,14 +156,16 @@ export class MyProfileComponent implements OnInit {
           null,
           Validators.compose([
             Validators.required,
-            Validators.minLength(6)
+            Validators.minLength(6),
+            Validators.maxLength(10),
           ])
         ],
         cellphoneNumber: [
           null,
           Validators.compose([
             Validators.required,
-            Validators.minLength(7)
+            Validators.minLength(7),
+            Validators.maxLength(10),
           ])
         ]
       }
@@ -157,7 +173,50 @@ export class MyProfileComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.myProfileInfoForm.controls);
+    let Key: any;
+    let sellerId: number = this.myProfileInfoForm.controls.id.value.toString().length;
+    let sellerCellphoneNumber: number = this.myProfileInfoForm.controls.cellphoneNumber.value.toString().length;
+
+    if (this.myProfileInfoForm.valid && (sellerId >= 6 && sellerId <= 10) && (sellerCellphoneNumber >=7 && sellerCellphoneNumber <= 10)) {
+      this.firebaseAuth.user.subscribe((async (data) => {
+        this.user = data;
+        this.Email = this.user['email'];
+
+        await this.firebase.database.ref("users").once("value", (users) => {
+          users.forEach((user) => {
+            const childKey = user.key;
+            const childData = user.val();
+            if (childData.email == this.Email) {
+              Key = childKey;
+              this.firebase.database.ref(`users/${Key}`).update({
+                email: this.Email,
+                password: this.password,
+                name: this.myProfileInfoForm.controls.name.value,
+                lname: this.myProfileInfoForm.controls.lname.value,
+                id: this.myProfileInfoForm.controls.id.value,
+                cellphoneNumber: this.myProfileInfoForm.controls.cellphoneNumber.value
+              });
+            }
+          });
+        });
+      }));
+
+      const query: string = '.myProfileContainer #successMessage';
+      const successMessage: any = document.querySelector(query);
+      successMessage.style.display = "flex";
+
+      setTimeout(() => {
+        successMessage.style.display = "none";
+      }, 3000);
+    } else {
+      const query: string = '.myProfileContainer #failureMessage';
+      const failureMessage: any = document.querySelector(query);
+      failureMessage.style.display = "flex";
+
+      setTimeout(() => {
+        failureMessage.style.display = "none";
+      }, 3000);
+    } 
   }
 
   dropDownOptions() {

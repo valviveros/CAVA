@@ -59,7 +59,7 @@ export class BackOfficeHomeComponent implements OnInit {
         if (childData.email == Email) {
           Key = childKey;
           // console.log("entramos", childKey);
-          // console.log("recorrido", childKey);
+          // console.log("recorrido", childData);
           user.forEach((name => {
             const nameChildKey = name.key;
             const nameChildData = name.val();
