@@ -115,4 +115,9 @@ $borderRadiusCards: 32px;
     .footerContainer {
         width: 100%;
     }
+
+    .is-invalid {
+        border-left: solid 6px red;
+        border-color: #dc3545;
+    }
 }
