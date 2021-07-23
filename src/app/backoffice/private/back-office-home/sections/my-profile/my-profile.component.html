@@ -53,32 +53,32 @@
                         <div class="field">
                             <p class="control">
                                 <input class="input" type="text" placeholder="Email" formControlName="email"
-                                    [ngClass]="myProfileInfoForm.controls['email'].invalid ? 'is-invalid' : ''" required>
+                                    [ngClass]="{'is-invalid': validateField('email')}">
                             </p>
                         </div>
                         <div class="field">
                             <p class="control">
                                 <input class="input" type="text" placeholder="Nombre" formControlName="name"
-                                    [ngClass]="myProfileInfoForm.controls['name'].invalid ? 'is-invalid' : ''" required>
+                                    [ngClass]="{'is-invalid': validateField('name')}">
                             </p>
                         </div>
                         <div class="field">
                             <p class="control">
                                 <input class="input" type="text" placeholder="Apellido" formControlName="lname"
-                                    [ngClass]="myProfileInfoForm.controls['lname'].invalid ? 'is-invalid' : ''" required>
+                                    [ngClass]="{'is-invalid': validateField('lname')}">
                             </p>
                         </div>
                         <div class="field">
                             <p class="control">
-                                <input class="input" type="number" placeholder="Cédula"
+                                <input class="input" type="text" placeholder="Cédula"
                                     formControlName="id"
-                                    [ngClass]="myProfileInfoForm.controls['id'].errors ? 'is-invalid' : ''" required>
+                                    [ngClass]="{'is-invalid': validateField('id')}">
                             </p>
                         </div>
                         <div class="field">
                             <p class="control">
-                                <input class="input" type="number" placeholder="Celular" formControlName="cellphoneNumber"
-                                    [ngClass]="myProfileInfoForm.controls['cellphoneNumber'].invalid ? 'is-invalid' : ''" required>
+                                <input class="input" type="text" placeholder="Celular" formControlName="cellphoneNumber"
+                                    [ngClass]="{'is-invalid': validateField('cellphoneNumber')}">
                             </p>
                         </div>
                         <div class="field">
