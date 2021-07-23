@@ -2,7 +2,124 @@
     <div class="navBarContainer">
         <app-navbar [active]="active"></app-navbar>
     </div>
-    <div class="contentWrapper">
+    <div class="contentWrapper" *ngFor="let company of companies; let i = index">
+        <div class="main">
+            <!--<div class="backg">
+                <img src="\assets\img\FondoAdidas.jpg" alt="" srcset="">
+                <div class="frontinfo">
+                    <div class="information">
+                        <div class="logo">
+                            <img src="\assets\img\LogoAdida.png" alt="" srcset="">
+                        </div>
+                        <div class="companyinfo">
+                            Empezamos en un lavadero y conquistamos el mundo. Y en el medio, hemos marcado un gran gol y, a veces, hemos tenido problemas para alcanzar nuestros objetivos. Hemos hecho todo lo posible para lo mejor. Hemos mejorado y crecido. Mirando hacia el futuro, recordando siempre de dónde venimos.
+                        </div>
+                    </div>   
+                </div>
+            </div>-->
+            <div class="backg" >
+                <img [src]="company.companyBackground" alt="" srcset="">
+                <div class="frontinfo">
+                    <div class="information">
+                        <div class="logo">
+                            <img [src]="company.companyLogo" alt="" srcset="">
+                        </div>
+                        <div class="companyinfo">
+                            {{company.companyInfo}}   
+                        </div>
+                    </div>   
+                </div>
+            </div>
+
+        </div>
+        <div class="downshop">
+            <div class="items">
+                <div class="productTitle">
+                    <div class="categoryTitle" (click)="showDiv.product = !showDiv.product; showDiv.contact = false">
+                        Productos
+                        <div *ngIf="showDiv.product">
+                            <div class="underlineProduct"></div>
+                        </div>    
+                    </div>
+                    <div class="categoryTitle" (click)="showDiv.contact = !showDiv.contact; showDiv.product = false" >
+                        Contacto Directo
+                        <div *ngIf="showDiv.contact">
+                            <div class="underlineContact"></div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="showDiv.product">
+                    <div class="productsContainer">
+                        <div class="productCards" *ngFor="let prod of products; let i = index">
+                            <img [src]="prod.productphoto" alt="" srcset="">
+                            <div class="overlay">
+                                {{prod.productTitle}}
+                                <div class="productInfo">{{prod.productInfo}}</div>
+                            </div>
+                        </div>
+                        <!--<div class="productCards">
+                            <img src="\assets\img\Zapatos2.png" alt="" srcset="">
+                            <div class="overlay">
+                                Hello World
+                                <div class="productInfo">Informacion de producto que iria aca ademas bno se que escribir</div>
+                            </div>
+                        </div>
+                        <div class="productCards">
+                            <img src="\assets\img\Cuadrada3.png" alt="" srcset="">
+                            <div class="overlay">
+                                Hello World
+                                <div class="productInfo">Informacion de producto que iria aca ademas bno se que escribir</div>
+                            </div>
+                        </div>
+                        <div class="productCards">
+                            <img src="\assets\img\Cuadrada2.jpg" alt="" srcset="">
+                            <div class="overlay">
+                                Hello World
+                                <div class="productInfo">Informacion de producto que iria aca ademas bno se que escribir</div>
+                            </div>
+                        </div>-->
+                    </div>
+                </div>
+		        <div *ngIf="showDiv.contact">
+                    <div class="contactContainer">
+                        <div class="web">
+                            <div class="webicon"></div>
+                            <div class="webLink">
+                                <a [href]="company.webLink" target="_blank">{{company.webLink}}</a>
+                            </div>
+                        </div>
+                        <div class="whatsapp">
+                            <div class="whatsappicon"></div>
+                            <div class="whatsappLink">
+                                <a href="https://wa.me/57{{company.whatsapp}}" target="_blank"> {{company.whatsapp}} </a>  
+                            </div>
+                        </div>
+                        <div class="instagram">
+                            <div class="instagramicon"></div>
+                            <div class="instagramLink">
+                                <a href="https://www.instagram.com/{{company.instagram}}/" target="_blank"> @{{company.instagram}} </a>
+                            </div>
+                        </div>
+                        <div class="facebook">
+                            <div class="facebookicon"></div>
+                            <div class="facebookLink">
+                                <a href="https://es-la.facebook.com/{{company.facebook}}/" target="_blank"> {{company.facebook}} </a>
+                            </div>
+                        </div>
+                        <div class="email">
+                            <div class="emailicon"></div>
+                            <div class="emailLink">
+                                <a href="mailto:{{company.mail}}" target="_blank"> {{company.mail}}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+            </div>
+            
+        </div>
         
     </div>
     <div class="footerContainer">
