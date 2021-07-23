@@ -185,8 +185,6 @@ export class MyProfileComponent implements OnInit {
             if (childData.email == this.Email) {
               Key = childKey;
               this.firebase.database.ref(`users/${Key}`).update({
-                email: this.Email,
-                password: this.password,
                 name: this.myProfileInfoForm.controls.name.value,
                 lname: this.myProfileInfoForm.controls.lname.value,
                 id: this.myProfileInfoForm.controls.id.value,
