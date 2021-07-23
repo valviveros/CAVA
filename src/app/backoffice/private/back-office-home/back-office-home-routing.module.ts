@@ -4,6 +4,7 @@ import { Routes, RouterModule } from "@angular/router";
 import { BackOfficeHomeComponent } from "./back-office-home.component";
 import { AddProductComponent } from "./sections/add-product/add-product.component";
 import { MyProfileComponent } from "./sections/my-profile/my-profile.component";
+import { ProductsComponent } from "./sections/products/products.component";
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 
@@ -27,7 +28,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: undefined
+        component: ProductsComponent
       },
       {
         path: 'add',
