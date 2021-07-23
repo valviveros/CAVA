@@ -40,15 +40,15 @@ export class ShopComponent implements OnInit {
       productInfo: "esta es la informacion del producto 3",
     }
   ]
-  
-  constructor() { }
 
-  ngOnInit(): void {
-  }
   showDiv = {
     contact : false,
     product : true
   }
-  
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
 
 }

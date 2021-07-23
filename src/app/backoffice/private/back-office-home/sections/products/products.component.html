@@ -44,42 +44,21 @@
       <div class="myProfileInfoContainer">
           <div class="myProfileTitle">ADD PRODUCT</div>
           <div class="myProfileForm">
-              <div class="myProfileMessage">
-                  <div id="successMessage" class="successMessage">Se han guardado los datos correctamente</div>
-                  <div id="failureMessage" class="failureMessage">Verifique que los campos estén completos y correctos</div>
-              </div>
               <div class="myProfileFields">
-                  <form [formGroup]="myProfileInfoForm">
-                      <div class="field">
-                          <p class="control">
-                              <input class="input" type="text" placeholder="Nombre" formControlName="name"
-                                  [ngClass]="{'is-invalid': validateField('name')}">
-                          </p>
+                <div class="productsContainer">
+                  <div class="productCards" *ngFor="let prod of products; let i = index">
+                      <img [src]="prod.productphoto" alt="" srcset="">
+                      <div class="overlay">
+                          {{prod.productTitle}}
+                          <div class="productInfo">{{prod.productInfo}}</div>
                       </div>
-                      <div class="field">
-                          <p class="control">
-                              <textarea class="input" type="text" placeholder="Descripcion" formControlName="description"
-                                  [ngClass]="{'is-invalid': validateField('description')}"></textarea>
-                          </p>
-                      </div>
-                      <div class="field">
-                          <p class="control">
-                              <input class="input" type="text" placeholder="Precio" formControlName="price"
-                                  [ngClass]="{'is-invalid': validateField('price')}">
-                          </p>
-                      </div>
-                      <div class="field">
-                          <p class="control">
-                              <input class="form-control-file" type="file" (change)="getPath($event)" placeholder="Imagen" formControlName="image" accept="image/png, image/gif, image/jpeg"
-                                  [ngClass]="{'is-invalid': validateField('image')}">
-                          </p>
-                    </div>
-                      <div class="field">
-                          <div class="buttons">
-                              <button [disabled]="myProfileInfoForm.invalid" type="submit" class="button is-info" (click)="onSubmit()">Añadir</button>
-                          </div>
-                      </div>
-                  </form>
+                  </div>
+                </div>
+              </div>
+              <div class="field">
+                <div class="buttons">
+                    <button type="submit" class="button is-info" (click)="goToAddProducts()">Añadir</button>
+                </div>
               </div>
           </div>
       </div>

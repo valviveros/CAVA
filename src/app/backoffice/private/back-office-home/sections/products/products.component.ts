@@ -4,6 +4,8 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ProductListI } from 'src/app/shared/interfaces/ProductListI';
+import { ShopCompanyI } from 'src/app/shared/interfaces/ShopCompanyI';
 import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
@@ -23,9 +25,13 @@ export class ProductsComponent implements OnInit {
   user: any;
   clicked: number = 0;
   myProfileInfoForm: FormGroup;
+  active: number = 0;
+
+  products: Array<ProductListI> =[]
 
   constructor(private authService: AuthService, private router: Router, private firebaseAuth: AngularFireAuth, private firebase: AngularFireDatabase, private firebaseStorage: AngularFireStorage, private formBuilder: FormBuilder) {
     this.myProfileInfoForm = this.createProfileForm();
+    this.loadProductsInfo()
   }
 
   ngOnInit(): void {
@@ -56,6 +62,59 @@ export class ProductsComponent implements OnInit {
     });
   }
 
+  loadProductsInfo() {
+    let Key: any;
+    let products: any;
+
+    this.firebaseAuth.user.subscribe((async (data) => {
+      this.user = data;
+      this.Email = this.user['email'];
+
+      await this.firebase.database.ref('users').once('value', (users) => {
+        users.forEach((user) => {
+          const childKey = user.key;
+          const childData = user.val();
+          if (childData.email == this.Email) {
+            Key = childKey;
+
+            user.forEach((info => {
+              const infoChildKey = info.key;
+              if(infoChildKey == 'company'){
+
+                info.forEach((company => {
+                  const companyKey = company.key;
+                  if(companyKey == 'products'){
+                    const productsData = company.val();
+                    console.log(productsData)
+                    console.log(Object.entries(productsData))
+
+                    this.products = Object.entries(productsData).map((pair: any) => {
+
+                      let key = pair[0]
+                      let product = pair[1]
+
+                      return {
+                        id: key,
+                        productphoto: product.image,
+                        productTitle: product.name,
+                        productInfo: product.description
+                      }
+                    })
+                  }
+
+                }))
+              }
+
+              const infoChildData = info.val();
+            }));
+          }
+        });
+      });
+
+
+    }));
+  }
+
   sideMenuOptionClicked() {
     var icon: any = $('.options').find('i.fas');
     var btnOptionsContainer: any = $('.btnOptionsContainer');
@@ -75,6 +134,10 @@ export class ProductsComponent implements OnInit {
 
   goToMyProfile() {
     this.router.navigate(['/sellers/myprofile']);
+  }
+
+  goToAddProducts(){
+    this.router.navigate(['/sellers/products/add']);
   }
 
   getPath(event:any){

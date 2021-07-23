@@ -77,6 +77,10 @@ export class AddProductComponent implements OnInit {
     this.router.navigate(['/sellers/myprofile']);
   }
 
+  goToMyProducts() {
+    this.router.navigate(['/sellers/products']);
+  }
+
   getPath(event:any){
     this.path = event.target.files[0]
   }
@@ -131,27 +135,30 @@ export class AddProductComponent implements OnInit {
           });
         });
 
-        const fileName = '/file'+Math.random()+this.user['email'];
+        const fileName = '/products/'+Date.now();
 
-        this.firebaseStorage.upload(fileName,this.path).then(() =>{
-          this.firebase.database.ref(`users/${Key}/company/products`).push({
-            name: this.myProfileInfoForm.controls.name.value,
-            description: this.myProfileInfoForm.controls.description.value,
-            price: this.myProfileInfoForm.controls.price.value,
-            image: fileName
-          })
+        let uploadTask = await this.firebaseStorage.upload(fileName,this.path)
+        let url = await uploadTask.ref.getDownloadURL()
+        console.log(url)
+        this.firebase.database.ref(`users/${Key}/company/products`).push({
+          name: this.myProfileInfoForm.controls.name.value,
+          description: this.myProfileInfoForm.controls.description.value,
+          price: this.myProfileInfoForm.controls.price.value,
+          image: url
         })
+
+        const query: string = '.myProfileContainer #successMessage';
+        const successMessage: any = document.querySelector(query);
+        successMessage.style.display = 'flex';
+
+        setTimeout(() => {
+          successMessage.style.display = 'none';
+          this.router.navigate(['/sellers/products']);
+        }, 1000);
 
 
       }));
 
-      const query: string = '.myProfileContainer #successMessage';
-      const successMessage: any = document.querySelector(query);
-      successMessage.style.display = 'flex';
-
-      setTimeout(() => {
-        successMessage.style.display = 'none';
-      }, 3000);
     }
     else {
       const query: string = '.myProfileContainer #failureMessage';

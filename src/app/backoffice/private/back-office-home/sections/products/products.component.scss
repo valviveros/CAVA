@@ -7,6 +7,7 @@ $backgroundColor: #f0f5fa;
 $cardsBGColor: white;
 $successMessage: #03d755;
 $failureMessage: #dd3444;
+$productCard: #EDEEF0;
 $titleSize: 150px;
 $searchBarFontSize: 48px;
 $subtitleSize: 43px;
@@ -233,65 +234,101 @@ $borderRadiusCards: 32px;
                 padding: 2%;
                 border-radius: $borderRadiusCards;
                 background: $cardsBGColor;
-                .myProfileMessage {
-                    width: 80%;
-                    height: 10%;
-                    margin-bottom: 3%;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    .successMessage {
-                        width: auto;
-                        padding: 1%;
-                        display: none;
-                        align-items: center;
-                        color: $successMessage;
-                        background: rgba($successMessage, 0.3);
-                        border-radius: 5px;
-                        border: 1px solid $successMessage;
-                    }
-                    .failureMessage {
-                        width: auto;
-                        padding: 1%;
-                        display: none;
-                        align-items: center;
-                        color: $failureMessage;
-                        background: rgba($failureMessage, 0.3);
-                        border-radius: 5px;
-                        border: 1px solid $failureMessage;
-                    }
-                }
                 .myProfileFields {
-                    width: 80%;
-                    form {
-                        width: 100%;
-                        .field {
-                            .control {
-                                input {
-                                    width: 100%;
-                                    padding-left: 0.5em;
-                                }
-                                textarea {
-                                  width: 100%;
-                                  padding-left: 0.5em;
-                                  padding-top: 7px;
-                                  height: 150px;
-                                  resize: none;
+                    width: 100%;
+                    height: calc(18vw + 10px);
+                    overflow-x: scroll;
+                    .productsContainer{
+                      height: 100%;
+                      float: left;
+                      gap: 15px;
+                      display: flex;
+                      flex-flow: row;
+                      justify-content: space-evenly;
+                      .productCards{
+                          width: 18vw;
+                          height: 18vw;
+                          background-color: $productCard;
+                          border-radius: 40px;
+                          background-position: center;
+                          background-size: cover;
+                          background-repeat: no-repeat;
+                          position: relative;
+                          img {
+                              height: 100%;
+                              display: block;
+                              //margin-top: 20%;
+                              width:100%;
+                              border-radius: 40px;
+                          }
+                          &:hover {
+                              .overlay{
+                                  cursor: pointer;
+                                  opacity: 0.9;
+                                  display: flex;
+                                  flex-flow: column;
+                                  justify-content: center;
+                                  align-items: center;
                               }
-                            }
-                            .buttons {
-                                .is-info {
-                                    width: 100px;
-                                    background: $fontColor;
-                                }
-                                .is-success {
-                                    width: 100px;
-                                    background: $activeFontColor;
-                                }
-                            }
-                        }
-                    }
+
+                          }
+                          .overlay {
+                              position: absolute;
+                              top: 0;
+                              bottom: 0;
+                              left: 0;
+                              right: 0;
+                              height: 100%;
+                              width: 100%;
+                              opacity: 0;
+                              transition: .5s ease;
+                              display: flex;
+                              flex-flow: column;
+                              justify-content: center;
+                              align-items: center;
+                              background-color: $activeFontColor;
+                              text-align: center;
+                              font-size:$cardsFontSize;
+                              font-family: $mediumFont;
+                              color:$fontColor;
+                              border-radius: 40px;
+                              .productInfo{
+                                  font-size:$footerFontSize;
+                                  font-family: $mediumFont;
+                                  color:$fontColor;
+                                  width: 80%;
+                              }
+                          }
+
+                      }
+
+                  }
                 }
+                .field {
+                  .control {
+                      input {
+                          width: 100%;
+                          padding-left: 0.5em;
+                      }
+                      textarea {
+                        width: 100%;
+                        padding-left: 0.5em;
+                        padding-top: 7px;
+                        height: 150px;
+                        resize: none;
+                    }
+                  }
+                  .buttons {
+                      .is-info {
+                          width: 100px;
+                          background: $fontColor;
+                      }
+                      .is-success {
+                          width: 100px;
+                          background: $activeFontColor;
+                      }
+                  }
+              }
             }
         }
     }
@@ -307,3 +344,4 @@ $borderRadiusCards: 32px;
         margin: 0;
     }
 }
+

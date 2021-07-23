@@ -125,6 +125,10 @@ export class MyProfileComponent implements OnInit {
     this.router.navigate(['/sellers/myprofile']);
   }
 
+  goToMyProducts() {
+    this.router.navigate(['/sellers/products']);
+  }
+
   createProfileForm(): FormGroup {
     return this.formBuilder.group(
       {
