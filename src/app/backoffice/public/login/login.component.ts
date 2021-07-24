@@ -4,7 +4,7 @@ import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Router } from '@angular/router';
 import { RegisterService } from 'src/app/shared/services/register.service';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { UserI } from 'src/app/shared/interfaces/UserI';
+import { User } from 'src/app/shared/interfaces/User';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +13,7 @@ import { UserI } from 'src/app/shared/interfaces/UserI';
 })
 export class LoginComponent implements OnInit {
   active: number = 5;
-  registerList: UserI[] = [];
+  registerList: User[] = [];
   loginForm: FormGroup;
 
   constructor(private router: Router, private firebase: AngularFireDatabase, private firebaseAuth: AngularFireAuth, private registerService: RegisterService, private formBuilder: FormBuilder) {
@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
         this.registerList = [];
         item.forEach(element => {
           let x = element.payload.toJSON();
-          this.registerList.push(x as UserI);
+          this.registerList.push(x as User);
         });
       });
   }

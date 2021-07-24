@@ -5,7 +5,7 @@ import { RegisterService } from 'src/app/shared/services/register.service';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { CustomValidators } from 'src/app/custom-validators';
-import { UserI } from 'src/app/shared/interfaces/UserI';
+import { User } from 'src/app/shared/interfaces/User';
 
 
 @Component({
@@ -15,7 +15,7 @@ import { UserI } from 'src/app/shared/interfaces/UserI';
 })
 export class RegisterComponent implements OnInit {
   active: number = 0;
-  registerList: UserI[] = [];
+  registerList: User[] = [];
   registerForm: FormGroup;
 
   constructor(private router: Router, private registerService: RegisterService, private formBuilder: FormBuilder, private firebaseDB: AngularFireDatabase, private firebaseAuth: AngularFireAuth) {
@@ -28,7 +28,7 @@ export class RegisterComponent implements OnInit {
         this.registerList = [];
         item.forEach(element => {
           let x = element.payload.toJSON();
-          this.registerList.push(x as UserI);
+          this.registerList.push(x as User);
         });
       });
     this.resetForm();

@@ -15,14 +15,14 @@ export class HomeComponent implements OnInit {
   imagenesCarousel = [0,1,2,3,4,5,6].map((n) => `https://picsum.photos/1279/452?random=${n}`);
   companies: Array<CompanyCardI> = [
     {
-      companyLogo: "/assets/img/companyLogo1.svg",
+      companyLogo: "/assets/img/Cuadrada2.jpg",
       companyName: "Agro Dinero",
       companyPhoto: "/assets/img/companyPhoto1.svg"
     },
     {
       companyLogo: "/assets/img/companyLogo2.svg",
       companyName: "Deluna's Dream",
-      companyPhoto: "/assets/img/companyPhoto2.svg"
+      companyPhoto: "/assets/img/Cuadrada1.jpg"
     },
     {
       companyLogo: "/assets/img/companyLogo1.svg",
