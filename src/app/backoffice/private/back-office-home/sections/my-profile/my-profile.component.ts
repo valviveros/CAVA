@@ -25,11 +25,10 @@ export class MyProfileComponent implements OnInit {
 
   constructor(private authService: AuthService, private router: Router, private firebaseAuth: AngularFireAuth, private firebase: AngularFireDatabase, private formBuilder: FormBuilder) {
     this.myProfileInfoForm = this.createProfileForm();
+    this.loadSellersInfo();
   }
 
   ngOnInit(): void {
-    this.loadSellersInfo();
-
     $('.sideMenuBtn').on('click', function () {
       var hasOptions = $(this).hasClass('options');
 

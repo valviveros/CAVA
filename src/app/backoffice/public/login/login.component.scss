@@ -101,10 +101,12 @@ $borderRadiusCards: 32px;
                             .is-info {
                                 width: 100px;
                                 background: $fontColor;
+                                font-family: $mediumFont;
                             }
                             .is-success {
                                 width: 100px;
                                 background: $activeFontColor;
+                                font-family: $mediumFont;
                             }
                         }
                     }

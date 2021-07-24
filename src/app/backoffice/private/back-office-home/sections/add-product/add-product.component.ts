@@ -22,14 +22,14 @@ export class AddProductComponent implements OnInit {
   countMore: number = 0;
   user: any;
   clicked: number = 0;
-  myProfileInfoForm: FormGroup;
+  productForm: FormGroup;
 
   constructor(private authService: AuthService, private router: Router, private firebaseAuth: AngularFireAuth, private firebase: AngularFireDatabase, private firebaseStorage: AngularFireStorage, private formBuilder: FormBuilder) {
-    this.myProfileInfoForm = this.createProfileForm();
+    this.productForm = this.createProfileForm();
+    this.loadSellersInfo();
   }
 
   ngOnInit(): void {
-
     $('.sideMenuBtn').on('click', function () {
       var hasOptions = $(this).hasClass('options');
 
@@ -54,6 +54,14 @@ export class AddProductComponent implements OnInit {
       $('.sideMenuInnerBtn').removeClass('active');
       $(this).addClass('active');
     });
+  }
+
+  loadSellersInfo() {
+    this.firebaseAuth.user.subscribe((async (data) => {
+      this.user = data;
+      this.Email = this.user['email'];
+      this.sellersName = this.user['displayName'];
+    }));
   }
 
   sideMenuOptionClicked() {
@@ -97,7 +105,8 @@ export class AddProductComponent implements OnInit {
         description: [
           null,
           Validators.compose([
-            Validators.required
+            Validators.required,
+            Validators.maxLength(100)
           ])
         ],
         price: [
@@ -119,7 +128,7 @@ export class AddProductComponent implements OnInit {
   onSubmit() {
     let Key: any;
 
-    if (this.myProfileInfoForm.valid) {
+    if (this.productForm.valid) {
 
       this.firebaseAuth.user.subscribe((async (data) => {
         this.user = data;
@@ -141,9 +150,9 @@ export class AddProductComponent implements OnInit {
         let url = await uploadTask.ref.getDownloadURL()
         console.log(url)
         this.firebase.database.ref(`users/${Key}/company/products`).push({
-          name: this.myProfileInfoForm.controls.name.value,
-          description: this.myProfileInfoForm.controls.description.value,
-          price: this.myProfileInfoForm.controls.price.value,
+          name: this.productForm.controls.name.value,
+          description: this.productForm.controls.description.value,
+          price: this.productForm.controls.price.value,
           image: url
         })
 
@@ -192,7 +201,7 @@ export class AddProductComponent implements OnInit {
   }
 
   validateField(controlName:string): boolean{
-    let control = this.myProfileInfoForm.controls[controlName]
+    let control = this.productForm.controls[controlName]
     return control.invalid && control.touched
   }
 

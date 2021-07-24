@@ -272,21 +272,23 @@ $borderRadiusCards: 32px;
                                     padding-left: 0.5em;
                                 }
                                 textarea {
-                                  width: 100%;
-                                  padding-left: 0.5em;
-                                  padding-top: 7px;
-                                  height: 150px;
-                                  resize: none;
-                              }
+                                    width: 100%;
+                                    padding-left: 0.5em;
+                                    padding-top: 7px;
+                                    height: 150px;
+                                    resize: none;
+                                }
                             }
                             .buttons {
                                 .is-info {
                                     width: 100px;
                                     background: $fontColor;
+                                    font-family: $mediumFont;
                                 }
                                 .is-success {
                                     width: 100px;
                                     background: $activeFontColor;
+                                    font-family: $mediumFont;
                                 }
                             }
                         }
@@ -294,6 +296,15 @@ $borderRadiusCards: 32px;
                 }
             }
         }
+    }
+
+    .file-cta,
+    .file-name {
+        padding: .5em 1em !important;
+    }
+
+    .file-icon {
+        margin-right: 0.5em !important;
     }
 
     .is-invalid {
