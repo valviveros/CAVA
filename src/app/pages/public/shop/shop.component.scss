@@ -214,12 +214,12 @@ $borderRadiusCards: 32px;
                         align-items: center;
                         background-color: $activeFontColor;
                         text-align: center;
-                        font-size:$cardsFontSize;
+                        font-size:25px;
                         font-family: $mediumFont;
                         color:$fontColor;
                         border-radius: 40px;
                         .productInfo{
-                            font-size:$footerFontSize;
+                            font-size:$infoCardFontSize;
                             font-family: $mediumFont;
                             color:$fontColor;
                             width: 80%;
@@ -234,6 +234,8 @@ $borderRadiusCards: 32px;
                 height: 85%;
                 display: flex;
                 flex-flow: column;
+                //justify-content: space-between;
+                //margin-top: 5%;
                 .web{
                     width: 70%;
                     height: 22%;
@@ -241,9 +243,10 @@ $borderRadiusCards: 32px;
                     display: flex;
                     flex-flow: row;
                     align-items: center;
+                    margin-top: 1%;
                     .webicon{
                         width: 35px;
-                        height: 80%;
+                        height: 100%;
                         background-position: center;
                         background-size: contain;
                         background-repeat: no-repeat;
@@ -256,7 +259,7 @@ $borderRadiusCards: 32px;
                         color: $fontColor;
                         font-family: $mediumFont;
                         text-align: left;
-                        margin-top: 5%;
+                        margin-top: 4%;
                         margin-left: 2%;
                         a:link, a:visited {
                             color: black;
@@ -275,9 +278,10 @@ $borderRadiusCards: 32px;
                     display: flex;
                     flex-flow: row;
                     align-items: center;
+                    margin-top: 1%;
                     .whatsappicon{
                         width: 35px;
-                        height: 80%;
+                        height: 100%;
                         background-position: center;
                         background-size: contain;
                         background-repeat: no-repeat;
@@ -290,7 +294,7 @@ $borderRadiusCards: 32px;
                         color: $fontColor;
                         font-family: $mediumFont;
                         text-align: left;
-                        margin-top: 5%;
+                        margin-top: 4%;
                         margin-left: 2%;
                         a:link, a:visited {
                             color: black;
@@ -309,9 +313,10 @@ $borderRadiusCards: 32px;
                     display: flex;
                     flex-flow: row;
                     align-items: center;
+                    margin-top: 1%;
                     .instagramicon{
                         width: 35px;
-                        height: 80%;
+                        height: 100%;
                         background-position: center;
                         background-size: contain;
                         background-repeat: no-repeat;
@@ -324,7 +329,7 @@ $borderRadiusCards: 32px;
                         color: $fontColor;
                         font-family: $mediumFont;
                         text-align: left;
-                        margin-top: 5%;
+                        margin-top: 4%;
                         margin-left: 2%;
                         a:link, a:visited {
                             color: black;
@@ -343,9 +348,10 @@ $borderRadiusCards: 32px;
                     display: flex;
                     flex-flow: row;
                     align-items: center;
+                    margin-top: 1%;
                     .facebookicon{
                         width: 35px;
-                        height: 80%;
+                        height: 100%;
                         background-position: center;
                         background-size: contain;
                         background-repeat: no-repeat;
@@ -358,7 +364,7 @@ $borderRadiusCards: 32px;
                         color: $fontColor;
                         font-family: $mediumFont;
                         text-align: left;
-                        margin-top: 5%;
+                        margin-top: 4%;
                         margin-left: 2%;
                         a:link, a:visited {
                             color: black;
@@ -377,9 +383,10 @@ $borderRadiusCards: 32px;
                     display: flex;
                     flex-flow: row;
                     align-items: center;
+                    margin-top: 1%;
                     .emailicon{
                         width: 35px;
-                        height: 80%;
+                        height: 100%;
                         background-position: center;
                         background-size: contain;
                         background-repeat: no-repeat;
@@ -392,7 +399,7 @@ $borderRadiusCards: 32px;
                         color: $fontColor;
                         font-family: $mediumFont;
                         text-align: left;
-                        margin-top: 5%;
+                        margin-top: 4%;
                         margin-left: 2%;
                         a:link, a:visited {
                             color: black;

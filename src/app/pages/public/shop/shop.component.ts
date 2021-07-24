@@ -14,12 +14,12 @@ export class ShopComponent implements OnInit {
     {
       companyBackground: "/assets/img/FondoAdidas.jpg",
       companyLogo: "/assets/img/LogoAdida.png",
-      companyInfo: "Empezamos en un lavadero y conquistamos el mundo. Y en el medio, hemos marcado un gran gol y, a veces, hemos tenido problemas para alcanzar nuestros objetivos. Hemos hecho todo lo posible para lo mejor. Hemos mejorado y crecido. Mirando hacia el futuro, recordando siempre de dónde venimos.",
+      companyInfo: "Lorem ipsum dolor sit amet consectetur adipiscing elit aenean gravida diam proin, dictumst vehicula fames curabitur porta aliquet ultricies felis ullamcorper interdum. Elementum ut senectus nisl varius quis proin sem mattis dapibus, praesent eros a dignissim orci lectus volutpat pellentesque vivamus, magna condimentum rutrum gravida consequat venenatis eu ac. Sociis fusce facilisi25",
       webLink: "https://www.adidas.co/",
       whatsapp: "3162555666",
       instagram: "adidasco",
-      /*facebook: "adidas",
-      mail: "adidasco@hotmail.com",*/
+      facebook: "adidas",
+      mail: "adidasco@hotmail.com",
 
     }
   ]
@@ -27,12 +27,12 @@ export class ShopComponent implements OnInit {
     {
       productphoto: "/assets/img/Cuadrada1.jpg",
       productTitle: "producto 1",
-      productInfo: "esta es la informacion del producto1",
+      productInfo: "Lorem ipsum dolor sit amet consectetur adipiscing elit aenean gravida diam proin, dictumst vehicula fames curabitur porta aliquet ultricies felis ulla",
     },
     {
       productphoto: "/assets/img/Cuadrada2.jpg",
-      productTitle: "producto 2",
-      productInfo: "esta es la informacion del producto2",
+      productTitle: "Zapatotes Negros Adidas Calida 2020",
+      productInfo: "Lorem ipsum dolor sit amet consectetur adipiscing elit aenean gravida diam proin, dictumst vehicula fames curabitur porta ali",
     },
     {
       productphoto: "/assets/img/Zapatos2.png",

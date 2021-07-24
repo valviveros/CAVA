@@ -3,8 +3,8 @@ export interface ShopCompanyI {
     companyLogo: string
     companyInfo: string
     webLink?: string
-    whatsapp: string
-    instagram: string
+    whatsapp?: string
+    instagram?: string
     facebook?: string
     mail?: string
 }

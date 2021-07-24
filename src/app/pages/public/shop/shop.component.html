@@ -48,8 +48,7 @@
                         </div>
                     </div>
                 </div>
-                <div *ngIf="showDiv.product">
-                    <div class="productsContainer">
+                    <div class="productsContainer" *ngIf="showDiv.product">
                         <div class="productCards" *ngFor="let prod of products; let i = index">
                             <img [src]="prod.productphoto" alt="" srcset="">
                             <div class="overlay">
@@ -79,44 +78,53 @@
                             </div>
                         </div>-->
                     </div>
-                </div>
-		        <div *ngIf="showDiv.contact">
-                    <div class="contactContainer">
-                        <div class="web">
+                
+                    <div class="contactContainer" *ngIf="showDiv.contact">
+                        <div class="web" *ngIf="company.webLink" >
                             <div class="webicon"></div>
                             <div class="webLink">
                                 <a [href]="company.webLink" target="_blank">{{company.webLink}}</a>
                             </div>
                         </div>
-                        <div class="whatsapp">
+                        <div class="web" *ngIf="!company.webLink" style="display: none">
+
+                        </div>
+                        <div class="whatsapp" *ngIf="company.whatsapp" >
                             <div class="whatsappicon"></div>
                             <div class="whatsappLink">
                                 <a href="https://wa.me/57{{company.whatsapp}}" target="_blank"> {{company.whatsapp}} </a>  
                             </div>
                         </div>
-                        <div class="instagram">
+                        <div class="whatsapp" *ngIf="!company.whatsapp" style="display: none">
+
+                        </div>
+                        <div class="instagram" *ngIf="company.instagram">
                             <div class="instagramicon"></div>
                             <div class="instagramLink">
                                 <a href="https://www.instagram.com/{{company.instagram}}/" target="_blank"> @{{company.instagram}} </a>
                             </div>
                         </div>
-                        <div class="facebook">
+                        <div class="instagram" *ngIf="!company.instagram" style="display: none">
+
+                        </div>
+                        <div class="facebook" *ngIf="company.facebook">
                             <div class="facebookicon"></div>
                             <div class="facebookLink">
                                 <a href="https://es-la.facebook.com/{{company.facebook}}/" target="_blank"> {{company.facebook}} </a>
                             </div>
                         </div>
-                        <div class="email">
+                        <div class="facebook" *ngIf="!company.facebook" style="display: none">
+                            
+                        </div>
+                        <div class="email" *ngIf="company.mail">
                             <div class="emailicon"></div>
                             <div class="emailLink">
                                 <a href="mailto:{{company.mail}}" target="_blank"> {{company.mail}}</a>
                             </div>
                         </div>
+                        <div class="email" *ngIf="!company.mail" style="display: none">
+                        </div>
                     </div>
-                </div>
-                
-                
-                
             </div>
             
         </div>
