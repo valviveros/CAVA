@@ -136,8 +136,16 @@ export class ProductsComponent implements OnInit {
     this.router.navigate(['/sellers/myprofile']);
   }
 
+  goToMyProducts() {
+    this.router.navigate(['/sellers/products']);
+  }
+
   goToAddProducts(){
     this.router.navigate(['/sellers/products/add']);
+  }
+
+  goToContact(){
+    this.router.navigate(['/sellers/contact']);
   }
 
   getPath(event:any){

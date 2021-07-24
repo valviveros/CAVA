@@ -128,6 +128,10 @@ export class MyProfileComponent implements OnInit {
     this.router.navigate(['/sellers/products']);
   }
 
+  goToContact() {
+    this.router.navigate(['/sellers/contact']);
+  }
+
   createProfileForm(): FormGroup {
     return this.formBuilder.group(
       {

@@ -89,6 +89,10 @@ export class AddProductComponent implements OnInit {
     this.router.navigate(['/sellers/products']);
   }
 
+  goToContact() {
+    this.router.navigate(['/sellers/contact']);
+  }
+
   getPath(event:any){
     this.path = event.target.files[0]
   }
@@ -147,7 +151,7 @@ export class AddProductComponent implements OnInit {
         const fileName = '/products/'+Date.now();
 
         let uploadTask = await this.firebaseStorage.upload(fileName,this.path)
-        let url = await uploadTask.ref.getDownloadURL()
+        let url = await uploadTask.ref.getDownloadURL();
         console.log(url)
         this.firebase.database.ref(`users/${Key}/company/products`).push({
           name: this.productForm.controls.name.value,

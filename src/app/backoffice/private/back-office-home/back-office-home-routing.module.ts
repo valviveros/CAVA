@@ -3,6 +3,7 @@ import { AngularFireAuthGuard, redirectUnauthorizedTo } from "@angular/fire/auth
 import { Routes, RouterModule } from "@angular/router";
 import { BackOfficeHomeComponent } from "./back-office-home.component";
 import { AddProductComponent } from "./sections/add-product/add-product.component";
+import { ContactComponent } from "./sections/contact/contact.component";
 import { MyProfileComponent } from "./sections/my-profile/my-profile.component";
 import { ProductsComponent } from "./sections/products/products.component";
 
@@ -35,7 +36,11 @@ const routes: Routes = [
         component: AddProductComponent
       }
     ]
-  }
+  },
+  {
+    path: 'contact',
+    component: ContactComponent
+  },
 ];
 
 @NgModule({

@@ -5,6 +5,7 @@ import { MyProfileComponent } from './sections/my-profile/my-profile.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddProductComponent } from './sections/add-product/add-product.component';
 import { ProductsComponent } from './sections/products/products.component';
+import { ContactComponent } from './sections/contact/contact.component';
 
 
 
@@ -12,7 +13,8 @@ import { ProductsComponent } from './sections/products/products.component';
   declarations: [
     MyProfileComponent,
     AddProductComponent,
-    ProductsComponent
+    ProductsComponent,
+    ContactComponent
   ],
   imports: [
     CommonModule,
