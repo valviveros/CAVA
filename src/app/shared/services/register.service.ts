@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
-import { UserI } from "../interfaces/UserI";
+import { User } from "../interfaces/User";
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class RegisterService {
     return this.registerList = this.firebase.list('users');
   }
 
-  insertRegister(register: UserI) {
+  insertRegister(register: User) {
     this.registerList.push({
       name: register.name,
       lname: register.lname,

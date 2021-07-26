@@ -1,98 +1,98 @@
-<div class="appContainer">
-    <div class="navBarContainer">
-        <app-navbar [active]="active"></app-navbar>
-    </div>
-    <div class="carouselContainer">
-        <carousel [cellWidth]="'100%'" [dots]="true" [loop]="true" [height]="452" [arrowsOutside]="false">
-            <div class="carousel-cell" >
-                <img [src]="imagenesCarousel[0]" alt="Random first slide">
+<div class="wrapper">
+    <app-navbar [active]="active"></app-navbar>
+    <div class="content">
+        <div class="carouselContainer">
+            <carousel [cellWidth]="'100%'" [dots]="true" [loop]="true" [height]="422" [arrowsOutside]="false">
+                <div class="carousel-cell" >
+                    <img [src]="imagenesCarousel[0]" alt="Random first slide">
+                </div>
+                <div class="carousel-cell">
+                    <img [src]="imagenesCarousel[1]" alt="Random first slide">
+                </div>
+                <div class="carousel-cell">
+                    <img [src]="imagenesCarousel[2]" alt="Random first slide">
+                </div>
+                <div class="carousel-cell">
+                    <img [src]="imagenesCarousel[3]" alt="Random first slide">
+                </div>
+                <div class="carousel-cell">
+                    <img [src]="imagenesCarousel[4]" alt="Random first slide">
+                </div>
+                <div class="carousel-cell">
+                    <img [src]="imagenesCarousel[5]" alt="Random first slide">
+                </div>
+                <div class="carousel-cell">
+                    <img [src]="imagenesCarousel[6]" alt="Random first slide">
+                </div>        
+            </carousel>
+        </div>
+        <div class="categoriesContainer">
+            <div class="categoriesTitle">
+                Categorías
+            </div> 
+            <div class="categoriesCards">
+                <div class="categoryCardContainer" (click)="loadCategoryPage('Belleza')">
+                    <div class="categoryCardPicture">
+                        <img src="/assets/img/categoryCardPicture1.svg" alt="" srcset="">
+                    </div>
+                    <div class="categoryCardBG">
+                        <div class="categoryName">Belleza</div>
+                    </div>
+                </div>
+                <div class="categoryCardContainer" (click)="loadCategoryPage('Moda')">
+                    <div class="categoryCardPicture">
+                        <img src="/assets/img/categoryCardPicture2.svg" alt="" srcset="">
+                    </div>
+                    <div class="categoryCardBG">
+                        <div class="categoryName">Moda</div>
+                    </div>
+                </div>
+                <div class="categoryCardContainer" (click)="loadCategoryPage('Tecnología')">
+                    <div class="categoryCardPicture">
+                        <img src="/assets/img/categoryCardPicture3.svg" alt="" srcset="">
+                    </div>
+                    <div class="categoryCardBG">
+                        <div class="categoryName">Tecnología</div>
+                    </div>
+                </div>
+                <div class="categoryCardContainer" (click)="loadCategoryPage('Hogar')">
+                    <div class="categoryCardPicture">
+                        <img src="/assets/img/categoryCardPicture4.svg" alt="" srcset="">
+                    </div>
+                    <div class="categoryCardBG">
+                        <div class="categoryName">Hogar</div>
+                    </div>
+                </div>
             </div>
-            <div class="carousel-cell">
-                <img [src]="imagenesCarousel[1]" alt="Random first slide">
+        </div>
+        <div class="contentWrapper">
+            <div class="companiesTitle">
+                Emprendimientos
             </div>
-            <div class="carousel-cell">
-                <img [src]="imagenesCarousel[2]" alt="Random first slide">
+            <div class="companiesContainer">
+                <carousel [arrowsOutside]="true" [margin]="10" [cellsToShow]="2" [height]="235">
+                    <div class="carousel-cell" *ngFor="let company of companies; let i = index">
+                        <app-company-card [companyLogo]="company.companyLogo"
+                        [companyName]="company.companyName" [companyPhoto]="company.companyPhoto"></app-company-card>
+                    </div>  
+                </carousel>
             </div>
-            <div class="carousel-cell">
-                <img [src]="imagenesCarousel[3]" alt="Random first slide">
-            </div>
-            <div class="carousel-cell">
-                <img [src]="imagenesCarousel[4]" alt="Random first slide">
-            </div>
-            <div class="carousel-cell">
-                <img [src]="imagenesCarousel[5]" alt="Random first slide">
-            </div>
-            <div class="carousel-cell">
-                <img [src]="imagenesCarousel[6]" alt="Random first slide">
-            </div>        
-        </carousel>
-    </div>
-    <div class="categoriesContainer">
-        <div class="categoriesTitle">
-            Categorías
         </div> 
-        <div class="categoriesCards">
-            <div class="categoryCardContainer" (click)="loadCategoryPage('Belleza')">
-                <div class="categoryCardPicture">
-                    <img src="/assets/img/categoryCardPicture1.svg" alt="" srcset="">
-                </div>
-                <div class="categoryCardBG">
-                    <div class="categoryName">Belleza</div>
-                </div>
+        <div class="contentWrapper">
+            <div class="companiesTitle">
+                Empresas
             </div>
-            <div class="categoryCardContainer" (click)="loadCategoryPage('Moda')">
-                <div class="categoryCardPicture">
-                    <img src="/assets/img/categoryCardPicture2.svg" alt="" srcset="">
-                </div>
-                <div class="categoryCardBG">
-                    <div class="categoryName">Moda</div>
-                </div>
-            </div>
-            <div class="categoryCardContainer" (click)="loadCategoryPage('Tecnología')">
-                <div class="categoryCardPicture">
-                    <img src="/assets/img/categoryCardPicture3.svg" alt="" srcset="">
-                </div>
-                <div class="categoryCardBG">
-                    <div class="categoryName">Tecnología</div>
-                </div>
-            </div>
-            <div class="categoryCardContainer" (click)="loadCategoryPage('Hogar')">
-                <div class="categoryCardPicture">
-                    <img src="/assets/img/categoryCardPicture4.svg" alt="" srcset="">
-                </div>
-                <div class="categoryCardBG">
-                    <div class="categoryName">Hogar</div>
-                </div>
+            <div class="companiesContainer">
+                <carousel [arrowsOutside]="true" [margin]="10" [cellsToShow]="2" [height]="235">
+                    <div class="carousel-cell" *ngFor="let company of companies; let i = index">
+                        <app-company-card [companyLogo]="company.companyLogo"
+                        [companyName]="company.companyName" [companyPhoto]="company.companyPhoto"></app-company-card>
+                    </div>  
+                </carousel>
             </div>
         </div>
-    </div>
-    <div class="contentWrapper">
-        <div class="companiesTitle">
-            Emprendimientos
+        <div class="footerContainer">
+            <app-footer></app-footer>
         </div>
-        <div class="companiesContainer">
-            <carousel [arrowsOutside]="true" [margin]="10" [cellsToShow]="2" [height]="240">
-                <div class="carousel-cell" *ngFor="let company of companies; let i = index">
-                    <app-company-card [companyLogo]="company.companyLogo"
-                    [companyName]="company.companyName" [companyPhoto]="company.companyPhoto"></app-company-card>
-                </div>  
-            </carousel>
-        </div>
-    </div> 
-    <div class="contentWrapper">
-        <div class="companiesTitle">
-            Empresas
-        </div>
-        <div class="companiesContainer">
-            <carousel [arrowsOutside]="true" [margin]="10" [cellsToShow]="2" [height]="240">
-                <div class="carousel-cell" *ngFor="let company of companies; let i = index">
-                    <app-company-card [companyLogo]="company.companyLogo"
-                    [companyName]="company.companyName" [companyPhoto]="company.companyPhoto"></app-company-card>
-                </div>  
-            </carousel>
-        </div>
-    </div>
-    <div class="footerContainer">
-        <app-footer></app-footer>
     </div>
 </div>

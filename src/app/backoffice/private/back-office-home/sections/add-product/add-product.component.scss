@@ -227,7 +227,7 @@ $borderRadiusCards: 32px;
             }
             .myProfileForm {
                 width: 70%;
-                height: 65%;
+                height: 73%;
                 display: flex;
                 flex-flow: column;
                 align-items: center;
@@ -272,6 +272,13 @@ $borderRadiusCards: 32px;
                                     width: 100%;
                                     padding-left: 0.5em;
                                 }
+                                textarea {
+                                    width: 100%;
+                                    padding-left: 0.5em;
+                                    padding-top: 7px;
+                                    height: 150px;
+                                    resize: none;
+                                }
                             }
                             .buttons {
                                 .is-info {
@@ -292,11 +299,20 @@ $borderRadiusCards: 32px;
         }
     }
 
+    .file-cta,
+    .file-name {
+        padding: .5em 1em !important;
+    }
+
+    .file-icon {
+        margin-right: 0.5em !important;
+    }
+
     .is-invalid {
         border-left: solid 6px red;
         border-color: #dc3545;
     }
-    
+
     input[type="number"]::-webkit-inner-spin-button,
     input[type="number"]::-webkit-outer-spin-button {
         -webkit-appearance: none;

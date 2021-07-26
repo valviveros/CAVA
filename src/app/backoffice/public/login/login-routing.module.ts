@@ -3,7 +3,7 @@ import { AngularFireAuthGuard, redirectLoggedInTo } from "@angular/fire/auth-gua
 import { Routes, RouterModule } from "@angular/router";
 import { LoginComponent } from "./login.component";
 
-const redirectAuthorizedToSellers = () => redirectLoggedInTo(['sellers']);
+const redirectAuthorizedToSellers = () => redirectLoggedInTo(['sellers/myprofile']);
 
 const routes: Routes = [
   {

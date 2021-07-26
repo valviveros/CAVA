@@ -41,7 +41,7 @@ import { ShopComponent } from './pages/public/shop/shop.component';
     BackOfficeHomeComponent,
     CardsFilterComponent,
     CategoriesComponent,
-    ShopComponent,
+    ShopComponent
   ],
   imports: [
     BrowserModule,

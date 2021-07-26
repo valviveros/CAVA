@@ -62,7 +62,7 @@ $borderRadiusCards: 32px;
         }
         .loginForm {
             width: 50%;
-            height: 40%;
+            height: 45%;
             display: flex;
             flex-flow: column;
             align-items: center;
@@ -101,10 +101,12 @@ $borderRadiusCards: 32px;
                             .is-info {
                                 width: 100px;
                                 background: $fontColor;
+                                font-family: $mediumFont;
                             }
                             .is-success {
                                 width: 100px;
                                 background: $activeFontColor;
+                                font-family: $mediumFont;
                             }
                         }
                     }
@@ -114,5 +116,10 @@ $borderRadiusCards: 32px;
     }
     .footerContainer {
         width: 100%;
+    }
+
+    .is-invalid {
+        border-left: solid 6px red;
+        border-color: #dc3545;
     }
 }

@@ -39,7 +39,7 @@ $borderRadiusCards: 32px;
     box-sizing: border-box;
 }
 
-.myProfileContainer {
+.contactContainer {
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -214,18 +214,18 @@ $borderRadiusCards: 32px;
                 }
             }
         }
-        .myProfileInfoContainer {
+        .contactInfoContainer {
             width: 100%;
             height: 86.7%;
             display: flex;
             flex-flow: column;
             align-items: center;
-            .myProfileTitle {
+            .contactTitle {
                 margin: 25px 0 40px 0;
                 font-size: $subtitleSize;
                 font-family: $blackFont;
             }
-            .myProfileForm {
+            .contactForm {
                 width: 70%;
                 height: 65%;
                 display: flex;
@@ -234,7 +234,7 @@ $borderRadiusCards: 32px;
                 padding: 2%;
                 border-radius: $borderRadiusCards;
                 background: $cardsBGColor;
-                .myProfileMessage {
+                .contactMessage {
                     width: 80%;
                     height: 10%;
                     margin-bottom: 3%;
@@ -262,7 +262,7 @@ $borderRadiusCards: 32px;
                         border: 1px solid $failureMessage;
                     }
                 }
-                .myProfileFields {
+                .contactFields {
                     width: 80%;
                     form {
                         width: 100%;

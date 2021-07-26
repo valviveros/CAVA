@@ -1,11 +1,11 @@
-<div class="myProfileContainer">
+<div class="contactContainer">
     <div class="leftContainer">
         <div class="topBarLeftContainer">
             <img class="navBarLogo" src="/assets/img/cavaNavBarLogo.svg" alt="" srcset="">
         </div>
         <ul class="sideMenu">
-            <li class="sideMenuBtn active" (click)="goToMyProfile()">Mi perfil</li>
-            <li class="sideMenuBtn options" (click)="sideMenuOptionClicked()">
+            <li class="sideMenuBtn" (click)="goToMyProfile()">Mi perfil</li>
+            <li class="sideMenuBtn options active" (click)="sideMenuOptionClicked()">
                 Negocio
                 <span class="icon is-small">
                     <i class="fas fa-angle-left" aria-hidden="true"></i>
@@ -14,7 +14,7 @@
             <ul class="btnOptionsContainer">
                 <li class="sideMenuInnerBtn">Información negocio</li>
                 <li class="sideMenuInnerBtn" (click)="goToMyProducts()">Productos/Servicios</li>
-                <li class="sideMenuInnerBtn" (click)="goToContact()">Contacto</li>
+                <li class="sideMenuInnerBtn active" (click)="goToContact()">Contacto</li>
             </ul>
         </ul>
     </div>
@@ -41,49 +41,50 @@
                 </div>
             </div>
         </div>
-        <div class="myProfileInfoContainer">
-            <div class="myProfileTitle">MI PERFIL</div>
-            <div class="myProfileForm">
-                <div class="myProfileMessage">
+        <div class="contactInfoContainer">
+            <div class="contactTitle">CONTACTO</div>
+            <div class="contactForm">
+                <div class="contactMessage">
                     <div id="successMessage" class="successMessage">Se han guardado los datos correctamente</div>
-                    <div id="failureMessage" class="failureMessage">Verifique que los campos estén completos y correctos</div>
+                    <div id="failureMessage" class="failureMessage">Verifique que los campos estén completos y correctos
+                    </div>
                 </div>
-                <div class="myProfileFields">
-                    <form [formGroup]="myProfileInfoForm">
+                <div class="contactFields">
+                    <form [formGroup]="contactForm">
                         <div class="field">
                             <p class="control">
-                                <input class="input" type="text" placeholder="Email" formControlName="email"
-                                    [ngClass]="{'is-invalid': validateField('email')}">
+                                <input class="input" type="text" placeholder="Página web" formControlName="webpage"
+                                    [ngClass]="{'is-invalid': validateField('webpage')}">
                             </p>
                         </div>
                         <div class="field">
                             <p class="control">
-                                <input class="input" type="text" placeholder="Nombre" formControlName="name"
-                                    [ngClass]="{'is-invalid': validateField('name')}">
+                                <input class="input" type="text" placeholder="WhatsApp" formControlName="whatsapp"
+                                    [ngClass]="{'is-invalid': validateField('whatsapp')}">
                             </p>
                         </div>
                         <div class="field">
                             <p class="control">
-                                <input class="input" type="text" placeholder="Apellido" formControlName="lname"
-                                    [ngClass]="{'is-invalid': validateField('lname')}">
+                                <input class="input" type="text" placeholder="Instagram" formControlName="instagram"
+                                    [ngClass]="{'is-invalid': validateField('instagram')}">
                             </p>
                         </div>
                         <div class="field">
                             <p class="control">
-                                <input class="input" type="text" placeholder="Cédula"
-                                    formControlName="id"
-                                    [ngClass]="{'is-invalid': validateField('id')}">
+                                <input class="input" type="text" placeholder="Facebook" formControlName="facebook"
+                                    [ngClass]="{'is-invalid': validateField('facebook')}">
                             </p>
                         </div>
                         <div class="field">
                             <p class="control">
-                                <input class="input" type="text" placeholder="Celular" formControlName="cellphoneNumber"
-                                    [ngClass]="{'is-invalid': validateField('cellphoneNumber')}">
+                                <input class="input" type="text" placeholder="Correo electrónico" formControlName="contactEmail"
+                                    [ngClass]="{'is-invalid': validateField('contactEmail')}">
                             </p>
                         </div>
                         <div class="field">
                             <div class="buttons">
-                                <button [disabled]="myProfileInfoForm.invalid" type="submit" class="button is-info" (click)="onSubmit()">Guardar</button>
+                                <button [disabled]="contactForm.invalid" type="submit" class="button is-info"
+                                    (click)="onSubmit()">Guardar</button>
                             </div>
                         </div>
                     </form>
