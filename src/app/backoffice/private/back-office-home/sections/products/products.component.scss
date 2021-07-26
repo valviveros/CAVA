@@ -227,7 +227,7 @@ $borderRadiusCards: 32px;
                 font-family: $blackFont;
             }
             .myProfileForm {
-                width: 70%;
+                width: 90%;
                 display: flex;
                 flex-flow: column;
                 align-items: center;
@@ -244,10 +244,11 @@ $borderRadiusCards: 32px;
                         gap: 15px;
                         display: flex;
                         flex-flow: row;
+                        align-items: center;
                         justify-content: space-evenly;
                         .productCards {
-                            width: 18vw;
-                            height: 18vw;
+                            width: 16vw;
+                            height: 16vw;
                             background-color: $productCard;
                             border-radius: 40px;
                             background-position: center;

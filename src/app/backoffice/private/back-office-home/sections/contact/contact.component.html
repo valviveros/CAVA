@@ -4,8 +4,8 @@
             <img class="navBarLogo" src="/assets/img/cavaNavBarLogo.svg" alt="" srcset="">
         </div>
         <ul class="sideMenu">
-            <li class="sideMenuBtn active" (click)="goToMyProfile()">Mi perfil</li>
-            <li class="sideMenuBtn options" (click)="sideMenuOptionClicked()">
+            <li class="sideMenuBtn" (click)="goToMyProfile()">Mi perfil</li>
+            <li class="sideMenuBtn options active" (click)="sideMenuOptionClicked()">
                 Negocio
                 <span class="icon is-small">
                     <i class="fas fa-angle-left" aria-hidden="true"></i>
@@ -14,7 +14,7 @@
             <ul class="btnOptionsContainer">
                 <li class="sideMenuInnerBtn">Información negocio</li>
                 <li class="sideMenuInnerBtn" (click)="goToMyProducts()">Productos/Servicios</li>
-                <li class="sideMenuInnerBtn" (click)="goToContact()">Contacto</li>
+                <li class="sideMenuInnerBtn active" (click)="goToContact()">Contacto</li>
             </ul>
         </ul>
     </div>

@@ -69,6 +69,7 @@ export class ProductsComponent implements OnInit {
     this.firebaseAuth.user.subscribe((async (data) => {
       this.user = data;
       this.Email = this.user['email'];
+      this.sellersName = this.user['displayName'];
 
       await this.firebase.database.ref('users').once('value', (users) => {
         users.forEach((user) => {
