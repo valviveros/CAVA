@@ -2,7 +2,7 @@
     <app-navbar [active]="active"></app-navbar>
     <div class="content">
         <div class="carouselContainer">
-            <carousel [cellWidth]="'100%'" [dots]="true" [loop]="true" [height]="452" [arrowsOutside]="false">
+            <carousel [cellWidth]="'100%'" [dots]="true" [loop]="true" [height]="422" [arrowsOutside]="false">
                 <div class="carousel-cell" >
                     <img [src]="imagenesCarousel[0]" alt="Random first slide">
                 </div>
@@ -70,7 +70,7 @@
                 Emprendimientos
             </div>
             <div class="companiesContainer">
-                <carousel [arrowsOutside]="true" [margin]="10" [cellsToShow]="2" [height]="265">
+                <carousel [arrowsOutside]="true" [margin]="10" [cellsToShow]="2" [height]="235">
                     <div class="carousel-cell" *ngFor="let company of companies; let i = index">
                         <app-company-card [companyLogo]="company.companyLogo"
                         [companyName]="company.companyName" [companyPhoto]="company.companyPhoto"></app-company-card>
@@ -83,7 +83,7 @@
                 Empresas
             </div>
             <div class="companiesContainer">
-                <carousel [arrowsOutside]="true" [margin]="10" [cellsToShow]="2" [height]="265">
+                <carousel [arrowsOutside]="true" [margin]="10" [cellsToShow]="2" [height]="235">
                     <div class="carousel-cell" *ngFor="let company of companies; let i = index">
                         <app-company-card [companyLogo]="company.companyLogo"
                         [companyName]="company.companyName" [companyPhoto]="company.companyPhoto"></app-company-card>
@@ -95,5 +95,4 @@
             <app-footer></app-footer>
         </div>
     </div>
-    
 </div>
