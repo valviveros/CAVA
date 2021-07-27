@@ -28,6 +28,16 @@ export class SearchComponent implements OnInit {
       companyLogo : "/assets/img/companyLogo2.svg",
       companyName : "Deluna's Dream",
       companyPhoto : "/assets/img/companyPhoto2.svg"
+    },
+    {
+      companyLogo: "/assets/img/companyLogo1.svg",
+      companyName: "Agro Dinero",
+      companyPhoto: "/assets/img/companyPhoto1.svg"
+    },
+    {
+      companyLogo: "/assets/img/companyLogo2.svg",
+      companyName: "Deluna's Dream",
+      companyPhoto: "/assets/img/companyPhoto2.svg"
     }
   ]
 

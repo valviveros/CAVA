@@ -18,6 +18,8 @@ $navbarFontSize: 15px;
 $footerFontSize: 12px;
 $borderRadiusCards: 32px;
 
+$maxWidth: 1200px;
+
 @font-face {
     font-family: avenirLight;
     src: url(/assets/fonts/avenir-lt-35-light.ttf);
@@ -39,133 +41,79 @@ $borderRadiusCards: 32px;
     box-sizing: border-box;
 }
 
-.searchContainer {
+.wrapper {
+    display: flex;
     width: 100vw;
-    height: 120vh;
+    background: $backgroundColor;
+    justify-content: center;
+}
+.searchContent {
+    width: 100vw;
+    max-width: $maxWidth;
     display: flex;
     flex-flow: column;
     align-items: center;
-    background: $backgroundColor;
     font-family: $mediumFont;
     color: $fontColor;
-    .navBarContainer {
+    padding-top: 110px;
+    app-navbar {
         width: 100%;
-        height: 13.3%;
+        height: 110px;
+        position: relative;
     }
-    .contentWrapper {
+    .searchBarWrapper {
         width: 100%;
-        height: 100%;
-        margin-top: 1%;
+        height: 110px;
         display: flex;
-        flex-flow: column;
+        flex-flow: row;
         align-items: center;
-        .searchBarWrapper {
+        justify-content: center;
+        background: $cardsBGColor;
+        .searchBarContainer {
+            width: 88.7%;
+            height: 110px;
+            display: flex;
+            align-items: center;
+            .searchIcon {
+                width: 45px;
+                height: 45px;
+            }
+            .searchBar {
+                width: calc(100% - 65px);
+                height: 110px;
+                margin-left: 20px;
+                font-family: $mediumFont;
+                font-size: $searchBarFontSize;
+                border: none;
+                outline: none;
+                &::placeholder {
+                    color: $fontColor;
+                    opacity: 1;
+                }
+            }
+        }
+    }
+    .filterContainer {
+        width: 76.1%;
+        height: 49px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin: 25px 0;
+    }
+    .companiesContainer {
+        width: 76.1%;
+        display: grid;
+        column-gap: 12px;
+        row-gap: 25px;
+        grid-template-columns: repeat(2, 50%);
+        app-company-card {
             width: 100%;
-            height: 15%;
-            display: flex;
-            flex-flow: row;
-            align-items: center;
-            justify-content: center;
-            background: $cardsBGColor;
-            .searchBarContainer {
-                width: 88.7%;
-                height: 100%;
-                display: flex;
-                align-items: center;
-                .searchIcon {
-                    width: 45px;
-                    height: 45px;
-                }
-                .searchBar {
-                    width: calc(100% - 65px);
-                    height: 100%;
-                    margin-left: 20px;
-                    font-family: $mediumFont;
-                    font-size: $searchBarFontSize;
-                    border: none;
-                    outline: none;
-                    &::placeholder {
-                        color: $fontColor;
-                        opacity: 1;
-                    }
-                }
-            }
-        }
-        .filterContainer {
-            width: 76.1%;
-            height: 14%;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-        }
-        .companiesContainer {
-            width: 76.1%;
-            height: 35.7%;
-            display: grid;
-            grid-template-columns: repeat(2, 52%);
-            grid-template-rows: repeat(8, 100%);
-            //column-gap: 1%;
-            //row-gap: 1%;
-            //justify-content: space-between;
-            app-company-card {
-                width: 105%;
-                height: 105%;
-            }
+            height: 235px;
         }
     }
     .footerContainer {
         width: 100%;
+        margin-top: 3%;
     }
-    .card {
-        height: 100%;
-        width: 50%;
-        border-radius: $borderRadiusCards;
-        font-family: $mediumFont;
-        font-size: $cardsFontSize;
-        /*display: flex;
-        flex-flow: row;
-        cursor: pointer;*/
-    &.is-horizontal {
-        height: 100%;
-        width: 100%;
-        display: flex;
-        flex-flow: row;
-      
-      .card-image {
-        width: 50%;
-        height: 100%;
-        &.is-logo{
-            width: 10%;
-            height: 10%;
-        }
-      }
-      
-      .card-stacked {
-        width: 50%;
-        height: 100%;
-        /*flex-direction: column;
-        flex: 1 1 auto;
-        display: flex;
-        position: relative;*/
-        
-        .card-content {
-          flex-grow: 1;
-          justify-self: center;
-        }
-      }
-    }
-    
-  //   .card-footer {
-  //     .card-footer-item {
-  //       padding-left: 1.5rem;
-  //       padding-right: 1.5rem;
-  //     }
-      
-  //     div.card-footer-item {
-  //       justify-content: unset;
-  //     }
-  //   }
-  }
 }
-
-
