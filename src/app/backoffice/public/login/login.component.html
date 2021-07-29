@@ -1,46 +1,48 @@
 <div class="loginContainer">
-    <div class="navBarContainer">
-        <app-navbar [active]="active"></app-navbar>
-    </div>
-    <div class="loginFormContainer">
-        <div class="loginTitle">LOGIN</div>
-        <div class="loginForm">
-            <div class="loginMessage">
-                <div id="userDoesNotExist" class="userDoesNotExist">El usuario no existe
-                </div>
-                <div id="passwordWrong" class="userDoesNotExist">La contraseña es incorrecta
-                </div>
-            </div>
-            <div class="loginFields">
-                <form [formGroup]="loginForm">
-                    <div class="field">
-                        <p class="control has-icons-left">
-                            <input class="input" formControlName="signupEmail" type="email" placeholder="Correo electrónico"
-                             [ngClass]="{'is-invalid': validateField('signupEmail')}">
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-envelope"></i>
-                            </span>
-                        </p>
+    <app-navbar [active]="active"></app-navbar>
+    <div class="formContent">
+        <div class="loginFormContainer">
+            <div class="loginTitle">LOGIN</div>
+            <div class="loginForm">
+                <div class="loginMessage">
+                    <div id="userDoesNotExist" class="userDoesNotExist">El usuario no existe
                     </div>
-                    <div class="field">
-                        <p class="control has-icons-left">
-                            <input class="input" formControlName="signupPassword" type="password" placeholder="Contraseña" [ngClass]="{'is-invalid': validateField('signupPassword')}">
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-lock"></i>
-                            </span>
-                        </p>
+                    <div id="passwordWrong" class="userDoesNotExist">La contraseña es incorrecta
                     </div>
-                    <div class="field">
-                        <div class="buttons">
-                            <button [disabled]="loginForm.invalid" type="submit" class="button is-info" (click)="doLogin()">Login</button>
-                            <button class="button is-success" (click)="goToRegister()">Registrarse</button>
+                </div>
+                <div class="loginFields">
+                    <form [formGroup]="loginForm">
+                        <div class="field">
+                            <p class="control has-icons-left">
+                                <input class="input" formControlName="signupEmail" type="email" placeholder="Correo electrónico"
+                                    [ngClass]="{'is-invalid': validateField('signupEmail')}">
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                            </p>
                         </div>
-                    </div>
-                </form>
+                        <div class="field">
+                            <p class="control has-icons-left">
+                                <input class="input" formControlName="signupPassword" type="password" placeholder="Contraseña"
+                                    [ngClass]="{'is-invalid': validateField('signupPassword')}">
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-lock"></i>
+                                </span>
+                            </p>
+                        </div>
+                        <div class="field">
+                            <div class="buttons">
+                                <button [disabled]="loginForm.invalid" type="submit" class="button is-info"
+                                    (click)="doLogin()">Login</button>
+                                <button class="button is-success" (click)="goToRegister()">Registrarse</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
+    </div>  
+        <div class="footerContainer">
+            <app-footer></app-footer>
         </div>
-    </div>
-    <div class="footerContainer">
-        <app-footer></app-footer>
     </div>
 </div>

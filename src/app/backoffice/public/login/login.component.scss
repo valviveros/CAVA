@@ -14,6 +14,7 @@ $categoryCardFontSize: 23.7px;
 $navbarFontSize: 15px;
 $footerFontSize: 12px;
 $borderRadiusCards: 32px;
+$maxWidth: 1200px;
 
 @font-face {
     font-family: avenirLight;
@@ -37,24 +38,35 @@ $borderRadiusCards: 32px;
 }
 
 .loginContainer {
+    display: flex;
+    width: 100vw;
+    background: $backgroundColor;
+    justify-content: center;
+}
+
+.formContent {
     width: 100vw;
     height: 100vh;
+    max-width: $maxWidth;
     display: flex;
     flex-flow: column;
     align-items: center;
-    background: $backgroundColor;
+    justify-content: center;
     font-family: $mediumFont;
     color: $fontColor;
-    .navBarContainer {
-        width: 100%;
-        height: 13.3%;
-    }
+    padding-top: 110px;
     .loginFormContainer {
         width: 100%;
-        height: calc(100% - 109px);
+        height: 100%;
         display: flex;
         flex-flow: column;
         align-items: center;
+        justify-content: center;
+        app-navbar {
+            width: 100%;
+            height: 110px;
+            position: relative;
+        }
         .loginTitle {
             margin: 25px 0 40px 0;
             font-size: $subtitleSize;
@@ -62,7 +74,7 @@ $borderRadiusCards: 32px;
         }
         .loginForm {
             width: 50%;
-            height: 45%;
+            height: 285px;
             display: flex;
             flex-flow: column;
             align-items: center;
@@ -116,10 +128,10 @@ $borderRadiusCards: 32px;
     }
     .footerContainer {
         width: 100%;
+        margin-top: 3%;
     }
-
-    .is-invalid {
-        border-left: solid 6px red;
-        border-color: #dc3545;
-    }
+}
+.is-invalid {
+    border-left: solid 6px red;
+    border-color: #dc3545;
 }
