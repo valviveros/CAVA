@@ -12,11 +12,13 @@ export interface Shop {
     description: string;
     logo?: string;
     banner?: string;
-    phone_numbers: Array<string>;
+    //phone_numbers: Array<string>;
     email: string;
     website: string;
-    type: ShopType;
-    category: Array<string>;
-    products: Array<Product>
-    social_networks?: { whatsapp?: string; instragram?: string; facebook?: string; }
+    //type: ShopType;
+    //category: Array<string>;
+    //products?: Array<Product>
+    whatsapp?: string;
+    instagram?: string;
+    facebook?: string;
 }

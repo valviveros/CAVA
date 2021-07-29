@@ -18,6 +18,7 @@ $infoCardFontSize:19px;
 $navbarFontSize: 15px;
 $footerFontSize: 12px;
 $borderRadiusCards: 32px;
+$maxWidth: 1200px;
 
 @font-face {
     font-family: avenirLight;
@@ -40,28 +41,40 @@ $borderRadiusCards: 32px;
     box-sizing: border-box;
 }
 
-.shopContainer {
+.wrapper {
+    display: flex;
     width: 100vw;
-    height: 150vh;
+    background: $backgroundColor;
+    justify-content: center;
+}
+
+.content {
+    width: 100vw;
+    max-width: $maxWidth;
     display: flex;
     flex-flow: column;
+    align-items: center;
+    justify-content: center;
     background: $backgroundColor;
     font-family: $mediumFont;
     color: $fontColor;
-    .navBarContainer {
+    app-navbar {
         width: 100%;
-        height: 13.3%;
+        height: 110px;
+        position: relative;
     }
     .contentWrapper {
         width: 100%;
-        height: calc(86.7% - 109px);
+        margin-top: 110px;
+        //height: calc(100% - 110px);
+        height: 100%;
         display: flex;
         flex-flow: column;
         justify-content: space-between;
         align-items: center;
         .main{
             width: 100%;
-            height: 55%;
+            height: 575px;
             .backg{
                 width: 100%;
                 height: 100%;
@@ -77,8 +90,8 @@ $borderRadiusCards: 32px;
                 
                 .frontinfo {
                     position: absolute;
-                    width: 100%;
-                    height: 100%;
+                    width: 100.5%;
+                    height: 100.5%;
                     background: linear-gradient(90deg, rgba(240,245,250,1) 2%, rgba(249,219,69,0) 80%);
                     display: flex;
                     justify-content: center;
@@ -90,8 +103,8 @@ $borderRadiusCards: 32px;
                         align-items:flex-start;
                         justify-content: space-evenly;
                         .logo{
-                            width: 25vw;
-                            height: 27vh;
+                            width: 360px;
+                            height: auto;
                             //background-color: $failureMessage;
                             //background-image:url(src\assets\img\LogoAdida.png) ;
                             background-position: center;
@@ -103,8 +116,8 @@ $borderRadiusCards: 32px;
                             }
                         }
                         .companyinfo{
-                            width: 50%;
-                            height: 40%;
+                            width: 55%;
+                            height: 35%;
                             //background-color: $activeFontColor;
                             font-size:$filterFontSize;
                             color: $fontColor;
@@ -120,20 +133,20 @@ $borderRadiusCards: 32px;
         }
         .downshop{
             width: 100%;
-            height: 45%;
+            height: 455px;
             //background-color:chartreuse ; 
             display: flex;
             justify-content: center; 
-            margin-top: 3%;  
+            //margin-top: 3%;  
          .items{
-            width: 80%;
+            width: 100%;
             height: 100%;
             //background-color: blueviolet;
             display: flex;
             flex-flow: column;
             //align-items: center;
             //justify-content: space-evenly;
-            .productTitle{
+            .typeTitle{
                 width: 100%;
                 height: 15%;
                 //background-color: greenyellow;
@@ -153,13 +166,13 @@ $borderRadiusCards: 32px;
                         width: 100%;
                         height: 2px;
                         background-color: black;
-                        //margin-top: 2%;
+                        margin-top: 1.5%;
                     }
                     .underlineContact{
                         width: 100%;
                         height: 2px;
                         background-color: black;
-                        //margin-top: 1.2%;
+                        margin-top: 0.8%;
                     }
                 }
             }
@@ -169,10 +182,10 @@ $borderRadiusCards: 32px;
                 display: flex;
                 flex-flow: row;
                 justify-content: space-evenly;
-                margin-top: 5%;
+                margin-top: 3%;
                 .productCards{
-                    width: 18vw;
-                    height: 18vw;
+                    width: 270px;
+                    height: 270px;
                     background-color: $productCard;
                     border-radius: 40px;
                     background-position: center;
@@ -214,15 +227,24 @@ $borderRadiusCards: 32px;
                         align-items: center;
                         background-color: $activeFontColor;
                         text-align: center;
-                        font-size:$cardsFontSize;
+                        font-size:25px;
                         font-family: $mediumFont;
                         color:$fontColor;
                         border-radius: 40px;
+                        //Titulo maximo 35 caracteres
                         .productInfo{
-                            font-size:$footerFontSize;
+                            font-size:$infoCardFontSize;
                             font-family: $mediumFont;
                             color:$fontColor;
                             width: 80%;
+                            //Maximo 110 caracteres
+                        }
+                        p{
+                            font-size:$infoCardFontSize;
+                            font-family: $mediumFont;
+                            font-weight: bold;
+                            color:$fontColor;
+                            //margin-top: 10px;
                         }
                     }
 
@@ -234,6 +256,8 @@ $borderRadiusCards: 32px;
                 height: 85%;
                 display: flex;
                 flex-flow: column;
+                //justify-content: space-between;
+                //margin-top: 5%;
                 .web{
                     width: 70%;
                     height: 22%;
@@ -241,9 +265,10 @@ $borderRadiusCards: 32px;
                     display: flex;
                     flex-flow: row;
                     align-items: center;
+                    //margin-top: 1%;
                     .webicon{
                         width: 35px;
-                        height: 80%;
+                        height: 100%;
                         background-position: center;
                         background-size: contain;
                         background-repeat: no-repeat;
@@ -251,12 +276,12 @@ $borderRadiusCards: 32px;
                     }
                     .webLink{
                         width: 90%;
-                        height: 100%;
+                        //height: 100%;
                         font-size:$filterFontSize;
                         color: $fontColor;
                         font-family: $mediumFont;
                         text-align: left;
-                        margin-top: 5%;
+                        //margin-top: 4%;
                         margin-left: 2%;
                         a:link, a:visited {
                             color: black;
@@ -275,9 +300,10 @@ $borderRadiusCards: 32px;
                     display: flex;
                     flex-flow: row;
                     align-items: center;
+                    //margin-top: 1%;
                     .whatsappicon{
                         width: 35px;
-                        height: 80%;
+                        height: 100%;
                         background-position: center;
                         background-size: contain;
                         background-repeat: no-repeat;
@@ -285,12 +311,12 @@ $borderRadiusCards: 32px;
                     }
                     .whatsappLink{
                         width: 90%;
-                        height: 100%;
+                        //height: 100%;
                         font-size:$filterFontSize;
                         color: $fontColor;
                         font-family: $mediumFont;
                         text-align: left;
-                        margin-top: 5%;
+                        //margin-top: 4%;
                         margin-left: 2%;
                         a:link, a:visited {
                             color: black;
@@ -309,9 +335,10 @@ $borderRadiusCards: 32px;
                     display: flex;
                     flex-flow: row;
                     align-items: center;
+                    //margin-top: 1%;
                     .instagramicon{
                         width: 35px;
-                        height: 80%;
+                        height: 100%;
                         background-position: center;
                         background-size: contain;
                         background-repeat: no-repeat;
@@ -319,12 +346,12 @@ $borderRadiusCards: 32px;
                     }
                     .instagramLink{
                         width: 90%;
-                        height: 100%;
+                        //height: 100%;
                         font-size:$filterFontSize;
                         color: $fontColor;
                         font-family: $mediumFont;
                         text-align: left;
-                        margin-top: 5%;
+                        //margin-top: 4%;
                         margin-left: 2%;
                         a:link, a:visited {
                             color: black;
@@ -343,9 +370,10 @@ $borderRadiusCards: 32px;
                     display: flex;
                     flex-flow: row;
                     align-items: center;
+                    //margin-top: 1%;
                     .facebookicon{
                         width: 35px;
-                        height: 80%;
+                        height: 100%;
                         background-position: center;
                         background-size: contain;
                         background-repeat: no-repeat;
@@ -353,12 +381,12 @@ $borderRadiusCards: 32px;
                     }
                     .facebookLink{
                         width: 90%;
-                        height: 100%;
+                        //height: 100%;
                         font-size:$filterFontSize;
                         color: $fontColor;
                         font-family: $mediumFont;
                         text-align: left;
-                        margin-top: 5%;
+                        //margin-top: 4%;
                         margin-left: 2%;
                         a:link, a:visited {
                             color: black;
@@ -377,9 +405,10 @@ $borderRadiusCards: 32px;
                     display: flex;
                     flex-flow: row;
                     align-items: center;
+                    //margin-top: 1%;
                     .emailicon{
                         width: 35px;
-                        height: 80%;
+                        height: 100%;
                         background-position: center;
                         background-size: contain;
                         background-repeat: no-repeat;
@@ -387,12 +416,12 @@ $borderRadiusCards: 32px;
                     }
                     .emailLink{
                         width: 90%;
-                        height: 100%;
+                        //height: 100%;
                         font-size:$filterFontSize;
                         color: $fontColor;
                         font-family: $mediumFont;
                         text-align: left;
-                        margin-top: 5%;
+                        //margin-top: 4%;
                         margin-left: 2%;
                         a:link, a:visited {
                             color: black;

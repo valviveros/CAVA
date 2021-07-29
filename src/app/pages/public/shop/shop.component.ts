@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ShopCompanyI } from 'src/app/shared/interfaces/ShopCompanyI';
+import { Shop } from 'src/app/shared/interfaces/Shop';
 import { ProductListI } from 'src/app/shared/interfaces/ProductListI';
+import { Product } from 'src/app/shared/interfaces/Product';
+//import { ShopType } from 'src/app/shared/interfaces/ShopType';
 
 
 @Component({
@@ -10,36 +13,87 @@ import { ProductListI } from 'src/app/shared/interfaces/ProductListI';
 })
 export class ShopComponent implements OnInit {
   active: number = 0;
-  companies: Array<ShopCompanyI> = [
+  /*companies: Array<ShopCompanyI> = [
     {
       companyBackground: "/assets/img/FondoAdidas.jpg",
       companyLogo: "/assets/img/LogoAdida.png",
-      companyInfo: "Empezamos en un lavadero y conquistamos el mundo. Y en el medio, hemos marcado un gran gol y, a veces, hemos tenido problemas para alcanzar nuestros objetivos. Hemos hecho todo lo posible para lo mejor. Hemos mejorado y crecido. Mirando hacia el futuro, recordando siempre de dónde venimos.",
+      companyInfo: "Lorem ipsum dolor sit amet consectetur adipiscing elit aenean gravida diam proin, dictumst vehicula fames curabitur porta aliquet ultricies felis ullamcorper interdum. Elementum ut senectus nisl varius quis proin sem mattis dapibus, praesent eros a dignissim orci lectus volutpat pellentesque vivamus, magna condimentum rutrum gravida.", //maximo caracteres 335,
       webLink: "https://www.adidas.co/",
       whatsapp: "3162555666",
       instagram: "adidasco",
-      /*facebook: "adidas",
-      mail: "adidasco@hotmail.com",*/
+      facebook: "adidas",
+      mail: "adidasco@hotmail.com",
 
     }
+  ]*/
+  companies: Array<Shop> = [
+    {
+      id: "1",
+      name: "Adidas",
+      description: "Lorem ipsum dolor sit amet consectetur adipiscing elit aenean gravida diam proin, dictumst vehicula fames curabitur porta aliquet ultricies felis ullamcorper interdum. Elementum ut senectus nisl varius quis proin sem mattis dapibus, praesent eros a dignissim orci lectus volutpat pellentesque vivamus, magna condimentum rutrum gravida.",
+      logo: "/assets/img/LogoAdida.png",
+      banner: "/assets/img/FondoAdidas.jpg",
+      //phone_numbers: Array<"string">,
+      email: "string",
+      website: "string",
+      //type: ShopType,
+      //category: Array<string>,
+      //products: Array<Product>,
+      whatsapp: "string", 
+      instagram: "string",
+      facebook: "string"
+    }
   ]
-  products: Array<ProductListI> =[
+
+  products: Array<Product>=[
+    {
+      id: "2",
+      name: "Producto 1",
+      description: "Lorem ipsum dolor sit amet consectetur adipiscing elit aenean gravida diam proin, dictumst vehicula fames curabitur porta aliquet ultricies felis ulla",
+      price: 2500,
+      img: "/assets/img/Cuadrada2.jpg",
+      //categories: Array<string>, 
+    },
+    {
+      id: "1",
+      name: "Zapatotes Negros Adidas Calida 2020",
+      description: "Lorem ipsum dolor sit amet consectetur adipiscing elit aenean gravida diam proin gravida diam proin gravida di",
+      price: 125000,
+      img: "/assets/img/Cuadrada1.jpg",
+      //categories: Array<string>, 
+    },
+    {
+      id: "1",
+      name: "Zapatotes Negros Adidas Calida 2020",
+      description: "Lorem ipsum dolor sit amet consectetur adipiscing elit aenean gravida diam proin gravida diam proin gravida di",
+      price: 125000,
+      img: "/assets/img/Cuadrada1.jpg",
+      //categories: Array<string>, 
+    }
+    
+  ]
+  /*Product: Array<Product> =[
     {
       productphoto: "/assets/img/Cuadrada1.jpg",
       productTitle: "producto 1",
-      productInfo: "esta es la informacion del producto1",
+      productInfo: "Lorem ipsum dolor sit amet consectetur adipiscing elit aenean gravida diam proin, dictumst vehicula fames curabitur porta aliquet ultricies felis ulla",
     },
     {
       productphoto: "/assets/img/Cuadrada2.jpg",
-      productTitle: "producto 2",
-      productInfo: "esta es la informacion del producto2",
+      productTitle: "Zapatotes Negros Adidas Calida 2020",
+      productInfo: "Lorem ipsum dolor sit amet consectetur adipiscing elit aenean gravida diam proin, dictumst vehicula fames curabitur porta ali",
+    },
+    {
+      productphoto: "/assets/img/Cuadrada2.jpg",
+      productTitle: "Zapatotes Negros Adidas Calida 2020",
+      productInfo: "Lorem ipsum dolor sit amet consectetur adipiscing elit aenean gravida diam proin, dictumst vehicula fames curabitur porta ali",
     },
     {
       productphoto: "/assets/img/Zapatos2.png",
       productTitle: "producto 3",
       productInfo: "esta es la informacion del producto 3",
     }
-  ]
+  ]*/
 
   showDiv = {
     contact : false,
