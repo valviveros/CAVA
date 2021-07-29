@@ -1,11 +1,10 @@
-<div class="wrapper">
-
+<div class="wrapper" (scroll)="onScroll()">
     <app-navbar [active]="active"></app-navbar>
     <div class="content">
         <div class="contentWrapper" *ngFor="let company of companies; let i = index">
             <div class="main" >
                 <div class="backg" >
-                    <img [src]="company.banner" alt="" srcset="">
+                    <img class="backgroundImg" [src]="company.banner" alt="" srcset="">
                     <div class="frontinfo">
                         <div class="information">
                             <div class="logo">
@@ -22,17 +21,11 @@
             <div class="downshop">
                 <div class="items">
                     <div class="typeTitle">
-                        <div class="categoryTitle" (click)="showDiv.product = !showDiv.product; showDiv.contact = false">
-                            Productos
-                            <div *ngIf="showDiv.product">
-                                <div class="underlineProduct"></div>
-                            </div>    
+                        <div class="categoryTitle" [ngClass]="{ 'underline': showDiv.product }" (click)="showDiv.product = !showDiv.product; showDiv.contact = false; ">
+                            Productos  
                         </div>
-                        <div class="categoryTitle" (click)="showDiv.contact = !showDiv.contact; showDiv.product = false" >
+                        <div class="categoryTitle"[ngClass]="{ 'underline': showDiv.contact }" (click)="showDiv.contact = !showDiv.contact; showDiv.product = false" >
                             Contacto Directo
-                            <div *ngIf="showDiv.contact">
-                                <div class="underlineContact"></div>
-                            </div>
                         </div>
                     </div>
                         <div class="productsContainer" *ngIf="showDiv.product">
