@@ -1,8 +1,6 @@
-<div class="searchContainer">
-    <div class="navBarContainer">
-        <app-navbar [active]="active"></app-navbar>
-    </div>
-    <div class="contentWrapper">
+<div class="wrapper">
+  <app-navbar [active]="active"></app-navbar>
+    <div class="searchContent">
         <div class="searchBarWrapper">
             <div class="searchBarContainer">
                 <img class="searchIcon" src="/assets/img/searchIcon.svg" alt="" srcset="">
@@ -15,33 +13,8 @@
         <div class="companiesContainer">
             <app-company-card *ngFor="let company of companies; let i = index"[companyLogo]="company.companyLogo" [companyName]="company.companyName"[companyPhoto]="company.companyPhoto"></app-company-card>
         </div>
-        <!--<div class="card">
-            <div class="card is-horizontal">
-                <div class="card-stacked">
-                    <div class="card-content">
-                      <div class="media-content">
-                        <figure class="image is-square is-logo">
-                            <img class="image is-square is-logo" src="/assets/img/companyLogo1.svg" alt="Placeholder image">
-                          </figure>
-                        <p class="title is-4">John Smith</p>
-                      </div>
-                    </div>
-                    <footer class="card-footer">
-                      <div class="card-footer-item has-text-left">
-                        <h1>Hello</h1>
-                      </div>
-                    </footer>
-                </div>
-                <div class="card-image">
-                  <figure class="image is-square">
-                    <img src="/assets/img/companyPhoto1.svg" alt="Placeholder image">
-                  </figure>
-                  
-                </div>
-            </div>
-        </div>-->
-    </div>
-    <div class="footerContainer">
-        <app-footer></app-footer>
+        <div class="footerContainer">
+            <app-footer></app-footer>
+        </div>
     </div>
 </div>

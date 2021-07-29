@@ -1,8 +1,6 @@
-<div class="categoriesContainer" (scroll)="onScroll()">
-    <div class="navBarContainer">
-        <app-navbar [active]="active"></app-navbar>
-    </div>
-    <div class="contentWrapper">
+<div class="wrapper" (scroll)="onScroll()">
+    <app-navbar [active]="active"></app-navbar>
+    <div class="categoriesContent">
         <div class="categoryPicture">
             <img src="/assets/img/categoryBeauty.svg" alt="" srcset="">
             <div class="categoryTitle">{{ title }}</div>
@@ -14,8 +12,8 @@
             <app-company-card *ngFor="let company of companies; let i = index" [companyLogo]="company.companyLogo"
                 [companyName]="company.companyName" [companyPhoto]="company.companyPhoto"></app-company-card>
         </div>
-    </div>
-    <div class="footerContainer">
-        <app-footer></app-footer>
+        <div class="footerContainer">
+            <app-footer></app-footer>
+        </div>
     </div>
 </div>

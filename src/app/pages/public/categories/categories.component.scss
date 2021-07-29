@@ -17,6 +17,7 @@ $infoCardFontSize: 19px;
 $navbarFontSize: 15px;
 $footerFontSize: 12px;
 $borderRadiusCards: 32px;
+$maxWidth: 1200px;
 
 @font-face {
     font-family: avenirLight;
@@ -39,59 +40,65 @@ $borderRadiusCards: 32px;
     box-sizing: border-box;
 }
 
-.categoriesContainer {
+.wrapper {
+    display: flex;
     width: 100vw;
-    height: 200vh;
+    background: $backgroundColor;
+    justify-content: center;
+}
+.categoriesContent {
+    width: 100vw;
+    max-width: $maxWidth;
     display: flex;
     flex-flow: column;
     align-items: center;
-    background: $backgroundColor;
     font-family: $mediumFont;
     color: $fontColor;
-    .navBarContainer {
+    app-navbar {
         width: 100%;
-        // height: 13.3%;
+        height: 110px;
+        position: relative;
     }
-    .contentWrapper {
-        width: 100%;
-        height: 100%;
-        // margin-top: 1%;
+    .categoryPicture {
+        width: $maxWidth;
+        height: 480px;
         display: flex;
-        flex-flow: column;
         align-items: center;
-        .categoryPicture {
+        justify-content: center;
+        .categoryTitle {
+            position: absolute;
+            font-family: $blackFont;
+            font-size: 150px;
+        }
+    }
+    .filterContainer {
+        width: 76.1%;
+        height: 49px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin: 25px 0;
+        app-cards-filter {
+            .cardsFilterContainer {
+                :ng-deep .cardsFilterOptionsContainer {
+                    top: 565px !important;
+                }
+            }
+        }
+    }
+    .companiesContainer {
+        width: 76.1%;
+        display: grid;
+        column-gap: 12px;
+        row-gap: 25px;
+        grid-template-columns: repeat(2, 50%);
+        app-company-card {
             width: 100%;
-            // height: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            .categoryTitle {
-                position: absolute;
-                font-family: $blackFont;
-                font-size: 150px;
-            }
-        }
-        .filterContainer {
-            width: 76.1%;
-            height: 6%;
-            margin-top: 1%;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-        }
-        .companiesContainer {
-            width: 76.1%;
-            height: 35.7%;
-            display: grid;
-            grid-template-columns: repeat(2, 52%);
-            grid-template-rows: repeat(8, 50%);
-            app-company-card {
-                width: 105%;
-                height: 105%;
-            }
+            height: 235px;
         }
     }
     .footerContainer {
         width: 100%;
+        margin-top: 3%;
     }
 }

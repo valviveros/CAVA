@@ -51,7 +51,9 @@ export class CategoriesComponent implements OnInit {
   ngOnInit(): void {
     this.title = this.route.snapshot.paramMap.get('category') || '';
     this.onScroll();
-    $(".cardsFilterOptionsContainer").css("top", "82%");
+    const query: string = '.wrapper .cardsFilterOptionsContainer';
+    const cardsFilter: any = document.querySelector(query);
+    cardsFilter.style.top = "565px";
   }
 
   @HostListener('window:scroll', ['$event'])
