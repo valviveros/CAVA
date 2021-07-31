@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { AngularFireStorage } from '@angular/fire/storage';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth.service';
 
@@ -54,6 +54,8 @@ export class AddProductComponent implements OnInit {
       $('.sideMenuInnerBtn').removeClass('active');
       $(this).addClass('active');
     });
+
+    this.resetForm();
   }
 
   loadSellersInfo() {
@@ -160,9 +162,11 @@ export class AddProductComponent implements OnInit {
           image: url
         })
 
-        const query: string = '.myProfileContainer #successMessage';
+        const query: string = '.wrapper #successMessage';
         const successMessage: any = document.querySelector(query);
         successMessage.style.display = 'flex';
+
+        this.resetForm();
 
         setTimeout(() => {
           successMessage.style.display = 'none';
@@ -174,7 +178,7 @@ export class AddProductComponent implements OnInit {
 
     }
     else {
-      const query: string = '.myProfileContainer #failureMessage';
+      const query: string = '.wrapper #failureMessage';
       const failureMessage: any = document.querySelector(query);
       failureMessage.style.display = 'flex';
 
@@ -184,8 +188,14 @@ export class AddProductComponent implements OnInit {
     }
   }
 
+  resetForm(registerForm?: NgForm) {
+    if (registerForm != null) {
+      registerForm.reset();
+    }
+  }
+
   dropDownOptions() {
-    const query: string = '.myProfileContainer .profileOptionsContainer';
+    const query: string = '.wrapper .profileOptionsContainer';
     const sellersName: any = document.querySelector(query);
 
     if (this.countMore == 0) {
