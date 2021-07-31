@@ -43,12 +43,14 @@ $maxWidth: 1200px;
 
 .wrapper {
     display: flex;
+    //height: 100vh;
     width: 100vw;
     background: $backgroundColor;
     justify-content: center;
 }
 .content {
     width: 100vw;
+
     max-width: $maxWidth;
     display: flex;
     flex-flow: column;
@@ -87,7 +89,11 @@ $maxWidth: 1200px;
                     position: absolute;
                     width: 100.5%;
                     height: 100.5%;
-                    background: linear-gradient(90deg, rgba(240, 245, 250, 1) 2%, rgba(249, 219, 69, 0) 80%);
+                    background-image: url("src/assets/img/gradiente.svg");
+                    background-position: center;
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    //background: linear-gradient(90deg, rgba(240, 245, 250, 1) 2%, rgba(249, 219, 69, 0) 80%);
                     display: flex;
                     justify-content: center;
                     .information {
@@ -112,6 +118,7 @@ $maxWidth: 1200px;
                         }
                         .companyinfo {
                             font-size: $filterFontSize;
+                            width: 80%;
                             color: $fontColor;
                             font-family: $mediumFont;
                             margin-top: 30px;
@@ -144,7 +151,7 @@ $maxWidth: 1200px;
                         cursor: pointer;
                         &.underline {
                             text-decoration: underline 2px;
-                            text-underline-offset: 20px;
+                            text-underline-offset: 15.55px;
                         }
                     }
                 }
@@ -179,10 +186,12 @@ $maxWidth: 1200px;
                                 flex-flow: column;
                                 justify-content: center;
                                 align-items: center;
+                                padding: 10px;
                             }
                         }
                         .overlay {
                             position: absolute;
+                            padding: 10px;
                             top: 0;
                             bottom: 0;
                             left: 0;
@@ -199,18 +208,20 @@ $maxWidth: 1200px;
                             text-align: center;
                             font-size: 20px;
                             font-family: $mediumFont;
+                            font-weight: bold;
                             color: $fontColor;
                             border-radius: 32px;
                             //Titulo maximo 35 caracteres
                             .productInfo {
-                                font-size: $infoCardFontSize;
-                                font-family: $mediumFont;
+                                font-size: $navbarFontSize;
+                                font-family: $lightFont;
+                                font-weight: bold;
                                 color: $fontColor;
                                 width: 80%;
-                                //Maximo 110 caracteres
+                                //Maximo 100 caracteres
                             }
                             p {
-                                font-size: $infoCardFontSize;
+                                font-size: $navbarFontSize;
                                 font-family: $mediumFont;
                                 font-weight: bold;
                                 color: $fontColor;

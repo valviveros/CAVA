@@ -35,7 +35,7 @@ export class ShopComponent implements OnInit {
     {
       id: "2",
       name: "Producto 1",
-      description: "Lorem ipsum dolor sit amet consectetur adipiscing elit aenean gravida diam proin, dictumst vehicula fames curabitur porta aliquet ultricies felis ulla",
+      description: "Lorem ipsum dolor sit amet consectetur adipiscing elit aenean gravida diam proin gravida diam proin.",
       price: 2500,
       img: "/assets/img/Cuadrada2.jpg",
       //categories: Array<string>, 
@@ -43,7 +43,7 @@ export class ShopComponent implements OnInit {
     {
       id: "1",
       name: "Zapatotes Negros Adidas Calida 2020",
-      description: "Lorem ipsum dolor sit amet consectetur adipiscing elit aenean gravida diam proin gravida diam proin gravida di",
+      description: "Lorem ipsum dolor sit amet consectetur adipiscing elit aenean gravida diam proin gravida diam proin.",
       price: 125000,
       img: "/assets/img/Cuadrada1.jpg",
       //categories: Array<string>, 
@@ -51,7 +51,7 @@ export class ShopComponent implements OnInit {
     {
       id: "1",
       name: "Zapatotes Negros Adidas Calida 2020",
-      description: "Lorem ipsum dolor sit amet consectetur adipiscing elit aenean gravida diam proin gravida diam proin gravida di",
+      description: "Lorem ipsum dolor sit amet consectetur adipiscing elit aenean gravida diam proin gravida diam proin ",
       price: 125000,
       img: "/assets/img/Cuadrada1.jpg",
       //categories: Array<string>, 
@@ -59,7 +59,7 @@ export class ShopComponent implements OnInit {
     {
       id: "1",
       name: "Zapatotes Negros Adidas Calida 2020",
-      description: "Lorem ipsum dolor sit amet consectetur adipiscing elit aenean gravida diam proin gravida diam proin gravida di",
+      description: "Lorem ipsum dolor sit amet consectetur adipiscing elit aenean gravida diam proin gravida diam proin.",
       price: 125000,
       img: "/assets/img/Cuadrada1.jpg",
       //categories: Array<string>, 
