@@ -176,7 +176,7 @@ export class ContactComponent implements OnInit {
   }
 
   dropDownOptions() {
-    const query: string = '.myProfileContainer .profileOptionsContainer';
+    const query: string = '.wrapper .profileOptionsContainer';
     const sellersName: any = document.querySelector(query);
 
     if (this.countMore == 0) {
@@ -217,14 +217,14 @@ export class ContactComponent implements OnInit {
           contactEmail: this.contactForm.controls.contactEmail.value,
         })
 
-        const query: string = '.contactContainer #successMessage';
+        const query: string = '.wrapper #successMessage';
         const successMessage: any = document.querySelector(query);
         successMessage.style.display = 'flex';
       }));
 
     }
     else {
-      const query: string = '.contactContainer #failureMessage';
+      const query: string = '.wrapper #failureMessage';
       const failureMessage: any = document.querySelector(query);
       failureMessage.style.display = 'flex';
 

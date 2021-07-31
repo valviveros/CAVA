@@ -217,7 +217,7 @@ export class ProductsComponent implements OnInit {
 
       }));
 
-      const query: string = '.myProfileContainer #successMessage';
+      const query: string = '.wrapper #successMessage';
       const successMessage: any = document.querySelector(query);
       successMessage.style.display = 'flex';
 
@@ -226,7 +226,7 @@ export class ProductsComponent implements OnInit {
       }, 3000);
     }
     else {
-      const query: string = '.myProfileContainer #failureMessage';
+      const query: string = '.wrapper #failureMessage';
       const failureMessage: any = document.querySelector(query);
       failureMessage.style.display = 'flex';
 
@@ -237,7 +237,7 @@ export class ProductsComponent implements OnInit {
   }
 
   dropDownOptions() {
-    const query: string = '.myProfileContainer .profileOptionsContainer';
+    const query: string = '.wrapper .profileOptionsContainer';
     const sellersName: any = document.querySelector(query);
 
     if (this.countMore == 0) {
