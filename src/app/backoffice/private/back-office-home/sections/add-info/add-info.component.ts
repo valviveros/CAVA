@@ -151,59 +151,59 @@ export class AddInfoComponent implements OnInit {
 
   onSubmit() {
     let Key: any;
+    console.log(this.infoForm);
+    // if (this.infoForm.valid) {
 
-    if (this.infoForm.valid) {
+    //   this.firebaseAuth.user.subscribe((async (data) => {
+    //     this.user = data;
+    //     this.Email = this.user['email'];
 
-      this.firebaseAuth.user.subscribe((async (data) => {
-        this.user = data;
-        this.Email = this.user['email'];
+    //     await this.firebase.database.ref('users').once('value', (users) => {
+    //       users.forEach((user) => {
+    //         const childKey = user.key;
+    //         const childData = user.val();
+    //         if (childData.email == this.Email) {
+    //           Key = childKey;
+    //         }
+    //       });
+    //     });
 
-        await this.firebase.database.ref('users').once('value', (users) => {
-          users.forEach((user) => {
-            const childKey = user.key;
-            const childData = user.val();
-            if (childData.email == this.Email) {
-              Key = childKey;
-            }
-          });
-        });
+    //     const fileName = '/info/' + Date.now();
 
-        const fileName = '/products/' + Date.now();
+    //     let uploadTask = await this.firebaseStorage.upload(fileName, this.path)
+    //     let url = await uploadTask.ref.getDownloadURL();
+    //     console.log(url)
+    //     this.firebase.database.ref(`users/${Key}/company/info`).push({
+    //       name: this.infoForm.controls.name.value,
+    //       description: this.infoForm.controls.description.value,
+    //       price: this.infoForm.controls.price.value,
+    //       image: url
+    //     })
 
-        let uploadTask = await this.firebaseStorage.upload(fileName, this.path)
-        let url = await uploadTask.ref.getDownloadURL();
-        console.log(url)
-        this.firebase.database.ref(`users/${Key}/company/products`).push({
-          name: this.infoForm.controls.name.value,
-          description: this.infoForm.controls.description.value,
-          price: this.infoForm.controls.price.value,
-          image: url
-        })
+    //     const query: string = '.wrapper #successMessage';
+    //     const successMessage: any = document.querySelector(query);
+    //     successMessage.style.display = 'flex';
 
-        const query: string = '.wrapper #successMessage';
-        const successMessage: any = document.querySelector(query);
-        successMessage.style.display = 'flex';
+    //     this.resetForm();
 
-        this.resetForm();
-
-        setTimeout(() => {
-          successMessage.style.display = 'none';
-          this.router.navigate(['/sellers/products']);
-        }, 1000);
+    //     setTimeout(() => {
+    //       successMessage.style.display = 'none';
+    //       this.router.navigate(['/sellers/shopinfo']);
+    //     }, 1000);
 
 
-      }));
+    //   }));
 
-    }
-    else {
-      const query: string = '.wrapper #failureMessage';
-      const failureMessage: any = document.querySelector(query);
-      failureMessage.style.display = 'flex';
+    // }
+    // else {
+    //   const query: string = '.wrapper #failureMessage';
+    //   const failureMessage: any = document.querySelector(query);
+    //   failureMessage.style.display = 'flex';
 
-      setTimeout(() => {
-        failureMessage.style.display = 'none';
-      }, 3000);
-    }
+    //   setTimeout(() => {
+    //     failureMessage.style.display = 'none';
+    //   }, 3000);
+    // }
   }
 
   resetForm(registerForm?: NgForm) {

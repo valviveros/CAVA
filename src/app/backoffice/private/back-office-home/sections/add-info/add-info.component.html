@@ -65,21 +65,14 @@
                                         [ngClass]="{'is-invalid': validateField('description')}"></textarea>
                                 </p>
                             </div>
-                            <!-- <div class="field">
-                                <div class="dropdown">
-                                    <div class="dropdown-trigger">
-                                        <ng-select class="button" aria-haspopup="true" aria-controls="dropdown-menu3"
-                                            type="text" formControlName="shoptype"
-                                            [ngClass]="{'is-invalid': validateField('shoptype')}" [items]="items"
-                                            placeholder="Tipo de negocio" [(ngModel)]="selected">
-                                            <span></span>
-                                            <span class="icon is-small">
-                                                <i class="fas fa-angle-down" aria-hidden="true"></i>
-                                            </span>
-                                        </ng-select>
-                                    </div>
-                                </div>
-                            </div> -->
+                            <div class="field">
+                                <ng-select class="button" type="text" formControlName="shoptype" [ngClass]="{'is-invalid': validateField('shoptype')}" [(ngModel)]="selected[0].name">
+                                    <ng-option *ngFor="let item of items" [value]="item.name">{{item.name}}</ng-option>
+                                    <span class="icon is-small">
+                                        <i class="fas fa-angle-down" aria-hidden="true"></i>
+                                    </span>
+                                </ng-select>
+                            </div>
                             <div class="field">
                                 <p class="control">
                                     <input class="input" type="text" placeholder="Categoría" formControlName="category"

@@ -8,8 +8,7 @@ import { ProductsComponent } from './sections/products/products.component';
 import { ContactComponent } from './sections/contact/contact.component';
 import { ShopInfoComponent } from './sections/shop-info/shop-info.component';
 import { AddInfoComponent } from './sections/add-info/add-info.component';
-
-
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -24,6 +23,7 @@ import { AddInfoComponent } from './sections/add-info/add-info.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    NgSelectModule,
     BackOfficeHomeRoutingModule
   ]
 })
