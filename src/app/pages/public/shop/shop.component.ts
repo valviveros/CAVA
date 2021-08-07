@@ -12,6 +12,7 @@ import { Product } from 'src/app/shared/interfaces/Product';
 })
 export class ShopComponent implements OnInit {
   active: number = 0;
+  imagenesCarousel = [0,1,2,3,4,5,6,7,8,9].map((n) => `https://picsum.photos/215/215?random=${n}`);
   companies: Array<Shop> = [
     {
       id: "1",
@@ -31,7 +32,7 @@ export class ShopComponent implements OnInit {
     }
   ]
 
-  products: Array<Product>=[
+  products: Array<Product> = [
     {
       id: "2",
       name: "Producto 1",
@@ -43,9 +44,17 @@ export class ShopComponent implements OnInit {
     {
       id: "1",
       name: "Zapatotes Negros Adidas Calida 2020",
-      description: "Lorem ipsum dolor sit amet consectetur adipiscing elit aenean gravida diam proin gravida diam proin.",
+      description: "Lorem ipsum dolor sit amet consectetur adipiscing elit aenean gravida diam proin gravida diam proin ",
       price: 125000,
       img: "/assets/img/Cuadrada1.jpg",
+      //categories: Array<string>, 
+    },
+    {
+      id: "2",
+      name: "Producto 1",
+      description: "Lorem ipsum dolor sit amet consectetur adipiscing elit aenean gravida diam proin gravida diam proin.",
+      price: 2500,
+      img: "/assets/img/Cuadrada2.jpg",
       //categories: Array<string>, 
     },
     {
@@ -53,21 +62,14 @@ export class ShopComponent implements OnInit {
       name: "Zapatotes Negros Adidas Calida 2020",
       description: "Lorem ipsum dolor sit amet consectetur adipiscing elit aenean gravida diam proin gravida diam proin ",
       price: 125000,
-      img: "/assets/img/Cuadrada1.jpg",
+      img: "/assets/img/Cuadrada3.png",
       //categories: Array<string>, 
     },
     {
-      id: "1",
-      name: "Zapatotes Negros Adidas Calida 2020",
+      id: "2",
+      name: "Producto 1",
       description: "Lorem ipsum dolor sit amet consectetur adipiscing elit aenean gravida diam proin gravida diam proin.",
-      price: 125000,
-      img: "/assets/img/Cuadrada1.jpg",
-      //categories: Array<string>, 
-    },{
-      id: "1",
-      name: "Zapatotes Negros Adidas Calida 2020",
-      description: "Lorem ipsum dolor sit amet consectetur adipiscing elit aenean gravida diam proin gravida diam proin.",
-      price: 125000,
+      price: 2500,
       img: "/assets/img/Cuadrada2.jpg",
       //categories: Array<string>, 
     },
@@ -82,16 +84,33 @@ export class ShopComponent implements OnInit {
     {
       id: "1",
       name: "Zapatotes Negros Adidas Calida 2020",
-      description: "Lorem ipsum dolor sit amet consectetur adipiscing elit aenean gravida diam proin gravida diam proin.",
+      description: "Lorem ipsum dolor sit amet consectetur adipiscing elit aenean gravida diam proin gravida diam proin ",
       price: 125000,
       img: "/assets/img/Cuadrada1.jpg",
       //categories: Array<string>, 
-    } 
+    },
+    {
+      id: "1",
+      name: "Zapatotes Negros Adidas Calida 2020",
+      description: "Lorem ipsum dolor sit amet consectetur adipiscing elit aenean gravida diam proin gravida diam proin ",
+      price: 125000,
+      img: "/assets/img/Cuadrada1.jpg",
+      //categories: Array<string>, 
+    },
+    {
+      id: "1",
+      name: "Zapatotes Negros Adidas Calida 2020",
+      description: "Lorem ipsum dolor sit amet consectetur adipiscing elit aenean gravida diam proin gravida diam proin ",
+      price: 125000,
+      img: "/assets/img/Cuadrada1.jpg",
+      //categories: Array<string>, 
+    }
+    
   ]
 
   showDiv = {
     contact : false,
-    product : true
+    product : true,
   }
 
   constructor() { }
