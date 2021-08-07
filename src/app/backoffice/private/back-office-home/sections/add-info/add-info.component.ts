@@ -2,19 +2,23 @@ import { Component, Input, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireDatabase } from '@angular/fire/database';
 import { AngularFireStorage } from '@angular/fire/storage';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Product } from 'src/app/shared/interfaces/Product';
-import { ProductListI } from 'src/app/shared/interfaces/ProductListI';
-import { ShopCompanyI } from 'src/app/shared/interfaces/ShopCompanyI';
 import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss']
+  selector: 'app-add-info',
+  templateUrl: './add-info.component.html',
+  styleUrls: ['./add-info.component.scss']
 })
-export class ProductsComponent implements OnInit {
+export class AddInfoComponent implements OnInit {
+  items = [
+    {id: 1, name: 'Emprendimiento'},
+    {id: 2, name: 'Empresa'}
+  ];
+  selected = [
+    { id: 1, name: 'Emprendimiento' },
+  ];
   @Input() sellersName: string = '';
   Email: any;
   path: string = '';
@@ -25,18 +29,14 @@ export class ProductsComponent implements OnInit {
   countMore: number = 0;
   user: any;
   clicked: number = 0;
-  myProfileInfoForm: FormGroup;
-  active: number = 0;
-
-  products: Array<ProductListI> =[]
+  infoForm: FormGroup;
 
   constructor(private authService: AuthService, private router: Router, private firebaseAuth: AngularFireAuth, private firebase: AngularFireDatabase, private firebaseStorage: AngularFireStorage, private formBuilder: FormBuilder) {
-    this.myProfileInfoForm = this.createProfileForm();
-    this.loadProductsInfo()
+    this.infoForm = this.createProfileForm();
+    this.loadSellersInfo();
   }
 
   ngOnInit(): void {
-
     $('.sideMenuBtn').on('click', function () {
       var hasOptions = $(this).hasClass('options');
 
@@ -61,59 +61,15 @@ export class ProductsComponent implements OnInit {
       $('.sideMenuInnerBtn').removeClass('active');
       $(this).addClass('active');
     });
+
+    this.resetForm();
   }
 
-  loadProductsInfo() {
-    let Key: any;
-    let products: any;
-
+  loadSellersInfo() {
     this.firebaseAuth.user.subscribe((async (data) => {
       this.user = data;
       this.Email = this.user['email'];
       this.sellersName = this.user['displayName'];
-
-      await this.firebase.database.ref('users').once('value', (users) => {
-        users.forEach((user) => {
-          const childKey = user.key;
-          const childData = user.val();
-          if (childData.email == this.Email) {
-            Key = childKey;
-
-            user.forEach((info => {
-              const infoChildKey = info.key;
-              if(infoChildKey == 'company'){
-
-                info.forEach((company => {
-                  const companyKey = company.key;
-                  if(companyKey == 'products'){
-                    const productsData = company.val();
-                    console.log(productsData)
-                    console.log(Object.entries(productsData))
-
-                    this.products = Object.entries(productsData).map((pair: any) => {
-
-                      let key = pair[0]
-                      let product = pair[1]
-
-                      return {
-                        id: key,
-                        productphoto: product.image,
-                        productTitle: product.name,
-                        productInfo: product.description
-                      }
-                    })
-                  }
-
-                }))
-              }
-
-              const infoChildData = info.val();
-            }));
-          }
-        });
-      });
-
-
     }));
   }
 
@@ -146,15 +102,11 @@ export class ProductsComponent implements OnInit {
     this.router.navigate(['/sellers/products']);
   }
 
-  goToAddProducts(){
-    this.router.navigate(['/sellers/products/add']);
-  }
-
-  goToContact(){
+  goToContact() {
     this.router.navigate(['/sellers/contact']);
   }
 
-  getPath(event:any){
+  getPath(event: any) {
     this.path = event.target.files[0]
   }
 
@@ -164,16 +116,24 @@ export class ProductsComponent implements OnInit {
         name: [
           null,
           Validators.compose([
-            Validators.required
+            Validators.required,
+            Validators.maxLength(35)
           ])
         ],
         description: [
           null,
           Validators.compose([
+            Validators.required,
+            Validators.maxLength(100)
+          ])
+        ],
+        shoptype: [
+          null,
+          Validators.compose([
             Validators.required
           ])
         ],
-        price: [
+        category: [
           null,
           Validators.compose([
             Validators.required
@@ -191,53 +151,64 @@ export class ProductsComponent implements OnInit {
 
   onSubmit() {
     let Key: any;
+    console.log(this.infoForm);
+    // if (this.infoForm.valid) {
 
-    if (this.myProfileInfoForm.valid) {
+    //   this.firebaseAuth.user.subscribe((async (data) => {
+    //     this.user = data;
+    //     this.Email = this.user['email'];
 
-      this.firebaseAuth.user.subscribe((async (data) => {
-        this.user = data;
-        this.Email = this.user['email'];
+    //     await this.firebase.database.ref('users').once('value', (users) => {
+    //       users.forEach((user) => {
+    //         const childKey = user.key;
+    //         const childData = user.val();
+    //         if (childData.email == this.Email) {
+    //           Key = childKey;
+    //         }
+    //       });
+    //     });
 
-        await this.firebase.database.ref('users').once('value', (users) => {
-          users.forEach((user) => {
-            const childKey = user.key;
-            const childData = user.val();
-            if (childData.email == this.Email) {
-              Key = childKey;
-            }
-          });
-        });
+    //     const fileName = '/info/' + Date.now();
 
-        const fileName = '/file'+Math.random()+this.user['email'];
+    //     let uploadTask = await this.firebaseStorage.upload(fileName, this.path)
+    //     let url = await uploadTask.ref.getDownloadURL();
+    //     console.log(url)
+    //     this.firebase.database.ref(`users/${Key}/company/info`).push({
+    //       name: this.infoForm.controls.name.value,
+    //       description: this.infoForm.controls.description.value,
+    //       price: this.infoForm.controls.price.value,
+    //       image: url
+    //     })
 
-        this.firebaseStorage.upload(fileName,this.path).then(() =>{
-          this.firebase.database.ref(`users/${Key}/company/products`).push({
-            name: this.myProfileInfoForm.controls.name.value,
-            description: this.myProfileInfoForm.controls.description.value,
-            price: this.myProfileInfoForm.controls.price.value,
-            image: fileName
-          })
-        })
+    //     const query: string = '.wrapper #successMessage';
+    //     const successMessage: any = document.querySelector(query);
+    //     successMessage.style.display = 'flex';
+
+    //     this.resetForm();
+
+    //     setTimeout(() => {
+    //       successMessage.style.display = 'none';
+    //       this.router.navigate(['/sellers/shopinfo']);
+    //     }, 1000);
 
 
-      }));
+    //   }));
 
-      const query: string = '.wrapper #successMessage';
-      const successMessage: any = document.querySelector(query);
-      successMessage.style.display = 'flex';
+    // }
+    // else {
+    //   const query: string = '.wrapper #failureMessage';
+    //   const failureMessage: any = document.querySelector(query);
+    //   failureMessage.style.display = 'flex';
 
-      setTimeout(() => {
-        successMessage.style.display = 'none';
-      }, 3000);
-    }
-    else {
-      const query: string = '.wrapper #failureMessage';
-      const failureMessage: any = document.querySelector(query);
-      failureMessage.style.display = 'flex';
+    //   setTimeout(() => {
+    //     failureMessage.style.display = 'none';
+    //   }, 3000);
+    // }
+  }
 
-      setTimeout(() => {
-        failureMessage.style.display = 'none';
-      }, 3000);
+  resetForm(registerForm?: NgForm) {
+    if (registerForm != null) {
+      registerForm.reset();
     }
   }
 
@@ -261,8 +232,8 @@ export class ProductsComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
-  validateField(controlName:string): boolean{
-    let control = this.myProfileInfoForm.controls[controlName]
+  validateField(controlName: string): boolean {
+    let control = this.infoForm.controls[controlName]
     return control.invalid && control.touched
   }
 

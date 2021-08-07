@@ -9,19 +9,25 @@ import { ContactComponent } from './sections/contact/contact.component';
 import { IvyCarouselModule } from 'angular-responsive-carousel';
 
 
+import { ShopInfoComponent } from './sections/shop-info/shop-info.component';
+import { AddInfoComponent } from './sections/add-info/add-info.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
     MyProfileComponent,
     AddProductComponent,
     ProductsComponent,
-    ContactComponent
+    ContactComponent,
+    ShopInfoComponent,
+    AddInfoComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
     IvyCarouselModule,
+    NgSelectModule,
     BackOfficeHomeRoutingModule
     
   ]

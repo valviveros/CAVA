@@ -307,8 +307,13 @@ $maxWidth: 1200px;
         }
     }
 }
+.dropdown-item {
+    font-size: 1rem !important;
+    padding: .375rem 1rem !important;
+}
 .file-cta,
-.file-name {
+.file-name,
+button {
     padding: 0.5em 1em !important;
 }
 .file-icon {

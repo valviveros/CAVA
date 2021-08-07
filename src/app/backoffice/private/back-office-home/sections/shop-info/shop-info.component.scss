@@ -7,6 +7,7 @@ $backgroundColor: #f0f5fa;
 $cardsBGColor: white;
 $successMessage: #03d755;
 $failureMessage: #dd3444;
+$productCard: #edeef0;
 $titleSize: 150px;
 $searchBarFontSize: 48px;
 $subtitleSize: 43px;
@@ -46,7 +47,7 @@ $maxWidth: 1200px;
     background: $backgroundColor;
     justify-content: center;
 }
-.addProductContent {
+.productsContent {
     width: 100vw;
     height: 100vh;
     max-width: $maxWidth;
@@ -233,8 +234,8 @@ $maxWidth: 1200px;
                 font-family: $blackFont;
             }
             .myProfileForm {
-                width: 70%;
-                height: 515px;
+                width: 90%;
+                height: 385px;
                 display: flex;
                 flex-flow: column;
                 align-items: center;
@@ -242,77 +243,103 @@ $maxWidth: 1200px;
                 padding: 2%;
                 border-radius: $borderRadiusCards;
                 background: $cardsBGColor;
-                .myProfileMessage {
-                    width: 80%;
-                    height: 10%;
-                    margin-bottom: 3%;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    .successMessage {
-                        width: auto;
-                        padding: 1%;
-                        display: none;
+                .myProfileFields {
+                    width: 100%;
+                    margin-bottom: .5rem;
+                    overflow-x: scroll;
+                    .productsContainer {
+                        height: 100%;
+                        float: left;
+                        gap: 15px;
+                        display: flex;
+                        flex-flow: row;
                         align-items: center;
-                        color: $successMessage;
-                        background: rgba($successMessage, 0.3);
-                        border-radius: 5px;
-                        border: 1px solid $successMessage;
-                    }
-                    .failureMessage {
-                        width: auto;
-                        padding: 1%;
-                        display: none;
-                        align-items: center;
-                        color: $failureMessage;
-                        background: rgba($failureMessage, 0.3);
-                        border-radius: 5px;
-                        border: 1px solid $failureMessage;
+                        justify-content: space-evenly;
+                        .productCards {
+                            width: 215px;
+                            height: 215px;
+                            background-color: $productCard;
+                            border-radius: 32px;
+                            background-position: center;
+                            background-size: cover;
+                            background-repeat: no-repeat;
+                            position: relative;
+                            img {
+                                height: 100%;
+                                display: block;
+                                width: 100%;
+                                border-radius: 32px;
+                            }
+                            &:hover {
+                                .overlay {
+                                    cursor: pointer;
+                                    opacity: 0.9;
+                                    display: flex;
+                                    flex-flow: column;
+                                    justify-content: center;
+                                    align-items: center;
+                                }
+                            }
+                            .overlay {
+                                position: absolute;
+                                top: 0;
+                                bottom: 0;
+                                left: 0;
+                                right: 0;
+                                height: 100%;
+                                width: 100%;
+                                opacity: 0;
+                                transition: 0.5s ease;
+                                display: flex;
+                                flex-flow: column;
+                                justify-content: center;
+                                align-items: center;
+                                background-color: $activeFontColor;
+                                text-align: center;
+                                font-size: $cardsFontSize;
+                                font-family: $mediumFont;
+                                color: $fontColor;
+                                border-radius: 32px;
+                                .productInfo {
+                                    font-size: $footerFontSize;
+                                    font-family: $mediumFont;
+                                    color: $fontColor;
+                                    width: 80%;
+                                }
+                            }
+                        }
                     }
                 }
-                .myProfileFields {
-                    width: 80%;
-                    form {
-                        width: 100%;
-                        .field {
-                            .control {
-                                input {
-                                    width: 100%;
-                                    padding-left: 0.5em;
-                                }
-                                textarea {
-                                    width: 100%;
-                                    padding-left: 0.5em;
-                                    padding-top: 7px;
-                                    height: 150px;
-                                    resize: none;
-                                }
-                            }
-                            .buttons {
-                                .is-info {
-                                    width: 100px;
-                                    background: $fontColor;
-                                    font-family: $mediumFont;
-                                }
-                                .is-success {
-                                    width: 100px;
-                                    background: $activeFontColor;
-                                    font-family: $mediumFont;
-                                }
-                            }
+                .field {
+                    .control {
+                        input {
+                            width: 100%;
+                            padding-left: 0.5em;
+                        }
+                        textarea {
+                            width: 100%;
+                            padding-left: 0.5em;
+                            padding-top: 7px;
+                            height: 150px;
+                            resize: none;
+                        }
+                    }
+                    .buttons {
+                        .is-info {
+                            width: 100px;
+                            background: $fontColor;
+                            font-family: $mediumFont;
+                        }
+                        .is-success {
+                            width: 100px;
+                            background: $activeFontColor;
+                            font-family: $mediumFont;
                         }
                     }
                 }
             }
         }
     }
-}
-.file-cta,
-.file-name {
-    padding: 0.5em 1em !important;
-}
-.file-icon {
-    margin-right: 0.5em !important;
 }
 .is-invalid {
     border-left: solid 6px red;

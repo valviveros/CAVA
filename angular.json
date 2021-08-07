@@ -37,7 +37,8 @@
               "src/styles.scss",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/bulma/css/bulma.min.css",
-              "node_modules/@fortawesome/fontawesome-free/css/all.css"
+              "node_modules/@fortawesome/fontawesome-free/css/all.css",
+              "node_modules/@ng-select/ng-select/themes/material.theme.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js"
@@ -105,7 +106,8 @@
               "src/styles.scss",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "node_modules/bulma/css/bulma.min.css",
-              "node_modules/@fortawesome/fontawesome-free/css/all.css"
+              "node_modules/@fortawesome/fontawesome-free/css/all.css",
+              "node_modules/@ng-select/ng-select/themes/material.theme.css"
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js"

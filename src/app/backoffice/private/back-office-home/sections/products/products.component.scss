@@ -18,6 +18,7 @@ $infoCardFontSize: 19px;
 $navbarFontSize: 15px;
 $footerFontSize: 12px;
 $borderRadiusCards: 32px;
+$maxWidth: 1200px;
 
 @font-face {
     font-family: avenirLight;
@@ -40,13 +41,20 @@ $borderRadiusCards: 32px;
     box-sizing: border-box;
 }
 
-.myProfileContainer {
+.wrapper {
+    display: flex;
+    width: 100vw;
+    background: $backgroundColor;
+    justify-content: center;
+}
+.productsContent {
     width: 100vw;
     height: 100vh;
+    max-width: $maxWidth;
     display: flex;
     flex-flow: row;
+    align-items: center;
     justify-content: center;
-    background: $backgroundColor;
     font-family: $mediumFont;
     color: $fontColor;
     .leftContainer {
@@ -57,7 +65,7 @@ $borderRadiusCards: 32px;
         background: $activeFontColor;
         .topBarLeftContainer {
             width: 100%;
-            height: 13.3%;
+            height: 110px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -70,7 +78,6 @@ $borderRadiusCards: 32px;
         }
         .sideMenu {
             width: 100%;
-            height: 86.7%;
             display: flex;
             flex-flow: column;
             align-items: center;
@@ -131,9 +138,11 @@ $borderRadiusCards: 32px;
         display: flex;
         flex-flow: column;
         background: $backgroundColor;
+        border-right: solid 1px #6ca7b6;
         .topBarRightContainer {
             width: 100%;
-            height: 13.3%;
+            height: 110px;
+            position: relative;
             display: flex;
             flex-flow: row;
             align-items: center;
@@ -153,7 +162,6 @@ $borderRadiusCards: 32px;
                 .profileContainer {
                     display: flex;
                     align-items: center;
-                    margin-right: 1.2%;
                     cursor: pointer;
                     .profile {
                         width: 50px;
@@ -171,44 +179,44 @@ $borderRadiusCards: 32px;
                         text-decoration: underline;
                     }
                 }
-                .profileOptionsContainer {
-                    width: 12.5%;
-                    height: 7%;
-                    position: absolute;
-                    top: 13%;
-                    right: 1.8%;
+            }
+            .profileOptionsContainer {
+                width: 180px;
+                height: 60px;
+                position: absolute;
+                top: 100px;
+                right: 20px;
+                display: flex;
+                flex-flow: column;
+                padding: 15px 0;
+                background: $cardsBGColor;
+                font-family: $lightFont;
+                font-size: $filterFontSize;
+                border-radius: 3px;
+                box-shadow: 0 2px 5px 0 rgba(black, 0.26), 0 2px 10px 0 rgba(black, 0.16);
+                transform-origin: right top;
+                transform: scale(0);
+                opacity: 0;
+                transition: all 0.3s ease;
+                .profileOptions {
+                    width: 100%;
                     display: flex;
                     flex-flow: column;
-                    padding: 15px 0;
-                    background: $cardsBGColor;
-                    font-family: $lightFont;
-                    font-size: $filterFontSize;
-                    border-radius: 3px;
-                    box-shadow: 0 2px 5px 0 rgba(black, 0.26), 0 2px 10px 0 rgba(black, 0.16);
-                    transform-origin: right top;
-                    transform: scale(0);
-                    opacity: 0;
-                    transition: all 0.3s ease;
-                    .profileOptions {
+                    li {
                         width: 100%;
+                        height: 90%;
                         display: flex;
-                        flex-flow: column;
-                        li {
-                            width: 100%;
-                            height: 90%;
-                            display: flex;
-                            align-items: center;
-                            padding: 0px 24px 0 24px;
-                            cursor: pointer;
-                            &:hover {
-                                background: $backgroundColor;
-                            }
-                            .optionLine {
-                                height: 65%;
-                                border-left: solid 2px $fontColor;
-                                .optionText {
-                                    margin-left: 10px;
-                                }
+                        align-items: center;
+                        padding: 0px 24px 0 24px;
+                        cursor: pointer;
+                        &:hover {
+                            background: $backgroundColor;
+                        }
+                        .optionLine {
+                            height: 65%;
+                            border-left: solid 2px $fontColor;
+                            .optionText {
+                                margin-left: 10px;
                             }
                         }
                     }
@@ -217,7 +225,6 @@ $borderRadiusCards: 32px;
         }
         .myProfileInfoContainer {
             width: 100%;
-            height: 86.7%;
             display: flex;
             flex-flow: column;
             align-items: center;
@@ -228,16 +235,18 @@ $borderRadiusCards: 32px;
             }
             .myProfileForm {
                 width: 90%;
+                height: 385px;
                 display: flex;
                 flex-flow: column;
                 align-items: center;
+                justify-content: center;
                 padding: 2%;
                 border-radius: $borderRadiusCards;
                 background: $cardsBGColor;
                 background-color: lime;
                 .myProfileFields {
                     width: 100%;
-                    height: calc(18vw + 10px);
+                    margin-bottom: .5rem;
                     overflow-x: scroll;
                     background-color: maroon;
                     .productsContainer {
@@ -249,11 +258,9 @@ $borderRadiusCards: 32px;
                         flex-flow: row;
                         align-items: center;
                         justify-content: space-evenly;
-                        background-color: mediumslateblue;
-                        
-                        /*.productCards {
-                            width: 16vw;
-                            height: 16vw;
+                        .productCards {
+                            width: 215px;
+                            height: 215px;
                             background-color: $productCard;
                             border-radius: 32px;
                             background-position: center;
@@ -414,15 +421,13 @@ $borderRadiusCards: 32px;
             }
         }
     }
-
-    .is-invalid {
-        border-left: solid 6px red;
-        border-color: #dc3545;
-    }
-
-    input[type="number"]::-webkit-inner-spin-button,
-    input[type="number"]::-webkit-outer-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-    }
+}
+.is-invalid {
+    border-left: solid 6px red;
+    border-color: #dc3545;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }

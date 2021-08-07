@@ -4,17 +4,16 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Product } from 'src/app/shared/interfaces/Product';
 import { ProductListI } from 'src/app/shared/interfaces/ProductListI';
 import { ShopCompanyI } from 'src/app/shared/interfaces/ShopCompanyI';
 import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.scss']
+  selector: 'app-shop-info',
+  templateUrl: './shop-info.component.html',
+  styleUrls: ['./shop-info.component.scss']
 })
-export class ProductsComponent implements OnInit {
+export class ShopInfoComponent implements OnInit {
   @Input() sellersName: string = '';
   Email: any;
   path: string = '';
@@ -28,7 +27,7 @@ export class ProductsComponent implements OnInit {
   myProfileInfoForm: FormGroup;
   active: number = 0;
 
-  products: Array<ProductListI> =[]
+  products: Array<ProductListI> = []
 
   constructor(private authService: AuthService, private router: Router, private firebaseAuth: AngularFireAuth, private firebase: AngularFireDatabase, private firebaseStorage: AngularFireStorage, private formBuilder: FormBuilder) {
     this.myProfileInfoForm = this.createProfileForm();
@@ -81,11 +80,11 @@ export class ProductsComponent implements OnInit {
 
             user.forEach((info => {
               const infoChildKey = info.key;
-              if(infoChildKey == 'company'){
+              if (infoChildKey == 'company') {
 
                 info.forEach((company => {
                   const companyKey = company.key;
-                  if(companyKey == 'products'){
+                  if (companyKey == 'products') {
                     const productsData = company.val();
                     console.log(productsData)
                     console.log(Object.entries(productsData))
@@ -146,15 +145,15 @@ export class ProductsComponent implements OnInit {
     this.router.navigate(['/sellers/products']);
   }
 
-  goToAddProducts(){
-    this.router.navigate(['/sellers/products/add']);
+  goToAddInfo() {
+    this.router.navigate(['/sellers/shopinfo/add']);
   }
 
-  goToContact(){
+  goToContact() {
     this.router.navigate(['/sellers/contact']);
   }
 
-  getPath(event:any){
+  getPath(event: any) {
     this.path = event.target.files[0]
   }
 
@@ -208,9 +207,9 @@ export class ProductsComponent implements OnInit {
           });
         });
 
-        const fileName = '/file'+Math.random()+this.user['email'];
+        const fileName = '/file' + Math.random() + this.user['email'];
 
-        this.firebaseStorage.upload(fileName,this.path).then(() =>{
+        this.firebaseStorage.upload(fileName, this.path).then(() => {
           this.firebase.database.ref(`users/${Key}/company/products`).push({
             name: this.myProfileInfoForm.controls.name.value,
             description: this.myProfileInfoForm.controls.description.value,
@@ -261,7 +260,7 @@ export class ProductsComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
-  validateField(controlName:string): boolean{
+  validateField(controlName: string): boolean {
     let control = this.myProfileInfoForm.controls[controlName]
     return control.invalid && control.touched
   }
