@@ -319,6 +319,41 @@ button {
 .file-icon {
     margin-right: 0.5em !important;
 }
+::ng-deep .ng-select .ng-select-container {
+    min-height: 40px !important;
+}
+::ng-deep .ng-select .ng-select-container:after {
+    border-bottom: 0 !important;
+}
+::ng-deep .ng-select .ng-select-container .ng-value-container {
+    padding: .4375em !important;
+    border-top: 0em !important;
+}
+::ng-deep .ng-select.ng-select-single .ng-select-container .ng-value-container .ng-input {
+    top: 0 !important;
+}
+::ng-deep .ng-select .ng-select-container .ng-value-container .ng-input>input {
+    padding: .4375em !important;
+}
+::ng-deep .ng-dropdown-panel.ng-select-bottom {
+    top: calc(100% - (-.1em)) !important;
+}
+::ng-deep .ng-dropdown-panel.ng-select-bottom {
+    border-radius: 4px !important;
+}
+::ng-deep .ng-dropdown-panel .ng-dropdown-panel-items {
+    border-radius: 4px !important;
+}
+::ng-deep .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected {
+ background: $cardsBGColor !important;
+ color: $fontColor !important;
+}
+::ng-deep .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-marked {
+    background: $backgroundColor !important;
+}
+::ng-deep .ng-select.ng-select-focused .ng-select-container .ng-arrow-wrapper .ng-arrow {
+    color: rgba(0,0,0,0.54) !important;
+}
 .is-invalid {
     border-left: solid 6px red;
     border-color: #dc3545;
