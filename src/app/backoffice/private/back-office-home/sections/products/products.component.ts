@@ -4,6 +4,7 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Product } from 'src/app/shared/interfaces/Product';
 import { ProductListI } from 'src/app/shared/interfaces/ProductListI';
 import { ShopCompanyI } from 'src/app/shared/interfaces/ShopCompanyI';
 import { AuthService } from 'src/app/shared/services/auth.service';
@@ -27,7 +28,7 @@ export class ProductsComponent implements OnInit {
   myProfileInfoForm: FormGroup;
   active: number = 0;
 
-  products: Array<ProductListI> =[]
+  products: Array<Product> =[]
 
   constructor(private authService: AuthService, private router: Router, private firebaseAuth: AngularFireAuth, private firebase: AngularFireDatabase, private firebaseStorage: AngularFireStorage, private formBuilder: FormBuilder) {
     this.myProfileInfoForm = this.createProfileForm();
@@ -96,9 +97,10 @@ export class ProductsComponent implements OnInit {
 
                       return {
                         id: key,
-                        productphoto: product.image,
-                        productTitle: product.name,
-                        productInfo: product.description
+                        img: product.image,
+                        name: product.name,
+                        description: product.description,
+                        price: product.price
                       }
                     })
                   }
