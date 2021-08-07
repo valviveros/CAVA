@@ -47,15 +47,10 @@
                 <div class="myProfileForm">
                     <div class="myProfileFields">
                       <div class="productsContainer">
-                        <div class="if" *ngIf="products.length>3 ; else loggedOut">
+                        <div class="if" *ngIf="products.length>0 ; else loggedOut">
                             <carousel [arrows]="true" [arrowsOutside]="true" [margin]="5" [cellsToShow]="3"[height]="215">
-                                <!--<div class="carousel-cell" *ngFor="let company of companies; let i = index">
-                                    <app-company-card [companyLogo]="company.companyLogo"
-                                    [companyName]="company.companyName" [companyPhoto]="company.companyPhoto"></app-company-card>
-                                </div>-->
                                 <div class="carousel-cell" *ngFor="let prod of products; let i = index">
                                     <div class="productCards" >
-                                    <!--<img [src]="prod.img" alt="" srcset="">-->
                                     <img [src]="prod.img" alt="" srcset="">
                                     <div class="overlay">
                                         {{prod.name}}
@@ -63,20 +58,14 @@
                                         <p>{{ prod.price | currency : 'COP' : 'symbol' : '1.0-0' }} </p>
                                     </div>
                                     </div>  
-                                </div>
-                                
+                                </div>  
                             </carousel>
                         </div>
                         <ng-template #loggedOut>
                             <div  class="if">
-                                <carousel [arrows]="false" [margin]="5" [cellsToShow]="4"[height]="215">
-                                    <!--<div class="carousel-cell" *ngFor="let company of companies; let i = index">
-                                        <app-company-card [companyLogo]="company.companyLogo"
-                                        [companyName]="company.companyName" [companyPhoto]="company.companyPhoto"></app-company-card>
-                                    </div>-->
+                                <carousel [arrows]="false" [margin]="5" [cellsToShow]="3"[height]="215">
                                     <div class="carousel-cell" *ngFor="let prod of products; let i = index">
                                         <div class="productCards" >
-                                        <!--<img [src]="prod.img" alt="" srcset="">-->
                                         <img [src]="prod.img" alt="" srcset="">>
                                         <div class="overlay">
                                             {{prod.name}}
@@ -84,12 +73,10 @@
                                             <p>{{ prod.price | currency : 'COP' : 'symbol' : '1.0-0' }} </p>
                                         </div>
                                         </div>  
-                                    </div>
-                                    
+                                    </div>                                   
                                 </carousel>
                             </div>
                         </ng-template>
-                        
                         <!--<div class="productCards" *ngFor="let prod of products; let i = index">
                             <img [src]="prod.productphoto" alt="" srcset="">
                             <div class="overlay">
