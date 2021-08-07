@@ -28,7 +28,7 @@ export class ProductsComponent implements OnInit {
   myProfileInfoForm: FormGroup;
   active: number = 0;
 
-  products: Array<ProductListI> =[]
+  products: Array<Product> =[]
 
   constructor(private authService: AuthService, private router: Router, private firebaseAuth: AngularFireAuth, private firebase: AngularFireDatabase, private firebaseStorage: AngularFireStorage, private formBuilder: FormBuilder) {
     this.myProfileInfoForm = this.createProfileForm();
@@ -97,9 +97,10 @@ export class ProductsComponent implements OnInit {
 
                       return {
                         id: key,
-                        productphoto: product.image,
-                        productTitle: product.name,
-                        productInfo: product.description
+                        img: product.image,
+                        name: product.name,
+                        description: product.description,
+                        price: product.price
                       }
                     })
                   }
