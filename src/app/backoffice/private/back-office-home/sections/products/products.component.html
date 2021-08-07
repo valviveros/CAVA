@@ -46,13 +46,43 @@
           <div class="myProfileForm">
               <div class="myProfileFields">
                 <div class="productsContainer">
-                  <div class="productCards" *ngFor="let prod of products; let i = index">
+                    <div class="if" *ngIf="products.length>4 ; else loggedOut">
+                        <carousel [arrows]="true" [arrowsOutside]="true" [margin]="5" [cellsToShow]="4"[height]="215">
+                            <div class="carousel-cell" *ngFor="let prod of products; let i = index">
+                                <div class="productCards" >
+                                <img [src]="prod.productphoto" alt="" srcset="">
+                                <div class="overlay">
+                                    {{prod.productTitle}}
+                                    <div class="productInfo">{{prod.productInfo}}</div>
+                                </div>
+                                </div>  
+                            </div>
+                            
+                        </carousel>
+                    </div>
+                    <ng-template #loggedOut>
+                        <div  class="if">
+                            <carousel [arrows]="false" [margin]="5" [cellsToShow]="4"[height]="215">
+                                <div class="carousel-cell" *ngFor="let prod of products; let i = index">
+                                    <div class="productCards" >
+                                    <img [src]="prod.productphoto" alt="" srcset="">
+                                    <div class="overlay">
+                                        {{prod.productTitle}}
+                                        <div class="productInfo">{{prod.productInfo}}</div>
+                                    </div>
+                                    </div>  
+                                </div>
+                                
+                            </carousel>
+                        </div>
+                    </ng-template>
+                  <!--<div class="productCards" *ngFor="let prod of products; let i = index">
                       <img [src]="prod.productphoto" alt="" srcset="">
                       <div class="overlay">
                           {{prod.productTitle}}
                           <div class="productInfo">{{prod.productInfo}}</div>
                       </div>
-                  </div>
+                  </div>-->
                 </div>
               </div>
               <div class="field">

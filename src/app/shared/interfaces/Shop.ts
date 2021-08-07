@@ -15,9 +15,9 @@ export interface Shop {
     //phone_numbers: Array<string>;
     email: string;
     website: string;
-    //type: ShopType;
-    //category: Array<string>;
-    //products?: Array<Product>
+    type: ShopType;
+    category: Array<string>;
+    //products?: Array<Product>;
     whatsapp?: string;
     instagram?: string;
     facebook?: string;
