@@ -137,6 +137,10 @@ export class ProductsComponent implements OnInit {
     this.router.navigate(['/sellers/myprofile']);
   }
 
+  goToShopInfo() {
+    this.router.navigate(['/sellers/shopinfo']);
+  }
+
   goToMyProducts() {
     this.router.navigate(['/sellers/products']);
   }

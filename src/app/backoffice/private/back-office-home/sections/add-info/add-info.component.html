@@ -1,5 +1,5 @@
 <div class="wrapper">
-    <div class="myProfileContent">
+    <div class="addProductContent">
         <div class="leftContainer">
             <div class="topBarLeftContainer">
                 <img class="navBarLogo" src="/assets/img/cavaNavBarLogo.svg" alt="" srcset="">
@@ -43,51 +43,70 @@
                 </div>
             </div>
             <div class="myProfileInfoContainer">
-                <div class="myProfileTitle">MI PERFIL</div>
+                <div class="myProfileTitle">AÑADIR INFORMACIÓN</div>
                 <div class="myProfileForm">
                     <div class="myProfileMessage">
                         <div id="successMessage" class="successMessage">Se han guardado los datos correctamente</div>
                         <div id="failureMessage" class="failureMessage">Verifique que los campos estén completos y
-                            correctos
-                        </div>
+                            correctos</div>
                     </div>
                     <div class="myProfileFields">
-                        <form [formGroup]="myProfileInfoForm">
+                        <form [formGroup]="infoForm">
                             <div class="field">
                                 <p class="control">
-                                    <input class="input" type="text" placeholder="Email" formControlName="email"
-                                        [ngClass]="{'is-invalid': validateField('email')}">
-                                </p>
-                            </div>
-                            <div class="field">
-                                <p class="control">
-                                    <input class="input" type="text" placeholder="Nombre" formControlName="name"
+                                    <input class="input" type="text" placeholder="Nombre negocio" formControlName="name"
                                         [ngClass]="{'is-invalid': validateField('name')}">
                                 </p>
                             </div>
                             <div class="field">
                                 <p class="control">
-                                    <input class="input" type="text" placeholder="Apellido" formControlName="lname"
-                                        [ngClass]="{'is-invalid': validateField('lname')}">
+                                    <textarea class="input" type="text" placeholder="Descripción"
+                                        formControlName="description"
+                                        [ngClass]="{'is-invalid': validateField('description')}"></textarea>
+                                </p>
+                            </div>
+                            <!-- <div class="field">
+                                <div class="dropdown">
+                                    <div class="dropdown-trigger">
+                                        <ng-select class="button" aria-haspopup="true" aria-controls="dropdown-menu3"
+                                            type="text" formControlName="shoptype"
+                                            [ngClass]="{'is-invalid': validateField('shoptype')}" [items]="items"
+                                            placeholder="Tipo de negocio" [(ngModel)]="selected">
+                                            <span></span>
+                                            <span class="icon is-small">
+                                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                                            </span>
+                                        </ng-select>
+                                    </div>
+                                </div>
+                            </div> -->
+                            <div class="field">
+                                <p class="control">
+                                    <input class="input" type="text" placeholder="Categoría" formControlName="category"
+                                        [ngClass]="{'is-invalid': validateField('category')}">
                                 </p>
                             </div>
                             <div class="field">
-                                <p class="control">
-                                    <input class="input" type="text" placeholder="Cédula" formControlName="id"
-                                        [ngClass]="{'is-invalid': validateField('id')}">
-                                </p>
-                            </div>
-                            <div class="field">
-                                <p class="control">
-                                    <input class="input" type="text" placeholder="Celular"
-                                        formControlName="cellphoneNumber"
-                                        [ngClass]="{'is-invalid': validateField('cellphoneNumber')}">
-                                </p>
+                                <div class="file">
+                                    <label class="file-label">
+                                        <input class="file-input" type="file" (change)="getPath($event)"
+                                            placeholder="Imagen" formControlName="image"
+                                            accept="image/png, image/gif, image/jpeg">
+                                        <span class="file-cta" [ngClass]="{'is-invalid': validateField('image')}">
+                                            <span class="file-icon">
+                                                <i class="fas fa-upload"></i>
+                                            </span>
+                                            <span class="file-label">
+                                                Subir foto
+                                            </span>
+                                        </span>
+                                    </label>
+                                </div>
                             </div>
                             <div class="field">
                                 <div class="buttons">
-                                    <button [disabled]="myProfileInfoForm.invalid" type="submit" class="button is-info"
-                                        (click)="onSubmit()">Guardar</button>
+                                    <button [disabled]="infoForm.invalid" type="submit" class="button is-info"
+                                        (click)="onSubmit()">Añadir</button>
                                 </div>
                             </div>
                         </form>

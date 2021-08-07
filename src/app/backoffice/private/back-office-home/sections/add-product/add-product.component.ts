@@ -87,6 +87,10 @@ export class AddProductComponent implements OnInit {
     this.router.navigate(['/sellers/myprofile']);
   }
 
+  goToShopInfo() {
+    this.router.navigate(['/sellers/shopinfo']);
+  }
+
   goToMyProducts() {
     this.router.navigate(['/sellers/products']);
   }
@@ -105,7 +109,8 @@ export class AddProductComponent implements OnInit {
         name: [
           null,
           Validators.compose([
-            Validators.required
+            Validators.required,
+            Validators.maxLength(35)
           ])
         ],
         description: [

@@ -1,19 +1,27 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { FormControl, FormGroup, NgForm, Validators, FormBuilder } from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireDatabase } from '@angular/fire/database';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { FormGroup, FormBuilder, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth.service';
-import * as $ from 'jquery';
 
 @Component({
-  selector: 'app-my-profile',
-  templateUrl: './my-profile.component.html',
-  styleUrls: ['./my-profile.component.scss']
+  selector: 'app-add-info',
+  templateUrl: './add-info.component.html',
+  styleUrls: ['./add-info.component.scss']
 })
-export class MyProfileComponent implements OnInit {
+export class AddInfoComponent implements OnInit {
+  items = [
+    {id: 1, name: 'Emprendimiento'},
+    {id: 2, name: 'Empresa'}
+  ];
+  selected = [
+    { id: 1, name: 'Emprendimiento' },
+  ];
   @Input() sellersName: string = '';
   Email: any;
+  path: string = '';
   sellersLName: string = '';
   password: string = '';
   id: any;
@@ -21,10 +29,10 @@ export class MyProfileComponent implements OnInit {
   countMore: number = 0;
   user: any;
   clicked: number = 0;
-  myProfileInfoForm: FormGroup;
+  infoForm: FormGroup;
 
-  constructor(private authService: AuthService, private router: Router, private firebaseAuth: AngularFireAuth, private firebase: AngularFireDatabase, private formBuilder: FormBuilder) {
-    this.myProfileInfoForm = this.createProfileForm();
+  constructor(private authService: AuthService, private router: Router, private firebaseAuth: AngularFireAuth, private firebase: AngularFireDatabase, private firebaseStorage: AngularFireStorage, private formBuilder: FormBuilder) {
+    this.infoForm = this.createProfileForm();
     this.loadSellersInfo();
   }
 
@@ -53,53 +61,15 @@ export class MyProfileComponent implements OnInit {
       $('.sideMenuInnerBtn').removeClass('active');
       $(this).addClass('active');
     });
+
+    this.resetForm();
   }
 
   loadSellersInfo() {
-    let Key: any;
-
     this.firebaseAuth.user.subscribe((async (data) => {
       this.user = data;
       this.Email = this.user['email'];
-
-      await this.firebase.database.ref('users').once('value', (users) => {
-        users.forEach((user) => {
-          const childKey = user.key;
-          const childData = user.val();
-          if (childData.email == this.Email) {
-            Key = childKey;
-            user.forEach((info => {
-              const infoChildKey = info.key;
-              const infoChildData = info.val();
-              if (infoChildKey == 'name') {
-                this.sellersName = infoChildData;
-                this.user.updateProfile({
-                  displayName: this.sellersName
-                });
-              }
-              if (infoChildKey == 'lname') {
-                this.sellersLName = infoChildData;
-              }
-              if (infoChildKey == 'id') {
-                this.id = infoChildData;
-              }
-              if (infoChildKey == 'cellphoneNumber') {
-                this.cellphoneNumber = infoChildData;
-              }
-              if (infoChildKey == 'password') {
-                this.password = infoChildData;
-              }
-            }));
-          }
-        });
-      });
-
       this.sellersName = this.user['displayName'];
-      this.myProfileInfoForm.controls.email.setValue(this.Email);
-      this.myProfileInfoForm.controls.name.setValue(this.sellersName);
-      this.myProfileInfoForm.controls.lname.setValue(this.sellersLName);
-      this.myProfileInfoForm.controls.id.setValue(this.id);
-      this.myProfileInfoForm.controls.cellphoneNumber.setValue(this.cellphoneNumber);
     }));
   }
 
@@ -136,47 +106,45 @@ export class MyProfileComponent implements OnInit {
     this.router.navigate(['/sellers/contact']);
   }
 
+  getPath(event: any) {
+    this.path = event.target.files[0]
+  }
+
   createProfileForm(): FormGroup {
     return this.formBuilder.group(
       {
-        email: [
-          {
-            value: '',
-            disabled: true
-          },
-          Validators.compose([
-            Validators.email,
-            Validators.required
-          ])
-        ],
         name: [
           null,
           Validators.compose([
+            Validators.required,
+            Validators.maxLength(35)
+          ])
+        ],
+        description: [
+          null,
+          Validators.compose([
+            Validators.required,
+            Validators.maxLength(100)
+          ])
+        ],
+        shoptype: [
+          null,
+          Validators.compose([
             Validators.required
           ])
         ],
-        lname: [
-          null,
-          Validators.compose([Validators.required])
-        ],
-        id: [
+        category: [
           null,
           Validators.compose([
-            Validators.required,
-            Validators.minLength(6),
-            Validators.maxLength(10),
-            Validators.pattern(/[0-9]/g)
+            Validators.required
           ])
         ],
-        cellphoneNumber: [
+        image: [
           null,
           Validators.compose([
-            Validators.required,
-            Validators.minLength(7),
-            Validators.maxLength(10),
-            Validators.pattern(/[0-9]/g)
+            Validators.required
           ])
-        ]
+        ],
       }
     )
   }
@@ -184,7 +152,8 @@ export class MyProfileComponent implements OnInit {
   onSubmit() {
     let Key: any;
 
-    if (this.myProfileInfoForm.valid) {
+    if (this.infoForm.valid) {
+
       this.firebaseAuth.user.subscribe((async (data) => {
         this.user = data;
         this.Email = this.user['email'];
@@ -195,25 +164,38 @@ export class MyProfileComponent implements OnInit {
             const childData = user.val();
             if (childData.email == this.Email) {
               Key = childKey;
-              this.firebase.database.ref(`users/${Key}`).update({
-                name: this.myProfileInfoForm.controls.name.value,
-                lname: this.myProfileInfoForm.controls.lname.value,
-                id: this.myProfileInfoForm.controls.id.value,
-                cellphoneNumber: this.myProfileInfoForm.controls.cellphoneNumber.value
-              });
             }
           });
         });
+
+        const fileName = '/products/' + Date.now();
+
+        let uploadTask = await this.firebaseStorage.upload(fileName, this.path)
+        let url = await uploadTask.ref.getDownloadURL();
+        console.log(url)
+        this.firebase.database.ref(`users/${Key}/company/products`).push({
+          name: this.infoForm.controls.name.value,
+          description: this.infoForm.controls.description.value,
+          price: this.infoForm.controls.price.value,
+          image: url
+        })
+
+        const query: string = '.wrapper #successMessage';
+        const successMessage: any = document.querySelector(query);
+        successMessage.style.display = 'flex';
+
+        this.resetForm();
+
+        setTimeout(() => {
+          successMessage.style.display = 'none';
+          this.router.navigate(['/sellers/products']);
+        }, 1000);
+
+
       }));
 
-      const query: string = '.wrapper #successMessage';
-      const successMessage: any = document.querySelector(query);
-      successMessage.style.display = 'flex';
-
-      setTimeout(() => {
-        successMessage.style.display = 'none';
-      }, 3000);
-    } else {
+    }
+    else {
       const query: string = '.wrapper #failureMessage';
       const failureMessage: any = document.querySelector(query);
       failureMessage.style.display = 'flex';
@@ -221,6 +203,12 @@ export class MyProfileComponent implements OnInit {
       setTimeout(() => {
         failureMessage.style.display = 'none';
       }, 3000);
+    }
+  }
+
+  resetForm(registerForm?: NgForm) {
+    if (registerForm != null) {
+      registerForm.reset();
     }
   }
 
@@ -244,8 +232,8 @@ export class MyProfileComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
-  validateField(controlName:string): boolean{
-    let control = this.myProfileInfoForm.controls[controlName]
+  validateField(controlName: string): boolean {
+    let control = this.infoForm.controls[controlName]
     return control.invalid && control.touched
   }
 

@@ -1,19 +1,22 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { FormControl, FormGroup, NgForm, Validators, FormBuilder } from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireDatabase } from '@angular/fire/database';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ProductListI } from 'src/app/shared/interfaces/ProductListI';
+import { ShopCompanyI } from 'src/app/shared/interfaces/ShopCompanyI';
 import { AuthService } from 'src/app/shared/services/auth.service';
-import * as $ from 'jquery';
 
 @Component({
-  selector: 'app-my-profile',
-  templateUrl: './my-profile.component.html',
-  styleUrls: ['./my-profile.component.scss']
+  selector: 'app-shop-info',
+  templateUrl: './shop-info.component.html',
+  styleUrls: ['./shop-info.component.scss']
 })
-export class MyProfileComponent implements OnInit {
+export class ShopInfoComponent implements OnInit {
   @Input() sellersName: string = '';
   Email: any;
+  path: string = '';
   sellersLName: string = '';
   password: string = '';
   id: any;
@@ -22,13 +25,17 @@ export class MyProfileComponent implements OnInit {
   user: any;
   clicked: number = 0;
   myProfileInfoForm: FormGroup;
+  active: number = 0;
 
-  constructor(private authService: AuthService, private router: Router, private firebaseAuth: AngularFireAuth, private firebase: AngularFireDatabase, private formBuilder: FormBuilder) {
+  products: Array<ProductListI> = []
+
+  constructor(private authService: AuthService, private router: Router, private firebaseAuth: AngularFireAuth, private firebase: AngularFireDatabase, private firebaseStorage: AngularFireStorage, private formBuilder: FormBuilder) {
     this.myProfileInfoForm = this.createProfileForm();
-    this.loadSellersInfo();
+    this.loadProductsInfo()
   }
 
   ngOnInit(): void {
+
     $('.sideMenuBtn').on('click', function () {
       var hasOptions = $(this).hasClass('options');
 
@@ -55,12 +62,14 @@ export class MyProfileComponent implements OnInit {
     });
   }
 
-  loadSellersInfo() {
+  loadProductsInfo() {
     let Key: any;
+    let products: any;
 
     this.firebaseAuth.user.subscribe((async (data) => {
       this.user = data;
       this.Email = this.user['email'];
+      this.sellersName = this.user['displayName'];
 
       await this.firebase.database.ref('users').once('value', (users) => {
         users.forEach((user) => {
@@ -68,38 +77,42 @@ export class MyProfileComponent implements OnInit {
           const childData = user.val();
           if (childData.email == this.Email) {
             Key = childKey;
+
             user.forEach((info => {
               const infoChildKey = info.key;
+              if (infoChildKey == 'company') {
+
+                info.forEach((company => {
+                  const companyKey = company.key;
+                  if (companyKey == 'products') {
+                    const productsData = company.val();
+                    console.log(productsData)
+                    console.log(Object.entries(productsData))
+
+                    this.products = Object.entries(productsData).map((pair: any) => {
+
+                      let key = pair[0]
+                      let product = pair[1]
+
+                      return {
+                        id: key,
+                        productphoto: product.image,
+                        productTitle: product.name,
+                        productInfo: product.description
+                      }
+                    })
+                  }
+
+                }))
+              }
+
               const infoChildData = info.val();
-              if (infoChildKey == 'name') {
-                this.sellersName = infoChildData;
-                this.user.updateProfile({
-                  displayName: this.sellersName
-                });
-              }
-              if (infoChildKey == 'lname') {
-                this.sellersLName = infoChildData;
-              }
-              if (infoChildKey == 'id') {
-                this.id = infoChildData;
-              }
-              if (infoChildKey == 'cellphoneNumber') {
-                this.cellphoneNumber = infoChildData;
-              }
-              if (infoChildKey == 'password') {
-                this.password = infoChildData;
-              }
             }));
           }
         });
       });
 
-      this.sellersName = this.user['displayName'];
-      this.myProfileInfoForm.controls.email.setValue(this.Email);
-      this.myProfileInfoForm.controls.name.setValue(this.sellersName);
-      this.myProfileInfoForm.controls.lname.setValue(this.sellersLName);
-      this.myProfileInfoForm.controls.id.setValue(this.id);
-      this.myProfileInfoForm.controls.cellphoneNumber.setValue(this.cellphoneNumber);
+
     }));
   }
 
@@ -132,51 +145,45 @@ export class MyProfileComponent implements OnInit {
     this.router.navigate(['/sellers/products']);
   }
 
+  goToAddInfo() {
+    this.router.navigate(['/sellers/shopinfo/add']);
+  }
+
   goToContact() {
     this.router.navigate(['/sellers/contact']);
+  }
+
+  getPath(event: any) {
+    this.path = event.target.files[0]
   }
 
   createProfileForm(): FormGroup {
     return this.formBuilder.group(
       {
-        email: [
-          {
-            value: '',
-            disabled: true
-          },
-          Validators.compose([
-            Validators.email,
-            Validators.required
-          ])
-        ],
         name: [
           null,
           Validators.compose([
             Validators.required
           ])
         ],
-        lname: [
-          null,
-          Validators.compose([Validators.required])
-        ],
-        id: [
+        description: [
           null,
           Validators.compose([
-            Validators.required,
-            Validators.minLength(6),
-            Validators.maxLength(10),
-            Validators.pattern(/[0-9]/g)
+            Validators.required
           ])
         ],
-        cellphoneNumber: [
+        price: [
           null,
           Validators.compose([
-            Validators.required,
-            Validators.minLength(7),
-            Validators.maxLength(10),
-            Validators.pattern(/[0-9]/g)
+            Validators.required
           ])
-        ]
+        ],
+        image: [
+          null,
+          Validators.compose([
+            Validators.required
+          ])
+        ],
       }
     )
   }
@@ -185,6 +192,7 @@ export class MyProfileComponent implements OnInit {
     let Key: any;
 
     if (this.myProfileInfoForm.valid) {
+
       this.firebaseAuth.user.subscribe((async (data) => {
         this.user = data;
         this.Email = this.user['email'];
@@ -195,15 +203,22 @@ export class MyProfileComponent implements OnInit {
             const childData = user.val();
             if (childData.email == this.Email) {
               Key = childKey;
-              this.firebase.database.ref(`users/${Key}`).update({
-                name: this.myProfileInfoForm.controls.name.value,
-                lname: this.myProfileInfoForm.controls.lname.value,
-                id: this.myProfileInfoForm.controls.id.value,
-                cellphoneNumber: this.myProfileInfoForm.controls.cellphoneNumber.value
-              });
             }
           });
         });
+
+        const fileName = '/file' + Math.random() + this.user['email'];
+
+        this.firebaseStorage.upload(fileName, this.path).then(() => {
+          this.firebase.database.ref(`users/${Key}/company/products`).push({
+            name: this.myProfileInfoForm.controls.name.value,
+            description: this.myProfileInfoForm.controls.description.value,
+            price: this.myProfileInfoForm.controls.price.value,
+            image: fileName
+          })
+        })
+
+
       }));
 
       const query: string = '.wrapper #successMessage';
@@ -213,7 +228,8 @@ export class MyProfileComponent implements OnInit {
       setTimeout(() => {
         successMessage.style.display = 'none';
       }, 3000);
-    } else {
+    }
+    else {
       const query: string = '.wrapper #failureMessage';
       const failureMessage: any = document.querySelector(query);
       failureMessage.style.display = 'flex';
@@ -244,7 +260,7 @@ export class MyProfileComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
-  validateField(controlName:string): boolean{
+  validateField(controlName: string): boolean {
     let control = this.myProfileInfoForm.controls[controlName]
     return control.invalid && control.touched
   }

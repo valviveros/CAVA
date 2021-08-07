@@ -1,19 +1,19 @@
 <div class="wrapper">
-    <div class="myProfileContent">
+    <div class="productsContent">
         <div class="leftContainer">
             <div class="topBarLeftContainer">
                 <img class="navBarLogo" src="/assets/img/cavaNavBarLogo.svg" alt="" srcset="">
             </div>
             <ul class="sideMenu">
-                <li class="sideMenuBtn active" (click)="goToMyProfile()">Mi perfil</li>
-                <li class="sideMenuBtn options" (click)="sideMenuOptionClicked()">
+                <li class="sideMenuBtn" (click)="goToMyProfile()">Mi perfil</li>
+                <li class="sideMenuBtn options active" (click)="sideMenuOptionClicked()">
                     Negocio
                     <span class="icon is-small">
                         <i class="fas fa-angle-left" aria-hidden="true"></i>
                     </span>
                 </li>
                 <ul class="btnOptionsContainer">
-                    <li class="sideMenuInnerBtn" (click)="goToShopInfo()">Información negocio</li>
+                    <li class="sideMenuInnerBtn active" (click)="goToShopInfo()">Información negocio</li>
                     <li class="sideMenuInnerBtn" (click)="goToMyProducts()">Productos/Servicios</li>
                     <li class="sideMenuInnerBtn" (click)="goToContact()">Contacto</li>
                 </ul>
@@ -43,54 +43,23 @@
                 </div>
             </div>
             <div class="myProfileInfoContainer">
-                <div class="myProfileTitle">MI PERFIL</div>
+                <div class="myProfileTitle">INFORMACIÓN NEGOCIO</div>
                 <div class="myProfileForm">
-                    <div class="myProfileMessage">
-                        <div id="successMessage" class="successMessage">Se han guardado los datos correctamente</div>
-                        <div id="failureMessage" class="failureMessage">Verifique que los campos estén completos y
-                            correctos
-                        </div>
-                    </div>
                     <div class="myProfileFields">
-                        <form [formGroup]="myProfileInfoForm">
-                            <div class="field">
-                                <p class="control">
-                                    <input class="input" type="text" placeholder="Email" formControlName="email"
-                                        [ngClass]="{'is-invalid': validateField('email')}">
-                                </p>
-                            </div>
-                            <div class="field">
-                                <p class="control">
-                                    <input class="input" type="text" placeholder="Nombre" formControlName="name"
-                                        [ngClass]="{'is-invalid': validateField('name')}">
-                                </p>
-                            </div>
-                            <div class="field">
-                                <p class="control">
-                                    <input class="input" type="text" placeholder="Apellido" formControlName="lname"
-                                        [ngClass]="{'is-invalid': validateField('lname')}">
-                                </p>
-                            </div>
-                            <div class="field">
-                                <p class="control">
-                                    <input class="input" type="text" placeholder="Cédula" formControlName="id"
-                                        [ngClass]="{'is-invalid': validateField('id')}">
-                                </p>
-                            </div>
-                            <div class="field">
-                                <p class="control">
-                                    <input class="input" type="text" placeholder="Celular"
-                                        formControlName="cellphoneNumber"
-                                        [ngClass]="{'is-invalid': validateField('cellphoneNumber')}">
-                                </p>
-                            </div>
-                            <div class="field">
-                                <div class="buttons">
-                                    <button [disabled]="myProfileInfoForm.invalid" type="submit" class="button is-info"
-                                        (click)="onSubmit()">Guardar</button>
+                        <div class="productsContainer">
+                            <div class="productCards" *ngFor="let prod of products; let i = index">
+                                <img [src]="prod.productphoto" alt="" srcset="">
+                                <div class="overlay">
+                                    {{prod.productTitle}}
+                                    <div class="productInfo">{{prod.productInfo}}</div>
                                 </div>
                             </div>
-                        </form>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="buttons">
+                            <button type="submit" class="button is-info" (click)="goToAddInfo()">Añadir</button>
+                        </div>
                     </div>
                 </div>
             </div>
