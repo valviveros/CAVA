@@ -7,6 +7,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireStorageModule, AngularFireStorage } from '@angular/fire/storage';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireFunctionsModule, USE_EMULATOR } from '@angular/fire/functions';
 import { AngularFireAuthGuard, redirectLoggedInTo, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
 import { RegisterService } from './shared/services/register.service';
 import { AuthService } from './shared/services/auth.service';
@@ -53,11 +55,14 @@ import { ShopComponent } from './pages/public/shop/shop.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireStorageModule,
+    AngularFirestoreModule,
+    AngularFireFunctionsModule
   ],
   providers: [
     RegisterService,
     AuthService,
     AngularFireAuthGuard,
+    { provide: USE_EMULATOR, useValue: ['localhost', 5001] }
   ],
   bootstrap: [AppComponent]
 })
