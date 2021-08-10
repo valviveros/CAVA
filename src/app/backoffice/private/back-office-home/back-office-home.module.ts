@@ -7,11 +7,11 @@ import { AddProductComponent } from './sections/add-product/add-product.componen
 import { ProductsComponent } from './sections/products/products.component';
 import { ContactComponent } from './sections/contact/contact.component';
 import { IvyCarouselModule } from 'angular-responsive-carousel';
-
-
 import { ShopInfoComponent } from './sections/shop-info/shop-info.component';
 import { AddInfoComponent } from './sections/add-info/add-info.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { AngularFireFunctionsModule } from '@angular/fire/functions';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -28,8 +28,9 @@ import { NgSelectModule } from '@ng-select/ng-select';
     ReactiveFormsModule,
     IvyCarouselModule,
     NgSelectModule,
-    BackOfficeHomeRoutingModule
-    
+    BackOfficeHomeRoutingModule,
+    AngularFirestoreModule,
+    AngularFireFunctionsModule
   ]
 })
 export class BackOfficeHomeModule { }
