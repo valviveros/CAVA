@@ -5,6 +5,7 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import * as $ from 'jquery';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-my-profile',
@@ -23,12 +24,14 @@ export class MyProfileComponent implements OnInit {
   clicked: number = 0;
   myProfileInfoForm: FormGroup;
 
-  constructor(private authService: AuthService, private router: Router, private firebaseAuth: AngularFireAuth, private firebase: AngularFireDatabase, private formBuilder: FormBuilder) {
+  constructor(private authService: AuthService, private router: Router, private firebaseAuth: AngularFireAuth, private firebase: AngularFireDatabase, private formBuilder: FormBuilder, private userService: UserService) {
     this.myProfileInfoForm = this.createProfileForm();
     this.loadSellersInfo();
   }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    console.log(await this.userService.getUsers().toPromise());
+    
     $('.sideMenuBtn').on('click', function () {
       var hasOptions = $(this).hasClass('options');
 

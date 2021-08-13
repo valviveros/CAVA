@@ -12,6 +12,7 @@ import { AddInfoComponent } from './sections/add-info/add-info.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { AngularFireFunctionsModule } from '@angular/fire/functions';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
     NgSelectModule,
     BackOfficeHomeRoutingModule,
     AngularFirestoreModule,
-    AngularFireFunctionsModule
+    AngularFireFunctionsModule,
+    HttpClientModule
   ]
 })
 export class BackOfficeHomeModule { }
