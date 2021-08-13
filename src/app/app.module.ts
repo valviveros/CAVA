@@ -27,6 +27,7 @@ import { BackOfficeHomeComponent } from './backoffice/private/back-office-home/b
 import { CardsFilterComponent } from './shared/components/cards-filter/cards-filter.component';
 import { CategoriesComponent } from './pages/public/categories/categories.component';
 import { ShopComponent } from './pages/public/shop/shop.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { ShopComponent } from './pages/public/shop/shop.component';
     AngularFireDatabaseModule,
     AngularFireStorageModule,
     AngularFirestoreModule,
-    AngularFireFunctionsModule
+    AngularFireFunctionsModule,
+    HttpClientModule
   ],
   providers: [
     RegisterService,
