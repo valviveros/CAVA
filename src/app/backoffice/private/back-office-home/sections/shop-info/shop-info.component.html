@@ -46,15 +46,37 @@
                 <div class="myProfileTitle">INFORMACIÓN NEGOCIO</div>
                 <div class="myProfileForm">
                     <div class="myProfileFields">
-                        <div class="productsContainer">
-                            <div class="productCards" *ngFor="let prod of products; let i = index">
-                                <img [src]="prod.productphoto" alt="" srcset="">
-                                <div class="overlay">
-                                    {{prod.productTitle}}
-                                    <div class="productInfo">{{prod.productInfo}}</div>
+                        <div class="leftMain">
+                            <div class="main" >
+                                <!--<div class="backg" >
+                                    <img class="backgroundImg" [src]="company.banner" alt="" srcset="">
+                                    <div class="frontinfo">
+                                        <div class="information">
+                                            <div class="logo">
+                                                <img [src]="company.logo" alt="" srcset="">
+                                            </div>
+                                            <div class="companyinfo">
+                                                {{company.description}}   
+                                            </div>
+                                        </div>   
+                                    </div>
+                                </div>-->
+                                <div class="backg">
+                                    <img src="\assets\img\FondoAdidas.jpg" alt="" srcset="">
+                                    <div class="frontinfo">
+                                        <div class="information">
+                                            <div class="logo">
+                                                <img src="\assets\img\LogoAdida.png" alt="" srcset="">
+                                            </div>
+                                            <div class="companyinfo">
+                                                Empezamos en un lavadero y conquistamos el mundo. Y en el medio, hemos marcado un gran gol y, a veces, hemos tenido problemas para alcanzar nuestros objetivos. Hemos hecho todo lo posible para lo mejor. Hemos mejorado y crecido. Mirando hacia el futuro, recordando siempre de dónde venimos.
+                                            </div>
+                                        </div>   
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="rigthMain"></div>
                     </div>
                     <div class="field">
                         <div class="buttons">

@@ -235,7 +235,7 @@ $maxWidth: 1200px;
             }
             .myProfileForm {
                 width: 90%;
-                height: 385px;
+                height: 550px;
                 display: flex;
                 flex-flow: column;
                 align-items: center;
@@ -244,70 +244,76 @@ $maxWidth: 1200px;
                 border-radius: $borderRadiusCards;
                 background: $cardsBGColor;
                 .myProfileFields {
+                    height: 85%;
                     width: 100%;
                     margin-bottom: .5rem;
-                    overflow-x: scroll;
-                    .productsContainer {
+                    //overflow-x: scroll;
+                    display: flex;
+                    flex-flow: row;
+                    .leftMain{
+                        width: 50%;
                         height: 100%;
-                        float: left;
-                        gap: 15px;
-                        display: flex;
-                        flex-flow: row;
-                        align-items: center;
-                        justify-content: space-evenly;
-                        .productCards {
-                            width: 215px;
-                            height: 215px;
-                            background-color: $productCard;
-                            border-radius: 32px;
-                            background-position: center;
-                            background-size: cover;
-                            background-repeat: no-repeat;
-                            position: relative;
-                            img {
-                                height: 100%;
-                                display: block;
+                        .main {
+                            width: 100%;
+                            height: 100%;
+                            .backg {
                                 width: 100%;
-                                border-radius: 32px;
-                            }
-                            &:hover {
-                                .overlay {
-                                    cursor: pointer;
-                                    opacity: 0.9;
-                                    display: flex;
-                                    flex-flow: column;
-                                    justify-content: center;
-                                    align-items: center;
-                                }
-                            }
-                            .overlay {
-                                position: absolute;
-                                top: 0;
-                                bottom: 0;
-                                left: 0;
-                                right: 0;
                                 height: 100%;
-                                width: 100%;
-                                opacity: 0;
-                                transition: 0.5s ease;
+                                position: relative;
                                 display: flex;
-                                flex-flow: column;
                                 justify-content: center;
                                 align-items: center;
-                                background-color: $activeFontColor;
-                                text-align: center;
-                                font-size: $cardsFontSize;
-                                font-family: $mediumFont;
-                                color: $fontColor;
-                                border-radius: 32px;
-                                .productInfo {
-                                    font-size: $footerFontSize;
-                                    font-family: $mediumFont;
-                                    color: $fontColor;
-                                    width: 80%;
+                                .backgroundImg {
+                                    height: 100%;
+                                    width: 100%;
+                                    position: relative;
+                                }
+                                .frontinfo {
+                                    position: absolute;
+                                    width: 100.5%;
+                                    height: 100.5%;
+                                    background-image: url("/assets/img/gradiente.svg");
+                                    background-position: center;
+                                    background-size: contain;
+                                    background-repeat: no-repeat;
+                                    //background: linear-gradient(90deg, rgba(240, 245, 250, 1) 2%, rgba(249, 219, 69, 0) 80%);
+                                    display: flex;
+                                    justify-content: center;
+                                    .information {
+                                        width: 76.1%;
+                                        display: flex;
+                                        flex-flow: column;
+                                        align-items: flex-start;
+                                        justify-content: center;
+                                        //padding-top: 110px;
+                                        .logo {
+                                            //width: 100%;
+                                            //max-width: 100%;
+                                           // max-height: 300px;
+                                            height: auto;
+                                            background-position: center;
+                                            background-size: contain;
+                                            background-repeat: no-repeat;
+                                            img {
+                                                height: 100%;
+                                                width: 100%;
+                                            }
+                                        }
+                                        .companyinfo {
+                                            font-size: 10px;
+                                            width: 80%;
+                                            color: $fontColor;
+                                            font-family: $mediumFont;
+                                            //margin-top: 30px;
+                                        }
+                                    }
                                 }
                             }
                         }
+                    }
+                    .rightMain{
+                        width: 50%;
+                        height: 100%;
                     }
                 }
                 .field {
