@@ -321,20 +321,19 @@ $maxWidth: 1200px;
                     .rightMain{
                         width: 49%;
                         height: 100%;
-                        //background-color: magenta;
+                        display: flex;
+                        align-items: center;
                         .myShopInfoContainer {
                             width: 100%;
                             display: flex;
                             flex-flow: column;
                             align-items: center;
                             .myShopInfoTitle {
-                                //margin: 25px 0 40px 0;
                                 font-size: $infoCardFontSize;
                                 font-family: $blackFont;
                             }
                             .myShopInfoForm {
                                 width: 100%;
-                                //height: 515px;
                                 display: flex;
                                 flex-flow: column;
                                 align-items: center;
