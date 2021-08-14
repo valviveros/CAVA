@@ -44,6 +44,8 @@ export class SearchComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.companies.sort((a,b) => a.companyName.localeCompare(b.companyName))
+  
   }
 
 }

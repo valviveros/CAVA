@@ -29,16 +29,31 @@ export class CardsFilterComponent implements OnInit {
     }
   }
 
+  sortingCards(sortNumber: number){
+    switch(sortNumber){
+      case 1:
+        console.log("Principales");
+        break;
+      case 2:
+        console.log("alphabethic");
+        break;
+
+    }
+
+  }
+
   filterOptionClicked(optionNumber: number) {
     switch (optionNumber) {
       case 1:
         $(".optionTextSelected").html("Principales");
         this.dropDownOptions();
+        this.sortingCards(1);
         break;
       
       case 2:
         $(".optionTextSelected").html("Todos A-Z");
         this.dropDownOptions();
+        this.sortingCards(2);
         break;
 
       case 3:

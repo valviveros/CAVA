@@ -14,18 +14,16 @@ import { AuthService } from 'src/app/shared/services/auth.service';
   styleUrls: ['./shop-info.component.scss']
 })
 export class ShopInfoComponent implements OnInit {
-  name = "Mi negocio"
-  description= "esta es su descripccion"
-  category= "Belleza"
-  type= "Emprendemiento"
-  items = [
-    {id: 1, name: 'Emprendimiento'},
-    {id: 2, name: 'Empresa'}
+  companyName: string = '';
+  companyDescription: string = '';
+  categorySelected = [
+    { id: 1, name: 'Categoría' },
   ];
   selected = [
-    { id: 1, name: 'Emprendimiento' },
+    { id: 1, name: 'Tipo negocio' },
   ];
-
+  logoImage: string = '';
+  backgImage: string = '';
   @Input() sellersName: string = '';
   Email: any;
   path: string = '';
@@ -36,14 +34,15 @@ export class ShopInfoComponent implements OnInit {
   countMore: number = 0;
   user: any;
   clicked: number = 0;
-  myProfileInfoForm: FormGroup;
+  myShopInfoForm: FormGroup;
   active: number = 0;
+
 
   products: Array<ProductListI> = []
 
   constructor(private authService: AuthService, private router: Router, private firebaseAuth: AngularFireAuth, private firebase: AngularFireDatabase, private firebaseStorage: AngularFireStorage, private formBuilder: FormBuilder) {
-    this.myProfileInfoForm = this.createProfileForm();
-    this.loadProductsInfo()
+    this.myShopInfoForm = this.createProfileForm();
+    this.loadCompanyInfo();
   }
 
   ngOnInit(): void {
@@ -74,57 +73,65 @@ export class ShopInfoComponent implements OnInit {
     });
   }
 
-  loadProductsInfo() {
+  loadCompanyInfo() {
     let Key: any;
     let products: any;
 
     this.firebaseAuth.user.subscribe((async (data) => {
       this.user = data;
       this.Email = this.user['email'];
-      this.sellersName = this.user['displayName'];
-
       await this.firebase.database.ref('users').once('value', (users) => {
         users.forEach((user) => {
           const childKey = user.key;
           const childData = user.val();
           if (childData.email == this.Email) {
             Key = childKey;
-
-            user.forEach((info => {
-              const infoChildKey = info.key;
-              if (infoChildKey == 'company') {
-
-                info.forEach((company => {
-                  const companyKey = company.key;
-                  if (companyKey == 'products') {
-                    const productsData = company.val();
-                    console.log(productsData)
-                    console.log(Object.entries(productsData))
-
-                    this.products = Object.entries(productsData).map((pair: any) => {
-
-                      let key = pair[0]
-                      let product = pair[1]
-
-                      return {
-                        id: key,
-                        productphoto: product.image,
-                        productTitle: product.name,
-                        productInfo: product.description
-                      }
-                    })
-                  }
-
-                }))
+            user.forEach((company => {
+              const companyChildKey = company.key;
+              const companyChildData = company.val();
+              company.forEach((data => {
+                const dataChildKey = data.key;
+                if (dataChildKey == 'info') {
+                  data.forEach((info => {
+                    const infoChildKey = info.key;
+                    const infoChildData = info.val();
+                    if (infoChildKey == 'name') {
+                      this.companyName = infoChildData;
+                    }
+                    if (infoChildKey == 'description') {
+                      this.companyDescription = infoChildData;
+                    }
+                    if (infoChildKey == 'category') {
+                      this.categorySelected = [
+                        { id: 1, name: infoChildData },
+                      ];
+                    }
+                    if (infoChildKey == 'shoptype') {
+                      this.selected = [
+                        { id: 1, name: infoChildData },
+                      ];
+                    }
+                    if (infoChildKey == 'logoImage') {
+                      this.logoImage = infoChildData;
+                    }
+                    if (infoChildKey == 'backgImage') {
+                      this.backgImage = infoChildData;
+                    }
+                  }));  
+                }
+              }));
+              if (companyChildKey == 'name') {
+                this.sellersName = companyChildData;
+                this.user.updateProfile({
+                  displayName: this.sellersName
+                });
               }
-
-              const infoChildData = info.val();
             }));
           }
         });
       });
-
-
+      this.myShopInfoForm.controls.name.setValue(this.companyName);
+      this.myShopInfoForm.controls.description.setValue(this.companyDescription);
     }));
   }
 
@@ -203,7 +210,7 @@ export class ShopInfoComponent implements OnInit {
   onSubmit() {
     let Key: any;
 
-    if (this.myProfileInfoForm.valid) {
+    if (this.myShopInfoForm.valid) {
 
       this.firebaseAuth.user.subscribe((async (data) => {
         this.user = data;
@@ -223,9 +230,9 @@ export class ShopInfoComponent implements OnInit {
 
         this.firebaseStorage.upload(fileName, this.path).then(() => {
           this.firebase.database.ref(`users/${Key}/company/products`).push({
-            name: this.myProfileInfoForm.controls.name.value,
-            description: this.myProfileInfoForm.controls.description.value,
-            price: this.myProfileInfoForm.controls.price.value,
+            name: this.myShopInfoForm.controls.name.value,
+            description: this.myShopInfoForm.controls.description.value,
+            price: this.myShopInfoForm.controls.price.value,
             image: fileName
           })
         })
