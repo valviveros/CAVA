@@ -14,7 +14,10 @@ import { AuthService } from 'src/app/shared/services/auth.service';
   styleUrls: ['./shop-info.component.scss']
 })
 export class ShopInfoComponent implements OnInit {
-  
+  name = "Mi negocio"
+  description= "esta es su descripccion"
+  category= "Belleza"
+  type= "Emprendemiento"
   items = [
     {id: 1, name: 'Emprendimiento'},
     {id: 2, name: 'Empresa'}
@@ -269,9 +272,9 @@ export class ShopInfoComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
-  validateField(controlName: string): boolean {
+  /*validateField(controlName: string): boolean {
     let control = this.myProfileInfoForm.controls[controlName]
     return control.invalid && control.touched
-  }
+  }*/
 
 }

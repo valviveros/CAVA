@@ -74,42 +74,42 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="rigthMain">
-                            <div class="myProfileFields">
-                                <form [formGroup]="myProfileInfoForm">
-                                    <div class="field">
-                                        <p class="control">
-                                            <!--<input class="input" type="text" placeholder="Nombre negocio" formControlName="name"
-                                                [ngClass]="{'is-invalid': validateField('name')}">-->
-                                            <input class="input" type="text" placeholder="Nombre negocio" formControlName="name">
-                                        </p>
+                        <div class="rightMain">
+                            <div class="myShopInfoContainer">
+                                <div class="myShopInfoTitle"> INFORMACIÓN</div>
+                                <div class="myShopInfoForm">
+                                    <div class="myShopInfoFields">
+                                        <form [formGroup]="myProfileInfoForm">
+                                            <div class="field">
+                                                <p class="control">
+                                                    <!--<input class="input" type="text" placeholder="Nombre negocio" formControlName="name"
+                                                        [ngClass]="{'is-invalid': validateField('name')}">-->
+                                                    <input class="input" type="text" placeholder="Nombre negocio" value="{{name}}">    
+                                                </p>
+                                            </div>
+                                            <div class="field">
+                                                <p class="control">
+                                                    <!--<textarea class="input" type="text" placeholder="Descripción"
+                                                        formControlName="description"
+                                                        [ngClass]="{'is-invalid': validateField('description')}"></textarea>-->
+                                                    <textarea class="input" type="text" placeholder="Descripción" >{{description}}</textarea>
+                                                </p>
+                                            </div>
+                                            <div class="field">
+                                                <p class="control">
+                                                    <!--<input class="input" type="text" placeholder="Categoría" formControlName="category"
+                                                        [ngClass]="{'is-invalid': validateField('category')}">-->
+                                                    <input class="input" type="text" placeholder="Categoría" value="{{category}}">
+                                                </p>
+                                            </div>
+                                            <div class="field">
+                                                <p class="control">
+                                                    <input class="input" type="text" placeholder="Tipo" value="{{type}}">
+                                                </p>
+                                            </div>
+                                        </form>
                                     </div>
-                                    <div class="field">
-                                        <p class="control">
-                                            <!--<textarea class="input" type="text" placeholder="Descripción"
-                                                formControlName="description"
-                                                [ngClass]="{'is-invalid': validateField('description')}"></textarea>-->
-                                            <textarea class="input" type="text" placeholder="Descripción"
-                                                formControlName="description"></textarea>
-                                        </p>
-                                    </div>
-                                    <div class="field">
-                                        <ng-select class="button" type="text" formControlName="shoptype" [ngClass]="{'is-invalid': validateField('shoptype')}" [(ngModel)]="selected[0].name">
-                                            <ng-option *ngFor="let item of items" [value]="item.name">{{item.name}}</ng-option>
-                                            <span class="icon is-small">
-                                                <i class="fas fa-angle-down" aria-hidden="true"></i>
-                                            </span>
-                                        </ng-select>
-                                    </div>
-                                    <div class="field">
-                                        <p class="control">
-                                            <!--<input class="input" type="text" placeholder="Categoría" formControlName="category"
-                                                [ngClass]="{'is-invalid': validateField('category')}">-->
-                                            <input class="input" type="text" placeholder="Categoría" formControlName="category"
-                                                >
-                                        </p>
-                                    </div>
-                                </form>
+                                </div>
                             </div>
                         </div>
                     </div>
