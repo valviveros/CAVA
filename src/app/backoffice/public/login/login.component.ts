@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, NgForm, Validators, FormBuilder } from '@angular/forms';
+import { AngularFireDatabase } from '@angular/fire/database';
 import { Router } from '@angular/router';
 import { RegisterService } from 'src/app/shared/services/register.service';
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -11,21 +12,21 @@ import { User } from 'src/app/shared/interfaces/User';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  active: number = 5;
-  registerCollection: User[] = [];
+  active: number = 0;
+  registerList: User[] = [];
   loginForm: FormGroup;
 
-  constructor(private router: Router, private firebaseAuth: AngularFireAuth, private registerService: RegisterService, private formBuilder: FormBuilder) {
+  constructor(private router: Router, private firebase: AngularFireDatabase, private firebaseAuth: AngularFireAuth, private registerService: RegisterService, private formBuilder: FormBuilder) {
     this.loginForm = this.createloginForm();
    }
 
   ngOnInit(): void {
     this.registerService.getRegister()
-      .get().subscribe(item => {
-        this.registerCollection = [];
-        item.forEach((doc) => {
-          let x = doc.data();
-          this.registerCollection.push(x as User);
+      .snapshotChanges().subscribe(item => {
+        this.registerList = [];
+        item.forEach(element => {
+          let x = element.payload.toJSON();
+          this.registerList.push(x as User);
         });
       });
   }
@@ -58,7 +59,7 @@ export class LoginComponent implements OnInit {
 
     let userExist;
     if (email.match(emailRegexp)) {
-      userExist = this.registerCollection.find(user => user.email == email);
+      userExist = this.registerList.find(user => user.email == email);
     }
 
     if (userExist) {

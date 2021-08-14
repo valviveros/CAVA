@@ -6,8 +6,6 @@ import { AngularFireDatabase } from '@angular/fire/database';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { CustomValidators } from 'src/app/custom-validators';
 import { User } from 'src/app/shared/interfaces/User';
-import { AngularFireFunctions } from '@angular/fire/functions';
-
 
 @Component({
   selector: 'app-register',
@@ -16,20 +14,20 @@ import { AngularFireFunctions } from '@angular/fire/functions';
 })
 export class RegisterComponent implements OnInit {
   active: number = 0;
-  registerCollection: User[] = [];
+  registerList: User[] = [];
   registerForm: FormGroup;
 
-  constructor(private router: Router, private registerService: RegisterService, private formBuilder: FormBuilder, private firebaseAuth: AngularFireAuth) {
+  constructor(private router: Router, private registerService: RegisterService, private formBuilder: FormBuilder, private firebaseDB: AngularFireDatabase, private firebaseAuth: AngularFireAuth) {
     this.registerForm = this.createRegisterForm();
   }
 
   ngOnInit(): void {
     this.registerService.getRegister()
-      .get().subscribe(item => {
-        this.registerCollection = [];
-        item.forEach((doc) => {
-          let x = doc.data();
-          this.registerCollection.push(x as User);
+      .snapshotChanges().subscribe(item => {
+        this.registerList = [];
+        item.forEach(element => {
+          let x = element.payload.toJSON();
+          this.registerList.push(x as User);
         });
       });
     this.resetForm();
@@ -72,7 +70,7 @@ export class RegisterComponent implements OnInit {
     const Email = this.registerForm.controls.email.value;
     const Password = this.registerForm.controls.password.value;
     const ConfirmPassword = this.registerForm.controls.confirmPassword.value;
-    let EmailExist = this.registerCollection.find(user => user.email == Email);
+    let EmailExist = this.registerList.find(user => user.email == Email);
 
     if (EmailExist) {
       const query: string = '.registerContainer #emailTaken';

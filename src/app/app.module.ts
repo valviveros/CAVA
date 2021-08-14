@@ -63,8 +63,7 @@ import { HttpClientModule } from '@angular/common/http';
   providers: [
     RegisterService,
     AuthService,
-    AngularFireAuthGuard,
-    { provide: USE_EMULATOR, useValue: ['localhost', 5001] }
+    AngularFireAuthGuard
   ],
   bootstrap: [AppComponent]
 })

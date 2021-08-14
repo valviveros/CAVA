@@ -30,7 +30,7 @@ export class MyProfileComponent implements OnInit {
   }
 
   async ngOnInit() {
-    console.log(await this.userService.getUsers().toPromise());
+    // console.log(await this.userService.getUsers().toPromise());
     
     $('.sideMenuBtn').on('click', function () {
       var hasOptions = $(this).hasClass('options');
@@ -95,14 +95,12 @@ export class MyProfileComponent implements OnInit {
             }));
           }
         });
+        this.myProfileInfoForm.controls.email.setValue(this.Email);
+        this.myProfileInfoForm.controls.name.setValue(this.sellersName);
+        this.myProfileInfoForm.controls.lname.setValue(this.sellersLName);
+        this.myProfileInfoForm.controls.id.setValue(this.id);
+        this.myProfileInfoForm.controls.cellphoneNumber.setValue(this.cellphoneNumber);
       });
-
-      this.sellersName = this.user['displayName'];
-      this.myProfileInfoForm.controls.email.setValue(this.Email);
-      this.myProfileInfoForm.controls.name.setValue(this.sellersName);
-      this.myProfileInfoForm.controls.lname.setValue(this.sellersLName);
-      this.myProfileInfoForm.controls.id.setValue(this.id);
-      this.myProfileInfoForm.controls.cellphoneNumber.setValue(this.cellphoneNumber);
     }));
   }
 
@@ -208,6 +206,8 @@ export class MyProfileComponent implements OnInit {
           });
         });
       }));
+      
+      this.loadSellersInfo();
 
       const query: string = '.wrapper #successMessage';
       const successMessage: any = document.querySelector(query);

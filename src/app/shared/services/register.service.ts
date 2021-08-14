@@ -1,21 +1,21 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { User } from "../interfaces/User";
 
 @Injectable({
   providedIn: 'root'
 })
 export class RegisterService {
-  registerCollection!: AngularFirestoreCollection<any>;
+  registerList!: AngularFireList<any>;
 
-  constructor(private firestore: AngularFirestore) { }
+  constructor(private firestore: AngularFireDatabase) { }
 
   getRegister() {
-    return this.registerCollection = this.firestore.collection('users');
+    return this.registerList = this.firestore.list('users');
   }
 
   insertRegister(register: User) {
-    this.registerCollection.add({
+    this.registerList.push({
       name: register.name,
       lname: register.lname,
       email: register.email,
