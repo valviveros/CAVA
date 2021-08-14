@@ -102,13 +102,12 @@ export class ContactComponent implements OnInit {
             }));
           }
         });
+        this.contactForm.controls.webpage.setValue(this.contactWebpage);
+        this.contactForm.controls.whatsapp.setValue(this.contactWhatsapp);
+        this.contactForm.controls.instagram.setValue(this.contactInstagram);
+        this.contactForm.controls.facebook.setValue(this.contactFacebook);
+        this.contactForm.controls.contactEmail.setValue(this.contactEmail);
       });
-
-      this.contactForm.controls.webpage.setValue(this.contactWebpage);
-      this.contactForm.controls.whatsapp.setValue(this.contactWhatsapp);
-      this.contactForm.controls.instagram.setValue(this.contactInstagram);
-      this.contactForm.controls.facebook.setValue(this.contactFacebook);
-      this.contactForm.controls.contactEmail.setValue(this.contactEmail);
     }));
   }
 
@@ -221,13 +220,17 @@ export class ContactComponent implements OnInit {
           contactEmail: this.contactForm.controls.contactEmail.value,
         })
 
+        this.loadSellersInfo();
+
         const query: string = '.wrapper #successMessage';
         const successMessage: any = document.querySelector(query);
         successMessage.style.display = 'flex';
-      }));
 
-    }
-    else {
+        setTimeout(() => {
+          successMessage.style.display = 'none';
+        }, 3000);
+      }));
+    } else {
       const query: string = '.wrapper #failureMessage';
       const failureMessage: any = document.querySelector(query);
       failureMessage.style.display = 'flex';
