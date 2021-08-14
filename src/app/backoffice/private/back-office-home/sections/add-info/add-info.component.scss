@@ -234,7 +234,7 @@ $maxWidth: 1200px;
             }
             .myProfileForm {
                 width: 70%;
-                height: 515px;
+                height: 555px;
                 display: flex;
                 flex-flow: column;
                 align-items: center;
@@ -336,7 +336,10 @@ button {
     padding: .4375em !important;
 }
 ::ng-deep .ng-dropdown-panel.ng-select-bottom {
-    top: calc(100% - (-.1em)) !important;
+    top: 40px !important;
+}
+::ng-deep .ng-dropdown-panel.ng-select-top {
+    bottom: -195px !important;
 }
 ::ng-deep .ng-dropdown-panel.ng-select-bottom {
     border-radius: 4px !important;
@@ -353,6 +356,17 @@ button {
 }
 ::ng-deep .ng-select.ng-select-focused .ng-select-container .ng-arrow-wrapper .ng-arrow {
     color: rgba(0,0,0,0.54) !important;
+}
+::ng-deep .ng-select .ng-select-container .ng-value-container .ng-placeholder {
+    color: #C2C2C2 !important;
+}
+::ng-deep .ng-select .ng-has-value .ng-placeholder, .ng-select.ng-select-opened .ng-placeholder {
+    transform: translateY(-2em) scale(0.75) perspective(100px) translateZ(0.001px) !important;
+    color: #C2C2C2 !important;
+}
+::ng-deep .ng-select.ng-select-focused .ng-select-container .ng-value-container .ng-placeholder {
+    transform: translateY(-2em) scale(0.75) perspective(100px) translateZ(0.001px) !important;
+    color: #C2C2C2 !important;
 }
 .is-invalid {
     border-left: solid 6px red;
