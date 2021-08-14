@@ -31,7 +31,8 @@ export class MyProfileComponent implements OnInit {
 
   async ngOnInit() {
     console.log(await this.userService.getUsers().toPromise());
-    
+    console.log(await this.userService.getUserInfo().toPromise());
+
     $('.sideMenuBtn').on('click', function () {
       var hasOptions = $(this).hasClass('options');
 

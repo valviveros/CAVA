@@ -13,4 +13,7 @@ export class UserService {
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>('http://localhost:5001/cava-ruvi/us-central1/api/users');
   }
+  getUserInfo(): Observable<User[]> {
+    return this.http.get<User[]>('http://localhost:5001/cava-ruvi/us-central1/api/users/userinfo');
+  }
 }

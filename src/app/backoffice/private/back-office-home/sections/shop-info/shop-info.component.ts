@@ -14,6 +14,15 @@ import { AuthService } from 'src/app/shared/services/auth.service';
   styleUrls: ['./shop-info.component.scss']
 })
 export class ShopInfoComponent implements OnInit {
+  
+  items = [
+    {id: 1, name: 'Emprendimiento'},
+    {id: 2, name: 'Empresa'}
+  ];
+  selected = [
+    { id: 1, name: 'Emprendimiento' },
+  ];
+
   @Input() sellersName: string = '';
   Email: any;
   path: string = '';

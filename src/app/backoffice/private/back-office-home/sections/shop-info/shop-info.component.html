@@ -64,19 +64,54 @@
                                 <div class="backg">
                                     <img src="\assets\img\FondoAdidas.jpg" alt="" srcset="">
                                     <div class="frontinfo">
+                                        <!--<img src="\assets\img\gradiente.svg" alt="" srcset="">-->
                                         <div class="information">
                                             <div class="logo">
                                                 <img src="\assets\img\LogoAdida.png" alt="" srcset="">
-                                            </div>
-                                            <div class="companyinfo">
-                                                Empezamos en un lavadero y conquistamos el mundo. Y en el medio, hemos marcado un gran gol y, a veces, hemos tenido problemas para alcanzar nuestros objetivos. Hemos hecho todo lo posible para lo mejor. Hemos mejorado y crecido. Mirando hacia el futuro, recordando siempre de dónde venimos.
                                             </div>
                                         </div>   
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="rigthMain"></div>
+                        <div class="rigthMain">
+                            <div class="myProfileFields">
+                                <form [formGroup]="myProfileInfoForm">
+                                    <div class="field">
+                                        <p class="control">
+                                            <!--<input class="input" type="text" placeholder="Nombre negocio" formControlName="name"
+                                                [ngClass]="{'is-invalid': validateField('name')}">-->
+                                            <input class="input" type="text" placeholder="Nombre negocio" formControlName="name">
+                                        </p>
+                                    </div>
+                                    <div class="field">
+                                        <p class="control">
+                                            <!--<textarea class="input" type="text" placeholder="Descripción"
+                                                formControlName="description"
+                                                [ngClass]="{'is-invalid': validateField('description')}"></textarea>-->
+                                            <textarea class="input" type="text" placeholder="Descripción"
+                                                formControlName="description"></textarea>
+                                        </p>
+                                    </div>
+                                    <div class="field">
+                                        <ng-select class="button" type="text" formControlName="shoptype" [ngClass]="{'is-invalid': validateField('shoptype')}" [(ngModel)]="selected[0].name">
+                                            <ng-option *ngFor="let item of items" [value]="item.name">{{item.name}}</ng-option>
+                                            <span class="icon is-small">
+                                                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                                            </span>
+                                        </ng-select>
+                                    </div>
+                                    <div class="field">
+                                        <p class="control">
+                                            <!--<input class="input" type="text" placeholder="Categoría" formControlName="category"
+                                                [ngClass]="{'is-invalid': validateField('category')}">-->
+                                            <input class="input" type="text" placeholder="Categoría" formControlName="category"
+                                                >
+                                        </p>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
                     </div>
                     <div class="field">
                         <div class="buttons">
