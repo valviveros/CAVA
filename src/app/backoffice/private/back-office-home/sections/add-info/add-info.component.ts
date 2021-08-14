@@ -239,19 +239,53 @@ export class AddInfoComponent implements OnInit {
 
         const fileName = '/info/' + Date.now() + 'logo';
         const fileName2 = '/info/' + Date.now() + 'background';
-        let uploadTask = await this.firebaseStorage.upload(fileName, this.path);
-        let uploadTask2 = await this.firebaseStorage.upload(fileName2, this.path2);
-        let url = await uploadTask.ref.getDownloadURL();
-        let url2 = await uploadTask2.ref.getDownloadURL();
+        let url;
+        let url2;
 
-        this.firebase.database.ref(`users/${Key}/company/info`).update({
-          name: this.infoForm.controls.name.value,
-          description: this.infoForm.controls.description.value,
-          category: this.infoForm.controls.category.value,
-          shoptype: this.infoForm.controls.shoptype.value,
-          logoImage: url,
-          backgImage: url2
-        });
+        if (this.path && this.path2) {
+          let uploadTask = await this.firebaseStorage.upload(fileName, this.path);
+          let uploadTask2 = await this.firebaseStorage.upload(fileName2, this.path2);
+          url = await uploadTask.ref.getDownloadURL();
+          url2 = await uploadTask2.ref.getDownloadURL();
+
+          this.firebase.database.ref(`users/${Key}/company/info`).update({
+            name: this.infoForm.controls.name.value,
+            description: this.infoForm.controls.description.value,
+            category: this.infoForm.controls.category.value,
+            shoptype: this.infoForm.controls.shoptype.value,
+            logoImage: url,
+            backgImage: url2
+          });
+        } else if (this.path) {
+          let uploadTask = await this.firebaseStorage.upload(fileName, this.path);
+          url = await uploadTask.ref.getDownloadURL();
+
+          this.firebase.database.ref(`users/${Key}/company/info`).update({
+            name: this.infoForm.controls.name.value,
+            description: this.infoForm.controls.description.value,
+            category: this.infoForm.controls.category.value,
+            shoptype: this.infoForm.controls.shoptype.value,
+            logoImage: url
+          });
+        } else if (this.path2) {
+          let uploadTask2 = await this.firebaseStorage.upload(fileName2, this.path2);
+          url2 = await uploadTask2.ref.getDownloadURL();
+
+          this.firebase.database.ref(`users/${Key}/company/info`).update({
+            name: this.infoForm.controls.name.value,
+            description: this.infoForm.controls.description.value,
+            category: this.infoForm.controls.category.value,
+            shoptype: this.infoForm.controls.shoptype.value,
+            backgImage: url2
+          });
+        } else {
+          this.firebase.database.ref(`users/${Key}/company/info`).update({
+            name: this.infoForm.controls.name.value,
+            description: this.infoForm.controls.description.value,
+            category: this.infoForm.controls.category.value,
+            shoptype: this.infoForm.controls.shoptype.value
+          });
+        }
 
         this.loadSellersInfo();
 
