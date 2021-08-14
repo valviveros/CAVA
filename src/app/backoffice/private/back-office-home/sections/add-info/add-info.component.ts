@@ -13,16 +13,26 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 })
 export class AddInfoComponent implements OnInit {
   items = [
-    {id: 1, name: 'Emprendimiento'},
-    {id: 2, name: 'Empresa'}
+    { id: 1, name: 'Emprendimiento' },
+    { id: 2, name: 'Empresa' }
   ];
   selected = [
     { id: 1, name: 'Emprendimiento' },
   ];
+  categoryItems = [
+    { id: 1, name: 'Belleza' },
+    { id: 2, name: 'Moda' },
+    { id: 3, name: 'Tecnología' },
+    { id: 4, name: 'Hogar' },
+  ];
+  categorySelected = [
+    { id: 1, name: 'Belleza' },
+  ];
   @Input() sellersName: string = '';
   Email: any;
-  path: string = '';
   sellersLName: string = '';
+  path: string = '';
+  path2: string = '';
   password: string = '';
   id: any;
   cellphoneNumber: any;
@@ -30,6 +40,8 @@ export class AddInfoComponent implements OnInit {
   user: any;
   clicked: number = 0;
   infoForm: FormGroup;
+  companyName: string = '';
+  companyDescription: string = '';
 
   constructor(private authService: AuthService, private router: Router, private firebaseAuth: AngularFireAuth, private firebase: AngularFireDatabase, private firebaseStorage: AngularFireStorage, private formBuilder: FormBuilder) {
     this.infoForm = this.createProfileForm();
@@ -66,10 +78,57 @@ export class AddInfoComponent implements OnInit {
   }
 
   loadSellersInfo() {
+    let Key: any;
+
     this.firebaseAuth.user.subscribe((async (data) => {
       this.user = data;
       this.Email = this.user['email'];
-      this.sellersName = this.user['displayName'];
+      await this.firebase.database.ref('users').once('value', (users) => {
+        users.forEach((user) => {
+          const childKey = user.key;
+          const childData = user.val();
+          if (childData.email == this.Email) {
+            Key = childKey;
+            user.forEach((company => {
+              const companyChildKey = company.key;
+              const companyChildData = company.val();
+              company.forEach((data => {
+                const dataChildKey = data.key;
+                if (dataChildKey == 'info') {
+                  data.forEach((info => {
+                    const infoChildKey = info.key;
+                    const infoChildData = info.val();
+                    if (infoChildKey == 'name') {
+                      this.companyName = infoChildData;
+                    }
+                    if (infoChildKey == 'description') {
+                      this.companyDescription = infoChildData;
+                    }
+                    if (infoChildKey == 'category') {
+                      this.categorySelected = [
+                        { id: 1, name: infoChildData },
+                      ];
+                    }
+                    if (infoChildKey == 'shoptype') {
+                      this.selected = [
+                        { id: 1, name: infoChildData },
+                      ];
+                    }
+                  }));  
+                }
+              }));
+              if (companyChildKey == 'name') {
+                this.sellersName = companyChildData;
+                this.user.updateProfile({
+                  displayName: this.sellersName
+                });
+              }
+            }));
+          }
+        });
+      });
+      this.infoForm.controls.name.setValue(this.companyName);
+      this.infoForm.controls.description.setValue(this.companyDescription);
     }));
   }
 
@@ -107,7 +166,11 @@ export class AddInfoComponent implements OnInit {
   }
 
   getPath(event: any) {
-    this.path = event.target.files[0]
+    this.path = event.target.files[0];
+  }
+
+  getPath2(event: any) {
+    this.path2 = event.target.files[0];
   }
 
   createProfileForm(): FormGroup {
@@ -127,22 +190,28 @@ export class AddInfoComponent implements OnInit {
             Validators.maxLength(100)
           ])
         ],
-        shoptype: [
-          null,
-          Validators.compose([
-            Validators.required
-          ])
-        ],
         category: [
           null,
           Validators.compose([
             Validators.required
           ])
         ],
-        image: [
+        shoptype: [
           null,
           Validators.compose([
             Validators.required
+          ])
+        ],
+        logoImage: [
+          null,
+          Validators.compose([
+            // Validators.required
+          ])
+        ],
+        backgImage: [
+          null,
+          Validators.compose([
+            // Validators.required
           ])
         ],
       }
@@ -151,59 +220,59 @@ export class AddInfoComponent implements OnInit {
 
   onSubmit() {
     let Key: any;
-    console.log(this.infoForm);
-    // if (this.infoForm.valid) {
 
-    //   this.firebaseAuth.user.subscribe((async (data) => {
-    //     this.user = data;
-    //     this.Email = this.user['email'];
+    if (this.infoForm.valid) {
 
-    //     await this.firebase.database.ref('users').once('value', (users) => {
-    //       users.forEach((user) => {
-    //         const childKey = user.key;
-    //         const childData = user.val();
-    //         if (childData.email == this.Email) {
-    //           Key = childKey;
-    //         }
-    //       });
-    //     });
+      this.firebaseAuth.user.subscribe((async (data) => {
+        this.user = data;
+        this.Email = this.user['email'];
 
-    //     const fileName = '/info/' + Date.now();
+        await this.firebase.database.ref('users').once('value', (users) => {
+          users.forEach((user) => {
+            const childKey = user.key;
+            const childData = user.val();
+            if (childData.email == this.Email) {
+              Key = childKey;
+            }
+          });
+        });
 
-    //     let uploadTask = await this.firebaseStorage.upload(fileName, this.path)
-    //     let url = await uploadTask.ref.getDownloadURL();
-    //     console.log(url)
-    //     this.firebase.database.ref(`users/${Key}/company/info`).push({
-    //       name: this.infoForm.controls.name.value,
-    //       description: this.infoForm.controls.description.value,
-    //       price: this.infoForm.controls.price.value,
-    //       image: url
-    //     })
+        const fileName = '/info/' + Date.now() + 'logo';
+        const fileName2 = '/info/' + Date.now() + 'background';
+        let uploadTask = await this.firebaseStorage.upload(fileName, this.path);
+        let uploadTask2 = await this.firebaseStorage.upload(fileName2, this.path2);
+        let url = await uploadTask.ref.getDownloadURL();
+        let url2 = await uploadTask2.ref.getDownloadURL();
 
-    //     const query: string = '.wrapper #successMessage';
-    //     const successMessage: any = document.querySelector(query);
-    //     successMessage.style.display = 'flex';
+        this.firebase.database.ref(`users/${Key}/company/info`).update({
+          name: this.infoForm.controls.name.value,
+          description: this.infoForm.controls.description.value,
+          category: this.infoForm.controls.category.value,
+          shoptype: this.infoForm.controls.shoptype.value,
+          logoImage: url,
+          backgImage: url2
+        });
 
-    //     this.resetForm();
+        this.loadSellersInfo();
 
-    //     setTimeout(() => {
-    //       successMessage.style.display = 'none';
-    //       this.router.navigate(['/sellers/shopinfo']);
-    //     }, 1000);
+        const query: string = '.wrapper #successMessage';
+        const successMessage: any = document.querySelector(query);
+        successMessage.style.display = 'flex';
 
+        setTimeout(() => {
+          successMessage.style.display = 'none';
+          this.router.navigate(['/sellers/shopinfo']);
+        }, 1000);
+      }));
+    } else {
+      const query: string = '.wrapper #failureMessage';
+      const failureMessage: any = document.querySelector(query);
+      failureMessage.style.display = 'flex';
 
-    //   }));
-
-    // }
-    // else {
-    //   const query: string = '.wrapper #failureMessage';
-    //   const failureMessage: any = document.querySelector(query);
-    //   failureMessage.style.display = 'flex';
-
-    //   setTimeout(() => {
-    //     failureMessage.style.display = 'none';
-    //   }, 3000);
-    // }
+      setTimeout(() => {
+        failureMessage.style.display = 'none';
+      }, 3000);
+    }
   }
 
   resetForm(registerForm?: NgForm) {
