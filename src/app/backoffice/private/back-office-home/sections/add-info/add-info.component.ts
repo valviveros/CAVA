@@ -226,7 +226,7 @@ export class AddInfoComponent implements OnInit {
       this.firebaseAuth.user.subscribe((async (data) => {
         this.user = data;
         this.Email = this.user['email'];
-
+        
         await this.firebase.database.ref('users').once('value', (users) => {
           users.forEach((user) => {
             const childKey = user.key;
@@ -235,6 +235,16 @@ export class AddInfoComponent implements OnInit {
               Key = childKey;
             }
           });
+        });
+
+        const companyId = this.infoForm.controls.name.value + Key;
+
+        this.firebase.database.ref(`users/${Key}/company`).update({
+          id: companyId
+        });
+
+        this.firebase.database.ref(`companies/${Key}`).update({
+          id: companyId
         });
 
         const fileName = '/info/' + Date.now() + 'logo';
@@ -256,11 +266,28 @@ export class AddInfoComponent implements OnInit {
             logoImage: url,
             backgImage: url2
           });
+          
+          this.firebase.database.ref(`companies/${Key}/info`).update({
+            name: this.infoForm.controls.name.value,
+            description: this.infoForm.controls.description.value,
+            category: this.infoForm.controls.category.value,
+            shoptype: this.infoForm.controls.shoptype.value,
+            logoImage: url,
+            backgImage: url2
+          });
         } else if (this.path) {
           let uploadTask = await this.firebaseStorage.upload(fileName, this.path);
           url = await uploadTask.ref.getDownloadURL();
 
           this.firebase.database.ref(`users/${Key}/company/info`).update({
+            name: this.infoForm.controls.name.value,
+            description: this.infoForm.controls.description.value,
+            category: this.infoForm.controls.category.value,
+            shoptype: this.infoForm.controls.shoptype.value,
+            logoImage: url
+          });
+
+          this.firebase.database.ref(`companies/${Key}/info`).update({
             name: this.infoForm.controls.name.value,
             description: this.infoForm.controls.description.value,
             category: this.infoForm.controls.category.value,
@@ -278,8 +305,23 @@ export class AddInfoComponent implements OnInit {
             shoptype: this.infoForm.controls.shoptype.value,
             backgImage: url2
           });
+
+          this.firebase.database.ref(`companies/${Key}/info`).update({
+            name: this.infoForm.controls.name.value,
+            description: this.infoForm.controls.description.value,
+            category: this.infoForm.controls.category.value,
+            shoptype: this.infoForm.controls.shoptype.value,
+            backgImage: url2
+          });
         } else {
           this.firebase.database.ref(`users/${Key}/company/info`).update({
+            name: this.infoForm.controls.name.value,
+            description: this.infoForm.controls.description.value,
+            category: this.infoForm.controls.category.value,
+            shoptype: this.infoForm.controls.shoptype.value
+          });
+
+          this.firebase.database.ref(`companies/${Key}/info`).update({
             name: this.infoForm.controls.name.value,
             description: this.infoForm.controls.description.value,
             category: this.infoForm.controls.category.value,

@@ -34,14 +34,12 @@ export class ShopInfoComponent implements OnInit {
   countMore: number = 0;
   user: any;
   clicked: number = 0;
-  myShopInfoForm: FormGroup;
   active: number = 0;
 
 
   products: Array<ProductListI> = []
 
   constructor(private authService: AuthService, private router: Router, private firebaseAuth: AngularFireAuth, private firebase: AngularFireDatabase, private firebaseStorage: AngularFireStorage, private formBuilder: FormBuilder) {
-    this.myShopInfoForm = this.createProfileForm();
     this.loadCompanyInfo();
   }
 
@@ -130,8 +128,6 @@ export class ShopInfoComponent implements OnInit {
           }
         });
       });
-      this.myShopInfoForm.controls.name.setValue(this.companyName);
-      this.myShopInfoForm.controls.description.setValue(this.companyDescription);
     }));
   }
 
@@ -176,89 +172,6 @@ export class ShopInfoComponent implements OnInit {
     this.path = event.target.files[0]
   }
 
-  createProfileForm(): FormGroup {
-    return this.formBuilder.group(
-      {
-        name: [
-          null,
-          Validators.compose([
-            Validators.required
-          ])
-        ],
-        description: [
-          null,
-          Validators.compose([
-            Validators.required
-          ])
-        ],
-        price: [
-          null,
-          Validators.compose([
-            Validators.required
-          ])
-        ],
-        image: [
-          null,
-          Validators.compose([
-            Validators.required
-          ])
-        ],
-      }
-    )
-  }
-
-  onSubmit() {
-    let Key: any;
-
-    if (this.myShopInfoForm.valid) {
-
-      this.firebaseAuth.user.subscribe((async (data) => {
-        this.user = data;
-        this.Email = this.user['email'];
-
-        await this.firebase.database.ref('users').once('value', (users) => {
-          users.forEach((user) => {
-            const childKey = user.key;
-            const childData = user.val();
-            if (childData.email == this.Email) {
-              Key = childKey;
-            }
-          });
-        });
-
-        const fileName = '/file' + Math.random() + this.user['email'];
-
-        this.firebaseStorage.upload(fileName, this.path).then(() => {
-          this.firebase.database.ref(`users/${Key}/company/products`).push({
-            name: this.myShopInfoForm.controls.name.value,
-            description: this.myShopInfoForm.controls.description.value,
-            price: this.myShopInfoForm.controls.price.value,
-            image: fileName
-          })
-        })
-
-
-      }));
-
-      const query: string = '.wrapper #successMessage';
-      const successMessage: any = document.querySelector(query);
-      successMessage.style.display = 'flex';
-
-      setTimeout(() => {
-        successMessage.style.display = 'none';
-      }, 3000);
-    }
-    else {
-      const query: string = '.wrapper #failureMessage';
-      const failureMessage: any = document.querySelector(query);
-      failureMessage.style.display = 'flex';
-
-      setTimeout(() => {
-        failureMessage.style.display = 'none';
-      }, 3000);
-    }
-  }
-
   dropDownOptions() {
     const query: string = '.wrapper .profileOptionsContainer';
     const sellersName: any = document.querySelector(query);
@@ -278,10 +191,4 @@ export class ShopInfoComponent implements OnInit {
     await this.authService.logout();
     this.router.navigate(['/login']);
   }
-
-  /*validateField(controlName: string): boolean {
-    let control = this.myProfileInfoForm.controls[controlName]
-    return control.invalid && control.touched
-  }*/
-
 }

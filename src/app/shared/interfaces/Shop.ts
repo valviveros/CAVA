@@ -12,12 +12,12 @@ export interface Shop {
     description: string;
     logo?: string;
     banner?: string;
-    //phone_numbers: Array<string>;
+    cellphoneNumber: number;
     email: string;
     website: string;
     type: ShopType;
-    category: Array<string>;
-    //products?: Array<Product>;
+    category: string;
+    products?: Array<Product>;
     whatsapp?: string;
     instagram?: string;
     facebook?: string;

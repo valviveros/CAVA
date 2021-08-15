@@ -87,8 +87,6 @@ export class ProductsComponent implements OnInit {
                   const companyKey = company.key;
                   if(companyKey == 'products'){
                     const productsData = company.val();
-                    console.log(productsData)
-                    console.log(Object.entries(productsData))
 
                     this.products = Object.entries(productsData).map((pair: any) => {
 

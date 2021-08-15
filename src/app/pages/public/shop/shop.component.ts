@@ -17,49 +17,29 @@ export class ShopComponent implements OnInit {
   //companies: Shop[]=[]
   companies: Array<Shop> = [
     {
-      id: "1",
-      name: "Adidas",
-      description: "Lorem ipsum dolor sit amet consectetur adipiscing elit aenean gravida diam proin, dictumst vehicula fames curabitur porta aliquet ultricies felis ullamcorper interdum. Elementum ut senectus nisl varius quis proin sem mattis dapibus, praesent eros a dignissim orci lectus volutpat pellentesque vivamus, magna condimentum rutrum gravida.",
-      logo: "/assets/img/LogoAdida.png",
-      banner: "/assets/img/FondoAdidas.jpg",
-      //phone_numbers: Array<"string">,
-      email: "string",
-      website: "string",
+      id: '1',
+      name: 'Adidas',
+      description: 'Lorem ipsum dolor sit amet consectetur adipiscing elit aenean gravida diam proin, dictumst vehicula fames curabitur porta aliquet ultricies felis ullamcorper interdum. Elementum ut senectus nisl varius quis proin sem mattis dapibus, praesent eros a dignissim orci lectus volutpat pellentesque vivamus, magna condimentum rutrum gravida.',
+      logo: 'https://firebasestorage.googleapis.com/v0/b/cava-ruvi.appspot.com/o/info%2F1628977877522logo?alt=media&token=5bf95518-8c6d-43a8-8796-3a4c57eb67bc',
+      banner: 'https://firebasestorage.googleapis.com/v0/b/cava-ruvi.appspot.com/o/info%2F1628977877522background?alt=media&token=5ec2ec47-5f26-4bac-a0eb-b9ab6d0bdaa4',
+      cellphoneNumber: 3177301913,
+      email: 'adidas@gmail.com',
+      website: 'www.adidas.co',
       type: 0,
-      category: [
-        "pepe","atun", "champu",
-      ],
-      /*products:[
+      category: 'Moda',
+      products: [
         {
-          id: "2",
-          name: "Producto 1",
-          description: "Lorem ipsum dolor sit amet consectetur adipiscing elit aenean gravida diam proin gravida diam proin.",
-          price: 2500,
-          img: "/assets/img/Cuadrada2.jpg",
-          //categories: Array<string>, 
-        },
-        {
-          id: "1",
-          name: "Zapatotes Negros Adidas Calida 2020",
-          description: "Lorem ipsum dolor sit amet consectetur adipiscing elit aenean gravida diam proin gravida diam proin ",
-          price: 125000,
-          img: "/assets/img/Cuadrada1.jpg",
-          //categories: Array<string>, 
-        },
-        {
-          id: "1",
-          name: "Zapatotes Negros Adidas Calida 2020",
-          description: "Lorem ipsum dolor sit amet consectetur adipiscing elit aenean gravida diam proin gravida diam proin ",
-          price: 125000,
-          img: "/assets/img/Cuadrada1.jpg",
-          //categories: Array<string>, 
+          id: '1',
+          name: 'Tennis Hombre',
+          description: 'Tennis Hombre color azul, blanco y naranja.',
+          price: 300000,
+          img: 'https://firebasestorage.googleapis.com/v0/b/cava-ruvi.appspot.com/o/products%2F1628953371407?alt=media&token=08a31a8f-d3e4-4b04-819e-e0cda8487dc0'
         }
-        
-        ],*/
-      whatsapp: "string", 
-      instagram: "string",
-      facebook: "string"
-    }
+      ],
+      whatsapp: '3177301913',
+      instagram: 'adidasco',
+      facebook: 'adidasco'
+    },
   ]
 
   products: Array<Product> = [
@@ -69,9 +49,6 @@ export class ShopComponent implements OnInit {
       description: "Lorem ipsum dolor sit amet consectetur adipiscing elit aenean gravida diam proin gravida diam proin.",
       price: 2500,
       img: "/assets/img/Cuadrada2.jpg",
-      /*categories:[
-        "pepe","atun", "champu",
-      ] */
     },
     {
       id: "2",
@@ -79,9 +56,6 @@ export class ShopComponent implements OnInit {
       description: "Lorem ipsum dolor sit amet consectetur adipiscing elit aenean gravida diam proin gravida diam proin.",
       price: 2500,
       img: "/assets/img/Cuadrada2.jpg",
-      /*categories:[
-        "pepe","atun", "champu",
-      ]*/ 
     }
   ]
   

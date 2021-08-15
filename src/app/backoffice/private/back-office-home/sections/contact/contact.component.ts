@@ -220,6 +220,14 @@ export class ContactComponent implements OnInit {
           contactEmail: this.contactForm.controls.contactEmail.value,
         })
 
+        this.firebase.database.ref(`companies/${Key}/contact`).update({
+          webpage: this.contactForm.controls.webpage.value,
+          whatsapp: this.contactForm.controls.whatsapp.value,
+          instagram: this.contactForm.controls.instagram.value,
+          facebook: this.contactForm.controls.facebook.value,
+          contactEmail: this.contactForm.controls.contactEmail.value,
+        })
+
         this.loadSellersInfo();
 
         const query: string = '.wrapper #successMessage';

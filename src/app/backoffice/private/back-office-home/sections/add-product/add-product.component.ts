@@ -159,13 +159,20 @@ export class AddProductComponent implements OnInit {
 
         let uploadTask = await this.firebaseStorage.upload(fileName,this.path)
         let url = await uploadTask.ref.getDownloadURL();
-        console.log(url)
+
         this.firebase.database.ref(`users/${Key}/company/products`).push({
           name: this.productForm.controls.name.value,
           description: this.productForm.controls.description.value,
           price: this.productForm.controls.price.value,
           image: url
-        })
+        });
+
+        this.firebase.database.ref(`companies/${Key}/products`).push({
+          name: this.productForm.controls.name.value,
+          description: this.productForm.controls.description.value,
+          price: this.productForm.controls.price.value,
+          image: url
+        });
 
         const query: string = '.wrapper #successMessage';
         const successMessage: any = document.querySelector(query);
