@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import '@angular/localize/init';
 import { Router } from '@angular/router';
 import { Shop } from 'src/app/shared/interfaces/Shop';
+import { AngularFireDatabase } from '@angular/fire/database';
+
 
 @Component({
   selector: 'app-home',
@@ -23,11 +25,11 @@ export class HomeComponent implements OnInit {
       cellphoneNumber: 3177301913,
       email: 'adidas@gmail.com',
       website: 'www.adidas.co',
-      type: 0,
+      type: 'Emprendimiento',
       category: 'Moda',
       products: [
         {
-          id: '1',
+          //id: '1',
           name: 'Tennis Hombre',
           description: 'Tennis Hombre color azul, blanco y naranja.',
           price: 300000,
@@ -47,11 +49,11 @@ export class HomeComponent implements OnInit {
       cellphoneNumber: 3177301913,
       email: 'adidas@gmail.com',
       website: 'www.adidas.co',
-      type: 0,
+      type: 'Empremdimiento',
       category: 'Moda',
       products: [
         {
-          id: '1',
+          //id: '1',
           name: 'Tennis Hombre',
           description: 'Tennis Hombre color azul, blanco y naranja.',
           price: 300000,
@@ -63,8 +65,34 @@ export class HomeComponent implements OnInit {
       facebook: 'adidasco'
     },
   ]
+  enterprise: Array<Shop> = []
+  
 
-  constructor(private router: Router) { }
+  id: string = '';
+  name: string = '';
+  description: string = '';
+  logo: string = '';
+  banner: string = '';
+  cellphoneNumber!: number;
+  email: string = '';
+  website: string = '';
+  type: string = '';
+  category: string = '';
+  products: [] = [];
+  whatsapp: string = '';
+  instagram: string = '';
+  facebook: string = '';
+
+  produtId: string = '';
+  productName: string = '';
+  productDescription: string = '';
+  productPrice!: number;
+  productImg: string = '';
+
+
+  constructor(private router: Router, private firebase: AngularFireDatabase) { 
+    this.sendShop();
+  }
 
   ngOnInit(): void {
   }
@@ -73,4 +101,100 @@ export class HomeComponent implements OnInit {
     this.router.navigate([`/categories/${category}`]);
   }
 
+  async sendShop() {
+
+    let venture:any = {};
+    let product:any = {};
+
+    await this.firebase.database.ref('companies').once('value', (companies) => {
+      companies.forEach((company) => {
+        const childKey = company.key;
+        const childData = company.val();
+        //console.log(childKey, childData )
+        company.forEach((data) => {
+          const dataChildKey = data.key;
+          const dataChildData = data.val();
+          //console.log(dataChildKey, dataChildData)
+          if (dataChildKey == 'id'){
+            this.id = dataChildData;
+          }
+          if (dataChildKey == 'products'){
+            data.forEach((product) => {
+              product.forEach((pInfo) => {
+                const productChildKey = pInfo.key;
+                const productChildData = pInfo.val();
+                //console.log(productChildKey, productChildData)
+                if (productChildKey == 'name'){
+                  this.productName = productChildData;
+                }
+                if (productChildKey == 'description'){
+                  this.productDescription = productChildData;
+                }
+                if (productChildKey == 'price'){
+                  this.productPrice = productChildData;
+                }
+                if (productChildKey == 'image'){
+                  this.productImg = productChildData;
+                }
+              })
+            })
+            product.name  = this.productName;
+            product.description = this.productDescription;
+            product.price = this.productPrice; 
+            product.img = this.productImg;
+            venture.products = product;
+            console.log(venture)
+            
+          }
+          data.forEach((info) => {
+            const infoChildKey = info.key;
+            const infoChildData = info.val();
+            //console.log(infoChildKey, infoChildData) 
+            if (infoChildKey == 'name'){
+              this.name = infoChildData;
+            }
+            if (infoChildKey == 'logoImage'){
+              this.logo = infoChildData;
+            }
+            if (infoChildKey == 'backgImage'){
+              this.banner = infoChildData;
+            }
+            if (infoChildKey == 'shoptype'){
+              this.type = infoChildData;
+            }
+            if (infoChildKey == 'whatsapp'){
+              this.cellphoneNumber = infoChildData;
+            }
+            if (infoChildKey == 'contactEmail'){
+              this.email = infoChildData;
+            }
+            if (infoChildKey == 'webpage'){
+              this.website = infoChildData;
+            }
+            if (infoChildKey == 'category'){
+              this.category = infoChildData;
+            }
+            if (infoChildKey == 'whatsapp'){
+              this.whatsapp = infoChildData;
+            }
+            if (infoChildKey == 'instagram'){
+              this.instagram = infoChildData;
+            }
+            if (infoChildKey == 'facebook'){
+              this.facebook = infoChildData;
+            }
+          });
+      });
+      
+      venture.id  = this.id;
+      venture.name = this.name;
+      venture.logo = this.logo; 
+      venture.banner = this.banner; 
+      venture.type = this.type;  
+      // this.logo, this.banner, this.type
+      //console.log(venture)
+    });
+  })
+}
+  
 }

@@ -15,7 +15,7 @@ export interface Shop {
     cellphoneNumber: number;
     email: string;
     website: string;
-    type: ShopType;
+    type: string;
     category: string;
     products?: Array<Product>;
     whatsapp?: string;
