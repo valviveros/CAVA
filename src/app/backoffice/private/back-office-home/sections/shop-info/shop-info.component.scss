@@ -268,7 +268,7 @@ $maxWidth: 1200px;
                                 align-items: center;
                                 img {
                                     max-height: 240px;
-                                    max-width: 370px;
+                                    width: 370px;
                                 }
 
                                 .frontinfo {
@@ -295,8 +295,8 @@ $maxWidth: 1200px;
                                         //justify-content: center;
                                         //padding-top: 110px;
                                         .logo {
-                                            height: 30%;
-                                            width: 30%;
+                                            max-height: 30%;
+                                            max-width: 30%;
                                             background-position: center;
                                             background-size: contain;
                                             background-repeat: no-repeat;

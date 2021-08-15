@@ -19,6 +19,7 @@ $navbarFontSize: 15px;
 $footerFontSize: 12px;
 $borderRadiusCards: 32px;
 $maxWidth: 1200px;
+$space: 7px;
 
 @font-face {
     font-family: avenirLight;
@@ -240,7 +241,7 @@ $maxWidth: 1200px;
                 }
                 .contactContainer {
                     width: 100%;
-                    height: 85%;
+                    height: 90%;
                     display: flex;
                     flex-flow: column;
                     margin-top: 3%;
@@ -250,6 +251,7 @@ $maxWidth: 1200px;
                         display: flex;
                         flex-flow: row;
                         align-items: center;
+                        margin-bottom: $space;
                         .webicon {
                             width: 35px;
                             height: 100%;
@@ -287,6 +289,7 @@ $maxWidth: 1200px;
                         display: flex;
                         flex-flow: row;
                         align-items: center;
+                        margin-bottom: $space;
                         .whatsappicon {
                             width: 35px;
                             height: 100%;
@@ -318,12 +321,38 @@ $maxWidth: 1200px;
                             }
                         }
                     }
+                    .cellphone {
+                        width: 70%;
+                        height: 22%;
+                        display: flex;
+                        flex-flow: row;
+                        align-items: center;
+                        margin-bottom: $space;
+                        .cellphoneicon {
+                            width: 35px;
+                            height: 100%;
+                            background-position: center;
+                            background-size: contain;
+                            background-repeat: no-repeat;
+                            background-image: url(/assets/img/phoneIcon.svg);
+                        }
+                        .cellphoneLink {
+                            width: 90%;
+                            font-size: $filterFontSize;
+                            color: $fontColor;
+                            font-family: $mediumFont;
+                            text-align: left;
+                            margin-left: 2%;
+                            
+                        }
+                    }
                     .instagram {
                         width: 70%;
                         height: 22%;
                         display: flex;
                         flex-flow: row;
                         align-items: center;
+                        margin-bottom: $space;
                         .instagramicon {
                             width: 35px;
                             height: 100%;
@@ -361,6 +390,7 @@ $maxWidth: 1200px;
                         display: flex;
                         flex-flow: row;
                         align-items: center;
+                        margin-bottom: $space;
                         .facebookicon {
                             width: 35px;
                             height: 100%;
@@ -398,6 +428,7 @@ $maxWidth: 1200px;
                         display: flex;
                         flex-flow: row;
                         align-items: center;
+                        margin-bottom: $space;
                         .emailicon {
                             width: 35px;
                             height: 100%;

@@ -83,10 +83,27 @@
                         </div>
                     
                         <div class="contactContainer" *ngIf="showDiv.contact">
+                            <div class="cellphone" *ngIf="company.instagram">
+                                <div class="cellphoneicon"></div>
+                                <div class="cellphoneLink">
+                                    {{company.cellphoneNumber}} 
+                                </div>
+                            </div>
+                            <div class="cellphone" *ngIf="!company.instagram" style="display: none">
+
+                            </div>
+                            <div class="email" *ngIf="company.email">
+                                <div class="emailicon"></div>
+                                <div class="emailLink">
+                                    <a href="mailto:{{company.email}}" target="_blank"> {{company.email}}</a>
+                                </div>
+                            </div>
+                            <div class="email" *ngIf="!company.email" style="display: none">
+                            </div>
                             <div class="web" *ngIf="company.website" >
                                 <div class="webicon"></div>
                                 <div class="webLink">
-                                    <a [href]="company.website" target="_blank">{{company.website}}</a>
+                                    <a href="https://{{company.website}}" target="_blank">{{company.website}}</a>
                                 </div>
                             </div>
                             <div class="web" *ngIf="!company.website" style="display: none">
@@ -119,14 +136,7 @@
                             <div class="facebook" *ngIf="!company.facebook" style="display: none">
                                 
                             </div>
-                            <div class="email" *ngIf="company.email">
-                                <div class="emailicon"></div>
-                                <div class="emailLink">
-                                    <a href="mailto:{{company.email}}" target="_blank"> {{company.email}}</a>
-                                </div>
-                            </div>
-                            <div class="email" *ngIf="!company.email" style="display: none">
-                            </div>
+                            
                         </div>
                 </div>
                 

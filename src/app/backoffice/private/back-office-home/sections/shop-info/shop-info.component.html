@@ -52,8 +52,10 @@
                                     <img src="{{backgImage}}" alt="" srcset="">
                                     <div class="frontinfo">
                                         <div class="information">
-                                            <div class="logo">
+                                            <div class="logo" *ngIf="logoImage" >
                                                 <img src="{{logoImage}}" alt="" srcset="">
+                                            </div>
+                                            <div class="logo" *ngIf="!logoImage" style="display: none">    
                                             </div>
                                         </div>
                                     </div>
