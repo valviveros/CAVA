@@ -78,19 +78,19 @@
                 </carousel>
             </div>
         </div>
-        <!-- <div class="contentWrapper">
+        <div class="contentWrapper">
             <div class="companiesTitle">
                 Empresas
             </div>
             <div class="companiesContainer">
                 <carousel [arrowsOutside]="true" [margin]="12" [cellsToShow]="2" [height]="235">
-                    <div class="carousel-cell" *ngFor="let company of companies; let i = index">
-                        <app-company-card [companyLogo]="company.companyLogo"
-                        [companyName]="company.companyName" [companyPhoto]="company.companyPhoto"></app-company-card>
+                    <div class="carousel-cell" *ngFor="let enterprise of enterprises; let i = index">
+                        <app-company-card [shopId]="enterprise.id" [companyLogo]="enterprise.logo"
+                        [companyName]="enterprise.name" [companyPhoto]="enterprise.banner"></app-company-card>
                     </div>  
                 </carousel>
             </div>
-        </div> -->
+        </div>
         <div class="footerContainer">
             <app-footer></app-footer>
         </div>
