@@ -14,7 +14,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
   styleUrls: ['./shop-info.component.scss']
 })
 export class ShopInfoComponent implements OnInit {
-  companyName: string = '';
+  companyName: string = 'Nombre negocio';
   companyDescription: string = '';
   categorySelected = [
     { id: 1, name: 'Categoría' },

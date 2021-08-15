@@ -411,6 +411,9 @@ $maxWidth: 1200px;
         }
     }
 }
+::ng-deep .input[disabled], .select fieldset[disabled] select, .select select[disabled], .textarea[disabled], fieldset[disabled] .input, fieldset[disabled] .select select, fieldset[disabled] .textarea {
+    color: #C1C1C1;
+}
 .is-invalid {
     border-left: solid 6px red;
     border-color: #dc3545;
