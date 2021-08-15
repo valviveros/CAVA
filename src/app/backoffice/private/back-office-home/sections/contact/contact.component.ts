@@ -220,7 +220,7 @@ export class ContactComponent implements OnInit {
           contactEmail: this.contactForm.controls.contactEmail.value,
         })
 
-        this.firebase.database.ref(`companies/${Key}/contact`).update({
+        this.firebase.database.ref(`companies/${Key}`).update({
           webpage: this.contactForm.controls.webpage.value,
           whatsapp: this.contactForm.controls.whatsapp.value,
           instagram: this.contactForm.controls.instagram.value,
