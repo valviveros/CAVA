@@ -1,17 +1,17 @@
 <div class="wrapper" (scroll)="onScroll()">
     <app-navbar [active]="active"></app-navbar>
     <div class="content">
-        <div class="contentWrapper" *ngFor="let company of companies; let i = index">
+        <div class="contentWrapper" *ngFor="let shop of shops; let i = index">
             <div class="main" >
                 <div class="backg" >
-                    <img class="backgroundImg" [src]="company.banner" alt="" srcset="">
+                    <img class="backgroundImg" [src]="shop.banner" alt="" srcset="">
                     <div class="frontinfo">
                         <div class="information">
                             <div class="logo">
-                                <img [src]="company.logo" alt="" srcset="">
+                                <img [src]="shop.logo" alt="" srcset="">
                             </div>
                             <div class="companyinfo">
-                                {{company.description}}   
+                                {{shop.description}}   
                             </div>
                         </div>   
                     </div>
@@ -29,23 +29,10 @@
                         </div>
                     </div>
                         <div class="productsContainer" *ngIf="showDiv.product">
-                            <!--<div class="productCards" *ngFor="let prod of products; let i = index">
-                                <img [src]="prod.img" alt="" srcset="">
-                                <div class="overlay">
-                                    {{prod.name}}
-                                    <div class="productInfo">{{prod.description}}</div>
-                                    <p>{{ prod.price | currency : 'COP' : 'symbol' : '1.0-0' }} </p>
-                                </div>
-                            </div>-->
                             <div class="if" *ngIf="products.length>4 ; else loggedOut">
                                 <carousel [arrows]="true" [arrowsOutside]="true" [margin]="5" [cellsToShow]="4"[height]="215">
-                                    <!--<div class="carousel-cell" *ngFor="let company of companies; let i = index">
-                                        <app-company-card [companyLogo]="company.companyLogo"
-                                        [companyName]="company.companyName" [companyPhoto]="company.companyPhoto"></app-company-card>
-                                    </div>-->
                                     <div class="carousel-cell" *ngFor="let prod of products; let i = index">
                                         <div class="productCards" >
-                                        <!--<img [src]="prod.img" alt="" srcset="">-->
                                         <img [src]="imagenesCarousel[i]" alt="Random first slide">
                                         <div class="overlay">
                                             {{prod.name}}
@@ -60,13 +47,8 @@
                             <ng-template #loggedOut>
                                 <div  class="if">
                                     <carousel [arrows]="false" [margin]="5" [cellsToShow]="4"[height]="215">
-                                        <!--<div class="carousel-cell" *ngFor="let company of companies; let i = index">
-                                            <app-company-card [companyLogo]="company.companyLogo"
-                                            [companyName]="company.companyName" [companyPhoto]="company.companyPhoto"></app-company-card>
-                                        </div>-->
                                         <div class="carousel-cell" *ngFor="let prod of products; let i = index">
                                             <div class="productCards" >
-                                            <!--<img [src]="prod.img" alt="" srcset="">-->
                                             <img [src]="imagenesCarousel[i]" alt="Random first slide">
                                             <div class="overlay">
                                                 {{prod.name}}
@@ -75,7 +57,6 @@
                                             </div>
                                             </div>  
                                         </div>
-                                        
                                     </carousel>
                                 </div>
                             </ng-template>
@@ -83,57 +64,57 @@
                         </div>
                     
                         <div class="contactContainer" *ngIf="showDiv.contact">
-                            <div class="cellphone" *ngIf="company.instagram">
+                            <div class="cellphone" *ngIf="shop.instagram">
                                 <div class="cellphoneicon"></div>
                                 <div class="cellphoneLink">
-                                    {{company.cellphoneNumber}} 
+                                    {{shop.cellphoneNumber}} 
                                 </div>
                             </div>
-                            <div class="cellphone" *ngIf="!company.instagram" style="display: none">
+                            <div class="cellphone" *ngIf="!shop.instagram" style="display: none">
 
                             </div>
-                            <div class="email" *ngIf="company.email">
+                            <div class="email" *ngIf="shop.email">
                                 <div class="emailicon"></div>
                                 <div class="emailLink">
-                                    <a href="mailto:{{company.email}}" target="_blank"> {{company.email}}</a>
+                                    <a href="mailto:{{shop.email}}" target="_blank"> {{shop.email}}</a>
                                 </div>
                             </div>
-                            <div class="email" *ngIf="!company.email" style="display: none">
+                            <div class="email" *ngIf="!shop.email" style="display: none">
                             </div>
-                            <div class="web" *ngIf="company.website" >
+                            <div class="web" *ngIf="shop.website" >
                                 <div class="webicon"></div>
                                 <div class="webLink">
-                                    <a href="https://{{company.website}}" target="_blank">{{company.website}}</a>
+                                    <a href="https://{{shop.website}}" target="_blank">{{shop.website}}</a>
                                 </div>
                             </div>
-                            <div class="web" *ngIf="!company.website" style="display: none">
+                            <div class="web" *ngIf="!shop.website" style="display: none">
 
                             </div>
-                            <div class="whatsapp" *ngIf="company.whatsapp" >
+                            <div class="whatsapp" *ngIf="shop.whatsapp" >
                                 <div class="whatsappicon"></div>
                                 <div class="whatsappLink">
-                                    <a href="https://wa.me/57{{company.whatsapp}}" target="_blank"> {{company.whatsapp}} </a>  
+                                    <a href="https://wa.me/57{{shop.whatsapp}}" target="_blank"> {{shop.whatsapp}} </a>  
                                 </div>
                             </div>
-                            <div class="whatsapp" *ngIf="!company.whatsapp" style="display: none">
+                            <div class="whatsapp" *ngIf="!shop.whatsapp" style="display: none">
 
                             </div>
-                            <div class="instagram" *ngIf="company.instagram">
+                            <div class="instagram" *ngIf="shop.instagram">
                                 <div class="instagramicon"></div>
                                 <div class="instagramLink">
-                                    <a href="https://www.instagram.com/{{company.instagram}}/" target="_blank"> @{{company.instagram}} </a>
+                                    <a href="https://www.instagram.com/{{shop.instagram}}/" target="_blank"> @{{shop.instagram}} </a>
                                 </div>
                             </div>
-                            <div class="instagram" *ngIf="!company.instagram" style="display: none">
+                            <div class="instagram" *ngIf="!shop.instagram" style="display: none">
 
                             </div>
-                            <div class="facebook" *ngIf="company.facebook">
+                            <div class="facebook" *ngIf="shop.facebook">
                                 <div class="facebookicon"></div>
                                 <div class="facebookLink">
-                                    <a href="https://es-la.facebook.com/{{company.facebook}}/" target="_blank"> {{company.facebook}} </a>
+                                    <a href="https://es-la.facebook.com/{{shop.facebook}}/" target="_blank"> {{shop.facebook}} </a>
                                 </div>
                             </div>
-                            <div class="facebook" *ngIf="!company.facebook" style="display: none">
+                            <div class="facebook" *ngIf="!shop.facebook" style="display: none">
                                 
                             </div>
                             

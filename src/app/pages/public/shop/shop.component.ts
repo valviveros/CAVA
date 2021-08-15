@@ -1,9 +1,8 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { ShopCompanyI } from 'src/app/shared/interfaces/ShopCompanyI';
-import { Shop, ShopType } from 'src/app/shared/interfaces/Shop';
-import { ProductListI } from 'src/app/shared/interfaces/ProductListI';
+import { Shop } from 'src/app/shared/interfaces/Shop';
 import { Product } from 'src/app/shared/interfaces/Product';
 import { ActivatedRoute } from '@angular/router';
+import { AngularFireDatabase } from '@angular/fire/database';
 
 @Component({
   selector: 'app-shop',
@@ -14,31 +13,7 @@ export class ShopComponent implements OnInit {
   active: number = 0;
   id: string = '';
   imagenesCarousel = [0,1,2,3,4,5,6,7,8,9].map((n) => `https://picsum.photos/215/215?random=${n}`);
-  companies: Array<Shop> = [
-    {
-      id: '1',
-      name: 'Adidas',
-      description: 'Lorem ipsum dolor sit amet consectetur adipiscing elit aenean gravida diam proin, dictumst vehicula fames curabitur porta aliquet ultricies felis ullamcorper interdum. Elementum ut senectus nisl varius quis proin sem mattis dapibus, praesent eros a dignissim orci lectus volutpat pellentesque vivamus, magna condimentum rutrum gravida.',
-      logo: '',
-      banner: '',
-      cellphoneNumber: 3177301913,
-      email: 'adidas@gmail.com',
-      website: 'www.adidas.co',
-      type: 'Emprendimiento',
-      category: 'Moda',
-      products: [
-        {
-          name: 'Tennis Hombre',
-          description: 'Tennis Hombre color azul, blanco y naranja.',
-          price: 300000,
-          img: 'https://firebasestorage.googleapis.com/v0/b/cava-ruvi.appspot.com/o/products%2F1628953371407?alt=media&token=08a31a8f-d3e4-4b04-819e-e0cda8487dc0'
-        }
-      ],
-      whatsapp: '3177301913',
-      instagram: 'adidasco',
-      facebook: 'adidasco'
-    },
-  ]
+  shops: Array<Shop> = [];
 
   products: Array<Product> = [
     {
@@ -60,11 +35,24 @@ export class ShopComponent implements OnInit {
     product : true,
   }
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private firebase: AngularFireDatabase) { }
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.paramMap.get('shop') || '';
+    this.id = this.route.snapshot.paramMap.get('id') || '';
+    this.loadShop(this.id);
     this.onScroll();
+  }
+
+  async loadShop(id:any) {
+    await this.firebase.database.ref('companies').once('value', (companies) => {
+      companies.forEach((company) => {
+        const childKey = company.key;
+        const childData = company.val();
+        if (childData.id == id) {
+          this.shops.push(childData);
+        } 
+      });
+    });
   }
 
   @HostListener('window:scroll', ['$event'])
