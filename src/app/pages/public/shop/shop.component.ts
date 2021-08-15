@@ -14,6 +14,7 @@ export class ShopComponent implements OnInit {
   id: string = '';
   imagenesCarousel = [0,1,2,3,4,5,6,7,8,9].map((n) => `https://picsum.photos/215/215?random=${n}`);
   shops: Array<Shop> = [];
+  productos: Array<Product> =[]
 
   products: Array<Product> = [
     {
@@ -48,8 +49,18 @@ export class ShopComponent implements OnInit {
       companies.forEach((company) => {
         const childKey = company.key;
         const childData = company.val();
+        //console.log(childData);
         if (childData.id == id) {
           this.shops.push(childData);
+          company.forEach((info) =>{
+            const productChildData = info.val();
+            info.forEach((items) =>{
+              const itemsChildData = items.val();
+              console.log(itemsChildData);
+              this.productos.push(itemsChildData);
+            })
+            //console.log(productChildData);
+          })
         } 
       });
     });
