@@ -163,7 +163,7 @@ $maxWidth: 1200px;
                     align-items: center;
                     justify-content: space-between;
                     margin-top: 3%;
-                    .if{
+                    .if {
                         width: 100%;
                         height: 220px;
                         carousel {
@@ -237,8 +237,6 @@ $maxWidth: 1200px;
                             }
                         }
                     }
-                    
-                    
                 }
                 .contactContainer {
                     width: 100%;
@@ -276,6 +274,11 @@ $maxWidth: 1200px;
                             a:visited:active {
                                 color: grey;
                             }
+                            a {
+                                &:hover {
+                                    text-decoration: underline;
+                                }
+                            }
                         }
                     }
                     .whatsapp {
@@ -307,6 +310,11 @@ $maxWidth: 1200px;
                             a:link:active,
                             a:visited:active {
                                 color: grey;
+                            }
+                            a {
+                                &:hover {
+                                    text-decoration: underline;
+                                }
                             }
                         }
                     }
@@ -340,6 +348,11 @@ $maxWidth: 1200px;
                             a:visited:active {
                                 color: grey;
                             }
+                            a {
+                                &:hover {
+                                    text-decoration: underline;
+                                }
+                            }
                         }
                     }
                     .facebook {
@@ -372,6 +385,11 @@ $maxWidth: 1200px;
                             a:visited:active {
                                 color: grey;
                             }
+                            a {
+                                &:hover {
+                                    text-decoration: underline;
+                                }
+                            }
                         }
                     }
                     .email {
@@ -403,6 +421,11 @@ $maxWidth: 1200px;
                             a:link:active,
                             a:visited:active {
                                 color: grey;
+                            }
+                            a {
+                                &:hover {
+                                    text-decoration: underline;
+                                }
                             }
                         }
                     }
