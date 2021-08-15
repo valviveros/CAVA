@@ -81,8 +81,14 @@ export class ContactComponent implements OnInit {
                   key.forEach((contactInfo => {
                     const contactInfoChildKey = contactInfo.key;
                     const contactInfoChildData = contactInfo.val();
-                    if (contactInfoChildKey == 'webpage') {
+                    if (contactInfoChildKey == 'cellphoneNumber') {
+                      this.cellphoneNumber = contactInfoChildData;
+                    }
+                    if (contactInfoChildKey == 'website') {
                       this.contactWebpage = contactInfoChildData;
+                    }
+                    if (contactInfoChildKey == 'email') {
+                      this.contactEmail = contactInfoChildData;
                     }
                     if (contactInfoChildKey == 'whatsapp') {
                       this.contactWhatsapp = contactInfoChildData;
@@ -93,20 +99,18 @@ export class ContactComponent implements OnInit {
                     if (contactInfoChildKey == 'facebook') {
                       this.contactFacebook = contactInfoChildData;
                     }
-                    if (contactInfoChildKey == 'contactEmail') {
-                      this.contactEmail = contactInfoChildData;
-                    }
                   }));
                 }
               }));
             }));
           }
         });
-        this.contactForm.controls.webpage.setValue(this.contactWebpage);
+        this.contactForm.controls.cellphoneNumber.setValue(this.cellphoneNumber);
+        this.contactForm.controls.email.setValue(this.contactEmail);
+        this.contactForm.controls.website.setValue(this.contactWebpage);
         this.contactForm.controls.whatsapp.setValue(this.contactWhatsapp);
         this.contactForm.controls.instagram.setValue(this.contactInstagram);
         this.contactForm.controls.facebook.setValue(this.contactFacebook);
-        this.contactForm.controls.contactEmail.setValue(this.contactEmail);
       });
     }));
   }
@@ -130,14 +134,28 @@ export class ContactComponent implements OnInit {
   createContactForm(): FormGroup {
     return this.formBuilder.group(
       {
-        webpage: [
+        cellphoneNumber: [
+          null,
+          Validators.compose([
+            Validators.required,
+            Validators.minLength(10),
+            Validators.maxLength(10),
+            Validators.pattern(/[0-9]/g),
+          ])
+        ],
+        email: [
+          null,
+          Validators.compose([
+            Validators.email
+          ])
+        ],
+        website: [
           null,
           Validators.compose([])
         ],
         whatsapp: [
           null,
           Validators.compose([
-            Validators.required,
             Validators.minLength(10),
             Validators.maxLength(10),
             Validators.pattern(/[0-9]/g),
@@ -151,12 +169,6 @@ export class ContactComponent implements OnInit {
           null,
           Validators.compose([])
         ],
-        contactEmail: [
-          null,
-          Validators.compose([
-            Validators.email
-          ])
-        ]
       }
     )
   }
@@ -213,20 +225,22 @@ export class ContactComponent implements OnInit {
         });
 
         this.firebase.database.ref(`users/${Key}/company/contact`).update({
-          webpage: this.contactForm.controls.webpage.value,
+          cellphoneNumber: this.contactForm.controls.cellphoneNumber.value,
+          email: this.contactForm.controls.email.value,
+          website: this.contactForm.controls.website.value,
           whatsapp: this.contactForm.controls.whatsapp.value,
           instagram: this.contactForm.controls.instagram.value,
           facebook: this.contactForm.controls.facebook.value,
-          contactEmail: this.contactForm.controls.contactEmail.value,
-        })
+        });
 
         this.firebase.database.ref(`companies/${Key}`).update({
-          webpage: this.contactForm.controls.webpage.value,
+          cellphoneNumber: this.contactForm.controls.cellphoneNumber.value,
+          email: this.contactForm.controls.email.value,
+          website: this.contactForm.controls.website.value,
           whatsapp: this.contactForm.controls.whatsapp.value,
           instagram: this.contactForm.controls.instagram.value,
           facebook: this.contactForm.controls.facebook.value,
-          contactEmail: this.contactForm.controls.contactEmail.value,
-        })
+        });
 
         this.loadSellersInfo();
 

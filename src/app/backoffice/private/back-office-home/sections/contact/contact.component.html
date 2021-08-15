@@ -55,8 +55,20 @@
                         <form [formGroup]="contactForm">
                             <div class="field">
                                 <p class="control">
-                                    <input class="input" type="text" placeholder="Página web: www.cavaruvi.com" formControlName="webpage"
-                                        [ngClass]="{'is-invalid': validateField('webpage')}">
+                                    <input class="input" type="text" placeholder="Celular: 3101234567" formControlName="cellphoneNumber"
+                                        [ngClass]="{'is-invalid': validateField('cellphoneNumber')}">
+                                </p>
+                            </div>
+                            <div class="field">
+                                <p class="control">
+                                    <input class="input" type="text" placeholder="Correo electrónico: cavaruvi@gmail.com" formControlName="email"
+                                        [ngClass]="{'is-invalid': validateField('email')}">
+                                </p>
+                            </div>
+                            <div class="field">
+                                <p class="control">
+                                    <input class="input" type="text" placeholder="Página web: www.cavaruvi.com" formControlName="website"
+                                        [ngClass]="{'is-invalid': validateField('website')}">
                                 </p>
                             </div>
                             <div class="field">
@@ -77,13 +89,7 @@
                                         [ngClass]="{'is-invalid': validateField('facebook')}">
                                 </p>
                             </div>
-                            <div class="field">
-                                <p class="control">
-                                    <input class="input" type="text" placeholder="Correo electrónico: cavaruvi@gmail.com"
-                                        formControlName="contactEmail"
-                                        [ngClass]="{'is-invalid': validateField('contactEmail')}">
-                                </p>
-                            </div>
+                            
                             <div class="field">
                                 <div class="buttons">
                                     <button [disabled]="contactForm.invalid" type="submit" class="button is-info"

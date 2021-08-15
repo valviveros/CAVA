@@ -109,7 +109,7 @@ export class AddInfoComponent implements OnInit {
                         { id: 1, name: infoChildData },
                       ];
                     }
-                    if (infoChildKey == 'shoptype') {
+                    if (infoChildKey == 'type') {
                       this.selected = [
                         { id: 1, name: infoChildData },
                       ];
@@ -196,19 +196,19 @@ export class AddInfoComponent implements OnInit {
             Validators.required
           ])
         ],
-        shoptype: [
+        type: [
           null,
           Validators.compose([
             Validators.required
           ])
         ],
-        logoImage: [
+        logo: [
           null,
           Validators.compose([
             // Validators.required
           ])
         ],
-        backgImage: [
+        banner: [
           null,
           Validators.compose([
             // Validators.required
@@ -262,18 +262,18 @@ export class AddInfoComponent implements OnInit {
             name: this.infoForm.controls.name.value,
             description: this.infoForm.controls.description.value,
             category: this.infoForm.controls.category.value,
-            shoptype: this.infoForm.controls.shoptype.value,
-            logoImage: url,
-            backgImage: url2
+            type: this.infoForm.controls.type.value,
+            logo: url,
+            banner: url2
           });
           
           this.firebase.database.ref(`companies/${Key}`).update({
             name: this.infoForm.controls.name.value,
             description: this.infoForm.controls.description.value,
             category: this.infoForm.controls.category.value,
-            shoptype: this.infoForm.controls.shoptype.value,
-            logoImage: url,
-            backgImage: url2
+            type: this.infoForm.controls.type.value,
+            logo: url,
+            banner: url2
           });
         } else if (this.path) {
           let uploadTask = await this.firebaseStorage.upload(fileName, this.path);
@@ -283,16 +283,16 @@ export class AddInfoComponent implements OnInit {
             name: this.infoForm.controls.name.value,
             description: this.infoForm.controls.description.value,
             category: this.infoForm.controls.category.value,
-            shoptype: this.infoForm.controls.shoptype.value,
-            logoImage: url
+            type: this.infoForm.controls.type.value,
+            logo: url
           });
 
           this.firebase.database.ref(`companies/${Key}`).update({
             name: this.infoForm.controls.name.value,
             description: this.infoForm.controls.description.value,
             category: this.infoForm.controls.category.value,
-            shoptype: this.infoForm.controls.shoptype.value,
-            logoImage: url
+            type: this.infoForm.controls.type.value,
+            logo: url
           });
         } else if (this.path2) {
           let uploadTask2 = await this.firebaseStorage.upload(fileName2, this.path2);
@@ -302,30 +302,30 @@ export class AddInfoComponent implements OnInit {
             name: this.infoForm.controls.name.value,
             description: this.infoForm.controls.description.value,
             category: this.infoForm.controls.category.value,
-            shoptype: this.infoForm.controls.shoptype.value,
-            backgImage: url2
+            type: this.infoForm.controls.type.value,
+            banner: url2
           });
 
           this.firebase.database.ref(`companies/${Key}`).update({
             name: this.infoForm.controls.name.value,
             description: this.infoForm.controls.description.value,
             category: this.infoForm.controls.category.value,
-            shoptype: this.infoForm.controls.shoptype.value,
-            backgImage: url2
+            type: this.infoForm.controls.type.value,
+            banner: url2
           });
         } else {
           this.firebase.database.ref(`users/${Key}/company/info`).update({
             name: this.infoForm.controls.name.value,
             description: this.infoForm.controls.description.value,
             category: this.infoForm.controls.category.value,
-            shoptype: this.infoForm.controls.shoptype.value
+            type: this.infoForm.controls.type.value
           });
 
           this.firebase.database.ref(`companies/${Key}`).update({
             name: this.infoForm.controls.name.value,
             description: this.infoForm.controls.description.value,
             category: this.infoForm.controls.category.value,
-            shoptype: this.infoForm.controls.shoptype.value
+            type: this.infoForm.controls.type.value
           });
         }
 

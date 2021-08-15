@@ -73,7 +73,7 @@
                                 </ng-select>
                             </div>
                             <div class="field">
-                                <ng-select class="button" type="text" placeholder="Tipo de negocio" formControlName="shoptype" [ngClass]="{'is-invalid': validateField('shoptype')}" [(ngModel)]="selected[0].name">
+                                <ng-select class="button" type="text" placeholder="Tipo de negocio" formControlName="type" [ngClass]="{'is-invalid': validateField('type')}" [(ngModel)]="selected[0].name">
                                     <ng-option *ngFor="let item of items" [value]="item.name">{{item.name}}</ng-option>
                                 </ng-select>
                             </div>
@@ -81,9 +81,9 @@
                                 <div class="file">
                                     <label class="file-label">
                                         <input class="file-input" type="file" (change)="getPath($event)"
-                                            placeholder="Imagen" formControlName="logoImage"
+                                            placeholder="Imagen" formControlName="logo"
                                             accept="image/png, image/gif, image/jpeg">
-                                        <span class="file-cta" [ngClass]="{'is-invalid': validateField('logoImage')}">
+                                        <span class="file-cta" [ngClass]="{'is-invalid': validateField('logo')}">
                                             <span class="file-icon">
                                                 <i class="fas fa-upload"></i>
                                             </span>
@@ -98,8 +98,8 @@
                                 <div class="file">
                                     <label class="file-label">
                                         <input class="file-input" type="file" (change)="getPath2($event)" placeholder="Imagen"
-                                            formControlName="backgImage" accept="image/png, image/gif, image/jpeg">
-                                        <span class="file-cta" [ngClass]="{'is-invalid': validateField('backgImage')}">
+                                            formControlName="banner" accept="image/png, image/gif, image/jpeg">
+                                        <span class="file-cta" [ngClass]="{'is-invalid': validateField('banner')}">
                                             <span class="file-icon">
                                                 <i class="fas fa-upload"></i>
                                             </span>

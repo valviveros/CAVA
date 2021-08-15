@@ -104,15 +104,15 @@ export class ShopInfoComponent implements OnInit {
                         { id: 1, name: infoChildData },
                       ];
                     }
-                    if (infoChildKey == 'shoptype') {
+                    if (infoChildKey == 'type') {
                       this.selected = [
                         { id: 1, name: infoChildData },
                       ];
                     }
-                    if (infoChildKey == 'logoImage') {
+                    if (infoChildKey == 'logo') {
                       this.logoImage = infoChildData;
                     }
-                    if (infoChildKey == 'backgImage') {
+                    if (infoChildKey == 'banner') {
                       this.backgImage = infoChildData;
                     }
                   }));  
