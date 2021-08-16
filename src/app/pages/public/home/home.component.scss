@@ -74,7 +74,10 @@ $maxWidth: 1200px;
             z-index: 1;
             .carousel-cell {
                 img {
-                    width: auto;
+                    //height: 420px;
+                    width: 1278px;
+                    //width: auto;
+                    object-fit: cover;
                     display: block;
                     margin: 0 auto;
                     border-radius: $borderRadiusCards;

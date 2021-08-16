@@ -30,7 +30,9 @@ $borderRadiusCards: 32px;
         .companyLogo {
             width: 60%;
             img {
+                
                 border-radius: $borderRadiusCards;
+                object-fit: fill;
             }
         }
         .companyName {

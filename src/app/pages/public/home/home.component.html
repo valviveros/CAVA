@@ -2,27 +2,9 @@
     <app-navbar [active]="active"></app-navbar>
     <div class="content">
         <div class="carouselContainer">
-            <carousel [cellWidth]="'100%'" [dots]="true" [loop]="true" [height]="422" [arrowsOutside]="false">
-                <div class="carousel-cell">
-                    <img [src]="imagenesCarousel[0]" alt="Random first slide">
-                </div>
-                <div class="carousel-cell">
-                    <img [src]="imagenesCarousel[1]" alt="Random first slide">
-                </div>
-                <div class="carousel-cell">
-                    <img [src]="imagenesCarousel[2]" alt="Random first slide">
-                </div>
-                <div class="carousel-cell">
-                    <img [src]="imagenesCarousel[3]" alt="Random first slide">
-                </div>
-                <div class="carousel-cell">
-                    <img [src]="imagenesCarousel[4]" alt="Random first slide">
-                </div>
-                <div class="carousel-cell">
-                    <img [src]="imagenesCarousel[5]" alt="Random first slide">
-                </div>
-                <div class="carousel-cell">
-                    <img [src]="imagenesCarousel[6]" alt="Random first slide">
+            <carousel [cellWidth]="'100%'" [autoplay]="true" [dots]="false" [loop]="true" [height]="422" [arrowsOutside]="false" [autoplayInterval]="3000">
+                <div class="carousel-cell" *ngFor="let company of companies; let i = index">
+                    <img [src]="company.banner" alt="Random first slide">
                 </div>
             </carousel>
         </div>
@@ -85,8 +67,8 @@
             <div class="companiesContainer">
                 <carousel [arrowsOutside]="true" [margin]="12" [cellsToShow]="2" [height]="235">
                     <div class="carousel-cell" *ngFor="let enterprise of enterprises; let i = index">
-                        <app-company-card [shopId]="enterprise.id" [companyLogo]="enterprise.logo"
-                        [companyName]="enterprise.name" [companyPhoto]="enterprise.banner"></app-company-card>
+                        <app-company-card [shopId]="enterprise.id" [companyLogo]="enterprise.logo" [companyName]="enterprise.name" 
+                            [companyPhoto]="enterprise.banner"></app-company-card>
                     </div>  
                 </carousel>
             </div>
