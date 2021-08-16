@@ -1,5 +1,6 @@
 export interface CompanyCardI {
-    companyLogo: string
-    companyName: string
-    companyPhoto: string
+    id: string
+    logo: string
+    name: string
+    banner: string
 }

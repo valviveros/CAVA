@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireDatabase } from '@angular/fire/database';
 import { CompanyCardI } from 'src/app/shared/interfaces/CompanyCardI';
 
 @Component({
@@ -8,44 +9,29 @@ import { CompanyCardI } from 'src/app/shared/interfaces/CompanyCardI';
 })
 export class SearchComponent implements OnInit {
   active: number = 2;
-  companies: Array<CompanyCardI> = [ 
-    {
-    companyLogo : "/assets/img/companyLogo1.svg",
-    companyName : "Agro Dinero",
-    companyPhoto : "/assets/img/companyPhoto1.svg"
-    },
-    {
-      companyLogo : "/assets/img/companyLogo2.svg",
-      companyName : "Deluna's Dream",
-      companyPhoto : "/assets/img/companyPhoto2.svg"
-    },
-    {
-      companyLogo : "/assets/img/companyLogo1.svg",
-      companyName : "Agro Dinero",
-      companyPhoto : "/assets/img/companyPhoto1.svg"
-    },
-    {
-      companyLogo : "/assets/img/companyLogo2.svg",
-      companyName : "Deluna's Dream",
-      companyPhoto : "/assets/img/companyPhoto2.svg"
-    },
-    {
-      companyLogo: "/assets/img/companyLogo1.svg",
-      companyName: "Agro Dinero",
-      companyPhoto: "/assets/img/companyPhoto1.svg"
-    },
-    {
-      companyLogo: "/assets/img/companyLogo2.svg",
-      companyName: "Deluna's Dream",
-      companyPhoto: "/assets/img/companyPhoto2.svg"
-    }
-  ]
+  shops: Array<CompanyCardI> = [];
+  searchword: string = '';
 
-  constructor() { }
+  constructor(private firebase: AngularFireDatabase) { }
 
   ngOnInit(): void {
-    this.companies.sort((a,b) => a.companyName.localeCompare(b.companyName))
-  
+    // this.shops.sort((a,b) => a.companyName.localeCompare(b.companyName))
+    this.loadShops();
+  }
+
+  async loadShops() {
+    await this.firebase.database.ref('companies').once('value', (companies) => {
+      companies.forEach((company) => {
+        const childKey = company.key;
+        const childData = company.val();
+        this.shops.push(childData);
+      });
+    });
+  }
+
+  searchThis(word: string) {
+    this.searchword = word;
+    console.log(this.searchword);
   }
 
 }

@@ -22,22 +22,22 @@
                 <div class="items">
                     <div class="typeTitle">
                         <div class="categoryTitle" [ngClass]="{ 'underline': showDiv.product }" (click)="showDiv.product = !showDiv.product; showDiv.contact = false; ">
-                            Productos  
+                            products  
                         </div>
                         <div class="categoryTitle"[ngClass]="{ 'underline': showDiv.contact }" (click)="showDiv.contact = !showDiv.contact; showDiv.product = false" >
                             Contacto Directo
                         </div>
                     </div>
                         <div class="productsContainer" *ngIf="showDiv.product">
-                            <div class="if" *ngIf="productos.length>4 ; else loggedOut">
+                            <div class="if" *ngIf="products.length>4 ; else loggedOut">
                                 <carousel [arrows]="true" [arrowsOutside]="true" [margin]="5" [cellsToShow]="4"[height]="215">
-                                    <div class="carousel-cell" *ngFor="let prod of productos; let i = index">
+                                    <div class="carousel-cell" *ngFor="let product of products; let i = index">
                                         <div class="productCards" >
-                                        <img [src]="prod.image" alt="Random first slide">
+                                        <img [src]="product.image" alt="Random first slide">
                                         <div class="overlay">
-                                            {{prod.name}}
-                                            <div class="productInfo">{{prod.description}}</div>
-                                            <p>{{ prod.price | currency : 'COP' : 'symbol' : '1.0-0' }} </p>
+                                            {{product.name}}
+                                            <div class="productInfo">{{product.description}}</div>
+                                            <p>{{ product.price | currency : 'COP' : 'symbol' : '1.0-0' }} </p>
                                         </div>
                                         </div>  
                                     </div>
@@ -47,13 +47,13 @@
                             <ng-template #loggedOut>
                                 <div  class="if">
                                     <carousel [arrows]="false" [margin]="5" [cellsToShow]="4"[height]="215">
-                                        <div class="carousel-cell" *ngFor="let prod of productos; let i = index">
+                                        <div class="carousel-cell" *ngFor="let product of products; let i = index">
                                             <div class="productCards" >
-                                            <img [src]="prod.image" alt="Random first slide">
+                                            <img [src]="product.image" alt="Random first slide">
                                             <div class="overlay">
-                                                {{prod.name}}
-                                                <div class="productInfo">{{prod.description}}</div>
-                                                <p>{{ prod.price | currency : 'COP' : 'symbol' : '1.0-0' }} </p>
+                                                {{product.name}}
+                                                <div class="productInfo">{{product.description}}</div>
+                                                <p>{{ product.price | currency : 'COP' : 'symbol' : '1.0-0' }} </p>
                                             </div>
                                             </div>  
                                         </div>

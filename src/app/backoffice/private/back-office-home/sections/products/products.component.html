@@ -49,13 +49,13 @@
                       <div class="productsContainer">
                         <div class="if" *ngIf="products.length>0 ; else loggedOut">
                             <carousel [arrows]="true" [arrowsOutside]="true" [margin]="5" [cellsToShow]="3"[height]="215">
-                                <div class="carousel-cell" *ngFor="let prod of products; let i = index">
+                                <div class="carousel-cell" *ngFor="let product of products; let i = index">
                                     <div class="productCards" >
-                                    <img [src]="prod.img" alt="" srcset="">
+                                    <img [src]="product.image" alt="" srcset="">
                                     <div class="overlay">
-                                        {{prod.name}}
-                                        <div class="productInfo">{{prod.description}}</div>
-                                        <p>{{ prod.price | currency : 'COP' : 'symbol' : '1.0-0' }} </p>
+                                        {{product.name}}
+                                        <div class="productInfo">{{product.description}}</div>
+                                        <p>{{ product.price | currency : 'COP' : 'symbol' : '1.0-0' }} </p>
                                     </div>
                                     </div>  
                                 </div>  
@@ -64,26 +64,19 @@
                         <ng-template #loggedOut>
                             <div  class="if">
                                 <carousel [arrows]="false" [margin]="5" [cellsToShow]="3"[height]="215">
-                                    <div class="carousel-cell" *ngFor="let prod of products; let i = index">
+                                    <div class="carousel-cell" *ngFor="let product of products; let i = index">
                                         <div class="productCards" >
-                                        <img [src]="prod.img" alt="" srcset="">>
+                                        <img [src]="product.image" alt="" srcset="">>
                                         <div class="overlay">
-                                            {{prod.name}}
-                                            <div class="productInfo">{{prod.description}}</div>
-                                            <p>{{ prod.price | currency : 'COP' : 'symbol' : '1.0-0' }} </p>
+                                            {{product.name}}
+                                            <div class="productInfo">{{product.description}}</div>
+                                            <p>{{ product.price | currency : 'COP' : 'symbol' : '1.0-0' }} </p>
                                         </div>
                                         </div>  
                                     </div>                                   
                                 </carousel>
                             </div>
                         </ng-template>
-                        <!--<div class="productCards" *ngFor="let prod of products; let i = index">
-                            <img [src]="prod.productphoto" alt="" srcset="">
-                            <div class="overlay">
-                                {{prod.productTitle}}
-                                <div class="productInfo">{{prod.productInfo}}</div>
-                            </div>
-                        </div>-->
                       </div>
                     </div>
                     <div class="field">
