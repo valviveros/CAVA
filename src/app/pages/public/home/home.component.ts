@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   
   ventures: Array<Shop> = [];
   enterprises: Array<Shop> = [];
+  companies: Array<Shop> = [];
 
   id: string = '';
   name: string = '';
@@ -57,6 +58,7 @@ export class HomeComponent implements OnInit {
       companies.forEach((company) => {
         const childKey = company.key;
         const childData = company.val();
+        this.companies.push(childData);
         // console.log(childKey, childData)
         if (childData.type == 'Emprendimiento') {
           this.ventures.push(childData);
