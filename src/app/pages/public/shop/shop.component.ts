@@ -44,22 +44,19 @@ export class ShopComponent implements OnInit {
     this.onScroll();
   }
 
-  async loadShop(id:any) {
+  async loadShop(id: string) {
     await this.firebase.database.ref('companies').once('value', (companies) => {
       companies.forEach((company) => {
         const childKey = company.key;
         const childData = company.val();
-        //console.log(childData);
         if (childData.id == id) {
           this.shops.push(childData);
           company.forEach((info) =>{
             const productChildData = info.val();
             info.forEach((items) =>{
               const itemsChildData = items.val();
-              console.log(itemsChildData);
               this.productos.push(itemsChildData);
             })
-            //console.log(productChildData);
           })
         } 
       });

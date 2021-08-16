@@ -65,6 +65,10 @@ $maxWidth: 1200px;
         display: flex;
         align-items: center;
         justify-content: center;
+        .overlay {
+            width: 1200px;
+            height: 480px;
+        }
         .categoryTitle {
             position: absolute;
             font-family: $blackFont;

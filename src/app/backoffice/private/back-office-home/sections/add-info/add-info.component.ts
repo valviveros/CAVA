@@ -187,7 +187,7 @@ export class AddInfoComponent implements OnInit {
           null,
           Validators.compose([
             Validators.required,
-            Validators.maxLength(100)
+            Validators.maxLength(335)
           ])
         ],
         category: [
