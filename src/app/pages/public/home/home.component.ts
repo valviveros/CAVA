@@ -1,8 +1,9 @@
-import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import '@angular/localize/init';
 import { Router } from '@angular/router';
 import { Shop } from 'src/app/shared/interfaces/Shop';
 import { AngularFireDatabase } from '@angular/fire/database';
+import { CarouselComponent } from 'angular-responsive-carousel';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +19,7 @@ export class HomeComponent implements OnInit {
   ventures: Array<Shop> = [];
   enterprises: Array<Shop> = [];
   companies: Array<Shop> = [];
-
+  
   id: string = '';
   name: string = '';
   description: string = '';
@@ -33,16 +34,17 @@ export class HomeComponent implements OnInit {
   whatsapp: string = '';
   instagram: string = '';
   facebook: string = '';
-
+  
   produtId: string = '';
   productName: string = '';
   productDescription: string = '';
   productPrice!: number;
   productImg: string = '';
+  
+  
+  constructor(private router: Router, private firebase: AngularFireDatabase) {}
 
-
-  constructor(private router: Router, private firebase: AngularFireDatabase) {
-  }
+  @ViewChild(CarouselComponent) sliderCarousel!: CarouselComponent;
   
   async ngOnInit() {
     this.sendShop();
@@ -66,6 +68,7 @@ export class HomeComponent implements OnInit {
           this.enterprises.push(childData);
         }
       });
+      console.log(this.sliderCarousel, this.sliderCarousel.getCellLength());
     });
   }
 }

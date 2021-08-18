@@ -4,7 +4,7 @@
         <div class="carouselContainer">
             <carousel [cellWidth]="'100%'" [autoplay]="true" [dots]="false" [loop]="true" [height]="422" [arrowsOutside]="false" [autoplayInterval]="3000">
                 <div class="carousel-cell" *ngFor="let company of companies; let i = index">
-                    <img [src]="company.banner" alt="Random first slide">
+                    <img [routerLink]="'/shop/' + company.id" [src]="company.banner" alt="Random first slide">
                 </div>
             </carousel>
         </div>
