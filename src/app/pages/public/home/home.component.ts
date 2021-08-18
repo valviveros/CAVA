@@ -68,7 +68,7 @@ export class HomeComponent implements OnInit {
           this.enterprises.push(childData);
         }
       });
-      console.log(this.sliderCarousel, this.sliderCarousel.getCellLength());
+      this.sliderCarousel.resize();
     });
   }
 }
