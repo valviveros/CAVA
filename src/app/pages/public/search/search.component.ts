@@ -16,22 +16,35 @@ export class SearchComponent implements OnInit {
 
   ngOnInit(): void {
     // this.shops.sort((a,b) => a.companyName.localeCompare(b.companyName))
-    this.loadShops();
+    this.loadShops('');
   }
 
-  async loadShops() {
+  async loadShops(searchShop: string) {
     await this.firebase.database.ref('companies').once('value', (companies) => {
+      this.shops = [];
       companies.forEach((company) => {
         const childKey = company.key;
         const childData = company.val();
-        this.shops.push(childData);
+        if (searchShop) {
+          let childDataName = (childData.name).toLowerCase();
+          let searchShopName = searchShop.toLowerCase();
+          if (childDataName == searchShopName) {
+            $('.noResultsFound').css('display', 'none');
+            this.shops.push(childData);
+          } else if (this.shops.length == 0) {
+            $('.noResultsFound').css('display', 'block');
+          }
+        } else if (searchShop == '') {
+          $('.noResultsFound').css('display', 'none');
+          this.shops.push(childData);
+        }
       });
     });
   }
 
-  searchThis(word: string) {
-    this.searchword = word;
-    console.log(this.searchword);
+  searchThis(event: any) {
+    this.searchword = event.target.value;
+    this.loadShops(this.searchword);
   }
 
 }
