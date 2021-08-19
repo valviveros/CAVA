@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import * as $ from 'jquery';
 
 @Component({
@@ -8,6 +8,8 @@ import * as $ from 'jquery';
 })
 export class CardsFilterComponent implements OnInit {
   countMore: number = 0;
+  @Output() filter = new EventEmitter();
+  filterValue: string = '';
 
   constructor() { }
 
@@ -20,59 +22,52 @@ export class CardsFilterComponent implements OnInit {
 
     if (this.countMore == 0) {
       this.countMore = 1;
-      cardsFilter.style.transform = "scale(1)";
+      cardsFilter.style.transform = 'scale(1)';
       cardsFilter.style.opacity = 1;
     } else {
       this.countMore = 0;
-      cardsFilter.style.transform = "scale(0)";
+      cardsFilter.style.transform = 'scale(0)';
       cardsFilter.style.opacity = 0;
     }
-  }
-
-  sortingCards(sortNumber: number){
-    switch(sortNumber){
-      case 1:
-        console.log("Principales");
-        break;
-      case 2:
-        console.log("alphabethic");
-        break;
-
-    }
-
   }
 
   filterOptionClicked(optionNumber: number) {
     switch (optionNumber) {
       case 1:
-        $(".optionTextSelected").html("Principales");
+        $('.optionTextSelected').html('Principales');
         this.dropDownOptions();
-        this.sortingCards(1);
+        this.filterValue = '';
+        this.filter.emit(this.filterValue);
         break;
       
       case 2:
-        $(".optionTextSelected").html("Todos A-Z");
+        $('.optionTextSelected').html('Todos A-Z');
         this.dropDownOptions();
-        this.sortingCards(2);
+        this.filterValue = 'Alfabético';
+        this.filter.emit(this.filterValue);
         break;
 
       case 3:
-        $(".optionTextSelected").html("Empresas");
+        $('.optionTextSelected').html('Empresas');
         this.dropDownOptions();
+        this.filterValue = 'Empresa';
+        this.filter.emit(this.filterValue);
         break;
 
       case 4:
-        $(".optionTextSelected").html("Emprendimientos");
+        $('.optionTextSelected').html('Emprendimientos');
         this.dropDownOptions();
+        this.filterValue = 'Emprendimiento';
+        this.filter.emit(this.filterValue);
         break;
 
       case 5:
-        $(".optionTextSelected").html("Menor precio");
+        $('.optionTextSelected').html('Menor precio');
         this.dropDownOptions();
         break;
 
       case 6:
-        $(".optionTextSelected").html("Mayor precio");
+        $('.optionTextSelected').html('Mayor precio');
         this.dropDownOptions();
         break;
 

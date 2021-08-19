@@ -14,22 +14,7 @@ export class ShopComponent implements OnInit {
   id: string = '';
   imagenesCarousel = [0,1,2,3,4,5,6,7,8,9].map((n) => `https://picsum.photos/215/215?random=${n}`);
   shops: Array<Shop> = [];
-  productos: Array<Product> =[]
-
-  products: Array<Product> = [
-    {
-      name: "Producto 1",
-      description: "Lorem ipsum dolor sit amet consectetur adipiscing elit aenean gravida diam proin gravida diam proin.",
-      price: 2500,
-      img: "/assets/img/Cuadrada2.jpg",
-    },
-    {
-      name: "Producto 1",
-      description: "Lorem ipsum dolor sit amet consectetur adipiscing elit aenean gravida diam proin gravida diam proin.",
-      price: 2500,
-      img: "/assets/img/Cuadrada2.jpg",
-    }
-  ]
+  products: Array<Product> = [];
   
   showDiv = {
     contact : false,
@@ -55,7 +40,7 @@ export class ShopComponent implements OnInit {
             const productChildData = info.val();
             info.forEach((items) =>{
               const itemsChildData = items.val();
-              this.productos.push(itemsChildData);
+              this.products.push(itemsChildData);
             })
           })
         } 

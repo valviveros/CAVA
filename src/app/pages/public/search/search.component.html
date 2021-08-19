@@ -4,14 +4,15 @@
         <div class="searchBarWrapper">
             <div class="searchBarContainer">
                 <img class="searchIcon" src="/assets/img/searchIcon.svg" alt="" srcset="">
-                <input class="searchBar" type="text" placeholder="Buscar">
+                <input class="searchBar" type="text" placeholder="Buscar" [ngModel]="searchword"(keydown.enter)="searchThis($event)">
             </div>
         </div>
         <div class="filterContainer">
-            <app-cards-filter></app-cards-filter>
+            <app-cards-filter (filter)="loadShops($event)"></app-cards-filter>
         </div>
+        <div class="noResultsFound">No se encontraron resultados para "{{searchword}}".</div>
         <div class="companiesContainer">
-            <app-company-card *ngFor="let company of companies; let i = index"[companyLogo]="company.companyLogo" [companyName]="company.companyName"[companyPhoto]="company.companyPhoto"></app-company-card>
+            <app-company-card *ngFor="let shop of shops; let i = index" [shopId]="shop.id" [companyLogo]="shop.logo" [companyName]="shop.name"[companyPhoto]="shop.banner"></app-company-card>
         </div>
         <div class="footerContainer">
             <app-footer></app-footer>

@@ -95,7 +95,7 @@ export class ProductsComponent implements OnInit {
 
                       return {
                         id: key,
-                        img: product.image,
+                        image: product.image,
                         name: product.name,
                         description: product.description,
                         price: product.price

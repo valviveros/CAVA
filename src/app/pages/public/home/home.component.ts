@@ -1,8 +1,9 @@
-import { Component, ComponentFactoryResolver, ModuleWithComponentFactories, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import '@angular/localize/init';
 import { Router } from '@angular/router';
 import { Shop } from 'src/app/shared/interfaces/Shop';
 import { AngularFireDatabase } from '@angular/fire/database';
+import { CarouselComponent } from 'angular-responsive-carousel';
 
 @Component({
   selector: 'app-home',
@@ -18,8 +19,9 @@ export class HomeComponent implements OnInit {
   ventures: Array<Shop> = [];
   enterprises: Array<Shop> = [];
   companies: Array<Shop> = [];
-  carousel: Array<Shop> = this.companies.slice(0, 5);
+  //carousel: Array<Shop> = this.companies.slice(0, 5);
 
+  
   id: string = '';
   name: string = '';
   description: string = '';
@@ -34,16 +36,17 @@ export class HomeComponent implements OnInit {
   whatsapp: string = '';
   instagram: string = '';
   facebook: string = '';
-
+  
   produtId: string = '';
   productName: string = '';
   productDescription: string = '';
   productPrice!: number;
   productImg: string = '';
+  
+  
+  constructor(private router: Router, private firebase: AngularFireDatabase) {}
 
-
-  constructor(private router: Router, private firebase: AngularFireDatabase) {
-  }
+  @ViewChild(CarouselComponent) sliderCarousel!: CarouselComponent;
   
   async ngOnInit() {
     this.sendShop();
@@ -60,13 +63,13 @@ export class HomeComponent implements OnInit {
         const childKey = company.key;
         const childData = company.val();
         this.companies.push(childData);
-        // console.log(childKey, childData)
         if (childData.type == 'Emprendimiento') {
           this.ventures.push(childData);
         } else {
           this.enterprises.push(childData);
         }
       });
+      this.sliderCarousel.resize();
     });
   }
 }
