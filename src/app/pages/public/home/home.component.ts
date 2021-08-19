@@ -1,4 +1,4 @@
-import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
+import { Component, ComponentFactoryResolver, ModuleWithComponentFactories, OnInit } from '@angular/core';
 import '@angular/localize/init';
 import { Router } from '@angular/router';
 import { Shop } from 'src/app/shared/interfaces/Shop';
@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
   ventures: Array<Shop> = [];
   enterprises: Array<Shop> = [];
   companies: Array<Shop> = [];
+  carousel: Array<Shop> = this.companies.slice(0, 5);
 
   id: string = '';
   name: string = '';
