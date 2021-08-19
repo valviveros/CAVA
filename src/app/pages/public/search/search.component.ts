@@ -26,7 +26,7 @@ export class SearchComponent implements OnInit {
         const childData = company.val();
         if (searchShop == 'Alfabético') {
           this.shops.push(childData);
-          this.shops.sort((a, b) => a.name > b.name ? 1 : -1);
+          this.shops.sort((a, b) => a.name.localeCompare(b.name));
         } else if (searchShop == 'Empresa') {
           if (childData.type == searchShop) {
             this.shops.push(childData);
