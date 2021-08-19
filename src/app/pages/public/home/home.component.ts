@@ -61,7 +61,6 @@ export class HomeComponent implements OnInit {
         const childKey = company.key;
         const childData = company.val();
         this.companies.push(childData);
-        // console.log(childKey, childData)
         if (childData.type == 'Emprendimiento') {
           this.ventures.push(childData);
         } else {

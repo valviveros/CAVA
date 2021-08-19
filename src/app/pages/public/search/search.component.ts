@@ -15,7 +15,6 @@ export class SearchComponent implements OnInit {
   constructor(private firebase: AngularFireDatabase) { }
 
   ngOnInit(): void {
-    // this.shops.sort((a,b) => a.companyName.localeCompare(b.companyName))
     this.loadShops('');
   }
 
@@ -25,7 +24,18 @@ export class SearchComponent implements OnInit {
       companies.forEach((company) => {
         const childKey = company.key;
         const childData = company.val();
-        if (searchShop) {
+        if (searchShop == 'Alfabético') {
+          this.shops.push(childData);
+          this.shops.sort((a, b) => a.name > b.name ? 1 : -1);
+        } else if (searchShop == 'Empresa') {
+          if (childData.type == searchShop) {
+            this.shops.push(childData);
+          }
+        } else if (searchShop == 'Emprendimiento') {
+          if (childData.type == searchShop) {
+            this.shops.push(childData);
+          }
+        } else if (searchShop) {
           let childDataName = (childData.name).toLowerCase();
           let searchShopName = searchShop.toLowerCase();
           if (childDataName == searchShopName) {
@@ -37,7 +47,7 @@ export class SearchComponent implements OnInit {
         } else if (searchShop == '') {
           $('.noResultsFound').css('display', 'none');
           this.shops.push(childData);
-        }
+        } 
       });
     });
   }
