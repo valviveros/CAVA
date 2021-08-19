@@ -92,6 +92,7 @@ $maxWidth: 1200px;
     }
     .companiesContainer {
         width: 76.1%;
+        min-height: 34vh;
         display: grid;
         column-gap: 12px;
         row-gap: 25px;
