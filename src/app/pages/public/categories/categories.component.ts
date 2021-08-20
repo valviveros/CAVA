@@ -24,26 +24,44 @@ export class CategoriesComponent implements OnInit {
   constructor(private route: ActivatedRoute, private firebase: AngularFireDatabase) { }
 
   ngOnInit(): void {
-    this.category = this.route.snapshot.paramMap.get('category') || '';
+    this.category = this.getCategory();
     for (let i = 0; i < this.categoryBanners.length; i++) {
       if (this.categoryBanners[i].name == this.category) {
         this.categoryBanner = this.categoryBanners[i].src;
       }
     }
-    this.loadShopsByCategory(this.category);
+    this.loadShopsByCategory(this.category, '');
     this.onScroll();
     const query: string = '.wrapper .cardsFilterOptionsContainer';
     const cardsFilter: any = document.querySelector(query);
     cardsFilter.style.top = "565px";
   }
 
-  async loadShopsByCategory(category: string) {
+  getCategory(): string {
+    return this.route.snapshot.paramMap.get('category') || '';
+  }
+
+  async loadShopsByCategory(category: string, searchShop: string) {
     await this.firebase.database.ref('companies').once('value', (companies) => {
+      this.shops = [];
       companies.forEach((company) => {
         const childKey = company.key;
         const childData = company.val();
         if (childData.category == category) {
-          this.shops.push(childData);
+          if (searchShop == 'Alfabético') {
+            this.shops.push(childData);
+            this.shops.sort((a, b) => a.name.localeCompare(b.name));
+          } else if (searchShop == 'Empresa') {
+            if (childData.type == searchShop) {
+              this.shops.push(childData);
+            }
+          } else if (searchShop == 'Emprendimiento') {
+            if (childData.type == searchShop) {
+              this.shops.push(childData);
+            }
+          } else if (searchShop == '') {
+            this.shops.push(childData);
+          }
         }
       });
     });

@@ -8,7 +8,7 @@
             <div class="categoryTitle">{{ category }}</div>
         </div>
         <div class="filterContainer">
-            <app-cards-filter></app-cards-filter>
+            <app-cards-filter (filter)="loadShopsByCategory(getCategory(), $event)"></app-cards-filter>
         </div>
         <div class="companiesContainer">
             <app-company-card *ngFor="let shop of shops; let i = index" [shopId]="shop.id" [companyLogo]="shop.logo" [companyName]="shop.name" [companyPhoto]="shop.banner"></app-company-card>

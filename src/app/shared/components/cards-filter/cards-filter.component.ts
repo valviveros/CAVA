@@ -61,16 +61,6 @@ export class CardsFilterComponent implements OnInit {
         this.filter.emit(this.filterValue);
         break;
 
-      case 5:
-        $('.optionTextSelected').html('Menor precio');
-        this.dropDownOptions();
-        break;
-
-      case 6:
-        $('.optionTextSelected').html('Mayor precio');
-        this.dropDownOptions();
-        break;
-
       default:
         break;
     }
