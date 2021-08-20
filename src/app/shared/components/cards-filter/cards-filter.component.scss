@@ -59,7 +59,7 @@ $maxWidth: 1200px;
         background: $cardsBGColor;
         cursor: pointer;
         .optionTextSelected {
-            margin-top: 12px;
+            //margin-top: 12px;
         }
         .chevronIcon {
             width: 15px;
@@ -104,6 +104,7 @@ $maxWidth: 1200px;
                     border-left: solid 2px $fontColor;
                     .optionText {
                         margin-left: 10px;
+                        margin-top: -5px;
                     }
                 }
             }
