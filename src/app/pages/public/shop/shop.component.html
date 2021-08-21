@@ -21,10 +21,10 @@
             <div class="downshop">
                 <div class="items">
                     <div class="typeTitle">
-                        <div class="categoryTitle" [ngClass]="{ 'underline': showDiv.product }" (click)="showDiv.product = !showDiv.product; showDiv.contact = false; ">
+                        <div class="categoryTitle" [ngClass]="{ 'underline': showDiv.product }" (click)="showDiv.product = !showDiv.product; showDiv.contact = false; showDiv.product = true">
                             Productos  
                         </div>
-                        <div class="categoryTitle"[ngClass]="{ 'underline': showDiv.contact }" (click)="showDiv.contact = !showDiv.contact; showDiv.product = false" >
+                        <div class="categoryTitle"[ngClass]="{ 'underline': showDiv.contact }" (click)="showDiv.contact = !showDiv.contact; showDiv.product = false; showDiv.contact = true; " >
                             Contacto Directo
                         </div>
                     </div>
