@@ -59,7 +59,11 @@ $maxWidth: 1200px;
         background: $cardsBGColor;
         cursor: pointer;
         .optionTextSelected {
+<<<<<<< HEAD
             //margin-top: 12px;
+=======
+            height: 21px;
+>>>>>>> b5797a65dc681cbb54465aab5b217889620fb8d5
         }
         .chevronIcon {
             width: 15px;
@@ -69,7 +73,6 @@ $maxWidth: 1200px;
     }
     .cardsFilterOptionsContainer {
         width: 225px;
-        // height: 204px;
         position: absolute;
         top: 305px;
         display: flex;
@@ -100,9 +103,10 @@ $maxWidth: 1200px;
                     background: $backgroundColor;
                 }
                 .optionLine {
-                    height: 65%;
+                    height: 21px;
                     border-left: solid 2px $fontColor;
                     .optionText {
+                        height: 21px;
                         margin-left: 10px;
                         margin-top: -5px;
                     }

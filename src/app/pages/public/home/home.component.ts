@@ -19,8 +19,11 @@ export class HomeComponent implements OnInit {
   ventures: Array<Shop> = [];
   enterprises: Array<Shop> = [];
   companies: Array<Shop> = [];
+<<<<<<< HEAD
   //carousel: Array<Shop> = this.companies.slice(0, 5);
 
+=======
+>>>>>>> b5797a65dc681cbb54465aab5b217889620fb8d5
   
   id: string = '';
   name: string = '';
