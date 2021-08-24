@@ -2,7 +2,9 @@
     <app-navbar [active]="active"></app-navbar>
     <div class="categoriesContent">
         <div class="categoryPicture">
-            <img [src]="categoryBanner" alt="" srcset="">
+            <div class="overlay">
+                <img [src]="categoryBanner" alt="" srcset="">
+            </div>
             <div class="categoryTitle">{{ category }}</div>
         </div>
         <div class="filterContainer">
